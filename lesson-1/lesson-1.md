@@ -209,11 +209,20 @@ Next you will break the Greeting App down into its `component` parts and take a 
 
 ## L01 Hands On Practice: Build the Greeting App
 
-Welcome to your very first React demo, as part of this React Course.
+Welcome to your very first React hands-on practice assignment, as part of this React Course.
 
-The first real example we're going to build is a really simple greeting app that’s going to accept a `name` in an `input` box and output it back as part of a welcoming message.
+The first real example you're going to build is a really simple greeting app that’s going to accept a `name` in an `input` box and output it back as part of a welcoming message.
 
-### Adding Parcel Bundler
+## Requirements
+
+1. Read all the guided learning text carefully for understanding.
+2. Follow all instructions and coding step-by-step.
+3. Create all files and folders for the Greeting App.
+4. Complete all coding as demonstrated in all files.
+5. Zip `L01ReactHandsOnPractice` Folder
+6. Attach the zipped folder below where indicated for submission.
+
+### Add Parcel Bundler
 
 You can use React by loading it using a `script` tag from a package repository like `unpkg`. However, what you'll find with most real-life React projects is they will be adding the React libraries with `npm` and usually use a code bundler such as `Webpack`, or even the Create React App starter project (which uses `Webpack` under the hood).
 
@@ -237,7 +246,7 @@ Now open up a brand new project in **VS Code**.
 
 `cd FEFReact`
 
-`mkdir L01React`
+`mkdir L01ReactHandsOnPractice`
 
 `git init`
 
@@ -294,7 +303,7 @@ You have just written a terminal shortcut that will allow you to type `npm start
 
 `Parcel` works by giving the app an entry point, in this case, your `index.html` file which you’ll be building next. From there, `Parcel` determines which files it needs to include in the bundle based on your imports and file references.
 
-## Coding the Project Files
+## Code the Project Files
 
 On to the exciting part: building out your example. For smaller projects like this, just start by creating all the files you need and then filling them in as you go along.
 
@@ -466,7 +475,7 @@ If you're using React, you need to have React in scope. Import React at the top 
 import React, { Component } from 'react';
 ```
 
-### Scaffolding the app
+### Scaffold the app
 
 Outline the basics of the component and then export that component so it can be used in another file, or another component.
 
