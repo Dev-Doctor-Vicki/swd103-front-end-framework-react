@@ -207,7 +207,7 @@ This is a straightforward demo that isn’t too complex, but highlights a number
 
 Next you will break the Greeting App down into its `component` parts and take a sneak peak under the hood at how everything pins together.
 
-## L01 Hands On Practice: Build the Greeting App
+## L01 Hands On Guided Learning: Build the Greeting App
 
 Welcome to your very first React hands-on practice assignment, as part of this React Course.
 
@@ -578,3 +578,755 @@ You’ll also notice a call to a class property called `state`. Each component h
 Your line, `{this.state.displayName}` is really saying ‘get me the `displayName` value out of this component’s `state`’.
 
 You haven't added your `state `yet, so let’s do that now.
+
+### Add State to Your app
+
+Within a class-based component, just like a regular JavaScript class, you’ll want to initialize any state values in the constructor.
+
+```
+constructor(props) {
+  super(props);
+
+  this.state = {
+    displayName: ''
+  };
+}
+```
+
+React automatically wires up your constructor when the component is created and it passes it a properties object, called `props` for short (you’ll see this often when dealing with React).
+
+The first thing you have to do in your constructor is call the parent class constructor (the parent class is the Component class you extended right at the beginning) using `super` method, passing in the `props` object.
+
+To add your component’s `state` property, simply call `this.state` and set it to an object that contains whatever data you need it to. For now, you’ll just add the `displayName` property and set it to an empty string.
+
+#### Note!
+
+An important thing to know about `state` is that it is **immutable**. This means it can be updated by using React’s `setState()` method, but you never edit `state` directly. The only time you’ll ever set `state` directly is in a constructor.
+
+You don’t have to initialize `state` in the constructor as you’re doing here, but it’s a good habit to get into so that anyone coming into the class can see what properties should be expected to exist on the `state object`, and what their `values` or their `types` should be.
+
+### Handling User Input
+
+You’ve got your dynamic welcome message but you need to allow the user to enter their name so you can greet them personally.
+
+Add some instructions and an input box:
+
+####App.js
+
+```
+        <p>Enter your name below so we can get better acquainted</p>
+        <input value={this.state.name} onChange={this.handleChange} />
+        <button onClick={this.handleClick}>Update name</button>
+```
+
+You’ve set your input’s `value` to another `state `value, `{this.state.name}`. By doing this you're turning it into a controlled component. HTML form elements like `input`s, `select`s, and `text` areas are typically uncontrolled components because they handle their own `state` and `values`.
+
+By letting React handle your input’s `value` from `state`, it becomes a controlled component which means React is responsible for maintaining the `state` of any `value` we assign to it.
+
+Since you’ve added a new `state` value reference here, update your component’s `state` in the constructor:
+
+```
+constructor(props) {
+  super(props);
+
+  this.state = {
+    displayName: '',
+   // add our name value
+    name: ''
+  };
+}
+```
+
+If you stop there, however, the value of the input will always be an empty string. You need a way to update this `value` in `state` whenever someone updates the text.
+
+You do that by adding an event handler to the `input` element. The perfect place to do this update will be as part of the `onChange` event, which fires every time the text in the `input` changes.
+
+Add the `onChange` event to the `input` and add a handler function, `handleChange` which you’ll define next.
+
+```
+        <input value={this.state.name} onChange={this.handleChange} />
+```
+
+Now, define the `handleChange` event. Add it before the `render()` method in our class.
+
+```
+  handleChange = evt => {
+    this.setState({
+      name: evt.target.value
+    });
+  };
+```
+
+The handler function is a simple `arrow` function that accepts one argument, which is an event object React automatically passes in for you (also known as a synthetic event). We're calling it `evt` here, but you might see it called `e` or `event`.
+
+In this function, you just need to update your `state`’s `name` value with whatever text your user has entered. To do that, you’ll use React’s built-in `state` updating method, `setState()`.
+
+You’ll call `setState()` and pass it an object that contains any `property:value` pair you want to update in `state`. In your case, you want to update the `name `property with a value of your text input which you can grab from the `evt` argument using `evt.target.value`.
+
+### Trigger a Greeting with a Button
+
+For this to really be a true app, you’ll give your users a way to trigger a greeting message update after they’ve updated their name in the `input` box.
+
+Add a button just under your `input` with a similar event handler, but this time the event will be `onClick` instead of `onChange`. You’ll also give it some text, ‘`Update name`’:
+
+```
+  handleClick = evt => {
+    this.setState({
+      displayName: this.state.name
+    });
+  };
+```
+
+The `onClick` event is very similar to `onChange` and again it’ll receive a synthetic event argument you’ll just call `evt` again.
+
+You can see your `click` handler method is doing the same update to `state` by calling the `setState()` method, but this time you’re updating your `displayName` value.
+
+The `displayName` value is going to be the same as the final value they’ve entered in the `input` box, which we’ve already set to the `state` value, `name`. So that’s what you’ll use to update `state` within your `handleClick` method.
+
+## Test Your Greeting
+
+Now that you’ve got everything you need, save your `App.js` file, and take a peek in the browser. Enter a `name` in the `input` box and click ‘`Update name`’.
+
+You can see instead of ‘`Hi there` ’, you’ll get ‘Hi there, Vicki Bealman’ (or whatever name you entered).
+
+
+### Finishing touches
+
+The very last part of your Greeting App is to add a little polish. Remember those styles you added at the start? Now, you’ll add them to the `app` by importing them just before the class component:
+
+#### App.js
+
+`import './styles.css';`
+
+Save and take another look in the browser. It’s not an emmy award-winning app just yet, but you can see it looks a lot better already.
+
+Last but not least, you have an initial message, ‘`Hi there`, ‘ and then just nothing. You make this a little more interesting by adding in a default message ’`we haven’t been introduced`’.
+
+You’ll do this by amending your initial greeting message using a logical `OR` statement. This sounds fancy, but it’s really a shorthand `if` statement in JavaScript you’ll see used often in React to say ‘**evaluate both sides of this argument and return whichever is true**’.
+
+#### App.js
+
+```
+<p>
+          Hi there, {this.state.displayName || "we haven't been introduced"}
+        </p>
+```
+
+Because your `state` value `this.state.displayName` is empty (`false`) by default, React will look at this and return the right-hand side of the argument, our default string.
+
+**Congratulations**! Boom; that's it. That's your very first entrance into building a React app.
+
+In the next section, you’ll refactor your `App` component into smaller components and introduce some React Hooks.
+
+### Submit
+Include the submit zip folder box here, with link to open code solution after submission.
+
+## Solution
+
+### The complete App.js file
+
+When complete, your `App.js` file should look like this:
+
+```
+import React, { Component } from 'react';
+
+import './styles.css';
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      name: '',
+      displayName: ''
+    };
+  }
+
+  handleChange = evt => {
+    this.setState({
+      name: evt.target.value
+    });
+  };
+
+  handleClick = evt => {
+    this.setState({
+      displayName: this.state.name
+    });
+  };
+
+  render() {
+    return (
+      <>
+        <h1>Welcome to the app</h1>
+        <p>
+          Hi there, {this.state.displayName || "we haven't been introduced"}
+        </p>
+        <p>Enter your name below so we can get better acquainted</p>
+        <input value={this.state.name} onChange={this.handleChange} />
+        <button onClick={this.handleClick}>Update name</button>
+      </>
+    );
+  }
+}
+
+export default App;
+```
+
+## L01 Hands On Guided Learning #2: Build the Greeting App
+
+Welcome to your second React hands-on practice assignment, as part of this React Course.
+
+You're going to build upon the Greeting App you completed previously. 
+
+## Requirements
+
+1. Copy the completed project `L01ReactHandsOnPractice` folder. 
+2. Save copy as `L01ReactHandsOnProactice2` inside your `FEFReact folder.
+3. Open `L01ReactHandsOnProactice2` in VS Code
+4. Read all the guided learning text carefully for understanding.
+5. Follow all instructions and coding step-by-step.
+6. Create all files and folders for the Greeting App.
+7. Complete all coding as demonstrated in all files.
+8. Zip `L01ReactHandsOnPractice2` Folder
+9. Attach the zipped folder below where indicated for submission.
+
+
+## Refactor the Greeting App
+
+With your Greeting App built, you're going to learn to 'think in React' by breaking down your small App into components and refactoring it to use them.
+
+You’ve built your first app and it’s looking and working great. Currently, it’s using the class-based component approach, but we’re going to refactor it to achieve a few things:
+
+- Thinking about your apps in a component, modular fashion
+
+- Try your hand at breaking down a larger component into smaller ones
+
+- Introduce the common functional component approach to building your React components
+
+At the moment you have one large class-based component with all the different things going on, including your event handlers for on change and on click. You have a dynamic greeting and a title in there too.
+
+It's not a very large component, but you can see how easily it could get out of hand as you add more and more features and functionality to it. It’s not very modular and it’s certainly not very reusable.
+
+It's good practice to analyze your components and try to break them down into smaller ones where possible and where it makes sense. This way, you will encapsulate functionality into smaller working parts that can be duplicated and used in different places throughout your app.
+
+### Thinking in Components
+
+It’s useful to look at a larger component as a whole and then think about the smaller, independent parts of functionality it contains. These smaller moving parts can be broken down into other components and used elsewhere; they’ll no longer be tied to this single, larger containing component.
+
+To do that with your App component, you can look at what it’s currently doing and see  there are three distinct functions it performs that would be good candidates for separate components:
+
+1. **Displays a welcome message in a heading level one tag**:
+	- This could have different styling applied in different parts of the app, or accept different messages on different pages, so it’s a good fit to be separated.
+
+2. **Displays a dynamic message to the user including data from state**:
+	- This greeting is simple and generic. You may see it on the home page, or in the main navigation, of an e-commerce site to greet whoever’s logged in.
+
+3. **Accepts input from the user and triggers an event on click of a button**:
+	- You’re using the input and button combination to accept a name, but it might also work on a contact form, or as part of a search form. Being able to have these two connected elements in one place, in a separate component makes it a great candidate for refactoring now.
+
+Here’s a diagram of how you can group these separate areas of functionality into independent components: **Title**, **Greeting**, and **Input**. These child components can then be imported into their parent, the App component.
+
+![](assets/component-breakdown.png)
+
+### Plan the Refactor
+
+You have an idea of the components you need to build, and now you just need a set of steps to carry out your refactoring work.
+
+Those steps might look like this:
+
+1. Create a components folder to hold your new components
+
+2. Create three new components
+
+	- Title
+	- Greeting
+	- Input
+
+3. Refactor the App component to use your new components
+
+4. Refactor the App component from class-based to a functional component
+
+## Refactor Setup
+
+Now you have a pla. You’ll need to do some setup work before you start. Like you did in the last section, you’ll create all the files you need first, and fill them in as you go along, building out the components and refactoring them as yoi go.
+
+First, add a new folder, and call it `components`. 
+
+`mkdir components`
+
+Within your `/components` folder, create three empty component files with the `.jsx` file extension (remembering to capitalize the first character in the file name):
+
+- `Title.jsx`
+- `Greeting.jsx`
+- `Input.jsx`
+
+1. `touch /components/Title.jsx`
+
+2. `touch /components/Greeting.jsx`
+
+3. `touch /components/Inout.jsx`
+
+
+
+Files with the `.jsx` extension are specific to the React library and will typically contain the familiar HTML-like syntax you’ve seen in earlier sections. It’s important to note that this file extension is down to personal preference. JSX files will be converted into raw JavaScript by a tool such as Babel JS before being run in the browser. Some people prefer to have presentational components that just accept static data and display it, using the `.jsx` file extension to denote them. The important thing to remember is you can use either `.js` or `.jsx` to name your files.Tthere is no difference, only personal preference.
+
+Now let’s start moving through the files and coding them.
+
+### Title.jsx
+
+Start by repeating:
+
+‘React must be in scope in order to use it!’
+
+So you’ll import React first before you do anything else.
+
+Instead of the class-based approach previously used for your App component, the `Title` component will be your very first functional one. Define a functional component as just that, a function.
+
+However, rather than define a function and then set it as the default export, we can do so in one line:
+
+```
+export default props => <h1>Welcome to Software Development</h1>;
+```
+
+**Note**
+
+This is a nice style to have for smaller, less complex components, especially if they’re purely presentational, like here. However, if your components start to grow, or feature complex functionality that may cause bugs, it makes sense to define your function and assign it to a variable (i.e. a `const`) and then export it immediately afterward. This is because the React debugging tools struggle to identify components defined and exported in a single line as we are doing here.
+
+You can see you have a default export which is a function that accepts a props object and uses an implicit return (that is without the return keyword and some JSX within parentheses). Because you’re not doing any other logic, manipulating `state`, etc. you’re just returning some JSX, you can use this implicit return to make things look a little neater and remove unnecessary lines of code.
+
+That’s it…sort of. You have a `<h1>` being returned, but you have a fixed string, ‘Welcome to Software Development’. That’s fine for your Greeting App, but not very reusable if you want to have this component on another page that said something different.
+
+You can make this title dynamic so instead of it being hardcoded to a string, you can use your curly brace syntax again and use a value you can pass in via your props object.
+
+```
+export default props => <h1>{props.title}</h1>;
+```
+
+However, you can take this another step further. Because you know you’re only passing in a `title` value via props, you can reference this value directly using object destructuring.
+
+```
+export default ({ title }) => <h1>{title}</h1>;
+```
+
+Props will expect and be passed a property called `title`, so by replacing props with some curly braces you can now start to directly name properties you expect props to have. This is JavaScript’s destructuring syntax and it’s really helpful!
+
+As well as replacing the props argument in your function, you’ll need to replace the `{props.title}` with just `{title`,} too.
+
+What you’re left with now is a really simple, small, reusable component. It can be used wherever you need across your app in different areas. It’s also useful if you need to make changes to the way titles look, such as styling, size, color, tag attributes; all those changes can be made in this one, single place.
+
+**Note**
+
+What you're making here is a very contrived example to get a feel for React, but it's good to start thinking in terms of how you can use this in real world applications as you start learning and growing and building things for yourself.
+
+This is something you'll do further on in the course as your apps start to grow and get bigger. But for now, this is your `title` component ready to go.
+
+#### Completed Title Component
+
+Here’s your finished Title component:
+
+**Title.jsx**
+
+```
+import React from 'react';
+
+export default ({ title }) => <h1>{title}</h1>;
+```
+### Greeting.jsx
+
+The next thing wyou're going to do is tackle the greeting message from your `App` component:
+
+```
+<p>Hi there, {this.state.displayName || "we haven't been introduced"}</p>
+```
+
+You’ve got a paragraph tag with a string and a ‘`displayName`’ value you’re getting from `state`. You can pull this out into your `Greeting` component.
+
+Start by importing React:
+
+**Greeting.jsx**
+
+`import React from 'react';`
+
+Just like your `Title` component, you're going to do an inline default export next, along with an implicit return, because all we're doing is returning one line which is going to be our greeting with a dynamic name value.
+
+**Greeting.jsx**
+
+```
+export default ({ name = "we haven't been introduced" }) => (
+  <p>Hi there, {name}</p>
+);
+```
+
+You can also repeat the destructuring syntax here to pull out the name value from props. The difference this time is you’re going to add a default value for the name variable, just in case it’s not set.
+
+You could do the same as you had in your `app`, `{name || “we haven’t been introduced”`} using the logical `OR` operator, but this way is a little neater. 
+
+You `Greeting` component is built.
+
+#### Complete Greeting Component
+
+Here's your complete Greeting component:
+
+**Greeting.jsx**
+
+```
+import React from 'react';
+
+export default ({ name = "we haven't been introduced" }) => (
+  <p>Hi there, {name}</p>
+);
+```
+### Input.jsx
+
+The next thing to build is your combined `input` and `button` component. This one's going to be slightly larger, but still not very complex.
+
+You’re going to import React into your component. This time you’re also going to add an extra named import `useState`.
+
+**Input.jsx**
+
+`import React, { useState } from 'react';`
+
+Because your input element relies on your `App` component’s `stat`e to manage its value, you need to use `state` in your new `Input` component. However, the `Input` component is a stateless, functional component, not a class-based one. To use `state` in a functional component, you’ll need to use a feature of React called `Hooks`. In your case, to access `state` from a functional component, you'll use the `useState` Hook.
+
+**Tip!**
+
+Hooks were introduced as part of React v16.8. They allow access to `state` and other React features without writing a class. You'll cover Hooks in greater detail in the next lesson, including `useState`. For now, focus on getting the components built as you follow along and become familiar with the `useStat`e syntax for accessing `state` in a functional component.
+
+You’ve imported React, now you'll define your `Input` component and export it. Be sure to copy in the `input` and `button` elements from your `App` component.
+
+```
+const Input = props => {
+  return (
+    <>
+      <input value={this.state.name} onChange={this.handleChange} />
+      <button onClick={this.handleClick}>Update name</button>
+    </>
+  );
+};
+
+export default Input;
+```
+
+Notice how you’ve capitalized your `const` variable `Input`. This is the convention, not a rule.Since you’re creating a component, it’s best practice to capitalize components’ names.
+
+### Update the Inout Element
+
+You can't just have the `input` and the `button` side by side like this, becaue it'll throw an error. To avoid this, you’ve wrapped them in a React fragment.
+
+The previous two components, `Greeting` and `Title`, both used an implicit return because they didn’t have any logic to deal with. They just returned their JSX elements. Our `Input` component needs to do a little more, mainly setting values with the `useState` Hook.
+
+Because of this, you can see you’ve explicitly defined a return statement that contains your desired JSX output (i.e. the input and button elements). This is different from the `App` component, which has to define a `render()` method, which then returns some JSX. You’ll also see that because the `Input` component is a function, you don’t need to define a constructor, or call a parent class’ `super()` method.
+
+Your app islooking good so far, but you need to make a couple of edits for it to work.
+
+```
+<input value={this.state.name} onChange={this.handleChange} />
+```
+
+Looking at the input element in your return statement, you’re still referencing a `state` value and a `handleChange` event from your `App` component. Neither of these two things works because of the differences between your `App` component, which is class-based, and your `Input` component, which is functional.
+
+Luckily, we can replace both these things with the `useState` Hook! First, define the Hook at the top of your component and then start using it with the input element.
+
+`const [name, setName] = useState('');`
+
+It may look a little strange if you’re not used to seeing this sort of syntax, but the `useState` Hook works like this:
+
+`useState` is a method React provides as part of its core library.
+
+You call it, passing in whatever default value you want this particular item in `state` to represent. For example; you’re calling it using `useState(‘’)` which will set the value in `state` as an empty string.
+
+The method returns an array with two items. The first item represents the value held in `state`, and the second item is a method that can be used to update the first item in `state`.
+
+You use the array destructuring syntax in JavaScript to access both of these items.
+
+In your component, you can see you’re defining a `const` which is a destructured array. This array contains two items: the first is going to be the value held in `state`, we’ll call it `name`, but remember this is a title that we’re giving it. You could call it anything, but you’ll call it `name` as that’s meaningful right now.
+
+The second item will be the method that `useState` provides to update the first value, the value held in `state`. Again, you can call it whatever you like, but the sensible convention is to call it the same as the name of the `state` value, prefixed the word ‘`set`’. You’ll call it `setName`.
+
+Now, whenever you want to update the value of `name` in `state`, call the `setName()` method, passing in a new value.
+
+Looking back at your `input` element, you’re ready to update its attributes to use your new `state` Hook variables, `name` and `setName()`.
+
+```
+      <input value={name} onChange={evt => setName(evt.target.value)} />
+```
+
+The first edit is to change the location of your `state` data for the `value={}` attribute on your input element. You can change `value={this.state.name}` to remove the reference to `this.state` that only applies to a class. The value is now going to be stored in your name variable returned from the useState Hook.
+
+Updating this reference gives  `value={name}`.
+
+The next thing to do is replace the call to the missing `this.handleChange` method referenced in the `onChange={}` attribute.
+
+```
+onChange = { evt => setName(evt.target.value) }
+```
+
+Since you’re going to use the `setName()` method you got from your `useState` Hook, you can actually simplify how you call this and do it inline, in the `onChange` attribute. Using a single line arrow function you just call `setName()` directly and use the same `evt.target.value` to reference the underlying value of the input element from the event (the evt argument) that we’re passed in by the `onChange` event.
+
+You might be tempted to just call `setName()` directly without an arrow function like this, `onChange = { setName(evt.target.value) }`. However, events like the `onChange` event, require you to pass a function that can be called when the time comes. By writing out the function directly and passing it arguments, you’re effectively invoking that function right away. This creates a problem, especially when you’re updating `state` values, which causes React to render the component again, which, in turn, calls the function again, resulting in an infinite loop.
+
+Next, you’ll update your `button` element.
+
+### Update the Button Element
+
+The `button` element presents an interesting situation. You need to trigger an update to `state` for the `displayName` property. However, that particular piece of `state` lives in the `App` component.
+
+How can you update `state` data in another component?
+
+You do it in the same way you can pass data down to child components via the props object.  You can send data back up using events and event handlers (see the next lesson for more information on this).
+
+To do this, you can update your `button` element with a similar-looking anonymous arrow function we used for the `input` element.
+
+```
+      <button onClick={() => props.handleClick(name)}>Update name</button>
+```
+
+This time, instead of calling a function on the `App` component’s class as you did previously (using `this.handleClick`) you’ll call the same function but from your props object. You’ll pass in the up-to-date value for `name` from the local `state` data. 
+
+#### Complete Input Component
+
+Here's the completed `Input` component:
+
+**Input.jsx
+```
+import React, { useState } from 'react';
+
+const Input = props => {
+  const [name, setName] = useState('');
+
+  return (
+    <>
+      <input value={name} onChange={evt => setName(evt.target.value)} />
+      <button onClick={() => props.handleClick(name)}>Update name</button>
+    </>
+  );
+};
+
+export default Input;
+```
+
+## Update the App Component
+
+With your three new components complete, it’s time to edit the `App` component to use them.
+
+Import your new components.
+
+**App.jsx**
+
+```
+import Title from './components/Title';
+import Greeting from './components/Greeting';
+import Input from './components/Input';
+```
+
+Next, you’re going to replace the exiting JSX with your imported components. Your new return statement should look much simpler now:
+
+**App.jsx**
+
+```
+    return (
+      <>
+        <Title title='Welcome to the app' />
+        <Greeting name={this.state.displayName} />
+        <p>Enter your name below so we can get better acquainted</p>
+        <Input handleClick={this.handleClick} />
+      </>
+    );
+```
+
+Look at the `<Title />` component reference. You’ll see you’ve added an attribute of `title=""` and passed in the string ‘`Welcome to Software Development`’. This means when your `Title` component calls `props.title` or references it as you have from destructuring, ‘`Welcome to Software Development`’ is what it will receive.
+
+You’ll do the same with your `Greeting` component, but this time, you’re passing the `name` attribute the `displayName` value from `state` using `this.state.displayName`.
+
+Finally, you’ll add your `Input` component, adding an attribute of `handleClick={}`, which needs to be a function the `Input` component can call via props.
+
+### Other Small Changes
+
+There are a few more changes to make to the `App` component before everything’s complete:
+
+You can remove the `handleChange` event because you no longer need it — it’s handled in the `Input` component
+
+You can remove the `name` property from `state` because that’s also handled in your new `Input` component.
+
+You need to update the `handleClick` event to use the new `name` value that’s passed to it
+
+Locate the `handleChange` event and remove it completely.
+
+Next, update the `state` object to remove the `name` property:
+
+```
+this.state = {
+  name: '', // <--- remove this line
+  displayName: ''
+};
+```
+
+Last, you can update the `handleClick` event to reference the `name` value that will be passed to it from the `Input` component.
+
+Currently it’s referencing the `evt` object that was passed to it as an argument, so we can change this to `name` which will be the new string value passed in when this event is called within the `Input` component.
+
+Then, in the `setState()` method, you’re using `this.state.name` value which you just deleted. You can update this to use the `name` argument instead.
+
+```
+  handleClick = name => {
+    this.setState({
+      displayName: name
+    });
+  };
+```
+
+Now run this code and see everything working as before, but this time it’ll be using your shiny new components.
+
+## Refactor the App Component
+
+Make a couple more changes to the `App` component to modernize it a little and make the code a little smaller and more readable.
+
+1. You’ll convert `App` from a class-based component into a functional one.
+
+2. You’ll replace the current state mechanism with another use of the `useState` Hook.
+
+### Convert a class-based COmponent to a functional one
+
+This process might seem somewhat daunting, but it’s quite straightforward and gets easier the more you do it.
+
+There are a few main parts to achieve it:
+
+1. Replace the class keyword and general class declaration with a function name and argument(s).
+
+2. Remove the constructor function (which is specific to classes), abstracting any logic you need out of there.
+
+3. Move the `return()` statement outside of the `render()` method. Once this is done, you can delete the empty `render()` method.
+
+4. Add the `const` keyword to any functions that are class properties.
+
+The current `App` component class declaration and constructor will be replaced from this:
+
+**App.js**
+
+```
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      displayName: ''
+    };
+  }
+```
+
+To this:
+
+**App.js**
+
+```
+const App = props => {
+  const [displayName, setDisplayName] = useState();
+```
+
+We do still need to use the `displayName` property from `state`, which is why we’ve used the `useState` Hook oagain. Notice the same naming convention: we use `displayName` for the name of the value in `state`, and `setDisplayName` for the name of the function that will update this value in `state`.
+
+To use the `useState` Hook, you'll need to import it where we currently import `Component` right at the top of the file. Similarly, you can also remove the `Component` import, since you're no longer using it.
+
+**App.js**
+
+```
+import React, { useState } from 'react';
+```
+
+Remove the entire `handleClick` function because you’ll be replacing it with your `setDisplayName` function call.
+
+### Replace the render Method
+
+Because the `render()` method is only needed for class-based components, replace it with the entire `return()` statement.
+
+In practice, this:
+
+**App.js**
+
+```
+  render() {
+    return (
+      <>
+        <Title title='Welcome to Software Development' />
+        <Greeting name={this.state.displayName} />
+        <p>Enter your name below so we can get better acquainted</p>
+        <Input handleClick={this.handleClick} />
+      </>
+    );
+  }
+  ```
+
+  Becomes this:
+
+  **App.js**
+
+  ```
+      return (
+      <>
+        <Title title='Welcome to Software Development' />
+        <Greeting name={this.state.displayName} />
+        <p>Enter your name below so we can get better acquainted</p>
+        <Input handleClick={this.handleClick} />
+      </>
+    );
+	```
+### Update the displayName in State
+
+Of course, now that we’ve updated the displayName property to use Hooks, we’ll need to update two lines in our return statement.
+
+The first isn’t a very big change, but since we don’t have access to a class property called this.state, we just remove it completely, referencing displayName directly.
+
+      <Greeting name={displayName} />
+
+The very last thing to do is replace the call to a non-existent this.handleClick that we passed into the Input component, with a direct call to the Hook method, setDisplayName.
+
+      <Input handleClick={name => setDisplayName(name)} />
+
+Again, to prevent an infinite loop or some other issue, we’ve passed in an inline arrow function instead. It will receive a name value as an argument when the Input component calls this function, and we immediately call the setDisplayName() method to update the displayName value in state.
+
+And that’s everything done. Save everything and refresh the page in the browser to see it in action. Everything should look and behave as it did before.
+
+This refactoring process isn’t too painful, but you can see already how our App component is much smaller, much neater, and more modular. What’s more, what we have now is a bunch of smaller components that contain their own logic and that can be used throughout our app, as it grows and starts to expand with more sections.
+
+### Submit
+Include the submit zip folder box here, with link to open code solution after submission.
+
+## Solution (Available after project submitted above.)
+
+### The complete App.js file
+
+When complete, your `App.js` file should look like this:
+
+**App.js**
+
+```
+import React, { useState } from 'react';
+
+import './styles.css';
+
+// Components
+import Title from './components/Title';
+import Greeting from './components/Greeting';
+import Input from './components/Input';
+
+const App = props => {
+  const [displayName, setDisplayName] = useState();
+
+  return (
+    <>
+      <Title title='Welcome to the app' />
+      <Greeting name={displayName} />
+      <p>Enter your name below so we can get better acquainted</p>
+      <Input handleClick={name => setDisplayName(name)} />
+    </>
+  );
+};
+
+export default App;
+```
+
+
+
+
+
+
+
