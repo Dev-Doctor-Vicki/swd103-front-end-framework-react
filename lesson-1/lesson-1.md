@@ -792,68 +792,71 @@ You're going to build upon the Greeting App you completed previously.
 
 ## Refactor the Greeting App
 
-With your Greeting App built, you're going to learn to 'think in React' by breaking down your small App into components and refactoring it to use them.
+With your Greeting App built, you're going to learn to 'think in React' by breaking down your small `App` into components and refactoring it to use them.
 
-You’ve built your first app and it’s looking and working great. Currently, it’s using the class-based component approach, but we’re going to refactor it to achieve a few things:
+You’ve built your first app and it’s looking and working great. Currently, it’s using the class-based component approach, but you’re going to refactor it to achieve a few things:
 
-- Thinking about your apps in a component, modular fashion
+- Thinking about your apps in a component, modular fashion.
 
-- Try your hand at breaking down a larger component into smaller ones
+- Try your hand at breaking down a larger component into smaller ones.
 
-- Introduce the common functional component approach to building your React components
+- Introduce the common functional component approach to building your React components.
 
 At the moment you have one large class-based component with all the different things going on, including your event handlers for on change and on click. You have a dynamic greeting and a title in there too.
 
 It's not a very large component, but you can see how easily it could get out of hand as you add more and more features and functionality to it. It’s not very modular and it’s certainly not very reusable.
 
-It's good practice to analyze your components and try to break them down into smaller ones where possible and where it makes sense. This way, you will encapsulate functionality into smaller working parts that can be duplicated and used in different places throughout your app.
+It's good practice to analyze your `components` and try to break them down into smaller ones where possible and where it makes sense. This way, you will encapsulate functionality into smaller working parts that can be duplicated and used in different places throughout your app.
 
 ### Thinking in Components
 
 It’s useful to look at a larger component as a whole and then think about the smaller, independent parts of functionality it contains. These smaller moving parts can be broken down into other components and used elsewhere; they’ll no longer be tied to this single, larger containing component.
 
-To do that with your App component, you can look at what it’s currently doing and see  there are three distinct functions it performs that would be good candidates for separate components:
+To do that with your `App` component, look at what it’s currently doing and see there are three distinct functions it performs that would be good candidates for separate `components`:
 
 1. **Displays a welcome message in a heading level one tag**:
+
 	- This could have different styling applied in different parts of the app, or accept different messages on different pages, so it’s a good fit to be separated.
 
 2. **Displays a dynamic message to the user including data from state**:
+
 	- This greeting is simple and generic. You may see it on the home page, or in the main navigation, of an e-commerce site to greet whoever’s logged in.
 
 3. **Accepts input from the user and triggers an event on click of a button**:
+
 	- You’re using the input and button combination to accept a name, but it might also work on a contact form, or as part of a search form. Being able to have these two connected elements in one place, in a separate component makes it a great candidate for refactoring now.
 
-Here’s a diagram of how you can group these separate areas of functionality into independent components: **Title**, **Greeting**, and **Input**. These child components can then be imported into their parent, the App component.
+Here’s a diagram of how you can group these separate areas of functionality into independent components: `Title`, `Greeting`, and `Input`. These child `components` will be imported into their parent, the `App` component.
 
 ![](assets/component-breakdown.png)
 
 ### Plan the Refactor
 
-You have an idea of the components you need to build, and now you just need a set of steps to carry out your refactoring work.
+You have an idea of the `components` you need to build, and now you just need a set of steps to carry out your refactoring work.
 
 Those steps might look like this:
 
-1. Create a components folder to hold your new components
+1. Create a `components` folder to hold your new `components`.
 
-2. Create three new components
+2. Create three new `components`;
 
-	- Title
-	- Greeting
-	- Input
+	- `Title`
+	- `Greeting`
+	- `Input`
 
-3. Refactor the App component to use your new components
+3. Refactor the `App` component to use your new `component`s.
 
-4. Refactor the App component from class-based to a functional component
+4. Refactor the `App` component from class-based to a functional component.
 
 ## Refactor Setup
 
-Now you have a pla. You’ll need to do some setup work before you start. Like you did in the last section, you’ll create all the files you need first, and fill them in as you go along, building out the components and refactoring them as yoi go.
+Now you have a plan. Do some setup work before you start. Like you did in the last section, create all the files you need first, and fill them in with code as you go along, building out the components and refactoring them as you go.
 
 First, add a new folder, and call it `components`. 
 
 `mkdir components`
 
-Within your `/components` folder, create three empty component files with the `.jsx` file extension (remembering to capitalize the first character in the file name):
+Within your `/components` folder, create three empty `component` files with the `.jsx` file extension (remembering to capitalize the first character in the file name):
 
 - `Title.jsx`
 - `Greeting.jsx`
@@ -867,9 +870,9 @@ Within your `/components` folder, create three empty component files with the `.
 
 
 
-Files with the `.jsx` extension are specific to the React library and will typically contain the familiar HTML-like syntax you’ve seen in earlier sections. It’s important to note that this file extension is down to personal preference. JSX files will be converted into raw JavaScript by a tool such as Babel JS before being run in the browser. Some people prefer to have presentational components that just accept static data and display it, using the `.jsx` file extension to denote them. The important thing to remember is you can use either `.js` or `.jsx` to name your files.Tthere is no difference, only personal preference.
+Files with the `.jsx` extension are specific to the React library, and will typically contain the familiar HTML-like syntax you’ve seen in earlier sections. It’s important to note that this file extension is down to personal preference. JSX files will be converted into raw JavaScript by a tool such as Babel JS before being run in the browser. Some people prefer to have presentational components that just accept static data and display it, using the `.jsx` file extension to denote them. The important thing to remember is you can use either `.js` or `.jsx` to name your files. Tthere is no difference, only personal preference.
 
-Now let’s start moving through the files and coding them.
+Let’s start moving through the files and coding them.
 
 ### Title.jsx
 
@@ -877,11 +880,11 @@ Start by repeating:
 
 ‘React must be in scope in order to use it!’
 
-So you’ll import React first before you do anything else.
+So import React first before you do anything else.
 
 Instead of the class-based approach previously used for your App component, the `Title` component will be your very first functional one. Define a functional component as just that, a function.
 
-However, rather than define a function and then set it as the default export, we can do so in one line:
+However, rather than define a function and then set it as the default export, do so in one line:
 
 ```
 export default props => <h1>Welcome to Software Development</h1>;
@@ -891,31 +894,31 @@ export default props => <h1>Welcome to Software Development</h1>;
 
 This is a nice style to have for smaller, less complex components, especially if they’re purely presentational, like here. However, if your components start to grow, or feature complex functionality that may cause bugs, it makes sense to define your function and assign it to a variable (i.e. a `const`) and then export it immediately afterward. This is because the React debugging tools struggle to identify components defined and exported in a single line as we are doing here.
 
-You can see you have a default export which is a function that accepts a props object and uses an implicit return (that is without the return keyword and some JSX within parentheses). Because you’re not doing any other logic, manipulating `state`, etc. you’re just returning some JSX, you can use this implicit return to make things look a little neater and remove unnecessary lines of code.
+You have a default export which is a function that accepts a props object and uses an implicit return (that is without the return keyword and some JSX within parentheses). Because you’re not doing any other logic, manipulating `state`, etc. you’re just returning some JSX, you can use this implicit return to make things look a little neater and remove unnecessary lines of code.
 
-That’s it…sort of. You have a `<h1>` being returned, but you have a fixed string, ‘Welcome to Software Development’. That’s fine for your Greeting App, but not very reusable if you want to have this component on another page that said something different.
+That’s it…sort of. You have a `<h1>` being returned, but you have a fixed string, ‘Welcome to Software Development’. That’s fine for your Greeting App, but not very reusable if you want to have this component on another page that says something different.
 
-You can make this title dynamic so instead of it being hardcoded to a string, you can use your curly brace syntax again and use a value you can pass in via your props object.
+Make this title dynamic. Instead of it being hardcoded to a string, you can use your curly brace syntax again and use a value you can pass in via your props object.
 
 ```
 export default props => <h1>{props.title}</h1>;
 ```
 
-However, you can take this another step further. Because you know you’re only passing in a `title` value via props, you can reference this value directly using object destructuring.
+However, take this another step further. Because you know you’re only passing in a `title` value via props, you can reference this value directly using object destructuring.
 
 ```
 export default ({ title }) => <h1>{title}</h1>;
 ```
 
-Props will expect and be passed a property called `title`, so by replacing props with some curly braces you can now start to directly name properties you expect props to have. This is JavaScript’s destructuring syntax and it’s really helpful!
+Props will expect and be passed a property called `title`, so by replacing props with some curly braces, now start to directly name properties you expect props to have. This is JavaScript’s destructuring syntax and it’s really helpful!
 
-As well as replacing the props argument in your function, you’ll need to replace the `{props.title}` with just `{title`,} too.
+As well as replacing the props argument in your function, replace the `{props.title}` with just `{title`,} too.
 
-What you’re left with now is a really simple, small, reusable component. It can be used wherever you need across your app in different areas. It’s also useful if you need to make changes to the way titles look, such as styling, size, color, tag attributes; all those changes can be made in this one, single place.
+You’re left with a really simple, small, reusable `component`. It can be used wherever you need across your `app` in different areas. It’s also useful if you need to make changes to the way titles look, such as styling, size, color, tag attributes; all those changes can be made in this one, single place.
 
 **Note**
 
-What you're making here is a very contrived example to get a feel for React, but it's good to start thinking in terms of how you can use this in real world applications as you start learning and growing and building things for yourself.
+What you're making right now is a very contrived example to get a feel for React, but it's good to start thinking in terms of how you can use this in real world applications as you start learning and growing and building things for yourself.
 
 This is something you'll do further on in the course as your apps start to grow and get bigger. But for now, this is your `title` component ready to go.
 
@@ -932,13 +935,13 @@ export default ({ title }) => <h1>{title}</h1>;
 ```
 ### Greeting.jsx
 
-The next thing wyou're going to do is tackle the greeting message from your `App` component:
+Tackle the greeting message from your `App` component:
 
 ```
 <p>Hi there, {this.state.displayName || "we haven't been introduced"}</p>
 ```
 
-You’ve got a paragraph tag with a string and a ‘`displayName`’ value you’re getting from `state`. You can pull this out into your `Greeting` component.
+You have a paragraph tag with a string and a ‘`displayName`’ value you’re getting from `state`. Pull this out into your `Greeting` component.
 
 Start by importing React:
 
@@ -946,7 +949,7 @@ Start by importing React:
 
 `import React from 'react';`
 
-Just like your `Title` component, you're going to do an inline default export next, along with an implicit return, because all we're doing is returning one line which is going to be our greeting with a dynamic name value.
+Just like your `Title` component, do an inline default export next, along with an implicit return, because all we're doing is returning one line which is going to be our greeting with a dynamic name value.
 
 **Greeting.jsx**
 
@@ -979,19 +982,21 @@ export default ({ name = "we haven't been introduced" }) => (
 
 The next thing to build is your combined `input` and `button` component. This one's going to be slightly larger, but still not very complex.
 
-You’re going to import React into your component. This time you’re also going to add an extra named import `useState`.
+Import React into your component. This time you’re also going to add an extra named import `useState`.
 
 **Input.jsx**
 
 `import React, { useState } from 'react';`
 
-Because your input element relies on your `App` component’s `stat`e to manage its value, you need to use `state` in your new `Input` component. However, the `Input` component is a stateless, functional component, not a class-based one. To use `state` in a functional component, you’ll need to use a feature of React called `Hooks`. In your case, to access `state` from a functional component, you'll use the `useState` Hook.
+Because your input element relies on your `App` component’s `state` to manage its value, you need to use `state` in your new `Input` component. However, the `Input` component is a stateless, functional component, not a class-based one. To use `state` in a functional component, you’ll need to use a feature of React called `Hooks`. In your case, to access `state` from a functional component, you'll use the `useState` Hook.
 
 **Tip!**
 
-Hooks were introduced as part of React v16.8. They allow access to `state` and other React features without writing a class. You'll cover Hooks in greater detail in the next lesson, including `useState`. For now, focus on getting the components built as you follow along and become familiar with the `useStat`e syntax for accessing `state` in a functional component.
+Hooks were introduced as part of React v16.8. They allow access to `state` and other React features without writing a class. You'll cover Hooks in greater detail in the next lesson, including `useState`. For now, focus on getting the components built as you code along and become familiar with the `useStat`e syntax for accessing `state` in a functional component.
 
-You’ve imported React, now you'll define your `Input` component and export it. Be sure to copy in the `input` and `button` elements from your `App` component.
+You’ve imported React, now define your `Input` component and export it. Be sure to copy in the `input` and `button` elements from your `App` component.
+
+**App.js**
 
 ```
 const Input = props => {
@@ -1006,17 +1011,17 @@ const Input = props => {
 export default Input;
 ```
 
-Notice how you’ve capitalized your `const` variable `Input`. This is the convention, not a rule.Since you’re creating a component, it’s best practice to capitalize components’ names.
+Notice how you’ve capitalized your `const` variable `Input`. This is the naming convention, not a rule.Since you’re creating a `component`, it’s best practice to capitalize `component`s’ names.
 
-### Update the Inout Element
+### Update the Input Element
 
-You can't just have the `input` and the `button` side by side like this, becaue it'll throw an error. To avoid this, you’ve wrapped them in a React fragment.
+You can't have the `input` and the `button` side by side like this, becaue it'll throw an error. To avoid this, you’ve wrapped them in a React fragment.
 
-The previous two components, `Greeting` and `Title`, both used an implicit return because they didn’t have any logic to deal with. They just returned their JSX elements. Our `Input` component needs to do a little more, mainly setting values with the `useState` Hook.
+The previous two components, `Greeting` and `Title`, both used an implicit return because they didn’t have any logic to deal with. They just returned their JSX elements. Our `Input` component needs to do a little more, specifically set values with the `useState` Hook.
 
-Because of this, you can see you’ve explicitly defined a return statement that contains your desired JSX output (i.e. the input and button elements). This is different from the `App` component, which has to define a `render()` method, which then returns some JSX. You’ll also see that because the `Input` component is a function, you don’t need to define a constructor, or call a parent class’ `super()` method.
+Because of this, you’ve explicitly defined a return statement that contains your desired JSX output (i.e. the `input` and `button` elements). This is different from the `App` component, which has to define a `render()` method, which then returns some JSX. You’ll also see that because the `Input` component is a function, you don’t need to define a constructor, or call a parent class’ `super()` method.
 
-Your app islooking good so far, but you need to make a couple of edits for it to work.
+Your app is looking sharp so far, but you need to make a couple of edits for it to work.
 
 ```
 <input value={this.state.name} onChange={this.handleChange} />
@@ -1024,11 +1029,11 @@ Your app islooking good so far, but you need to make a couple of edits for it to
 
 Looking at the input element in your return statement, you’re still referencing a `state` value and a `handleChange` event from your `App` component. Neither of these two things works because of the differences between your `App` component, which is class-based, and your `Input` component, which is functional.
 
-Luckily, we can replace both these things with the `useState` Hook! First, define the Hook at the top of your component and then start using it with the input element.
+Luckily, you can replace both these things with the `useState` Hook! First, define the Hook at the top of your component and then start using it with the input element.
 
 `const [name, setName] = useState('');`
 
-It may look a little strange if you’re not used to seeing this sort of syntax, but the `useState` Hook works like this:
+It may look a little strange if you’re not familiar with this sort of syntax, but the `useState` Hook works like this:
 
 `useState` is a method React provides as part of its core library.
 
@@ -1038,9 +1043,9 @@ The method returns an array with two items. The first item represents the value 
 
 You use the array destructuring syntax in JavaScript to access both of these items.
 
-In your component, you can see you’re defining a `const` which is a destructured array. This array contains two items: the first is going to be the value held in `state`, we’ll call it `name`, but remember this is a title that we’re giving it. You could call it anything, but you’ll call it `name` as that’s meaningful right now.
+In your component, you see you’re defining a `const` which is a destructured array. This array contains two items: the first is the value held in `state`, call it `name`, but remember this is a title you’re giving it. You could call it anything, but call it `name` as that’s meaningful right now.
 
-The second item will be the method that `useState` provides to update the first value, the value held in `state`. Again, you can call it whatever you like, but the sensible convention is to call it the same as the name of the `state` value, prefixed the word ‘`set`’. You’ll call it `setName`.
+The second item will be the method `useState` provides to update the first value, the value held in `state`. Again, you can call it whatever you like, but the sensible convention is to call it the same as the name of the `state` value, prefixed the word ‘`set`’. Call it `setName`.
 
 Now, whenever you want to update the value of `name` in `state`, call the `setName()` method, passing in a new value.
 
@@ -1050,7 +1055,7 @@ Looking back at your `input` element, you’re ready to update its attributes to
       <input value={name} onChange={evt => setName(evt.target.value)} />
 ```
 
-The first edit is to change the location of your `state` data for the `value={}` attribute on your input element. You can change `value={this.state.name}` to remove the reference to `this.state` that only applies to a class. The value is now going to be stored in your name variable returned from the useState Hook.
+The first edit is to change the location of your `state` data for the `value={}` attribute on your input element. Change `value={this.state.name}` to remove the reference to `this.state` that only applies to a class. The value is now going to be stored in your name variable returned from the useState Hook.
 
 Updating this reference gives  `value={name}`.
 
@@ -1060,9 +1065,9 @@ The next thing to do is replace the call to the missing `this.handleChange` meth
 onChange = { evt => setName(evt.target.value) }
 ```
 
-Since you’re going to use the `setName()` method you got from your `useState` Hook, you can actually simplify how you call this and do it inline, in the `onChange` attribute. Using a single line arrow function you just call `setName()` directly and use the same `evt.target.value` to reference the underlying value of the input element from the event (the evt argument) that we’re passed in by the `onChange` event.
+Since you’re going to use the `setName()` method you got from your `useState` Hook, you can actually simplify how you call this and do it inline, in the `onChange` attribute. Using a single line arrow function you just call `setName()` directly and use the same `evt.target.value` to reference the underlying value of the input element from the event (the evt argument) that you’re passed in by the `onChange` event.
 
-You might be tempted to just call `setName()` directly without an arrow function like this, `onChange = { setName(evt.target.value) }`. However, events like the `onChange` event, require you to pass a function that can be called when the time comes. By writing out the function directly and passing it arguments, you’re effectively invoking that function right away. This creates a problem, especially when you’re updating `state` values, which causes React to render the component again, which, in turn, calls the function again, resulting in an infinite loop.
+Don't be be tempted to just call `setName()` directly without an arrow function like this, `onChange = { setName(evt.target.value) }`. Events like the `onChange` event, require you to pass a function that can be called when the time comes. By writing out the function directly and passing it arguments, you’re effectively invoking that function right away. This creates a problem, especially when you’re updating `state` values, which causes React to render the component again, which, in turn, calls the function again, resulting in an infinite loop.
 
 Next, you’ll update your `button` element.
 
@@ -1072,21 +1077,22 @@ The `button` element presents an interesting situation. You need to trigger an u
 
 How can you update `state` data in another component?
 
-You do it in the same way you can pass data down to child components via the props object.  You can send data back up using events and event handlers (see the next lesson for more information on this).
+You do it in the same way you can pass data down to child components via the props object.  You send data back up using events and event handlers (see the next lesson for more information on this).
 
-To do this, you can update your `button` element with a similar-looking anonymous arrow function we used for the `input` element.
+To do this, you update your `button` element with a similar-looking anonymous arrow function you used for the `input` element.
 
 ```
       <button onClick={() => props.handleClick(name)}>Update name</button>
 ```
 
-This time, instead of calling a function on the `App` component’s class as you did previously (using `this.handleClick`) you’ll call the same function but from your props object. You’ll pass in the up-to-date value for `name` from the local `state` data. 
+This time, instead of calling a function on the `App` component’s class as you did previously (using `this.handleClick`), you’ll call the same function but from your props object. You’ll pass in the up-to-date value for `name` from the local `state` data. 
 
 #### Complete Input Component
 
 Here's the completed `Input` component:
 
 **Input.jsx
+
 ```
 import React, { useState } from 'react';
 
@@ -1118,7 +1124,7 @@ import Greeting from './components/Greeting';
 import Input from './components/Input';
 ```
 
-Next, you’re going to replace the exiting JSX with your imported components. Your new return statement should look much simpler now:
+Next, you’re going to replace the exiting JSX with your imported components. Your new return statement should look much simpler now.
 
 **App.jsx**
 
@@ -1133,7 +1139,7 @@ Next, you’re going to replace the exiting JSX with your imported components. Y
     );
 ```
 
-Look at the `<Title />` component reference. You’ll see you’ve added an attribute of `title=""` and passed in the string ‘`Welcome to Software Development`’. This means when your `Title` component calls `props.title` or references it as you have from destructuring, ‘`Welcome to Software Development`’ is what it will receive.
+Look at the `<Title />` component reference. You’ve added an attribute of `title=""` and passed in the string ‘`Welcome to Software Development`’. This means when your `Title` component calls `props.title` or references it as you have from destructuring, ‘`Welcome to Software Development`’ is what it will receive.
 
 You’ll do the same with your `Greeting` component, but this time, you’re passing the `name` attribute the `displayName` value from `state` using `this.state.displayName`.
 
@@ -1143,11 +1149,11 @@ Finally, you’ll add your `Input` component, adding an attribute of `handleClic
 
 There are a few more changes to make to the `App` component before everything’s complete:
 
-You can remove the `handleChange` event because you no longer need it — it’s handled in the `Input` component
+Remove the `handleChange` event because you no longer need it. It’s handled in the `Input` component.
 
-You can remove the `name` property from `state` because that’s also handled in your new `Input` component.
+Remove the `name` property from `state` because it’s also handled in your new `Input` component.
 
-You need to update the `handleClick` event to use the new `name` value that’s passed to it
+Update the `handleClick` event to use the new `name` value that’s passed to it.
 
 Locate the `handleChange` event and remove it completely.
 
@@ -1160,11 +1166,11 @@ this.state = {
 };
 ```
 
-Last, you can update the `handleClick` event to reference the `name` value that will be passed to it from the `Input` component.
+Last, you update the `handleClick` event to reference the `name` value that will be passed to it from the `Input` component.
 
-Currently it’s referencing the `evt` object that was passed to it as an argument, so we can change this to `name` which will be the new string value passed in when this event is called within the `Input` component.
+Currently it’s referencing the `evt` object that was passed to it as an argument, so you change this to `name` which will be the new string value passed in when this event is called within the `Input` component.
 
-Then, in the `setState()` method, you’re using `this.state.name` value which you just deleted. You can update this to use the `name` argument instead.
+Then, in the `setState()` method, you’re using `this.state.name` value which you just deleted. You update this to use the `name` argument instead.
 
 ```
   handleClick = name => {
@@ -1178,23 +1184,23 @@ Now run this code and see everything working as before, but this time it’ll be
 
 ## Refactor the App Component
 
-Make a couple more changes to the `App` component to modernize it a little and make the code a little smaller and more readable.
+Make a couple more changes to the `App` component to modernize it and make the code a little smaller and more readable.
 
 1. You’ll convert `App` from a class-based component into a functional one.
 
-2. You’ll replace the current state mechanism with another use of the `useState` Hook.
+2. You’ll replace the current `state` mechanism with another use of the `useState` Hook.
 
 ### Convert a class-based COmponent to a functional one
 
-This process might seem somewhat daunting, but it’s quite straightforward and gets easier the more you do it.
+This process might seem a bit challenging, but it’s quite straightforward and gets easier the more you do it.
 
 There are a few main parts to achieve it:
 
-1. Replace the class keyword and general class declaration with a function name and argument(s).
+1. Replace the class keyword and general class declaration with a function `name` and `argument`(s).
 
 2. Remove the constructor function (which is specific to classes), abstracting any logic you need out of there.
 
-3. Move the `return()` statement outside of the `render()` method. Once this is done, you can delete the empty `render()` method.
+3. Move the `return()` statement outside of the `render()` method. Once this is done, delete the empty `render()` method.
 
 4. Add the `const` keyword to any functions that are class properties.
 
@@ -1222,9 +1228,9 @@ const App = props => {
   const [displayName, setDisplayName] = useState();
 ```
 
-We do still need to use the `displayName` property from `state`, which is why we’ve used the `useState` Hook oagain. Notice the same naming convention: we use `displayName` for the name of the value in `state`, and `setDisplayName` for the name of the function that will update this value in `state`.
+You do still need to use the `displayName` property from `state`, which is why you’ve used the `useState` Hook oagain. Notice the same naming convention: you use `displayName` for the name of the value in `state`, and `setDisplayName` for the name of the function that will update this value in `state`.
 
-To use the `useState` Hook, you'll need to import it where we currently import `Component` right at the top of the file. Similarly, you can also remove the `Component` import, since you're no longer using it.
+To use the `useState` Hook, you'll need to import it where you currently import `Component` right at the top of the `App.js` file. You can also remove the `Component` import, since you're no longer using it.
 
 **App.js**
 
@@ -1271,23 +1277,28 @@ In practice, this:
 	```
 ### Update the displayName in State
 
-Of course, now that we’ve updated the displayName property to use Hooks, we’ll need to update two lines in our return statement.
+You’ve updated the `displayName` property to use Hooks, and you’ll need to update two lines in your return statement.
 
-The first isn’t a very big change, but since we don’t have access to a class property called this.state, we just remove it completely, referencing displayName directly.
+The first isn’t a very big change, but since you don’t have access to a class property called `this.state`, you just remove it completely, referencing `displayName` directly.
 
+```
       <Greeting name={displayName} />
+```
 
-The very last thing to do is replace the call to a non-existent this.handleClick that we passed into the Input component, with a direct call to the Hook method, setDisplayName.
+The very last thing to do is replace the call to a non-existent `this.handleClick` you passed into the Input component, with a direct call to the Hook method, `setDisplayName`.
 
+```
       <Input handleClick={name => setDisplayName(name)} />
+```
 
-Again, to prevent an infinite loop or some other issue, we’ve passed in an inline arrow function instead. It will receive a name value as an argument when the Input component calls this function, and we immediately call the setDisplayName() method to update the displayName value in state.
+Again, to prevent an infinite loop or some other issue, you’ve passed in an inline arrow function instead. It will receive a `name` value as an argument when the `Input` component calls this function, and you immediately call the `setDisplayName()` method to update the `displayName` value in `state`.
 
-And that’s everything done. Save everything and refresh the page in the browser to see it in action. Everything should look and behave as it did before.
+Fantatsitic!! Everything for this Greetings App is finished. Save everything and refresh the page in the browser to see it in action. Everything should look and behave as it did before.
 
-This refactoring process isn’t too painful, but you can see already how our App component is much smaller, much neater, and more modular. What’s more, what we have now is a bunch of smaller components that contain their own logic and that can be used throughout our app, as it grows and starts to expand with more sections.
+This refactoring process isn’t too painful, but you can see already how your `App` component is much smaller, much neater, and more modular. What you have now is a bunch of smaller components that contain their own logic and can be used throughout your app, as it grows and starts to expand with more sections.
 
 ### Submit
+
 Include the submit zip folder box here, with link to open code solution after submission.
 
 ## Solution (Available after project submitted above.)
