@@ -1270,12 +1270,13 @@ In practice, this:
         <Input handleClick={this.handleClick} />
       </>
     );
-	```
+```
+
 ### Update the displayName in State
 
 You updated the `displayName` property to use Hooks, and you need to update two lines in your return statement.
 
-The first isn’t a very big change, but since you don’t have access to a class property called `this.state`, you just remove it completely, referencing `displayName` directly.
+The first isn’t a very big change, but since you don’t have access to a class property called `this.state`, just remove it completely, referencing `displayName` directly.
 
 ```
       <Greeting name={displayName} />
