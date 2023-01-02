@@ -224,9 +224,9 @@ The first real example you're going to build is a really simple greeting app tha
 
 ### Add Parcel Bundler
 
-You can use React by loading it using a `script` tag from a package repository like `unpkg`. However, what you'll find with most real-life React projects is they will be adding the React libraries with `npm` and usually use a code bundler such as `Webpack`, or even the Create React App starter project (which uses `Webpack` under the hood).
+You can use React by loading it using a `script` tag from a package repository like `unpkg`. However, what you find with most real-life React projects is they will be adding the React libraries with `npm` and usually use a code bundler such as `Webpack`, or even the Create React App starter project (which uses `Webpack` under the hood).
 
-You're going to do something similar so you get familiar with using a common means to build and run a React project. For this, you’re going to use `Parcel JS`.
+You're going to do something similar so you get familiar with using a common means to build and run a React project. For this, you use `Parcel JS`.
 
 `Parcel JS` is a simple code bundler very much like `Webpack` but without much of the complex configuration and setup. In its own words `Parcel JS` is a ‘blazing fast, zero-config web application bundler’.
 
@@ -240,15 +240,15 @@ Or
 
 Now open up a brand new project in **VS Code**.
 
-`cd desktop`
+1. `cd desktop`
 
-`cd softwaredevelopment`
+2. `cd softwaredevelopment`
 
-`cd FEFReact`
+3. `cd FEFReact`
 
-`mkdir L01ReactHandsOnPractice`
+4. `mkdir L01ReactHandsOnPractice`
 
-`git init`
+5. `git init`
 
 
 ## Add React to the Project
@@ -267,25 +267,25 @@ Open your terminal in VS Code and it will open in the current working directory 
 
 ### Initialize the Project
 
-The first step is to initialize your project with a `package.json` file. Run the command:
+1. The first step is to initialize your project with a `package.json` file. Run the command:
 
-`npm init -y`
+	`npm init -y`
 
-Add the `-y` flag which will automatically answer `yes` to all the initialization questions; ‘who's the author?’, ‘what's the license?’, and questions you don’t care about for our example.
+2. Add the `-y` flag which will automatically answer `yes` to all the initialization questions; ‘who's the author?’, ‘what's the license?’, and questions you don’t care about for our example.
 
 ### Add React Dependencies
 
-Next, you're going to add `React` to the project. There are two packages you need; `React`, and `React DOM`. `React` is the star of the show and includes the core `React` library. `React DOM` is a secondary package responsible for rendering  `components` to the `DOM` in the browser.
+3. Next, add `React` to the project. There are two packages you need; `React`, and `React DOM`. `React` is the star of the show and includes the core `React` library. `React DOM` is a secondary package responsible for rendering  `components` to the `DOM` in the browser.
 
-Back in your terminal type the following command to add both packages to the project:
+4. Back in your terminal type the following command to add both packages to the project:
 
-`npm install react react-dom`
+	`npm install react react-dom`
 
 ### Add Scripts for Building and Running the Code
 
-The final part of setup involves the `package.json` file. You should see the `react` and `react-dom` dependencies there.
+5. The final part of setup involves the `package.json` file. You should see the `react` and `react-dom` dependencies there.
 
-Once you’ve built your app, you need to call `Parcel` to bundle everything and run it. It’s not a huge job, but you can add a simple shortcut to help out.
+Once you build your app, you need to call `Parcel` to bundle everything and run it. It’s not a huge job, but you can add a simple shortcut to help out.
 
 In your `package.json` file, add a new property, ‘`scripts`’ and add a new command property under this and call it ‘`start`’. Next, add the command:
 
@@ -301,15 +301,15 @@ The new part of the `package.json` file should look like this:
 
 You have just written a terminal shortcut that will allow you to type `npm start` and have your `Parcel` command open your starting file, and the `--open` flag tells `Parcle` to open the running code in a browser once the files have been compiled and Parcel’s development server is up and running.
 
-`Parcel` works by giving the app an entry point, in this case, your `index.html` file which you’ll be building next. From there, `Parcel` determines which files it needs to include in the bundle based on your imports and file references.
+`Parcel` works by giving the app an entry point, in this case, your `index.html` file which you’ll build next. From there, `Parcel` determines which files it needs to include in the bundle based on your imports and file references.
 
 ## Code the Project Files
 
 On to the exciting part: building out your example. For smaller projects like this, just start by creating all the files you need and then filling them in as you go along.
 
-For your greeting app, you're going to need to create four files. So let's create them now. You'll need:
+For your greeting app, you need to create four files. So create them now. You'll need:
 
-A styles file, called `styles.css`. You'll just have some basic styles in there just to make your app look slightly more interesting than the out-of-the-box HTML.
+A styles file, called `styles.css`. You just have some basic styles in there to make your app look slightly more interesting than the out-of-the-box HTML.
 
 `touch styles.css`
 
@@ -325,7 +325,7 @@ And finally, your main React component, which you'll call `app.js`. This is your
 
 `touch app.js`
 
-After you have the files created, it’s time to fill them in. Starting with your `styles.css` file.
+After you have the files created, it’s time to fill them in. Start with your `styles.css` file.
 
 ### Styles.css
 
@@ -364,7 +364,7 @@ button:hover {
 }
 ```
 
-You can see some simple styles that just affect the `body`, `font size`, and `line-height`. Later, you’ll add an `input` and a `button` to your app, so you also added some nice styles for those.
+You can see some simple styles that just affect the `body`, `font size`, and `line-height`. Later, you add an `input` and a `button` to your app, so you also added some nice styles for those.
 
 'Save' and move to your entry point; your `index.html` file.
 
@@ -384,7 +384,7 @@ Add `HTML` to your `index.html` file. I suggest using **Emmet Extension** that c
 </html>
 ```
 
-Add the `HTML` tag first. Inside that you’ll add a `<head>` tag, and within that, you’ll add a `<title>` tag. Give it a `title` of ‘`My first React example`’.
+Add the `HTML` tag first. Inside that add a `<head>` tag, and within that, add a `<title>` tag. Give it a `title` of ‘`My first React example`’.
 
 You also need a `<body>` tag, so add that. Within the `<body>` tag, you need two things:
 
@@ -414,7 +414,7 @@ Save the file and move to the main JavaScript entry point; the `index.js` file.
 
 ## index.js
 
-Inside your `index.js` file is where the magic happens. It’s the first place you really set up your React app to load and inject it into your `HTML` page. This is going to be a small file where you’ll add your very first piece of React code.
+Inside your `index.js` file is where the magic happens. It’s the first place you really set up your React app to load and inject into your `HTML` page. This is going to be a small file where you’ll add your very first piece of React code.
 
 Do a few things inside this file:
 
@@ -441,7 +441,7 @@ import App from './App';
 
 Import your `App` component, which will complete greeting the user.
 
-You need to make sure your app gets rendered to the browser. To do that, call the `render()` method from the `React DOM `package you imported.
+Make sure your app gets rendered to the browser. To do that, call the `render()` method from the `React DOM `package you imported.
 
 #### index.js
 
@@ -499,11 +499,11 @@ To make this look a little cleaner, import the `Component` class as part of your
 
 By doing that, you can replace the `React.Component` part with just `Component`.
 
-Finally, add a `default export` for this component which is just `App`. You’ll add this right after your class declaration.
+Finally, add a `default export` for this component which is just `App`. Add this right after your class declaration.
 
 `export default App;`
 
-You’re not quite finished yet, but you’ve got the building blocks in there. If you run this now, nothing would happen because your component doesn’t return anything.
+You’re not quite finished yet, but you have the building blocks in. If you run this now, nothing would happen because your component doesn’t return anything.
 
 ### Add a Title
 
@@ -529,19 +529,19 @@ Another nice thing about Parcel’s local development server is it hot reloads, 
 
 ### Preventing JSX errors with React Fragments
 
-An important thing to note about `JSX` is you can only return one top-level element. To highlight this, if we type a `paragraph` tag in here and say ‘`this is a paragraph`’, then click save, you'll see we get a nasty error message.
+An important thing to note about `JSX` is you can only return one top-level element. To highlight this, if you type a `paragraph` tag in here and say ‘`this is a paragraph`’, then click save, you'll see we get a nasty error message.
 
 ![](assets/lesson_01-jsx-error.png)
 
 The error message states ‘`Adjacent JSX elements must be wrapped in an enclosing tag. Did you want to use a JSX fragment?`’
 
-You’ve got two adjacent, top-level elements in your `return` statement. To fix this, wrap these elements in a containing element. Wrap them in a `div` and click save.
+You have adjacent, top-level elements in your `return` statement. To fix this, wrap these elements in a containing element. Wrap them in a `div` and click save.
 
 When the `app` reloads you’ll see your message and paragraph and, more importantly, no error.
 
-Adding a `div` element is fine for our example here, but you might have situations where you don’t want additional markup output to the browser, and wrapping everything in a `div` or some other element won’t be sufficient.
+Adding a `div` element is fine for your example here, but you might have situations where you don’t want additional markup output to the browser, and wrapping everything in a `div` or some other element won’t be sufficient.
 
-For these cases you can use the `React.Fragment` syntax. You can replace your containing `div` element with either the `React.Fragment` syntax or its shorthand:
+For these cases use the `React.Fragment` syntax. Replace your containing `div` element with either the `React.Fragment` syntax or its shorthand:
 
 #### index.html
 
@@ -557,15 +557,15 @@ For these cases you can use the `React.Fragment` syntax. You can replace your co
  <p>This is a paragraph</p>
 </>
 ```
-The shorthand version looks a lot neater and cleaner. You’ll be using this version wherever it’s needed.
+The shorthand version looks much neater and cleaner. You use this version wherever it’s needed.
 
 #### Note!
 
-`React` and the `DOM`: React uses its own copy of the DOM which is called the **Virtual DOM**. React handles changes to this internal copy of the DOM and the real DOM in the browser to keep everything in sync. Although `JSX` looks almost identical to the same HTML you’d type into a `.html` file, it’s important to understand it doesn’t map directly to the `HTML` that’s eventually output to the browser.
+`React` and the `DOM`: React uses its own copy of the `DOM` which is called the **Virtual DOM**. React handles changes to this internal copy of the `DOM` and the real `DOM` in the browser to keep everything in sync. Although `JSX` looks almost identical to the same HTML you’d type into a `.html` file, it’s important to understand it doesn’t map directly to the `HTML` that’s eventually output to the browser.
 
 ### Add a Dynamic Message
 
-Expand your app. In the first paragraph, you're going to return your user's name once they’ve typed it in. To do that you need to modify your paragraph tag to include some executable code.
+Expand your app. In the first paragraph, return your user's name once they’ve typed it in. Modify your paragraph tag to include some executable code.
 
 ```
 <p>Hi there, {this.state.displayName}</p>
@@ -573,15 +573,15 @@ Expand your app. In the first paragraph, you're going to return your user's name
 
 If you did this in `HTML`, you’d just get a paragraph with the text, ‘`Hi there, {this.state.displayName}`’. Because you’re using `JSX`, anything between the curly braces will be interpreted as executable JavaScript by React and evaluated as such.
 
-You’ll also notice a call to a class property called `state`. Each component has access to its `state` and its `local storage`. You can store values in a `state` as well as retrieve them, which is what you’re doing here.
+Notice a call to a class property called `state`. Each component has access to its `state` and its `local storage`. You can store values in a `state` as well as retrieve them, which is what you’re doing here.
 
 Your line, `{this.state.displayName}` is really saying ‘get me the `displayName` value out of this component’s `state`’.
 
-You haven't added your `state `yet, so let’s do that now.
+You haven't added your `state `yet, so do that now.
 
 ### Add State to Your app
 
-Within a class-based component, just like a regular JavaScript class, you’ll want to initialize any state values in the constructor.
+Within a class-based component, just like a regular JavaScript class, you want to initialize any state values in the constructor.
 
 ```
 constructor(props) {
@@ -593,25 +593,25 @@ constructor(props) {
 }
 ```
 
-React automatically wires up your constructor when the component is created and it passes it a properties object, called `props` for short (you’ll see this often when dealing with React).
+React automatically wires up your constructor when the component is created and it passes it a properties object, called `props` for short (you see this often when dealing with React).
 
-The first thing you have to do in your constructor is call the parent class constructor (the parent class is the Component class you extended right at the beginning) using `super` method, passing in the `props` object.
+The first thing to do in your constructor is call the parent class constructor (the parent class is the Component class you extended right at the beginning) using `super` method, passing in the `props` object.
 
-To add your component’s `state` property, simply call `this.state` and set it to an object that contains whatever data you need it to. For now, you’ll just add the `displayName` property and set it to an empty string.
+To add your component’s `state` property, simply call `this.state` and set it to an object that contains whatever data you need it to. For now, just add the `displayName` property and set it to an empty string.
 
 #### Note!
 
-An important thing to know about `state` is that it is **immutable**. This means it can be updated by using React’s `setState()` method, but you never edit `state` directly. The only time you’ll ever set `state` directly is in a constructor.
+An important thing to know about `state` is that it is **immutable**. This means it can be updated by using React’s `setState()` method, but never edit `state` directly. The only time you ever set `state` directly is in a constructor.
 
-You don’t have to initialize `state` in the constructor as you’re doing here, but it’s a good habit to get into so that anyone coming into the class can see what properties should be expected to exist on the `state object`, and what their `values` or their `types` should be.
+You don’t have to initialize `state` in the constructor as you’re doing here, but it’s a good habit to get into so anyone coming into the class can see what properties should be expected to exist on the `state object`, and what their `values` or their `types` should be.
 
 ### Handling User Input
 
-You’ve got your dynamic welcome message but you need to allow the user to enter their name so you can greet them personally.
+You have your dynamic welcome message but you need to allow the user to enter their name so you can greet them personally.
 
 Add some instructions and an input box:
 
-####App.js
+#### App.js
 
 ```
         <p>Enter your name below so we can get better acquainted</p>
@@ -619,11 +619,11 @@ Add some instructions and an input box:
         <button onClick={this.handleClick}>Update name</button>
 ```
 
-You’ve set your input’s `value` to another `state `value, `{this.state.name}`. By doing this you're turning it into a controlled component. HTML form elements like `input`s, `select`s, and `text` areas are typically uncontrolled components because they handle their own `state` and `values`.
+You set your input’s `value` to another `state `value, `{this.state.name}`. By doing this you're turning it into a controlled component. HTML form elements like `input`s, `select`s, and `text` areas are typically uncontrolled components because they handle their own `state` and `values`.
 
 By letting React handle your input’s `value` from `state`, it becomes a controlled component which means React is responsible for maintaining the `state` of any `value` we assign to it.
 
-Since you’ve added a new `state` value reference here, update your component’s `state` in the constructor:
+Since you added a new `state` value reference here, update your component’s `state` in the constructor:
 
 ```
 constructor(props) {
@@ -639,9 +639,9 @@ constructor(props) {
 
 If you stop there, however, the value of the input will always be an empty string. You need a way to update this `value` in `state` whenever someone updates the text.
 
-You do that by adding an event handler to the `input` element. The perfect place to do this update will be as part of the `onChange` event, which fires every time the text in the `input` changes.
+Add an event handler to the `input` element. The perfect place to do this update will be as part of the `onChange` event, which fires every time the text in the `input` changes.
 
-Add the `onChange` event to the `input` and add a handler function, `handleChange` which you’ll define next.
+Add the `onChange` event to the `input` and add a handler function, `handleChange` which you define next.
 
 ```
         <input value={this.state.name} onChange={this.handleChange} />
@@ -657,15 +657,15 @@ Now, define the `handleChange` event. Add it before the `render()` method in our
   };
 ```
 
-The handler function is a simple `arrow` function that accepts one argument, which is an event object React automatically passes in for you (also known as a synthetic event). We're calling it `evt` here, but you might see it called `e` or `event`.
+The handler function is a simple `arrow` function that accepts one argument, which is an event object React automatically passes in for you (also known as a synthetic event). You're calling it `evt` here, but you might see it called `e` or `event`.
 
-In this function, you just need to update your `state`’s `name` value with whatever text your user has entered. To do that, you’ll use React’s built-in `state` updating method, `setState()`.
+In this function, update your `state`’s `name` value with whatever text your user has entered. To do that, use React’s built-in `state` updating method, `setState()`.
 
-You’ll call `setState()` and pass it an object that contains any `property:value` pair you want to update in `state`. In your case, you want to update the `name `property with a value of your text input which you can grab from the `evt` argument using `evt.target.value`.
+Call `setState()` and pass it an object that contains any `property:value` pair you want to update in `state`. You want to update the `name `property with a value of your text input which you can grab from the `evt` argument using `evt.target.value`.
 
 ### Trigger a Greeting with a Button
 
-For this to really be a true app, you’ll give your users a way to trigger a greeting message update after they’ve updated their name in the `input` box.
+For this to really be a true app, you give your users a way to trigger a greeting message update after they’ve updated their name in the `input` box.
 
 Add a button just under your `input` with a similar event handler, but this time the event will be `onClick` instead of `onChange`. You’ll also give it some text, ‘`Update name`’:
 
@@ -679,15 +679,15 @@ Add a button just under your `input` with a similar event handler, but this time
 
 The `onClick` event is very similar to `onChange` and again it’ll receive a synthetic event argument you’ll just call `evt` again.
 
-You can see your `click` handler method is doing the same update to `state` by calling the `setState()` method, but this time you’re updating your `displayName` value.
+Your `click` handler method is doing the same update to `state` by calling the `setState()` method, but this time you’re updating your `displayName` value.
 
-The `displayName` value is going to be the same as the final value they’ve entered in the `input` box, which we’ve already set to the `state` value, `name`. So that’s what you’ll use to update `state` within your `handleClick` method.
+The `displayName` value is going to be the same as the final value they’ve entered in the `input` box, which we’ve already set to the `state` value, `name`. So that’s what you use to update `state` within your `handleClick` method.
 
 ## Test Your Greeting
 
 Now that you’ve got everything you need, save your `App.js` file, and take a peek in the browser. Enter a `name` in the `input` box and click ‘`Update name`’.
 
-You can see instead of ‘`Hi there` ’, you’ll get ‘Hi there, Vicki Bealman’ (or whatever name you entered).
+Instead of ‘`Hi there` ’, you get ‘Hi there, Vicki Bealman’ (or whatever name you entered).
 
 
 ### Finishing touches
@@ -702,7 +702,7 @@ Save and take another look in the browser. It’s not an emmy award-winning app 
 
 Last but not least, you have an initial message, ‘`Hi there`, ‘ and then just nothing. You make this a little more interesting by adding in a default message ’`we haven’t been introduced`’.
 
-You’ll do this by amending your initial greeting message using a logical `OR` statement. This sounds fancy, but it’s really a shorthand `if` statement in JavaScript you’ll see used often in React to say ‘**evaluate both sides of this argument and return whichever is true**’.
+Do this by amending your initial greeting message using a logical `OR` statement. This sounds fancy, but it’s really a shorthand `if` statement in JavaScript you’ll see used often in React to say ‘**evaluate both sides of this argument and return whichever is true**’.
 
 #### App.js
 
@@ -716,9 +716,10 @@ Because your `state` value `this.state.displayName` is empty (`false`) by defaul
 
 **Congratulations**! Boom; that's it. That's your very first entrance into building a React app.
 
-In the next section, you’ll refactor your `App` component into smaller components and introduce some React Hooks.
+In the next section, you refactor your `App` component into smaller components and introduce some React Hooks.
 
 ### Submit
+
 Include the submit zip folder box here, with link to open code solution after submission.
 
 ## Solution
@@ -796,7 +797,7 @@ With your Greeting App built, you're going to learn to 'think in React' by break
 
 You’ve built your first app and it’s looking and working great. Currently, it’s using the class-based component approach, but you’re going to refactor it to achieve a few things:
 
-- Thinking about your apps in a component, modular fashion.
+- Think about your apps in a component, modular fashion.
 
 - Try your hand at breaking down a larger component into smaller ones.
 
@@ -852,25 +853,20 @@ Those steps might look like this:
 
 Now you have a plan. Do some setup work before you start. Like you did in the last section, create all the files you need first, and fill them in with code as you go along, building out the components and refactoring them as you go.
 
-First, add a new folder, and call it `components`. 
+1. First, add a new folder, and call it `components`. 
 
-`mkdir components`
+	`mkdir components`
 
-Within your `/components` folder, create three empty `component` files with the `.jsx` file extension (remembering to capitalize the first character in the file name):
+2. Within your `/components` folder, create three empty `component` files with the `.jsx` file extension (remembering to capitalize the first character in the file name):
 
-- `Title.jsx`
-- `Greeting.jsx`
-- `Input.jsx`
+- **Title.jsx**
+	`touch /components/Title.jsx`
+- **Greeting.jsx**
+	`touch /components/Greeting.jsx`
+- **Input.jsx**
+	`touch /components/Input.jsx`
 
-1. `touch /components/Title.jsx`
-
-2. `touch /components/Greeting.jsx`
-
-3. `touch /components/Inout.jsx`
-
-
-
-Files with the `.jsx` extension are specific to the React library, and will typically contain the familiar HTML-like syntax you’ve seen in earlier sections. It’s important to note that this file extension is down to personal preference. JSX files will be converted into raw JavaScript by a tool such as Babel JS before being run in the browser. Some people prefer to have presentational components that just accept static data and display it, using the `.jsx` file extension to denote them. The important thing to remember is you can use either `.js` or `.jsx` to name your files. Tthere is no difference, only personal preference.
+Files with the `.jsx` extension are specific to the React library, and will typically contain the familiar HTML-like syntax you’ve seen in earlier sections. It’s important to note that this file extension is down to personal preference. JSX files will be converted into raw JavaScript by a tool such as Babel JS before being run in the browser. Some people prefer to have presentational components that just accept static data and display it, using the `.jsx` file extension to denote them. The important thing to remember is you can use either `.js` or `.jsx` to name your files. There is no difference, only personal preference.
 
 Let’s start moving through the files and coding them.
 
@@ -880,9 +876,9 @@ Start by repeating:
 
 ‘React must be in scope in order to use it!’
 
-So import React first before you do anything else.
+Import React first before you do anything else.
 
-Instead of the class-based approach previously used for your App component, the `Title` component will be your very first functional one. Define a functional component as just that, a function.
+Instead of the class-based approach previously used for your `App` component, the `Title` component will be your very first functional one. Define a functional component as just that, a function.
 
 However, rather than define a function and then set it as the default export, do so in one line:
 
@@ -898,13 +894,13 @@ You have a default export which is a function that accepts a props object and us
 
 That’s it…sort of. You have a `<h1>` being returned, but you have a fixed string, ‘Welcome to Software Development’. That’s fine for your Greeting App, but not very reusable if you want to have this component on another page that says something different.
 
-Make this title dynamic. Instead of it being hardcoded to a string, you can use your curly brace syntax again and use a value you can pass in via your props object.
+Make this title dynamic. Instead of it being hardcoded to a string, use your curly brace syntax again and use a value you can pass in via your props object.
 
 ```
 export default props => <h1>{props.title}</h1>;
 ```
 
-However, take this another step further. Because you know you’re only passing in a `title` value via props, you can reference this value directly using object destructuring.
+However, take this another step further. Because you know you’re only passing in a `title` value via props, reference this value directly using object destructuring.
 
 ```
 export default ({ title }) => <h1>{title}</h1>;
@@ -920,7 +916,7 @@ You’re left with a really simple, small, reusable `component`. It can be used 
 
 What you're making right now is a very contrived example to get a feel for React, but it's good to start thinking in terms of how you can use this in real world applications as you start learning and growing and building things for yourself.
 
-This is something you'll do further on in the course as your apps start to grow and get bigger. But for now, this is your `title` component ready to go.
+This is something you do further on in the course as your apps start to grow and get bigger. But for now, this is your `title` component ready to go.
 
 #### Completed Title Component
 
@@ -949,7 +945,7 @@ Start by importing React:
 
 `import React from 'react';`
 
-Just like your `Title` component, do an inline default export next, along with an implicit return, because all we're doing is returning one line which is going to be our greeting with a dynamic name value.
+Like your `Title` component, do an inline default `export` next, along with an implicit `return`, because all you're doing is returning one line which is going to be your greeting with a dynamic name value.
 
 **Greeting.jsx**
 
@@ -988,13 +984,13 @@ Import React into your component. This time you’re also going to add an extra 
 
 `import React, { useState } from 'react';`
 
-Because your input element relies on your `App` component’s `state` to manage its value, you need to use `state` in your new `Input` component. However, the `Input` component is a stateless, functional component, not a class-based one. To use `state` in a functional component, you’ll need to use a feature of React called `Hooks`. In your case, to access `state` from a functional component, you'll use the `useState` Hook.
+Because your input element relies on your `App` component’s `state` to manage its value, you need to use `state` in your new `Input` component. However, the `Input` component is a stateless, functional component, not a class-based one. To use `state` in a functional component, you use a feature of React called `Hooks`. In your case, to access `state` from a functional component, you use the `useState` Hook.
 
 **Tip!**
 
-Hooks were introduced as part of React v16.8. They allow access to `state` and other React features without writing a class. You'll cover Hooks in greater detail in the next lesson, including `useState`. For now, focus on getting the components built as you code along and become familiar with the `useStat`e syntax for accessing `state` in a functional component.
+Hooks were introduced as part of React v16.8. They allow access to `state` and other React features without writing a class. You cover Hooks in greater detail in the next lesson, including `useState`. For now, focus on getting the components built as you code along and become familiar with the `useStat`e syntax for accessing `state` in a functional component.
 
-You’ve imported React, now define your `Input` component and export it. Be sure to copy in the `input` and `button` elements from your `App` component.
+You imported React, now define your `Input` component and export it. Be sure to copy in the `input` and `button` elements from your `App` component.
 
 **App.js**
 
@@ -1011,15 +1007,15 @@ const Input = props => {
 export default Input;
 ```
 
-Notice how you’ve capitalized your `const` variable `Input`. This is the naming convention, not a rule.Since you’re creating a `component`, it’s best practice to capitalize `component`s’ names.
+Notice how you capitalized your `const` variable `Input`. This is the naming convention, not a rule.Since you’re creating a `component`, it’s best practice to capitalize `component`s’ names.
 
 ### Update the Input Element
 
-You can't have the `input` and the `button` side by side like this, becaue it'll throw an error. To avoid this, you’ve wrapped them in a React fragment.
+You can't have the `input` and the `button` side by side like this, becaue it'll throw an error. To avoid this, you wrap them in a React fragment.
 
-The previous two components, `Greeting` and `Title`, both used an implicit return because they didn’t have any logic to deal with. They just returned their JSX elements. Our `Input` component needs to do a little more, specifically set values with the `useState` Hook.
+The previous two components, `Greeting` and `Title`, both used an implicit return because they didn’t have any logic to deal with. They just returned their JSX elements. Your `Input` component needs to do a little more, specifically set values with the `useState` Hook.
 
-Because of this, you’ve explicitly defined a return statement that contains your desired JSX output (i.e. the `input` and `button` elements). This is different from the `App` component, which has to define a `render()` method, which then returns some JSX. You’ll also see that because the `Input` component is a function, you don’t need to define a constructor, or call a parent class’ `super()` method.
+Because of this, you explicitly defined a return statement that contains your desired JSX output (i.e. the `input` and `button` elements). This is different from the `App` component, which has to define a `render()` method, which then returns some JSX. You also see that because the `Input` component is a function, you don’t need to define a constructor, or call a parent class’ `super()` method.
 
 Your app is looking sharp so far, but you need to make a couple of edits for it to work.
 
@@ -1041,7 +1037,7 @@ You call it, passing in whatever default value you want this particular item in 
 
 The method returns an array with two items. The first item represents the value held in `state`, and the second item is a method that can be used to update the first item in `state`.
 
-You use the array destructuring syntax in JavaScript to access both of these items.
+Use the array destructuring syntax in JavaScript to access both of these items.
 
 In your component, you see you’re defining a `const` which is a destructured array. This array contains two items: the first is the value held in `state`, call it `name`, but remember this is a title you’re giving it. You could call it anything, but call it `name` as that’s meaningful right now.
 
@@ -1069,7 +1065,7 @@ Since you’re going to use the `setName()` method you got from your `useState` 
 
 Don't be be tempted to just call `setName()` directly without an arrow function like this, `onChange = { setName(evt.target.value) }`. Events like the `onChange` event, require you to pass a function that can be called when the time comes. By writing out the function directly and passing it arguments, you’re effectively invoking that function right away. This creates a problem, especially when you’re updating `state` values, which causes React to render the component again, which, in turn, calls the function again, resulting in an infinite loop.
 
-Next, you’ll update your `button` element.
+Next, update your `button` element.
 
 ### Update the Button Element
 
@@ -1077,21 +1073,21 @@ The `button` element presents an interesting situation. You need to trigger an u
 
 How can you update `state` data in another component?
 
-You do it in the same way you can pass data down to child components via the props object.  You send data back up using events and event handlers (see the next lesson for more information on this).
+Do it the same way you can pass data down to child components via the props object.  Send data back up using events and event handlers (see the next lesson for more information on this).
 
-To do this, you update your `button` element with a similar-looking anonymous arrow function you used for the `input` element.
+To do this, update your `button` element with a similar-looking anonymous arrow function you used for the `input` element.
 
 ```
       <button onClick={() => props.handleClick(name)}>Update name</button>
 ```
 
-This time, instead of calling a function on the `App` component’s class as you did previously (using `this.handleClick`), you’ll call the same function but from your props object. You’ll pass in the up-to-date value for `name` from the local `state` data. 
+This time, instead of calling a function on the `App` component’s class as you did previously (using `this.handleClick`), call the same function but from your props object. Pass in the up-to-date value for `name` from the local `state` data. 
 
 #### Complete Input Component
 
-Here's the completed `Input` component:
+Here's the complete `Input` component:
 
-**Input.jsx
+**Input.jsx**
 
 ```
 import React, { useState } from 'react';
@@ -1149,15 +1145,15 @@ Finally, you’ll add your `Input` component, adding an attribute of `handleClic
 
 There are a few more changes to make to the `App` component before everything’s complete:
 
-Remove the `handleChange` event because you no longer need it. It’s handled in the `Input` component.
+- Remove the `handleChange` event because you no longer need it. It’s handled in the `Input` component.
 
-Remove the `name` property from `state` because it’s also handled in your new `Input` component.
+- Remove the `name` property from `state` because it’s also handled in your new `Input` component.
 
-Update the `handleClick` event to use the new `name` value that’s passed to it.
+- Update the `handleClick` event to use the new `name` value that’s passed to it.
 
-Locate the `handleChange` event and remove it completely.
+- Locate the `handleChange` event and remove it completely.
 
-Next, update the `state` object to remove the `name` property:
+- Next, update the `state` object to remove the `name` property:
 
 ```
 this.state = {
@@ -1166,11 +1162,11 @@ this.state = {
 };
 ```
 
-Last, you update the `handleClick` event to reference the `name` value that will be passed to it from the `Input` component.
+- Last, update the `handleClick` event to reference the `name` value that will be passed to it from the `Input` component.
 
 Currently it’s referencing the `evt` object that was passed to it as an argument, so you change this to `name` which will be the new string value passed in when this event is called within the `Input` component.
 
-Then, in the `setState()` method, you’re using `this.state.name` value which you just deleted. You update this to use the `name` argument instead.
+Then, in the `setState()` method, you use `this.state.name` value which you just deleted. You update this to use the `name` argument instead.
 
 ```
   handleClick = name => {
@@ -1186,9 +1182,9 @@ Now run this code and see everything working as before, but this time it’ll be
 
 Make a couple more changes to the `App` component to modernize it and make the code a little smaller and more readable.
 
-1. You’ll convert `App` from a class-based component into a functional one.
+1. Convert `App` from a class-based component into a functional one.
 
-2. You’ll replace the current `state` mechanism with another use of the `useState` Hook.
+2. Replace the current `state` mechanism with another use of the `useState` Hook.
 
 ### Convert a class-based COmponent to a functional one
 
@@ -1228,9 +1224,9 @@ const App = props => {
   const [displayName, setDisplayName] = useState();
 ```
 
-You do still need to use the `displayName` property from `state`, which is why you’ve used the `useState` Hook oagain. Notice the same naming convention: you use `displayName` for the name of the value in `state`, and `setDisplayName` for the name of the function that will update this value in `state`.
+You do still need to use the `displayName` property from `state`, which is why you used the `useState` Hook oagain. Notice the same naming convention: you use `displayName` for the name of the value in `state`, and `setDisplayName` for the name of the function that will update this value in `state`.
 
-To use the `useState` Hook, you'll need to import it where you currently import `Component` right at the top of the `App.js` file. You can also remove the `Component` import, since you're no longer using it.
+To use the `useState` Hook, you need to import it where you currently import `Component` right at the top of the `App.js` file. You also remove the `Component` import, since you're no longer using it.
 
 **App.js**
 
@@ -1238,7 +1234,7 @@ To use the `useState` Hook, you'll need to import it where you currently import 
 import React, { useState } from 'react';
 ```
 
-Remove the entire `handleClick` function because you’ll be replacing it with your `setDisplayName` function call.
+Remove the entire `handleClick` function because you’ll replace it with your `setDisplayName` function call.
 
 ### Replace the render Method
 
@@ -1277,7 +1273,7 @@ In practice, this:
 	```
 ### Update the displayName in State
 
-You’ve updated the `displayName` property to use Hooks, and you’ll need to update two lines in your return statement.
+You updated the `displayName` property to use Hooks, and you need to update two lines in your return statement.
 
 The first isn’t a very big change, but since you don’t have access to a class property called `this.state`, you just remove it completely, referencing `displayName` directly.
 
@@ -1293,7 +1289,7 @@ The very last thing to do is replace the call to a non-existent `this.handleClic
 
 Again, to prevent an infinite loop or some other issue, you’ve passed in an inline arrow function instead. It will receive a `name` value as an argument when the `Input` component calls this function, and you immediately call the `setDisplayName()` method to update the `displayName` value in `state`.
 
-Fantatsitic!! Everything for this Greetings App is finished. Save everything and refresh the page in the browser to see it in action. Everything should look and behave as it did before.
+Fantastic!! Everything for this Greetings App is finished. Save everything and refresh the page in the browser to see it in action. Everything should look and behave as it did before.
 
 This refactoring process isn’t too painful, but you can see already how your `App` component is much smaller, much neater, and more modular. What you have now is a bunch of smaller components that contain their own logic and can be used throughout your app, as it grows and starts to expand with more sections.
 
