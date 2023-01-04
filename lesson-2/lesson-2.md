@@ -876,7 +876,7 @@ Before Hooks, developers would have to tie updates into these lifecycle methods;
 
 What `useEffect` gives you is a combined method that runs on each render of a component. It can be used multiple times to separate any distinct logic, and it can also be passed an array of dependencies React will monitor for changes. Should any of those dependencies change, only then would that particular `useEffect` call be executed.
 
-Additionally, some work requires a clean up phase (e.g. subscriptions to external data sources). For these tasks, you return a function as part of your `useEffect` call that will carry out any clean up code you need. Think of this as replacing the `componentWillUnmount` lifecycle event.
+Additionally, some work requires a clean up phase (e.g. subscriptions to external data sources). For these tasks, you return a function as part of your `useEffect` call to carry out any clean up code you need. Think of this as replacing the `componentWillUnmount` lifecycle event.
 
 Look at the syntax closer to get an idea of how it works:
 
@@ -912,7 +912,7 @@ const MyComponent = props => {
 
 Now that you know a little more about the `useEffect` Hook, you can build your component.
 
-Open up the file `UseEffectExample.jsx` and get the basic component scaffolding in as well as your React imports:
+Open the file `UseEffectExample.jsx` and get the basic component scaffolding in as well as your React imports:
 
 **UseEffectExample.jsx**
 
@@ -926,7 +926,7 @@ const UseEffectExample = () => {
 export default UseEffectExample;
 ```
 
-In this example, you will build a simple gallery that loads everybody’s favorite: dog pictures! For this, you will using the excellent [Dog CEO API](https://dog.ceo/dog-api/).
+In this example, you will build a simple gallery that loads everybody’s favorite: dog pictures! For this, you will use the fun [Dog CEO API](https://dog.ceo/dog-api/).
 
 ![](assets/dog-api-screenshot.png)
 
@@ -934,11 +934,11 @@ For the component, you need to accomplish a few things:
 
 - Set your API URL for loading in the pictures
 
-- Add two variables in `state`, one for holding the image URLs of your dogs, and a loading flag you can use to show a ‘…loading’ message
+- Add two variables in `state`; one for holding the image URLs of your dogs, and a loading flag you can use to show a ‘…loading’ message
 
-- Create a function to actually go and load your dog pictures
+- Create a function to actually load your dog pictures
 
-- Two `useEffect` calls, one for an initial load and one for subsequent loads when the user presses a button
+- Two `useEffect` calls; one for an initial load and one for subsequent loads when the user presses a button
 
 - A button for the user to trigger a new set of dog pictures
 
@@ -978,9 +978,9 @@ You need to call the API to get the pictures in the first place. You define that
   };
   ```
 
-  Using the `Math.random()` function, you generate a random number between 1-10. Next, call the Dog CEO API, appending this random number on the end to return that number of doggo pics.
+  Use the `Math.random()` function to generate a random number between 1-10. Next, call the Dog CEO API, appending this random number on the end to return that number of doggo pics.
 
-  Use the native browser `fetch()` method here, but in a realistic setting you may need to consider browser support and might need to look at using a polyfill or external utility like the Axios project.
+  Use the native browser `fetch()` method here. In a realistic setting you may need to consider browser support and might need to look at using a polyfill or external utility like the Axios project.
 
   The process is straightforward: `fetch()` calls the API, you massage the raw response into `JSON`, then you consume that `JSON` as the object data, extracting a message object (as defined by the Dog CEO API docs), which just happens to be an array of image URLs. Set this array in `state` using `setDogImageUrls()` method returned from the `useState` Hook.
 
@@ -997,7 +997,7 @@ You need to call the API to get the pictures in the first place. You define that
   }, []);
 ```
 
-You use a bit of a React trick here. By passing this effect an empty dependency array, you effectively tell React to execute the effect, but only once, on the first mount.
+You use a bit of a React trickiness here. By passing to this effect an empty dependency array, you effectively tell React to execute the effect, but only once, on the first mount.
 
 You do that, because you want to have some dog pictures available when the component first mounts, but not every time anything happens, such as the component updates.
 
@@ -1014,13 +1014,13 @@ You do, however, want to trigger a new fetch when the user clicks the ‘`load m
   }, [loadPictures]);
   ```
 
-You can see that we supply `loadPictures` as a dependency on the `useEffect` Hook. When it changes, React will execute whatever we supply to the function. In this case, we check to make sure that it’s set to ‘`true`’, calling the API again before setting the value back to ‘`false``’, which will enable the button to work again.
+You can see we supply `loadPictures` as a dependency on the `useEffect` Hook. When it changes, React will execute whatever we supply to the function. In this case, we check to make sure that it’s set to ‘`true`’, calling the API again before setting the value back to ‘`false``’, which will enable the button to work again.
 
 You may be asking ‘won’t this just trigger this effect to be called again, even when `loadPictures` is set back to ‘`false`’?!’. The answer is ‘yes’, but by checking if it’s set to ‘`true`’ at the start of the function, you avoid some horrible infinite loop scenario.
 
 ### Add the Button and Gallery JSX
 
-With all your logic in place, process the images and display a lovely gallery of sweet dogs to your users.
+With all your logic in place, process the images and display an attractive gallery of sweet dogs to your users.
  
 **UseEffectExample.jsx**
 
@@ -1049,21 +1049,21 @@ With all your logic in place, process the images and display a lovely gallery of
   );
   ```
 
-Starting with a title, you add a button that simply sets the `state` to ‘`true`’. As you discovered when you mapped out the `useEffect` calls, because React is watching this value as a dependency, it will automatically trigger a fetch of some new dog pictures.
+Starting with a title, add a button that simply sets the `state` to ‘`true`’. As you discovered when you mapped out the `useEffect` calls, because React is watching this value as a dependency, it will automatically trigger a fetch of some new dog pictures.
 
 Under this, we display a message to the user based on the value of `loadPictures`: ‘…loading’ if set to ’`true`’; or the number dog pictures the user can be expected to see if ‘`false`’.
 
-Now the part you have been waiting for, the pictures themselves!
+Now the part you have been waiting for; the pictures themselves!
 
-Using the `.map()` function built into JavaScript arrays step through your array of dog pictures outputting an image tag.
+Using the `.map()` function built into JavaScript, arrays step through your array of dog pictures outputting an image tag.
 
 #### Note!
 
-You added an extra attribute you might not be familiar with right away. The `key=` attribute is another React-specific attribute needed when rendering lists of things. It helps React keep track of changes within the list, such as if any have been added, removed, etc. You should supply a unique identifier to each item in a list to give the elements a stable identity.
+You added an extra attribute you might not be familiar with right away. The `key=` attribute is another React-specific attribute needed when rendering lists of things. It helps React keep track of changes within the list, such as if any have been added, removed, etc. Supply a unique identifier to each item in a list to give the elements a stable identity.
 
 The nice thing about the `.map()` function is if we have an empty array (like when we initialize it to `[]` at the beginning of the component), nothing is output to the user.
 
-The last thing to do is to fire up your app using `npm start` in the terminal, and enjoy some wholesome dog pictures: what the Internet was made for.
+The last thing to do is fire up your app using `npm start` in the terminal, and enjoy some wholesome dog pictures: what the Internet was made for.
 
 ### The Complete UseEffectExample.jsx Component
 
@@ -1123,3 +1123,102 @@ const UseEffectExample = () => {
 
 export default UseEffectExample;
 ```
+
+
+## Furry Friend Gallery App
+
+You're going to build on the previous Hooks above by creating a dog picture gallery. First though, let's take a look at what you're going to build.
+
+Upi’ll be building on the previous example, a dog picture gallery, but this time with a few enhancements.
+
+Take a look at the app in action.
+
+![](assets/furry-friends-gallery.png)
+
+You have a much improved UI thanks to the Bulma CSS framework.You’re accepting a number of dogs to search for from the user, displaying the dog pictures in a flexbox grid, and keeping track of how many dog pictures have been searched for to date.
+
+This will also be your first journey into development using the **Create React App** starter project, provided by Facebook itself.
+
+You’re not building anything super complex just yet. There are a few moving parts to consider and some judicious use of both the `useState` and `useEffect` Hooks.
+
+## Build the Furry Frien Gallery
+
+This code-along assignment walks through using **Create React Ap**p to build a fully-functioning picture gallery; the Furry Friend Gallery.
+
+### Introduction
+
+As you experienced in the quick code along of the Furry Friend Gallery, you’re going to build an app that talks to your familiar Dog CEO API, loads in a few starter pictures before turning control over to the user, allowing them to choose several images they’d like to fetch.
+
+You’re going to start by creating a new React project using [Create React App](https://create-react-app.dev/).
+
+### Create React App (CRA) Starter Project
+
+Until now, you’ve been using [Parcel JS](https://parceljs.org/) to set up and configure your React apps. It makes sense for smaller projects or apps and there’s certainly no problem with continuing to choose Parcel for more complex needs.
+
+However, out in the real world commercial environments, you’ll often come across React projects with much more complexity around their configuration; from employing some static code analysis using a tool like [ESLint](https://eslint.org/) or [Babel JS](https://babeljs.io/) to allow you to use the latest JavaScript features cross-browser, and code bundling and optimization with help from [Webpack](https://webpack.js.org/).
+
+**Create React App** is an official React starter project, developed and maintained by the Facebook Open Source team and it offers all of the above (and more) in one, convenient package with just one dependency.
+
+### CRA advantages
+
+Behind the scenes, the **Create React App** maintains an up-to-date and working configuration that employs modern coding best practices for setting up and working with a React project. It abstracts all of the complex setup required for Webpack to bundle your project’s files, as well as giving you a list of great code linting rules to ensure you’re adhering to generally accepted ‘good code’ standards.
+
+The best part; it can be used to spin up a new project and get coding in under five minutes from just a single terminal command.
+
+### CRA disadvantages
+
+The biggest drawback to using **Create React App** is also one of its biggest advantages: the abstraction.
+
+Many developers and projects demand more flexibility and control from their configuration. By using **Create React App**, you’re effectively handing over control of these parts of your app to the React team and their own development opinions.
+
+It’s not a bad thing, per se. There are workarounds to add in your own configurations without using the built in ‘eject’ command (CRA offers this as a last resort, should you wish to unbundle all the configurations and remove the dependency on the CRA itself), but they’re not always ideal.
+
+For more information about this and a great guide on how to set up your own React project without **Create React App**, there is a [great article on Dev.to from Nikhil Kumaran](https://dev.to/nikhilkumaran/don-t-use-create-react-app-how-you-can-set-up-your-own-reactjs-boilerplate-43l0) you can look at.
+
+## Furry Friends Gallery Setup
+
+With that out of the way, let’s get started with your new gallery app by navigating to your `FEFReact` folder on your local machine in the terminal.
+
+1. `cd desktop`
+
+2. `cd FEFReact`
+
+3. `mkdir lesson02-assignment-1`
+
+4. `cd lesson02-assignment-1`
+
+
+From here, use the following command to create a brand new React project using the **Create React App** starter.
+
+`npm create react-app furry-friend-gallery`
+
+Your terminal or command window will start processing and pulling in all the resources it needs to create a new project. This takes a while, so just wait until it finishes.
+
+When it’s done, you’ll have a success message in the terminal window featuring a list of commands.
+
+![](assets/cra-terminal.png)
+
+### Test the New Project
+
+Before you do anything else, it’s a good idea to jump straight into the new project, launch it, and make sure it’s all working.
+
+So, follow the advice in your terminal output and enter the following commands:
+
+1. `cd furry-friend-gallery`
+2. `npm start`
+
+After a bfew moments moments, you should see a webpage open up with a spinning React logo and a simple message:
+
+![](assets/app-start.png)
+
+Boom!! Everything’s looking great and your new project is almost ready to go!
+
+### Clean up the Default Files
+
+*Create React App* does load in a few bare-bones files and styles to give you a jumping-off point. However, you’ll need to make a few changes to get everything cleaned up and ready for your new gallery app.
+
+First; open `index.js`, located in `/furry-friend-gallery/src/` and remove the following line:
+
+`import ‘./index.css'`
+
+It should be on line 3 of the `index.js` file. This will just remove a link to the default styles from the project that you won’t need.
