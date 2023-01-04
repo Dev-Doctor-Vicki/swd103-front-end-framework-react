@@ -667,15 +667,15 @@ The first thing is add your `state` values and items, right at the top of the co
     age: '',
     fruit: ''
   });
-  ```
+```
 
-  You really can store just about anything you want in `state`. Your first `state` variable, `showMessage` is going to hold a boolean value, while `formValues` holds an object with some default key-value pairs where you track the input from your user.
+You really can store just about anything you want in `state`. Your first `state` variable, `showMessage` is going to hold a boolean value, while `formValues` holds an object with some default key-value pairs where you track the input from your user.
 
-  #### Tip!
+#### Tip!
 
-  You don’t have to add the keys in like done here, but it’s good practice. It let's you get an idea of what data your form will capture and what the expected type of that data will be, without having to run anything.
+You don’t have to add the keys in like done here, but it’s good practice. It let's you get an idea of what data your form will capture and what the expected type of that data will be, without having to run anything.
 
-  ### Event Handling Methods
+### Event Handling Methods
 
  Map out your `state` updating methods and event handlers: one for a change of any form field values, and one to handle the form submission.
 
@@ -695,7 +695,7 @@ The first thing is add your `state` values and items, right at the top of the co
     evt.preventDefault();
     setShowMessage(true);
   };
-  ```
+```
 
   In the `handleChange` event, you’re still using the `evt.target.value` to retrieve the current value from the underlying `HTML` element (e.g. a text input field), but you’re creating a new `updatedFormValues` object first. You're using the spread syntax (the three dots you can see before `formValues`) which will essentially copy everything from the current `formValues` object in `state` into your `updatedFormValues` object.
 
@@ -707,7 +707,7 @@ The first thing is add your `state` values and items, right at the top of the co
       ...formValues,
       [evt.target.id]: evt.target.value
     };
-	```
+```
 
 Immediately after this, you use the bracketed notation [evt.target.id] to reference a property dynamically on the `updatedFormValues` object, specifically referencing using the form field's `id`. If it exists on the object then the value we assign to it (e.g. `evt.target.value`) will be updated. If it doesn't exist, then a new property will be created and assigned the value of `evt.target.value`.	
 
@@ -957,13 +957,13 @@ const UseEffectExample = () => {
   const apiBaseUrl = 'https://dog.ceo/api/breeds/image/random/';
   const [dogImageUrls, setDogImageUrls] = useState([]);
   const [loadPictures, setLoadPictures] = useState(false);
-  ```
+```
 
-  The Dog CEO API address will return a single image of a dog (that’s no good!), so append a random number onto this later on so we get a nice amount of dog images back.
+The Dog CEO API address will return a single image of a dog (that’s no good!), so append a random number onto this later on so we get a nice amount of dog images back.
 
-  With state variables, `dogImageUrls` is set to an empty array to begin with but it will hold a list of picture URLs once the API has been called. With `loadPictures`, set it to ‘`false`’ for now, but you can use this to toggle whether the app is in the middle of loading data or not.
+With state variables, `dogImageUrls` is set to an empty array to begin with but it will hold a list of picture URLs once the API has been called. With `loadPictures`, set it to ‘`false`’ for now, but you can use this to toggle whether the app is in the middle of loading data or not.
 
-  ### Create the Image Fetching Function
+### Create the Image Fetching Function
 
 You need to call the API to get the pictures in the first place. You define that next:
 
@@ -995,7 +995,7 @@ You need to call the API to get the pictures in the first place. You define that
    useEffect(() => {
     loadDogPictures();
   }, []);
-  ```
+```
 
 You use a bit of a React trick here. By passing this effect an empty dependency array, you effectively tell React to execute the effect, but only once, on the first mount.
 
@@ -1014,13 +1014,13 @@ You do, however, want to trigger a new fetch when the user clicks the ‘`load m
   }, [loadPictures]);
   ```
 
-You can see that we supply loadPictures as a dependency on the useEffect Hook. When it changes, React will execute whatever we supply to the function. In this case, we check to make sure that it’s set to ‘true’, calling the API again before setting the value back to ‘false’, which will enable the button to work again.
+You can see that we supply `loadPictures` as a dependency on the `useEffect` Hook. When it changes, React will execute whatever we supply to the function. In this case, we check to make sure that it’s set to ‘`true`’, calling the API again before setting the value back to ‘`false``’, which will enable the button to work again.
 
 You may be asking ‘won’t this just trigger this effect to be called again, even when `loadPictures` is set back to ‘`false`’?!’. The answer is ‘yes’, but by checking if it’s set to ‘`true`’ at the start of the function, you avoid some horrible infinite loop scenario.
 
 ### Add the Button and Gallery JSX
 
-With all your logic in place, you can process the images and display a lovely gallery of sweet dogs to your users.
+With all your logic in place, process the images and display a lovely gallery of sweet dogs to your users.
  
 **UseEffectExample.jsx**
 
@@ -1055,7 +1055,7 @@ Under this, we display a message to the user based on the value of `loadPictures
 
 Now the part you have been waiting for, the pictures themselves!
 
-Using the `.map()` function built into JavaScript arrays  step through your array of dog pictures outputting an image tag.
+Using the `.map()` function built into JavaScript arrays step through your array of dog pictures outputting an image tag.
 
 #### Note!
 
