@@ -709,19 +709,19 @@ You don’t have to add the keys in like done here, but it’s good practice. It
     };
 ```
 
-Immediately after this, you use the bracketed notation [evt.target.id] to reference a property dynamically on the `updatedFormValues` object, specifically referencing using the form field's `id`. If it exists on the object then the value we assign to it (e.g. `evt.target.value`) will be updated. If it doesn't exist, then a new property will be created and assigned the value of `evt.target.value`.	
+Immediately after this, use the bracketed notation [evt.target.id] to reference a property dynamically on the `updatedFormValues` object, specifically referencing using the form field's `id`. If it exists on the object then the value we assign to it (e.g. `evt.target.value`) will be updated. If it doesn't exist, then a new property will be created and assigned the value of `evt.target.value`.	
 
-Finally, you update your form field values object in `state` by calling `setFormValues()`.
+Finally, update your form field values object in `state` by calling `setFormValues()`.
 
 Another thing to point out is your use of `evt.preventDefault()` in the `handleSubmit` method. The event React passes us is synthetic, the form submission caused by the button you add at the moment is very real. By calling the `preventDefault()` method when the form submits, you stop the form from triggering a complete page reload. If that happens, you lose your `state` values and your app will produce unintended results.
 
 **UseStateExample.jsx**
 
-Other than that, the `handleSubmit` method is quite simple. You change the value of `showMessage` in `state` to ‘`true`’ which will be used later in your returned JSX.
+Other than that, the `handleSubmit` method is simple. You change the value of `showMessage` in `state` to ‘`true`’ which will be used later in your returned JSX.
 
 ### HTML (JSX)
 
-The final piece of the puzzle is to add your JSX in the return method so you can render something useful to the user.
+The final piece of the puzzle is to add JSX in the return method so you can render something useful to the user.
 
 First, a little message introducing the app to the user:
 
@@ -733,7 +733,7 @@ First, a little message introducing the app to the user:
       <p>Complete the form below and see a nice message about yourself!</p>
 ```
 
-Next, add your `HTM`L form:
+Next, add `HTML` form:
 
 **UseStateExample.jsx**
 
@@ -762,7 +762,7 @@ Next, add your `HTM`L form:
 There are a couple of things to highlight:
 
 - Notice on your labels you use `htmlFor=` instead of the HTML `for=`. This is because you’re still in JavaScript land and `for` is a protected keyword. You can use it, but React will complain, giving warnings in the browser and any tools like ESLint will also notify you of this. Stick to `htmlFor=` when using this attribute on labels in React.
-- Each of your HTML elements (inputs and select) is setting the `value=` attribute using a named key from your `formValues` state object. They also each reference the same change event handler, `handleChange` you defined previously.
+- Each of your HTML elements (inputs and select) are setting the `value=` attribute using a named key from your `formValues` state object. They also each reference the same change event handler, `handleChange` you defined previously.
 - Finally, there’s no event handler attached to the button within your form. This is because this button will trigger a form submission event by default when it’s clicked. So all you need to do is attach your `handleSubmit` event handler to the form itself.
 
 Once you collect your user data and submit it, you need to display a message.
@@ -783,7 +783,7 @@ Once you collect your user data and submit it, you need to display a message.
           </p>
         </div>
       )}
-	  ```
+```
 
 You have a couple of simple paragraphs where you reference the values from `state`. You also wrap this entire block in a simplified logic expression:
 
