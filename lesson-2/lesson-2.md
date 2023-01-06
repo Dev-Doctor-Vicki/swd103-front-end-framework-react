@@ -1155,7 +1155,7 @@ You’re going to start by creating a new React project using [Create React App]
 
 Until now, you’ve been using [Parcel JS](https://parceljs.org/) to set up and configure your React apps. It makes sense for smaller projects or apps and there’s certainly no problem with continuing to choose Parcel for more complex needs.
 
-However, out in the real world commercial environments, you’ll often come across React projects with much more complexity around their configuration; from employing some static code analysis using a tool like [ESLint](https://eslint.org/) or [Babel JS](https://babeljs.io/) to allow you to use the latest JavaScript features cross-browser, and code bundling and optimization with help from [Webpack](https://webpack.js.org/).
+However, out in the real world commercial environments, you’ll often come across React projects with much more complexity around their configuration; from employing static code analysis using a tool like [ESLint](https://eslint.org/) or [Babel JS](https://babeljs.io/) to allow you to use the latest JavaScript features cross-browser, and code bundling and optimization with help from [Webpack](https://webpack.js.org/).
 
 **Create React App** is an official React starter project, developed and maintained by the Facebook Open Source team and it offers all of the above (and more) in one, convenient package with just one dependency.
 
@@ -1165,15 +1165,15 @@ Behind the scenes, the **Create React App** maintains an up-to-date and working 
 
 The best part; it can be used to spin up a new project and get coding in under five minutes from just a single terminal command.
 
-### CRA disadvantages
+### CRA Disadvantages
 
 The biggest drawback to using **Create React App** is also one of its biggest advantages: the abstraction.
 
 Many developers and projects demand more flexibility and control from their configuration. By using **Create React App**, you’re effectively handing over control of these parts of your app to the React team and their own development opinions.
 
-It’s not a bad thing, per se. There are workarounds to add in your own configurations without using the built in ‘eject’ command (CRA offers this as a last resort, should you wish to unbundle all the configurations and remove the dependency on the CRA itself), but they’re not always ideal.
+It’s not necessarily a bad thing. There are workarounds to add in your own configurations without using the built in ‘eject’ command (CRA offers this as a last resort, should you wish to unbundle all the configurations and remove the dependency on the CRA itself), but they’re not always ideal.
 
-For more information about this and a great guide on how to set up your own React project without **Create React App**, there is a [great article on Dev.to from Nikhil Kumaran](https://dev.to/nikhilkumaran/don-t-use-create-react-app-how-you-can-set-up-your-own-reactjs-boilerplate-43l0) you can look at.
+For more information about this and a great guide on how to set up your own React project without **Create React App**, there is a [great article on Dev.to from Nikhil Kumaran](https://dev.to/nikhilkumaran/don-t-use-create-react-app-how-you-can-set-up-your-own-reactjs-boilerplate-43l0) you can review.
 
 ## Furry Friends Gallery Setup
 
@@ -1207,7 +1207,7 @@ So, follow the advice in your terminal output and enter the following commands:
 1. `cd furry-friend-gallery`
 2. `npm start`
 
-After a bfew moments moments, you should see a webpage open up with a spinning React logo and a simple message:
+After a few moments, you should see a webpage open up with a spinning React logo and a simple message:
 
 ![](assets/app-start.png)
 
@@ -1221,7 +1221,7 @@ First; open `index.js`, located in `/furry-friend-gallery/src/` and remove the f
 
 `import ‘./index.css'`
 
-It should be on line 3 of the `index.js` file. This will just remove a link to the default styles from the project that you won’t need.
+It should be on line 3 of the `index.js` file. This will just remove a link to the default styles from the project you won’t need.
 
 #### Note!
 
@@ -1252,13 +1252,13 @@ Locate `/src/index.css` and delete the file.
 
 Next, find the `/src/App.css` file and open it. Highlight all the contents and delete the existing styles. Save and close the file.
 
-Finally, open the main `App.js` file located at `/src/App.js`. This currently contains much starter JSX which you’re going to replace, as well as a link to a logo file you want to remove.
+Finally, open the main `App.js` file located at `/src/App.js`. This currently contains starter JSX which you’re going to replace, as well as a link to a logo file you want to remove.
 
 First, locate the following line (around line 2) that imports a `logo.svg` file, and remove it:
 
 `import logo from ‘./logo.svg'`
 
-Now, select everything in the return statement (everything between return `( and )` and replace it with the following so the new return statement looks like this:
+Now, select everything in the return statement (everything between `return (` and `)` and replace it with the following so the new return statement looks like this:
 
 ```
 return (
@@ -1280,7 +1280,7 @@ You’ll be using one frequently throughout this course, the [Bulma CSS](https:/
 
 It can be loaded via an `npm` package or simply dropped into an `HTML` file as an external stylesheet resource (which we’ll be doing here). There is even a React-based component library you can add to your project.
 
-Take a look at the [Bulma doc](https://bulma.io/documentation/s to familiarize yourself with the elements and components. For now,you’ll be adding to your app and using the CSS classes it gives to build your components.
+Take a look at the [Bulma doc](https://bulma.io/documentation/s) to familiarize yourself with the elements and components. For now,you’ll be adding to your app and using the CSS classes it gives to build your components.
 
 ## Create your Furry Friends Files
 
@@ -1292,13 +1292,13 @@ Your project will to consist of just three files:
 
 3. `App.css` - you’ll need to add a couple of styles here to tweak the look and feel of your gallery list items
 
-You’ll also need to make a single line change in your `index.html` file that loads the Bulma CSS framework for you.
+You also need to make a single line change in your `index.html` file that loads the Bulma CSS framework for you.
 
 Let’s start there.
 
 ### Edit index.html
 
-Navigate to `/public/index.html` and open the file. This is the main starting template HTML file the project uses to render the initial output of the app. It’s well commented and you can easily see what does what.
+Navigate to `/public/index.html` and open the file. This is the main starting template `HTML` file the project uses to render the initial output of the app. It’s well commented and you can easily see what does what.
 
 To load in Bulma so you can take advantage of the styles, add the following line somewhere between the opening and closing `<head></head>` tags:
 
@@ -1313,7 +1313,7 @@ You can also edit the title of the page between the `<title></title>` tags if yo
 
 ### Create DogInfoCard.jsx
 
-`DogInfoCard` will be what’s known as a presentational component. That is, it deals with the presentational aspects but usually no logic (or very little). A presentational component will accept one or more values as props or direct arguments and simply return a block of JSX to render out.
+`DogInfoCard` will be what’s known as a presentational component. It deals with the presentational aspects but usually no logic (or very little). A presentational component will accept one or more values as props or direct arguments and simply return a block of JSX to render out.
 
 Create a new file in the `/src` directory called `DogInfoCard.jsx` and drop in the following contents:
 
@@ -1340,17 +1340,17 @@ export default ({ imgUrl, breed }) => (
 );
 ```
 
-You’re using the destructuring syntax again to break the `imgUrl` and breed values out from the props object supplied to this component.
+You use the destructuring syntax again to break the `imgUrl` and breed values out from the props object supplied to this component.
 
 The markup here is based on Bulma’s card component. The subtle difference here is you’ve employed a little image display trick on the figure element.
 
 Because the dog images are returned from the API in different sizes and aspect ratios, you can’t just drop them directly in using an `<img />` tag. You could but they’d look wonky and misshapen.
 
-What you’re doing here is applying the image to the figure element as a background which (via some styling we’ll take care of next) allows more control of how things look when the images are weird sizes and shapes.
+What you do here is apply the image to the figure element as a background which (via some styling we’ll take care of next) allows more control of how things look when the images are weird sizes and shapes.
 
-However, to keep things nice and semantic and look after those users working with screen-readers, you’ll still use an `<img />` tag with the correct `src` and alt attributes, but apply a handy helper class, ‘`is-sr-only`’ which means the image won’t be visible on screen.
+However, to keep things nice and semantic and look after those users working with screen-readers, you’ll still use an `<img />` tag with the correct `src` and `alt` attributes, but apply a handy helper class, ‘`is-sr-only`’ which means the image won’t be visible on screen.
 
-You’re rendering the breed name into the ‘`card-content`’ div as a nice addition so people can see what breed they’re looking at.
+You render the breed name into the ‘`card-content`’ `div` as a nice addition so people can see what breed they’re looking at.
 
 ### Edit App.css
 
@@ -1371,13 +1371,13 @@ You have your list item display component read. Add a handful of styles into the
 }
 ```
 
-Nothing complicated, but you’re adding a height to the main image container from the `DogCardInfo.jsx` component, otherwise it would collapse because its child, the image element, is hidden.
+Nothing complicated, but you add a height to the main image container from the `DogCardInfo.jsx` component, otherwise it would collapse because its child, the image element, is hidden.
 
-You’re also applying some background styles to the child figure element so the background is sized properly and doesn’t repeat.
+You also apply some background styles to the child figure element so the background is sized properly and doesn’t repeat.
 
 ### Edit App.js
 
-Start by importing what you need. In your case the React defaults, your `DogCardInfo` component and your main styles, `App.css`.
+Start by importing what you need. In your case the React defaults, your `DogCardInfo` component, and your main styles, `App.css`.
 
 ```
 import React, { useState, useEffect } from 'react';
@@ -1392,7 +1392,7 @@ import './App.css';
 
 ### The loadDogPictures() Function
 
-Next, outside of the main App component, define a new asynchronous function, `loadDogPictures(`), which will do exactly that, load a set of pictures from the API.
+Next, outside of the main `App` component, define a new asynchronous function, `loadDogPictures()`, which will do exactly that; load a set of pictures from the API.
 
 **App.js**
 
@@ -1402,7 +1402,7 @@ const loadDogPictures = async (dogsToLoad = 8) => {
 };
 ```
 
-Here, you just define the outline of the function, adding the async keyword before your single argument, `dogsToLoad`. Also set as a default to ‘`8`’. So, you can specify a number of dogs' pictures to fetch from the API or leave it blank and you’ll get eight back.
+Here, you define the outline of the function, adding the `async` keyword before your single argument, `dogsToLoad`. Also set as a default to ‘`8`’. So, you specify a number of dogs' pictures to fetch from the API or leave it blank and you’ll get eight back.
 
 Next, add your variables:
 
@@ -1416,11 +1416,11 @@ Next, add your variables:
 
 You have the static API URL, which is the base URL Dog CEO provides for a single random image. You can append this with a number (to a maximum of fifty) to return that many images.
 
-Next, you’re using the `await` keyword in front of the `fetch()` command which will pause the execution of things until the fetch method finishes up and returns. Notice how you’re using the template literals version of a String here to combine the base API URL and the number of pictures to fetch.
+Next, you’ use the `await` keyword in front of the `fetch()` command which will pause the execution of things until the `fetch` method finishes up and returns. Notice how you use the template literals version of a String here to combine the base API URL and the number of pictures to fetch.
 
 Perform another `await` as we call to the `json()` method on the response from the API call. This will get your dog-related data in a nice, malleable JSON format, ready for doing with as you please.
 
-What happens next is some manipulation of the data that’s returned from the API. In its raw state, the API returns something like this:
+What happens next is some manipulation of the data returned from the API. In its raw state, the API returns something like this:
 
 ```
 {
@@ -1495,5 +1495,301 @@ const loadDogPictures = async (dogsToLoad = 8) => {
   return dogData;
 };
 ```
+## App.js variables
 
+As with all good components, you start with the variables you’ will use. Define these at the top of the component to be used as you go along.
 
+**App.js**
+
+```
+  const [dogPictures, setDogPictures] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [numOfDogs, setNumOfDogs] = useState('');
+  const [totalDogsSearched, setTotalDogsSearched] = useState(0);
+```
+
+You have `dogPictures` which you create as an empty array to hold loaded dog picture objects, `isLoading` to determine if the component is in the process of fetching the dog photos, `numOfDogs` to track the user input on how many pictures they’d like to load, and `totalDogsSearched` which is a running total of how many pictures have been fetched in total.
+
+### handleSubmit() function
+
+You need a way to handle your form submissions and that’s where the `handleSubmit()` function comes in.
+
+**App.js**
+
+```
+  const handleSubmit = async e => {
+    e.preventDefault();
+    setIsLoading(true);
+    setDogPictures(await loadDogPictures(numOfDogs));
+    setIsLoading(false);
+  };
+```
+
+First, prevent the form from causing a page reload (as that will just kill off your app’s functionality) by calling `e.preventDefault()`; then toggle the `isLoading` state value to ‘`true`’ (which will be used later to set visibility on some of your UI elements); Once you’re loading, trigger a `fetch()` from the API via the `loadDogPictures()` function.
+
+Last but not least, toggle `isLoading` back to ‘`false`’ once you have your pictures.
+
+Notice the use of JavaScript’s built-in async/await pairing in use in this function.
+
+## useEffect Hooks
+
+This is where things get a little more interesting. You will use two separate calls to the `useEffect` Hook to handle two side-effects.
+
+Let’s deal with the first:
+
+**App.js**
+
+```
+  useEffect(() => {
+    setTotalDogsSearched(totalDogs => totalDogs + dogPictures.length);
+  }, [dogPictures]);
+```
+
+This Hook call is just one line, but notice you’ve passed in `dogPictures` into the dependency array. What you’re saying here is ‘when `dogPictures` changes, execute whatever code is inside of the `useEffect` call’.
+
+Inside the body of the function, set the `totalDogsSearched` value in state to the current value plus the length of the new array of pictures you’ll have when the value of `dogPictures` changes.
+
+You might be wondering about the unusual way  you’ve called the `setTotalDogsSearched()` function to update the `totalDogsSearched` value. Previously, you just passed in the new value you wish state to have, and that’s the way you usually do things.
+
+However, if you did that here, although it would technically work, you’d be breaking one of the rules of Hooks and you’d most likely get an ESLint error that looks like this:
+
+```
+React Hook useEffect has a missing dependency: ‘totalDogsSearched’. Either include it or remove the dependency array. You can also do a functional update ‘setTotalDogsSearched(t => …)’ if you only need ‘totalDogsSearched’ in the ‘setTotalDogsSearched’ call. (react-hooks/exhaustive-deps)
+```
+
+Because you’re referencing a value from your component (in this case, the state value `totalDogsSearched`) but not including it in the list of dependencies passed to `useEffect` you get this error. It’s a potential problem because you run the risk of using stale data. Each time the component updates, changes, or rerenders the value of `totalDogsSearched` could be different. You’re referencing that value and so you can see how it could cause problems.
+
+However, if you include it in the dependencies array, you’ll most likely run into an infinite loop because this effect will then be called when dogPictures or `totalDogsSearched` changes. But of course, you are changing `totalDogsSearched` so you can update your UI. Every time it changes, you call the `setTotalDogsSearched()` function to update it, then the effect runs again, and so on until our app stops working.
+
+The basic rule of thumb is if you’re going to reference a function or a value from state or props inside of `useEffect`, then you must include it in the dependency array.
+
+There is much more information available on this subject if you head over to the official [React documentation](https://reactjs.org/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often).
+
+However, you fix this by using the functional form of the state update method. So, instead of passing a direct value into the `setTotalDogsSearched()` function to update the value in state, you pass it a function, which will receive the current value from state as an argument.
+
+This fixes the potential ‘stale data’ error you might run into and doesn’t run foul of the Hooks rules.
+
+Now define one last use of your `useEffect` Hook  you’ll call with an empty dependency array, so it’s only triggered on the first component mount. In here, you’ll need to make sure you kick off an initial load of some dog pictures to populate our app with.
+
+```
+  useEffect(() => {
+    (async () => {
+      setIsLoading(loading => !loading);
+      const dogPictureData = await loadDogPictures();
+      setDogPictures(dogDataArray => [...dogPictureData]);
+      setIsLoading(loading => !loading);
+    })();
+  }, []);
+```
+Once that’s defined you’ll see  you’re using the same form of functional update for setting various state values here. You also wrap all of these updates in a self-executing anonymous function (otherwise known as an immediately invoked function expression) that employs the async/await syntax.
+
+You could have defined a regular function in here too and then immediately called it, and that would work just fine. I’ve gone with personal preference here and opted for a simpler syntax
+
+## JSX markup
+
+What would a component be without returning some markup to render your UI?!
+
+Define a simple return statement with a container div element:
+
+```
+return <div className='container'></div>;
+```
+
+Here, you need two sections: one for the search form and another to render the dog pictures.
+
+First, define the `header` and search form.
+
+**App.js**
+
+```
+      <header className='columns section has-text-centered'>
+        <div className='column is-6 is-offset-3'>
+          <h1 className='title is-size-3'>
+            Search for pictures of good doggos
+          </h1>
+          <form className='form' onSubmit={handleSubmit}>
+            <div className='field has-addons has-addons-centered'>
+              <div className='control is-expanded'>
+                <input
+                  type='text'
+                  className='input is-medium'
+                  placeholder='how many dogs should we look for (max 50)?'
+                  value={numOfDogs}
+                  onChange={e => setNumOfDogs(e.target.value)}
+                />
+              </div>
+              <div className='control'>
+                <button className='button is-primary is-medium'>
+                  <span className='icon is-small'>
+                    <i className='fas fa-search'></i>
+                  </span>
+                  <span>search</span>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </header>
+```
+Notice the few extra divs and class names from Bulma. You attached the `handleSubmit` function to the form and wired up the input element’s value to the `numOfDogs` value in state, as well as adding an inline state update in the `onChange` event to update that value whenever a user enters some text.
+
+The button element in this section just serves to trigger the submission of the form.
+
+The picture display section looks like this:
+
+**App.js**
+
+```
+      <hr />
+      <div className='has-text-centered'>
+        <h3 className='subtitle is-size-4'>
+          All time puppers found = {totalDogsSearched}
+        </h3>
+      </div>
+      <div className='columns section is-multiline'>
+        {isLoading && (
+          <progress className='progress is-medium is-link' max='100'>
+            60%
+          </progress>
+        )}
+        {!isLoading &&
+          dogPictures.map(dogPicture => (
+            <div className='column is-one-quarter' key={dogPicture.id}>
+              <DogCardInfo {...dogPicture} />
+            </div>
+          ))}
+      </div>
+```
+
+You have a heading level three-element where you display the total number of pictures searched for using the `totalDogsSearched` value in state.
+
+Next, show an animated progress bar if the `isLoading` value is set to ‘`true`’.
+
+Similarly, if isLoading is ‘`false`’, map over the `dogPictures` array in state, returning a new `DogCardInfo` component for each item in the array. This component is wrapped in a `div` with a ‘`column`’ class that will automatically render them side-by-side in the UI.
+
+### The complete App.js file
+
+Here’s the complet `App` component:
+
+**App.js**
+
+```
+import React, { useState, useEffect } from 'react';
+
+// components
+import DogCardInfo from './DogCardInfo';
+
+// styles
+import './App.css';
+
+const loadDogPictures = async (dogsToLoad = 8) => {
+  const apiBaseUrl = 'https://dog.ceo/api/breeds/image/random/';
+  const response = await fetch(`${apiBaseUrl}${dogsToLoad}`);
+  const data = await response?.json();
+  const dogData = data.message.map(item => {
+    // item is an image url in the format:
+    // "https://images.dog.ceo/breeds/bullterrier-staffordshire/n02093256_1727.jpg",
+    let breed = item.replace('https://', '').split('/')[2];
+
+    // bread clean up (i.e. starts in the format 'subtype-maintype')
+    if (breed && breed !== '') {
+      breed = breed.split('-').reverse().join(' ');
+    }
+
+    return {
+      id: `dog_pic_${data.message.indexOf(item)}`,
+      imgUrl: item,
+      breed
+    };
+  });
+
+  return dogData;
+};
+
+function App() {
+  const [dogPictures, setDogPictures] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [numOfDogs, setNumOfDogs] = useState('');
+  const [totalDogsSearched, setTotalDogsSearched] = useState(0);
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    setIsLoading(true);
+    setDogPictures(await loadDogPictures(numOfDogs));
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    setTotalDogsSearched(totalDogs => totalDogs + dogPictures.length);
+  }, [dogPictures]);
+
+  useEffect(() => {
+    (async () => {
+      setIsLoading(loading => !loading);
+      const dogPictureData = await loadDogPictures();
+      setDogPictures(dogDataArray => [...dogPictureData]);
+      setIsLoading(loading => !loading);
+    })();
+  }, []);
+
+  return (
+    <div className='container'>
+      <header className='columns section has-text-centered'>
+        <div className='column is-6 is-offset-3'>
+          <h1 className='title is-size-3'>
+            Search for pictures of good doggos
+          </h1>
+          <form className='form' onSubmit={handleSubmit}>
+            <div className='field has-addons has-addons-centered'>
+              <div className='control is-expanded'>
+                <input
+                  type='text'
+                  className='input is-medium'
+                  placeholder='how many dogs should we look for (max 50)?'
+                  value={numOfDogs}
+                  onChange={e => setNumOfDogs(e.target.value)}
+                />
+              </div>
+              <div className='control'>
+                <button className='button is-primary is-medium'>
+                  <span className='icon is-small'>
+                    <i className='fas fa-search'></i>
+                  </span>
+                  <span>search</span>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </header>
+      <hr />
+      <div className='has-text-centered'>
+        <h3 className='subtitle is-size-4'>
+          All time puppers found = {totalDogsSearched}
+        </h3>
+      </div>
+      <div className='columns section is-multiline'>
+        {isLoading && (
+          <progress className='progress is-medium is-link' max='100'>
+            60%
+          </progress>
+        )}
+        {!isLoading &&
+          dogPictures.map(dogPicture => (
+            <div className='column is-one-quarter' key={dogPicture.id}>
+              <DogCardInfo {...dogPicture} />
+            </div>
+          ))}
+      </div>
+    </div>
+  );
+}
+
+export default App;
+```
+
+### View Your Hard Work
+
+With everything coded up and set to go, that just leaves you to complete a final check to make sure everything’s working as it should.
+
+If everything’s working as planned, you should have a great looking site that shows us nothing but some well-behaved dogs doing what they do best.
