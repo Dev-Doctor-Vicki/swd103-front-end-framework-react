@@ -232,7 +232,7 @@ That’s it, quick and simple. Now,  import `Axios` and any of its helper method
 
 ` import axios from ‘axios'`
 
-### Adg Bulma
+### Add Bulma
 
 You could add Bulma as a dependency just like Axios, but for familiarity’s sake, add it in the same way you did in the last project. 
 
@@ -248,9 +248,9 @@ Next, add the following line somewhere between the opening and closing `<head></
 ```
 You can also edit the title of the page between the `<title></title>` tags too if you like.
 
-## Creating Your App’s Files
+## Create Your App’s Files
 
-Now that you’re will be implementing a data handler to act as a middle man between the API and your components, there are a couple more files you will use.:
+Now that you will be implementing a data handler to act as a middle man between the API and your components, there are a couple more files you will use.:
 
 1. `App.js` — the familiar project starting point where all the magic happens.
 
@@ -268,7 +268,7 @@ So start editing your files and putting all the pieces together.
 
 ### Obtain an API Key
 
-There are manyfree APIs, but most usually offer their APIs from behind an authentication key. This helps to limit abuse and helps the API provider keep track of the volume of requests across a given range of accounts. 
+There are many free APIs, but most usually offer their APIs from behind an authentication key. This helps to limit abuse and helps the API provider keep track of the volume of requests across a given range of accounts. 
 
 [TheDogAPI - Dogs as a Service](https://thedogapi.com/) is no different. Fortunately, it’s really simple to request an API key from them. 
 
@@ -300,13 +300,13 @@ Under the ‘API Reference’ heading, however, is where you find information ab
 
 ![](assets/dog-api-test-results.jpeg)
 
-The page contains information about authorization, which parameters you can supply to the /breeds endpoint (in this case there are three), as well as the response data you’ll receive following a successful call. 
+The page contains information about authorization, which parameters you can supply to the `/breeds` endpoint (in this case there are three), as well as the response data you’ll receive following a successful call. 
 
 The most useful part of this page is the ‘Send a Test Request’ section. If you hit the orange ‘Send’ button, the API will generate a sample call with real data. 
 
 ![](assets/dog-api-test.jpeg)
 
-The API URL, https://api.thedogapi.com/v1, you will use this in a moment.
+You will use the API URL, https://api.thedogapi.com/v1, in a moment.
 
 The response from the test API call looks like this:
 
@@ -343,7 +343,7 @@ For example, you might have a staging file and a production one, each containing
 
 There are no hard and fast rules to what you can keep in such a file, but generally, you’ll store relatively insensitive information that changes between different environments, such as URLs, names of things, or version numbers.
 
-For  your project, however, you’ll store the API URL and your API key in a `.env` file of your very own. 
+For your project, however, you’ll store the API URL and your API key in a `.env` file of your very own. 
 
 At the root of your project, create a new file and don’t give it a name. Instead, just type the file extension directly, so it should read `.env`. 
 
