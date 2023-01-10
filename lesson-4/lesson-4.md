@@ -177,7 +177,8 @@ This is the easy part. Head to [Netlify](https://www.netlify.com/) and you’ll 
 
 You’ll be taken to the signup screen, which will look like this:
 
-[](lesson-4.md)
+
+
 
 Sign up with your GitHub account. You’ll see  Netlify offers a range of options, including a simple email/password combination.
 
@@ -204,7 +205,14 @@ Hit the green ‘Add New Site’ button at the top right of the dashboard and yo
 
 ### Project Setup
 
+1. Get your  Starter Code
 
-The first step in the wizard is to choose the source for the website or app.
+  - https://codesandbox.io/s/l04-hands0n-furry-friends2-653l9v?file=/src/App.js
+
+ -  ![](assets/lo4-starter-code.png)
+
+
+  - ![](assets/lo4-starter-code.png)
+
 
 ![](assets/create-github-repo.png)
