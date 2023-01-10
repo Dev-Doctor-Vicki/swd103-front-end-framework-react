@@ -171,6 +171,22 @@ In modern development environments, it’s much more common to deal with some so
 
 You've been briefly introduced to Netlify as an option for hosting your React apps and sites, but you’ll look in more depth here. Sign up for a new account, attach Netlify to our GitHub repositories, set up a build and deployment project for the Furry Friends Gallery Mark II, and finally, deploy your app to the world.
 
+## L04HandsOnFurryFriends2
+
+### Project Setup
+
+1. Get your  Starter Code
+
+  - https://codesandbox.io/s/l04-hands0n-furry-friends2-653l9v?file=/src/App.js
+
+ -  ![](assets/lo4-starter-code.png)
+
+
+  - ![](assets/lo4-starter-code.png)
+
+
+![](assets/create-github-repo.png)
+
 ### Step One - Create a New Account on Netlify
 
 This is the easy part. Head to [Netlify](https://www.netlify.com/) and you’ll be greeted with the company’s landing page. Look for the ‘Sign up ->’ button on the top right-hand side of the screen and click it.
@@ -180,7 +196,9 @@ You’ll be taken to the signup screen, which will look like this:
 ![](assets/netlify-signup.png)
 
 
-Sign up with your GitHub account. You’ll see  Netlify offers a range of options, including a simple email/password combination.
+ You’ll see  Netlify offers a range of options, including a simple email/password combination.
+
+ - Sign up with your GitHub account.
 
 You need to be logged in with GitHub, as it is arguably the most common. However, even if you choose another provider, the meat and potatoes of the lesson here will work in the same way. The main differences will be around signin, choosing your repository and any special GitHub commands.
 
@@ -201,18 +219,3 @@ If I were to click on one of these, I’ll be taken to a sub-dashboard with spec
 Hit the green ‘Add New Site’ button at the top right of the dashboard and you’ll be taken through the new site wizard.
 
 
-## L04HandsOnFurryFriends2
-
-### Project Setup
-
-1. Get your  Starter Code
-
-  - https://codesandbox.io/s/l04-hands0n-furry-friends2-653l9v?file=/src/App.js
-
- -  ![](assets/lo4-starter-code.png)
-
-
-  - ![](assets/lo4-starter-code.png)
-
-
-![](assets/create-github-repo.png)
