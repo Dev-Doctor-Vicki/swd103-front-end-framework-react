@@ -199,7 +199,12 @@ If I were to click on one of these, I’ll be taken to a sub-dashboard with spec
 
 Hit the green ‘Add New Site’ button at the top right of the dashboard and you’ll be taken through the new site wizard.
 
-### Connect to a Git provider
+
+## L04HandsOnFurryFriends2
+
+### Project Setup
+
 
 The first step in the wizard is to choose the source for the website or app.
 
+![](assets/create-github-repo.png)
