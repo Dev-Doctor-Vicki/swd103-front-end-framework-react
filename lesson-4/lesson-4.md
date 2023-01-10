@@ -175,7 +175,7 @@ You've been briefly introduced to Netlify as an option for hosting your React ap
 
 ### Project Setup
 
-1. Get your  Starter Code
+1. Go to Starter Code,
 
   - https://codesandbox.io/s/l04-hands0n-furry-friends2-653l9v?file=/src/App.js
 
@@ -185,8 +185,13 @@ You've been briefly introduced to Netlify as an option for hosting your React ap
 
   ![](assets/fork-starter-code.png)
 
+3. Sign in If you aren't already.
 
-![](assets/create-github-repo.png)
+  ![](assets/sign-in.png)
+
+4. Save project
+
+  ![](assets/create-github-repo.png)
 
 ### Step One - Create a New Account on Netlify
 
