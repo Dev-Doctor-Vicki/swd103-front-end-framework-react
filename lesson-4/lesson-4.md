@@ -179,10 +179,11 @@ You've been briefly introduced to Netlify as an option for hosting your React ap
 
   - https://codesandbox.io/s/l04-hands0n-furry-friends2-653l9v?file=/src/App.js
 
- -  ![](assets/lo4-starter-code.png)
+   ![](assets/lo4-starter-code.png)
 
+2. Fork the Starter Code
 
-  - ![](assets/lo4-starter-code.png)
+  ![](assets/fork-starter-code.png)
 
 
 ![](assets/create-github-repo.png)
