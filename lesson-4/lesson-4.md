@@ -191,6 +191,10 @@ You've been briefly introduced to Netlify as an option for hosting your React ap
 
 4. Save project
 
+  ![](assets/save-file.png)
+
+5. Export to GitHub
+
   ![](assets/create-github-repo.png)
 
 ### Step One - Create a New Account on Netlify
