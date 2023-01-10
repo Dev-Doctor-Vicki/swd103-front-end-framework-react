@@ -177,7 +177,7 @@ This is the easy part. Head to [Netlify](https://www.netlify.com/) and you’ll 
 
 You’ll be taken to the signup screen, which will look like this:
 
-
+![](assets/netlify-signup.png)
 
 
 Sign up with your GitHub account. You’ll see  Netlify offers a range of options, including a simple email/password combination.
