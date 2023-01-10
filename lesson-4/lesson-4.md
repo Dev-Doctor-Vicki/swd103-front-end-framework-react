@@ -108,7 +108,7 @@ It also has a free option with very minimal pricing to add extra services and fe
 
 ## Build an app to Deploy
 
-React apps need to be built and packaged  for deployment before you can think about sending them off to a hosting platform. This assignment covers how to build your React apps, ready for deployment.
+React apps need to be built and packaged for deployment before you can think about sending them off to a hosting platform. This assignment covers how to build your React apps, ready for deployment.
 
 ### How to build your Projects
 
@@ -135,7 +135,7 @@ Take another look at your project directory. You should see a new folder, `/buil
 
 This `/build` folder is the one you’ll want to deploy in the coming lessons as it holds the minified, optimized code that our hosting provider will be able to serve to your visitors.
 
-## Continuous Deployment and Continuous I1. ntegration
+## Continuous Deployment and Continuous Integration
 
 Continuous deployment and integration is often shortened to CI/CD. Continuous deployment is a broad term that encapsulates the processes that happen when new code is committed to a codebase.
 
@@ -159,7 +159,7 @@ It’s not imperative that you have a detailed knowledge of how to build and dep
 
 Now that you’ve got an idea of the concepts involved in building and deploying your apps and websites, start deploying your very own project.
 
-## Sett up Deployment on Netlify
+## Set Up Deployment on Netlify
 
 You'll walk through the deployment process to host your Furry Friends Gallery Mark II app on the Netlify hosting platform.
 
@@ -179,7 +179,7 @@ You’ll be taken to the signup screen, which will look like this:
 
 [](lesson-4.md)
 
-Sign up however you wish. You’ll see  Netlify offers a range of options, including a simple email/password combination.
+Sign up with your GitHub account. You’ll see  Netlify offers a range of options, including a simple email/password combination.
 
 You need to be logged in with GitHub, as it is arguably the most common. However, even if you choose another provider, the meat and potatoes of the lesson here will work in the same way. The main differences will be around signin, choosing your repository and any special GitHub commands.
 
@@ -188,3 +188,18 @@ You need to be logged in with GitHub, as it is arguably the most common. However
 If you choose to sign up using GitHub or one of the other code versioning platforms, you’ll be whisked off to their specific signin screens to authenticate and then authorize Netlify to be able to read your repository information.
 
 Once authorized, you’ll be taken to the Netlify dashboard. Here’s mine:
+
+![](assets/netlify-dashboard.png)
+
+On the dashboard, you have easy access to high-level account settings, such as domains, builds, billing, and any team members you have.
+
+You see on my dashboard a list of my Netlify-hosted projects.
+
+If I were to click on one of these, I’ll be taken to a sub-dashboard with specific information related to this site, such as deploys, previews, and settings. We’ll look at this screen in more depth shortly, but for now, we’re going to add a new project!
+
+Hit the green ‘Add New Site’ button at the top right of the dashboard and you’ll be taken through the new site wizard.
+
+### Connect to a Git provider
+
+The first step in the wizard is to choose the source for the website or app.
+
