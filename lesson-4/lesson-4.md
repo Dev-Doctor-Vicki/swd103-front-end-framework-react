@@ -228,7 +228,7 @@ If I were to click on one of these, I’ll be taken to a sub-dashboard with spec
 
 Hit the green ‘Add New Site’ button at the top right of the dashboard and you’ll be taken through the new site wizard.
 
-$$$ Connect to Git Provider
+### Connect to Git Provider
 
 The first step in the wizard is to choose the source for the  app.
 
@@ -260,4 +260,121 @@ However, for clarity, you need to know what command to give to Netlify to trigge
 
 In your case, open up the project, Furry Friends Gallery Mark II, and look in the `package.json` file under the scripts section. Since this is a Create React App, you’ll see the command `build`. If you were to build this project yourself manually, in a terminal window you’d type `npm build`, so that’s what you’ll pass to Netlify in the ‘build command’ input.
 
+```
+"scripts": {
+  "start": "react-scripts start",
+  "build": "react-scripts build",
+  "test": "react-scripts test",
+  "eject": "react-scripts eject"
+},
+```
 
+Similarly, if you ran the npm build command and let it finish, you’d see a new folder in your project called `/build`. This is the location of the built and processed project files ready to be deployed. So, pass `build` as a folder to the ‘`publish directory`’ input here.
+
+### Advanced Build Options
+
+Usually, this is where you’d leave things and just click the ‘Deploy site’ button. However, you need an extra step because your Furry Friends Gallery is using environment variables.
+
+At the bottom of this page, look at the ‘Advanced build settings’ section, where it talks about environment variables.
+
+In the previous section, we introduced the concept of environment variables and how they’re stored in `.env` files. The drawback to `.env` files is they are usually stored on each developer’s local machine and not checked into code versioning systems and are therefore not available to build systems, such as Netlify.
+
+When you built the Furry Friends Gallery Mark II in the very last lesson, you used two environment variables to access your Dog API, namely `REACT_APP_DOG_API_URL` and `REACT_APP_DOG_API_KEY`.
+
+So how do you make these variables available at build time for an app in Netlify? Fortunately, like all good build pipelines, Netlify provides us with the option to add environment variables to be used at build time.
+
+If you take a look towards the bottom of the build settings screen you’ll see an ‘Advanced build settings’ section.
+
+![](assets/adv-build.png)
+
+This is where you can add our variables to enable the site to connect with your Dog API.
+
+Click the ‘New variable’ button twice and you’ll see two sets of two inputs appear that hold `key` and `value` values respectively.
+
+Enter your environment variables for the API URL and access key into these new inputs like this:
+
+![](assets/variables-enter.png)
+
+With that covered, it’s time to deploy our hard work!
+
+Hit the green ‘Deploy site’ button and you’ll be taken to the project’s dashboard to check on the build progress.
+
+## Step three - Inspect the Build via the Project Dashboard
+
+So here you are, the project dashboard for your project. It should look something like this:
+
+![](assets/build-dashboard.png)
+
+Up at the top of the dashboard, you’ll see a funny looking name. Unless you’re using a custom domain for the project, Netlify will assign a random three-part name you can use to identify the project in lists and access publicly (once it’s deployed), at an address that looks like https://[your-unique-name].netlify.app. Note, yours will look different from the one I have here.
+
+This topmost area also holds a preview of the deployed site (once it’s finished) as well as the status of the current build and deploy. Notice that yours is currently set as yellow with a ‘site deploy in progress’ message.
+
+The other main points of interest here are the ‘Getting started’ section and the ‘Production deploys’ area. ‘Getting started’ is a one-time panel that shows for all new projects you add to Netlify. Once your site has deployed successfully, you’ll be given the option to bring in and use a custom domain, and finally, to add a free SSL certificate. Leave the custom domain and SSL for now as they’re outside the scope of this course, but Netlify has fantastic documentation on custom domains and how to use them in your projects.
+
+With ‘Production deploys’ you’ll find a list of the most recent deploys for your project and whether they succeeded or failed. You can inspect each separate build run to see a log of exactly what happened during the build.
+
+### Handling Build Errors
+
+After a while, you should see your project has finished building and then you can view your hard work in all its glory on the public URL.
+
+But oh no, what’s this?! Red text, a warning and a message about ‘site deploy failed’!
+
+![](assets/build-errors.png)
+
+Something’s gone wrong with our build and the build has failed. Fortunately, you can step into the specific build run and see what exactly went wrong.
+
+Looking under the ‘Production deploys’ area of the project dashboard, you can see that we have at least one build run with a Failed tag in red, next to it.
+
+![](assets/prod-build-errors.png)
+
+Click on the most recently failed build to view the build log. Under this wall of white on black terminal style text you can scroll down to see the specific point in the build where things went wrong and look for a possible solution.
+
+The error here is a rather specific build environment error unique to Netlify. From the middle of 2020, Netlify started adding a CI=true environment variable to all builds on its platform. All build environments such as Netlify will have a list of standard, internal environment variables that they make available to projects during builds, but this one causes an easy-to-fix issue with Create React App in particular.
+
+The main problem here is this automatically injected environment variable `CI=true` causes the build of your project to interpret some rather innocuous warnings as real problems, shutting down the build.
+
+You can read all about this specific issue on the [Netlify community blog](https://community.netlify.com/t/new-ci-true-build-configuration-treating-warnings-as-errors-because-process-env-ci-true/14434) where they have an entire thread dedicated to this problem and how to solve it.
+
+Fortunately, it’s a really easy fix that you’ll apply now.
+
+## Step Four - Exploring the Build Settings
+
+Fixing your build error is quite straightforward and only takes a simple change to the build settings, but it also gives a good opportunity to review your build settings and see what else is in there.
+
+From the project dashboard, click the ‘Site settings’ menu item in the top navigation. Once in the site settings, click the ‘Build & deploy’ link from the left-hand navigation menu.
+
+This section is where you can discover and edit all the settings related to your site or app's build and deployment. You can change the deployment branch, environment variables, apply post-processing tricks like injecting Google Analytics into your site, and control who gets what notifications.
+
+![](assets/edit-settings.png)
+
+For now, however, you’re concerned with the very top box ‘Build settings’. Click the ‘Edit settings’ button and change the ‘Build command:’ input box from yarn build to CI= yarn build.
+
+![](assets/ci-setting.png)
+
+Hit the ‘Save’ button and that’s it: such a simple fix, but now, Netlify will not interfere with our Create React App build and you’ll find things go much more smoothly from now on.
+
+### Triggering a New Deployment
+
+The last thing is to trigger a new build and deploy run. To do that, head over to the ‘Deploys’ section from the top navigation. This area lists out the most recent deployments as well as giving access to deployment settings, notifications and stopping automatic publishing.
+
+For your needs, you’re mainly concerned with the ‘Trigger deploy’ select element in the top right of your deployment list. Click ’Trigger deploy’ and then select ‘Deploy site’ to kick off a new site deployment.
+
+![](assets/trigger-deploy.png)
+
+This will add a new deployment item to the existing list and mark it as ‘in progress’. If you click into this new build you’ll be able to follow along in real-time as Netlify builds the project.
+
+![](assets/build-dashboard.png)
+
+Hopefully, if everything goes according to plan, you’ll reach a nice blue box surrounding the message ‘Netlify Build Complete’. If you reach this point, everything’s built and you’ll be able to go view your deployed project at your very own unique URL.
+
+## Step Five - Viewing the Deployed App
+
+Back at the top of the screen, click the ‘`< Deploys`’ link to get back to the Deploys dashboard, and then take a look at the nice green URL under your project name.
+
+![](assets/deploy-preview.png)
+
+Mine will look different from yours, but the point here is you can click this link to open a new screen which will have your lovely Furry Friends Gallery Mark II running.
+
+![](assets/app-preview.jpeg)
+
+Take a look at your public app and take it for a spin: select some breeds from the left, page through them, view the dog pictures.
