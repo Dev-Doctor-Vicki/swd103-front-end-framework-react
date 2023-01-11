@@ -214,7 +214,7 @@ You need to be logged in with GitHub, as it is arguably the most common. However
 
 ### Step Two - Create a New Project for Furry Friends Gallery
 
-If you choose to sign up using GitHub or one of the other code versioning platforms, you’ll be whisked off to their specific signin screens to authenticate and then authorize Netlify to be able to read your repository information.
+When you sign up using GitHub you’ll be whisked off to their specific signin screen to authenticate and then authorize Netlify to read your repository information.
 
 Once authorized, you’ll be taken to the Netlify dashboard. Here’s mine:
 
@@ -227,5 +227,37 @@ You see on my dashboard a list of my Netlify-hosted projects.
 If I were to click on one of these, I’ll be taken to a sub-dashboard with specific information related to this site, such as deploys, previews, and settings. We’ll look at this screen in more depth shortly, but for now, we’re going to add a new project!
 
 Hit the green ‘Add New Site’ button at the top right of the dashboard and you’ll be taken through the new site wizard.
+
+$$$ Connect to Git Provider
+
+The first step in the wizard is to choose the source for the  app.
+
+![](assets/module-5-git.png)
+
+In your case, choose GitHub. Click the GitHub button and you may see a popup asking to authenticate to your GitHub account. Once you’ve done that, you’ll be returned to the new site wizard and will be moved onto the next step, picking a repository.
+
+### Pick a repository
+
+In this step of the wizard, choose the repository where your deployable code is located. You can see mine is called real-world-react-module-4-demo in the screenshot, but yours might be called something different.
+
+Search through your repositories and find the one where your Furry Friend Gallery is located. Click on it to choose it and you’ll be moved onto the final part in the wizard, build options and deploy.
+
+### Build Options and Deploy
+
+So far so good (and simple). There’s a little bit more to this final step, but first, let’s check out the screen to see what’s going on here.
+
+![](assets/build-options.png)
+
+You can see in the first section the chance to assign an owner and a deployment branch. The owner's information is only relevant if you have multiple members in your team or multiple teams. The branch to deploy, however, might differ depending on your Git versioning approach.
+
+It’s quite common to have a main or master branch in your project. This will be the primary source of truth for the project and where all releases are made from. Leave this selection as main or master or whatever the default branch is unless you have a specific need to deploy your code from a different branch.
+
+In the basic build settings section, define your build command and directory where Netlify will look to find all the files it needs to deploy.
+
+Netlify does a pretty good job of working out what these values should be based on the type of project you’re deploying.
+
+However, for clarity, you need to know what command to give to Netlify to trigger the build process, as well as the final folder that is output as part of that build process.
+
+In your case, open up the project, Furry Friends Gallery Mark II, and look in the `package.json` file under the scripts section. Since this is a Create React App, you’ll see the command `build`. If you were to build this project yourself manually, in a terminal window you’d type `npm build`, so that’s what you’ll pass to Netlify in the ‘build command’ input.
 
 
