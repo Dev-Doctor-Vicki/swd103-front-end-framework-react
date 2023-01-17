@@ -1,18 +1,18 @@
-# Thinking in React
+# Think in React
 
-Successful React development involves being able to 'think in React'. You'll look at breaking down UI's into components and their relationships.
+Successful React development involves being able to 'think in React'. Look at breaking down UI's into components and their relationships.
 
-In the early lessons of the course you looked at the relationship between components in React. No matter what the size, structure, and complexity of the React project you’re dealing with, when it comes to components there are broadly two roles a component will have: they will either be a **parent** or a **child**.
+In the early lessons you looked at the relationship between components in React. No matter what the size, structure, and complexity of the React project you’ deal with, when it comes to components there are broadly two roles a component will have: they will either be a **parent** or a **child**.
 
 ## Parent and Child Component Relationships
 
-Most components are either a parent or a child and this isn’t a one to one relationship. Just like real life, parents can have parents, and children can themselves have children. The important thing to remember about this relationship is how you move information between them. It’s a core part of the React approach but one many beginners struggle with.
+Most components are either a **parent** or a **child** and this isn’t a one to one relationship. Just like real life, parents can have parents, and children can themselves have children. The important thing to remember about this relationship is how you move information between them. It’s a core part of the React approach but one many beginners struggle with.
 
-Here’s your earlier module’s diagram that highlights this information flow.
+Here’s your earlier lesson’s diagram that highlights this information flow.
 
 ![](assets/props-and-events.png)
 
-You can see that a parent component passes data or information down to a child via props, while a child component sends data and information back up to a parent via some sort of event. 
+You see a parent component passes data or information down to a child via props, while a child component sends data and information back up to a parent via some sort of event. 
 
 For example, a parent component which deals with calling an API to retrieve a list of users might pass a loading flag, `isLoading`, a value for the total number of users found, `totalUserCount`, and a function `nextPage()` to a child component which deals with displaying some paging elements in a nicely formatted way. The child component has a styled set of page elements and a button for the user to click to move onto the next page.
 
@@ -28,11 +28,11 @@ At this point you might be thinking, ‘well couldn’t we just move the button 
 
 So what’s the solution? Well, leave the button where it is, in the presentational child component, but attach the `props.nextPage()` function you passed down from the parent to the button’s `onClick` event. 
 
-What happens now is that when the user clicks the next page button, the button’s `onClick` event is triggered, this calls whatever function is attached to this event, which in our case is the passed in `nextPage()` function. The `nextPage()` function will be called and since it lives in the parent component, it’ll be handled there. The parent component will likely fetch more results from the API and then pass these new results down to the child competent, which will re-render and complete React’s component lifecycle once more.
+What happens now is when the user clicks the next page button, the button’s `onClick` event is triggered, this calls whatever function is attached to this event, which in our case is the passed in `nextPage()` function. The `nextPage()` function will be called and since it lives in the parent component, it’ll be handled there. The parent component will likely fetch more results from the API and then pass these new results down to the child competent, which will re-render and complete React’s component lifecycle once more.
 
 This is a fairly simple, yet common, example of data flow around your app and between components. Things can get complicated and a little ugly if you have many layers of children and you need to get data from a parent component higher in the chain to a much lower child component. This practice is called prop drilling and involves each child component in the chain having to grab a prop from its parent and pass it down to the next child. 
 
-In a later module, you'll be looking at more complex data and state management using the `useReducer` Hook and the Redux state management pattern. These concepts can avoid scenarios like prop drilling and reduce the dependency of unrelated components on each other for the sake of passing props down the line. 
+In a later lesson, you will look at more complex data and state management using the `useReducer` Hook and the Redux state management pattern. These concepts can avoid scenarios like prop drilling and reduce the dependency of unrelated components on each other for the sake of passing props down the line. 
 
 ### Component Types in the Wild
 
@@ -67,8 +67,8 @@ class MyClassComponent extends React.Component {
 	}
 }
 ```
-
-You might remember the look of this style of component construction from our earlier lessons where we built out some class-based components and refactored them.
+s
+You might remember the look of this style of component construction from our earlier lessons where you built out some class-based components and refactored them.
 
 This component will accept some props such as `firstName` and `lastName`, does some string manipulation to turn it into a single name property in state and renders a paragraph element pulling in the name and age values from state. 
 
@@ -138,7 +138,7 @@ const TitleDisplay = ({title, subtitle}) => (
 );
 ```
 
-As well as using the alternative construction of the component by using a `const` and an anonymous arrow function, you can see this component is much more of a simple beast. It accepts a `title` value, a `subtitle` value and returns a block of JSX that will format the input values consistently for our imaginary project.
+As well as using the alternative construction of the component by using a `const` and an anonymous arrow function, you see this component is much more of a simple beast. It accepts a `title` value, a `subtitle` value, and returns a block of JSX that will format the input values consistently for our imaginary project.
 
 ### Container Components
 
@@ -156,7 +156,7 @@ All higher-order components are, like all components, still just JavaScript func
 
 Back to HOCs in React; these are an advanced React technique of creating a function that takes a component and returns a new component.
 
-You’ll be using a number of HOCs in later lessons without even thinking about this concept, such as React Redux for managing a global state. Redux’s `connect()` function is a HOC, but you’ll discover this in an upcoming lesson.
+You will use a number of HOCs in later lessons without even thinking about this concept, such as React Redux for managing a global state. Redux’s `connect()` function is a HOC, but you discover this in an upcoming lesson.
 
 There is a really good example of a higher-order component on the official [React docs](https://reactjs.org/docs/higher-order-components.html) that goes into a lot deeper of an example for a use case. 
 
@@ -201,7 +201,7 @@ React components are modular, isolated slices of functionality that connect toge
 
 ### React Component Relationships
 
-Many beginners to React can get hung up on how to structure their components, asking questions like:
+Many beginners to React get hung up on how to structure their components, asking questions like:
 
 - When should they be split into new components?
 
@@ -274,7 +274,7 @@ const PostComment = ({ author, commentText, commentDate}) => (
 )
 ```
 
-Now admittedly this isn’t a huge component, but you can see you have a very familiar pattern in your user-info div. This slice of UI that renders a user’s avatar image with their name might be used across your site in several places: a blog comment; a user profile section; my account area; in a list of popular commenters; or in a recent visitors section. 
+Now admittedly this isn’t a huge component, but you see you have a very familiar pattern in your user-info div. This slice of UI that renders a user’s avatar image with their name might be used across your site in several places: a blog comment; a user profile section; my account area; in a list of popular commenters; or in a recent visitors section. 
 
 So straight away, you can pull out the user info section that houses their profile picture and their name into its own, reusable slice of UI like this:
 
@@ -335,7 +335,7 @@ So then, since you’re largely doing it for yoursef as developer and the mainte
 
 Keep in mind that every single thing doesn’t need to be a separate component. In our example above, it made sense to abstract the `UserAvatar` component. Sure, it’s a small slice of the UI (merely an image element and a paragraph), but this combination, coupled with some styling information, can be repeated across the site or app many times in many areas. 
 
-If you needed to change the look and feel or functionality of the user’s avatar, you now have a single, easily-tested component that just needs changing in one place.
+If you need to change the look and feel or functionality of the user’s avatar, you now have a single, easily-tested component that just needs changing in one place.
 
 It makes sense to abstract related pieces of UI information into distinct components, even if they are small. But try not to go so far as to make every single thing into a component as you’ll end up with a bloated project full of components that becomes hard to navigate.
 
@@ -347,7 +347,7 @@ Take a look at some common approaches to structuring your React projects.
 
 ### React’s own Base Project Structure
 
-You’ve created several projects using the Create React App tool so far, so start by looking at a brand new Create React App project structure and go from there:
+You created several projects using the Create React App tool so far, so start by looking at a brand new Create React App project structure and go from there:
 
 ![](assets/cra-folder-structure.jpeg)
 
@@ -406,7 +406,7 @@ profile/
 
 So here, you have a `/common` folder that houses several common or global files that will be shared across the app. Then, you have a `/feed` folder that houses everything related to the feed feature. Similarly, you have a `/profile` folder that deals with everything to do with a user’s profile.
 
-This is quite a neat approach and makes for easy maintenance and finding of files. You’ll notice a mixture of file types in there, including CSS files, `.js` functions, an API caller and the main `index.js` entry points for that route or feature.
+This is quite a neat approach and makes for easy maintenance and finding of files. You notice a mixture of file types in there, including CSS files, `.js` functions, an API caller and the main `index.js` entry points for that route or feature.
 
 This approach will be most helpful on larger, more complex projects but possibly overkill for smaller apps and sites.
 
@@ -434,7 +434,7 @@ components/
   ProfileHeader.css
 ```
 
-We have a dedicated `/api` folder that holds everything API-related. Then we have a `/components` that holds both the component itself and an associated CSS file.
+You have a dedicated `/api` folder that holds everything API-related. Then a `/components` that holds both the component itself and an associated CSS file.
 
 This is a much flatter structure that lends itself well to the type of files in your project. It could grow a little unwieldy if your project grows quite large or more complex. 
 
@@ -450,11 +450,16 @@ You can always change things as you go and refactor it as you need!
 
 ## L04HandsOn Project-Form Builder
 
-For your project in this lesson, you’ll be making a Form Builder app. The Form Builder will allow you to dynamically create a number of form fields using a JSON file. 
+### Requirements
+
+1. Read the entire lesson, and code along with the guided learning to create the Form Builder App
+2. Save your work frequently.
+
+For your project in this lesson, you create a Form Builder app. The Form Builder will allow you to dynamically create a number of form fields using a JSON file. 
 
 The final form will be assembled dynamically based on the JSON information and each form field's value will be captured in state.
 
-You’re essentially building a really simplified version of the popular React form generators such as [Formik](https://formik.org/). 
+You essentially build a really simplified version of the popular React form generators such as [Formik](https://formik.org/). 
 
 ![](assets/form-builder-app.png)
 
@@ -470,9 +475,9 @@ The Form Builder app is the most complex you've built so far. It builds on conce
 
 Time to build something fun, the Form Builder app!
 
-In this app, you’ll be taking a simple HTML form powered by React and allowing it to load in a range of form fields dynamically from a JSON file. 
+In this app, you will take a simple HTML form powered by React and allow it to load in a range of form fields dynamically from a JSON file. 
 
-It’s going to look like this when we’re done:
+It’s going to look like this when you’re done:
 
 ![](assets/form-builder-app%20(1).png)
 
@@ -480,7 +485,7 @@ It’s going to look like this when we’re done:
 
 Before you start building anything in code, however, it’s a great place to practice some of our ‘thinking in React’ skills. 
 
-As you get more experienced you can code up what you need to and look at refactoring this as you go. In fact, it can be really helpful to rapidly and roughly build something out and just get it working and then concern yourself with refining it once it does. 
+As you get more experienced, you can code up what you need to and look at refactoring this as you go. In fact, it can be really helpful to rapidly and roughly build something out and just get it working and then concern yourself with refining it once it does. 
 
 But at this stage, it’s a super useful exercise to do a bit of planning beforehand to get a mental model and layout of what components you’ll need to build, and how they’ll interact. 
 
@@ -628,7 +633,7 @@ Looking at this visual mapping, you can see you have three main components and a
 
 ## Project Setup
 
-This part of the build should be starting to look familiar by now as you’re going create a new project with Create React App, removing some default files you don’t need, and adding Bulma’s CSS framework to the project.
+This part of the build should be starting to look familiar by now as you create a new project with Create React App, remove some default files you don’t need, and add Bulma’s CSS framework to the project.
 
 Open a terminal window and navigate to the parent folder you want to create the new project in. Next, type the `create-react-app` command as follows:
 
@@ -657,9 +662,9 @@ It should be on line 3 of the `index.js file`. This will just remove a link to t
 
 After that, locate `/src/index.css` and delete the file.
 
-Next, find the `/src/App.css` file and open it. Highlight all the contents and delete the existing styles. Save and close the file.
+Find the `/src/App.css` file and open it. Highlight all the contents and delete the existing styles. Save and close the file.
 
-Finally, open the main `App.js` file located at  `/src/App.js`.  Locate the following line (around line 2) that imports a `logo.svg` file, and remove it:
+Open the main `App.js` file located at  `/src/App.js`.  Locate the following line (around line 2) that imports a `logo.svg` file, and remove it:
 
 `import logo from ‘./logo.svg'`
 
@@ -776,7 +781,7 @@ Add a couple more fields to get a feel for how the rendered form fields will loo
 }
 ```
 
-You can see already you've left a couple of properties out of the password and phone number objects and you’ll discover how this affects the rendered output later on.
+You see already you left a couple of properties out of the password and phone number objects and you’ll discover how this affects the rendered output later on.
 
 ## Create the FormFieldInput Component
 
@@ -799,7 +804,7 @@ export default FormFieldInput;
 
 ### Incoming Props
 
-Next up, you need to define some props the `FormFieldInput` component will receive. These will be pretty much the same as those in the JSON file you just defined. Add them into the component using the JavaScript destructuring syntax we used previously:
+Next up, define some props the `FormFieldInput` component will receive. These will be pretty much the same as those in the JSON file you just defined. Add them into the component using the JavaScript destructuring syntax we used previously:
 
 **src/components/FormFieldInput.jsx**
 
@@ -815,13 +820,13 @@ const FormFieldInput = ({
 }) => {
 ```
 
-You can see they share the same name as the properties in the JSON file. This is useful as it means you can pass these directly from the JSON file into the component as you’ll see a little bit later on.
+You see they share the same name as the properties in the JSON file. This is useful as it means you can pass these directly from the JSON file into the component as you’ll see a little bit later on.
 
-The only additional prop you need is the `handleFieldChange`. You’ll use this as part of your input `onChang`e` event to inform the parent component your field’s value has changed.
+The only additional prop you need is the `handleFieldChange`. You use this as part of your input `onChang`e` event to inform the parent component your field’s value has changed.
 
 ### Handle Input Changes
 
-With your incoming props mapped out, you’ll set up your state and handle any changes on the input element.
+With your incoming props mapped out, set up your state and handle any changes on the input element.
 
 **src/components/FormFieldInput.jsx**
 
@@ -837,7 +842,7 @@ With your incoming props mapped out, you’ll set up your state and handle any c
   };
 ```
 
-You’re using the `useState` Hook you imported at the top of the component to keep track of your input element’s value. 
+You use the `useState` Hook you imported at the top of the component to keep track of your input element’s value. 
 
 With the `handleOnInputChange` function, you capture the synthetic event, `e`, that React kindly provides. Use the value property like this, `e.target.value`, to update your state value using the `setValue` function returned from your Hook. 
 
@@ -889,11 +894,11 @@ The input’s value attribute is using the value from state. This makes the inpu
 
 With `placeholder`, if that’s empty or null, then the input just won’t display anything, so that’s fine. 
 
-With `required`, you need to cater to a null value. If you pass `true` or `false`, that’s fine, because `required` will exist and have some boolean value. However, if it’s `null` or `empty` or `undefined` (or some other ‘falsey’ value) then this could cause issues. To cater to this, add a simple logical `OR` short circuit, the `required || false`. You’ll become familiar with this as you look through React projects. It’s a common expression to find that essentially says ‘evaluate the first part of the expression and if it’s false, evaluate and return the second. 
+With `required`, you cater to a null value. If you pass `true` or `false`, that’s fine, because `required` will exist and have some boolean value. However, if it’s `null` or `empty` or `undefined` (or some other ‘falsey’ value) then this could cause issues. To cater to this, add a simple logical `OR` short circuit, the `required || false`. You’ll become familiar with this as you look through React projects. It’s a common expression to find that essentially says ‘evaluate the first part of the expression and if it’s false, evaluate and return the second. 
 
 So, if required is null or undefined, set the attribute to ‘false’. 
 
-You’re doing a similar thing for the help text. You check to see if `helpText` is available. If it is, then check the section part of the expression after the `&&` and return it. This happens to be a JSX expression, which is also JavaScript, but it will get rendered out as a paragraph element containing your help text. 
+You do a similar thing for the help text. Check to see if `helpText` is available. If it is, then check the section part of the expression after the `&&` and return it. This happens to be a JSX expression, which is also JavaScript, but it will get rendered out as a paragraph element containing your help text. 
 
 This is a really handy and neat looking way to dictate if a portion of JSX is shown or not without complex `IF` statements or other complex mechanisms.
 
@@ -982,15 +987,15 @@ export default Form;
 
 Nice and simple to start with. Import `React` and `useState` from React. Then bring in your `FormFieldInput` component and define a `Form` component.
 
-As part of the initial JSX returned, you’re using a standard HTML form element with a React event `onSubmit` handled by the `onFormSubmit` function you’ll define in a moment.
+As part of the initial JSX returned, you use a standard HTML form element with a React event `onSubmit` handled by the `onFormSubmit` function you’ll define in a moment.
 
 Add a default button element with some Bulma wrapping and classes for styling purposes. The button doesn’t wire up to any event handling, but by default, when a button element exists within a form element, when it is clicked it triggers the form’s `onSubmit` event. 
 
 ### Incoming Props
 
-You just have two props to outline here; `handleFormSubmit` and `formFields`. The former is a function that will be called when you handle your form’s `onSubmit` event. Similar to the way the `FormFieldInput` handles its input value changes and then calls an event passed in by the parent, your `Form` component is going to do the same with `handleFormSubmit`. 
+You have two props to outline here; `handleFormSubmit` and `formFields`. The former is a function called when you handle your form’s `onSubmit` event. Similar to the way the `FormFieldInput` handles its input value changes and then calls an event passed in by the parent, your `Form` component is going to do the same with `handleFormSubmit`. 
 
-The latter, `formFields` will be an array of form field data objects that you’ll loop through and use to render a separate `FormFieldInput` component. 
+The latter, `formFields` will be an array of form field data objects you’ll loop through and use to render a separate `FormFieldInput` component. 
 
 **src/components/Form.jsx**
 
@@ -1025,13 +1030,13 @@ You have your props defined. Outline some variables and event handlers:
   }
 ```
 
-The `formValues` variable uses the familiar `useState` Hook and you’ll use it to add or update any new form field values as they change.
+The `formValues` variable uses the familiar `useState` Hook and you use it to add or update any new form field values as they change.
 
 The `handleFormValuesChange` function is what you pass down to any and all child `FormFieldInput` components. It’ll be fired on each input change in the child component and its sole job is to take the updated value and add or amend it in your local `formValues` state object.
 
 Similarly, the `onFormSubmit` function does a simple, singular task. After preventing the form from causing a full page refresh using `e.preventDefault()`, it checks to see if the props function `handleFormSubmit` is available. If so, it calls it, passing up the current state of `formValues`. 
 
-In your case, the parent component here will be `App` and you’ll look at what you do with the `formValues` it receives shortly when you build that component out.
+In your case, the parent component here will be `App` and you look at what you do with the `formValues` it receives shortly when you build that component out.
 
 ## Define the JSX
 
@@ -1055,13 +1060,13 @@ Leaving the majority of the current JSX you defined intact, replace the commente
 
 Your `formFields` prop is an array of objects, each containing a set of form field properties. You’re using the `.map()` function on the array to loop through and return a new array full of JSX markup; in this case, each item in the `formFields` array will return a new `FormFieldInput` component.
 
-You’re adding a key attribute, which is vital when producing output in a loop. This is what React uses to keep track of changes in repeated sections of JSX. Then add in the `handleFormValuesChange` function to the attribute `handleFieldChange` so that it’s passed into the child component. 
+You add a key attribute, which is vital when producing output in a loop. This is what React uses to keep track of changes in repeated sections of JSX. Then add in the `handleFormValuesChange` function to the attribute `handleFieldChange` so that it’s passed into the child component. 
 
 ### Destructure prop Attributes
 
 The next bit might look a little strange. Take a look at the `{…fieldDetails}` line. You might recognize the `...` syntax as the object destructuring syntax built into newer versions of JavaScript.
 
-However, you’re using it here as shorthand instead of typing out each individual property on the `FormFieldInput` component.
+However, you use it here as shorthand instead of typing out each individual property on the `FormFieldInput` component.
 
 You’ll remember from when we defined the component that it expects the following props:
 
@@ -1181,7 +1186,7 @@ import Form from './components/Form';
 import data from './data/formfields.json';
 ```
 
-You’re bringing in both the `Form` component and the `JSON` data from the `formfields.json` file. 
+You bring in both the `Form` component and the `JSON` data from the `formfields.json` file. 
 
 Next, inside of the `App` functional component, use `useState` to set up a place to house the collected form values when the HTML form is submitted. 
 
@@ -1234,13 +1239,13 @@ return (
 );
 ```
 
-Everything so far should look pretty straightforward. Bulma, like most CSS frameworks, dictates a lot of additional styles and some additional markup to layout and style everything according to its own approach. Here, you’re adding a `section`, `container`, `title` and some columns which Bulma bases on the flexbox CSS model. The box class will give your form a nice surrounding border and box-shadow. 
+Everything so far should look pretty straightforward. Bulma, like most CSS frameworks, dictates a lot of additional styles and some additional markup to layout and style everything according to its own approach. Here, you add a `section`, `container`, `title` and some columns which Bulma bases on the flexbox CSS model. The box class will give your form a nice surrounding border and box-shadow. 
 
 Meanwhile, on the other side, the `notification` class will highlight your eventually outputted form values with a background and some spacing. 
 
-The only other thing for now is that you have a ‘clear results’ button that calls the `setSubmittedValues()` method to reset the value in state, effectively clearing out the results you'’ll display in a moment.
+The only other thing for now is you have a ‘clear results’ button that calls the `setSubmittedValues()` method to reset the value in state, effectively clearing out the results you'’ll display in a moment.
 
-Let’s output some of the form values you can expect to receive when the form is submitted:
+Output some of the form values you can expect to receive when the form is submitted:
 
 **src/App.js**
 
@@ -1264,7 +1269,7 @@ The first code block uses the logical `AND` shortcut to check if the `submittedF
 
 Next, define a standard unordered list and do a similar statement as you’ve just done. This time you look through each `key:value` pair in the `submittedFormValues` object using JavaScript’s `Object.entries()`. Again, here’s some great documentation on the [MDN developer site](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries). 
 
-Each item in the loop gives both a key and a value for each property in the object in state. For each `key:pair` value, you’re returning (and rendering) an HTML list item element that contains this pair’s value. For example, if the current object property was `name: ‘Rob Kendal'` then you’re just be grabbing ’`Rob Kendal`’.
+Each item in the loop gives both a key and a value for each property in the object in state. For each `key:pair` value, you return (and render) an HTML list item element that contains this pair’s value. For example, if the current object property was `name: ‘Rob Kendal'` then you’re just be grabbing ’`Rob Kendal`’.
 
 Finally, add the `Form` component. 
 
@@ -1277,9 +1282,9 @@ Finally, add the `Form` component.
               />
 ```
 
-Simple, right? you’ve already completed all the hard work by defining and building out components. Now you have the relaxing job of just adding in the component. The only remaining thing is to wire up the `Form` component’s props, namely the `handleFormSubmit` event and the `formFields`. Youe’ve passed along the fields array from your JSON file into the `formFields` prop. 
+Simple, right? you already completed all the hard work by defining and building out components. Now you have the relaxing job of just adding in the component. The only remaining thing is to wire up the `Form` component’s props, namely the `handleFormSubmit` event and the `formFields`. You passed along the fields array from your JSON file into the `formFields` prop. 
 
-With the `handleFormSubmit` prop, you’re going to run an inline arrow function here that receives a values object containing the form field names and their values, and immediately call the `setSubmittedFormValues` to update these names in state. 
+With the `handleFormSubmit` prop, you run an inline arrow function that receives a values object containing the form field names and their values, and immediately call the `setSubmittedFormValues` to update these names in state. 
 
 As soon as the value of `submittedFormValues` in state changes, the component will render again, and your notification area will be populated (assuming of course that submittedFormValues contains any values!).
 
@@ -1352,7 +1357,9 @@ export default App;
 
 So, all that’s left to do is run the project and marvel at your handiwork. This might look like a fairly simple project on the surface, but it is deceptively deep when you get into it. 
 
-You’ve abstracted much repeated code into reusable, independent components that each manage their own state. You’ve employed some structured JSON data to dynamically dictate what types of form fields to render. And what’s more you’ve started to think in React to achieve all this, passing values and information down through props, and back up via events and handler functions.
+- You abstracted much repeated code into reusable, independent components that each manage their own state. 
+- You employed some structured JSON data to dynamically dictate what types of form fields to render. 
+- You started to think in React to achieve all this, passing values and information down through props, and back up via events and handler functions.
 
 If you’re not already running your project to check everything out, then open the terminal, locate the code folder and run the starting command, `npm start`. 
 
@@ -1366,4 +1373,19 @@ Add a new field and change some details on the others. As soon as you hit save o
 
 Now that’s really cool and so powerful for two components and not that many lines of code!
 
+**Optional Challenge**
 
+You built something very useful here that offers a lot of flexibility and power in such a small package. There are many ways to extend it which offer some challenges and you can take and experiment with.
+
+For example, you could:
+
+1. Look at adding in dynamic validation to the form field components.
+
+2. Add different types of HTML form elements, such as selects, text areas, or sliders.
+
+3. Add some moving parts to the Form component such as notifications on submission, call back functions, and introductory messaging. 
+
+#### Submission
+
+1. Zip project folder
+2. Upload folder
