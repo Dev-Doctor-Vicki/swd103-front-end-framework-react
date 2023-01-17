@@ -1,8 +1,8 @@
 # Lesson 2: React Core Concepts
 
-You've built and refactored a great React app. Now, it's time to talk about the fundamental principles of React components and core concepts.
+You built and refactored a great React app. Now, it's time to talk about the fundamental principles of React components and core concepts.
 
-In this lesson, we’re going to briefly introduce a core concept that lives at the heart of React and that’s how to pass data around between different components.
+In this lesson, you're going to briefly introduce a core concept that lives at the heart of React and that’s how to pass data around between different components.
 
 I meet a lot of students who are both new to coding or new to React and one of the common sticking points is how to deal with data; passing it to other components, and getting other data back into the original, parent component.
 
@@ -185,7 +185,7 @@ const useRolesForUser = userId => {
 };
 ```
 
-You have your custom Hook. No you can update your examples above to use it!
+You have your custom Hook. Now you can update your examples above to use it!
 
 **UserStatus.jsx**
 
@@ -337,7 +337,7 @@ For additional information, read this [documentation on Hooks(https://reactjs.or
 
 ## Common Hooks 
 
-In this section you'll take a look at the most common Hooks you'll come across and learn how to use them in your apps.
+In this section you take a look at the most common Hooks you'll come across and learn how to use them in your apps.
 
 ## L02 Hands On Guided Learning: Common Hooks
 
@@ -349,7 +349,7 @@ Arguably the most common Hooks you’ll encounter are:
 
 - and `useEffect` -  best thought of as replacing the React lifecycle events such as `componentDidMount` and `componentDidUpdate`.
 
-Before you move onto your big project in this lesson, take some time to familiarize yourself with the use of these two most common built-in Hooks.
+Before you move on to your big project in this lesson, take some time to familiarize yourself with the use of these two most common built-in Hooks.
 
 ## Requirements
 
@@ -362,7 +362,7 @@ Before you move onto your big project in this lesson, take some time to familiar
 
 ## Project Setup
 
-You will get an introduction to 'Create React App' in the next section as a great way to build new React projects. For now, keep things simple and familiar by using 'Parcel JS' to set up your project to bundle and run your React code for these examples.
+You wget an introduction to 'Create React App' in the next section as a great way to build new React projects. For now, keep things simple and familiar by using 'Parcel JS' to set up your project to bundle and run your React code for these examples.
 
 ### Configure Parcel JS
 
@@ -401,7 +401,7 @@ Your project is set up and ready to run. Add the necessary files to your project
 - UseEffectExample.jsx
 - UseStateExample.jsx
 
-`UseStateExample.jsx` and `UseEffectExample.jsx` are where you’ll do the main body of your work, so get your other files set up before you explore your example components.
+`UseStateExample.jsx` and `UseEffectExample.jsx` are where you do the main body of your work, so get your other files set up before you explore your example components.
 
 This will be the entry point for Parcel to start loading your JavaScript from. Import your main `App` component here and call React DOM’s `render()` method to mount it into the `HTML` element in your `index.html` file.
 
@@ -409,16 +409,16 @@ This will be the entry point for Parcel to start loading your JavaScript from. I
 
 ```
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 
 import App from './App';
 
-ReactDOM.render(<App />, document.querySelector('#root'));
+ReactDOM.createRoot (document.getElementById('root')).render(<App />);
 ```
 
 ### App.js
 
-In your `App` component, the main starting point for your React app, you use a Hook, the `useState` Hook.
+In your `App` component, the main starting point for your React app, use a Hook, the `useState` Hook.
 
 Look at the file in full:
 
@@ -465,7 +465,7 @@ You also have two buttons that both call the `setExample()` method to update the
 
 ### styles.css
 
-Many of the styles here are the same basic styles from your first example built in Lesson 1, the Greeting App. You add a couple  extra layout selectors at the bottom to add some flex box support and additional styling to some form elements, such as a `select` and `label`.
+Many of the styles here are the same basic styles from your first example built in Lesson 1, the Greeting App. You add a couple extra layout selectors at the bottom to add some flex box support and additional styling to some form elements, such as a `select` and `label`.
 
 **styles.css**
 
@@ -622,9 +622,9 @@ const [email, setEmail] = useState('');
 const [message, setMessage] = useState('');
 ```
 
-This is fine and you'll see this approach quite frequently. As with many things in development, there are personal preferences and trade-offs on how you tackle a problem and implement a solution. For me, it makes sense to group closely related slices of data, such a collection of form field values, into a single place (i.e. the `formValues` variable above), but it does add a little more overhead in dealing with updates to any particular form field's value. Conversely, if you have a really large form with many field values, breaking each one into a separate call to `useState` could potentially create much more code for you to manage and a very large component.
+This is fine and you see this approach quite frequently. As with many things in development, there are personal preferences and trade-offs on how you tackle a problem and implement a solution. For me, it makes sense to group closely related slices of data, such a collection of form field values, into a single place (i.e. the `formValues` variable above), but it does add a little more overhead in dealing with updates to any particular form field's value. Conversely, if you have a really large form with many field values, breaking each one into a separate call to `useState` could potentially create much more code for you to manage and a very large component.
 
-With the explanation out of the way, let’s build a little example app to demonstrate how to use `useState` and the values it can be used with.
+With the explanation out of the way, build a little example app to demonstrate how to use `useState` and the values it can be used with.
 
 First: open the `UseStateExample.jsx` file, where you’ll import React and create the empty component’s skeleton:
 
@@ -874,9 +874,9 @@ React has several lifecycle methods triggered during specific parts of a compone
 
 Before Hooks, developers would have to tie updates into these lifecycle methods; tasks such as fetching data, handling updates to props’ values, and cleaning up data handling or subscriptions to APIs. As you saw in lesson 1, this leads to messy and very complex components.
 
-What `useEffect` gives you is a combined method that runs on each render of a component. It can be used multiple times to separate any distinct logic, and it can also be passed an array of dependencies React will monitor for changes. Should any of those dependencies change, only then would that particular `useEffect` call be executed.
+`useEffect` gives you a combined method that runs on each render of a component. It can be used multiple times to separate any distinct logic, and it can also be passed an array of dependencies React will monitor for changes. Should any of those dependencies change, only then would that particular `useEffect` call be executed.
 
-Additionally, some work requires a clean up phase (e.g. subscriptions to external data sources). For these tasks, you return a function as part of your `useEffect` call to carry out any clean up code you need. Think of this as replacing the `componentWillUnmount` lifecycle event.
+Additionally, some work requires a clean up phase (e.g. subscriptions to external data sources). For these tasks, return a function as part of your `useEffect` call to carry out any clean up code you need. Think of this as replacing the `componentWillUnmount` lifecycle event.
 
 Look at the syntax closer to get an idea of how it works:
 
@@ -910,7 +910,7 @@ const MyComponent = props => {
 };
 ```
 
-Now that you know a little more about the `useEffect` Hook, you can build your component.
+Now that you know a little more about the `useEffect` Hook, build your component.
 
 Open the file `UseEffectExample.jsx` and get the basic component scaffolding in as well as your React imports:
 
@@ -926,7 +926,7 @@ const UseEffectExample = () => {
 export default UseEffectExample;
 ```
 
-In this example, you will build a simple gallery that loads everybody’s favorite: dog pictures! For this, you will use the fun [Dog CEO API](https://dog.ceo/dog-api/).
+In this example, you  build a simple gallery that loads everybody’s favorite: dog pictures! For this, you will use the fun [Dog CEO API](https://dog.ceo/dog-api/).
 
 ![](assets/dog-api-screenshot.png)
 
@@ -961,11 +961,11 @@ const UseEffectExample = () => {
 
 The Dog CEO API address will return a single image of a dog (that’s no good!), so append a random number onto this later on so we get a nice amount of dog images back.
 
-With state variables, `dogImageUrls` is set to an empty array to begin with but it will hold a list of picture URLs once the API has been called. With `loadPictures`, set it to ‘`false`’ for now, but you can use this to toggle whether the app is in the middle of loading data or not.
+With state variables, `dogImageUrls` is set to an empty array to begin with, but it will hold a list of picture URLs once the API has been called. With `loadPictures`, set it to ‘`false`’ for now, but you can use this to toggle whether the app is in the middle of loading data or not.
 
 ### Create the Image Fetching Function
 
-You need to call the API to get the pictures in the first place. You define that next:
+Call the API to get the pictures in the first place. You define that next:
 
 **UseEffectExample.jsx**
 
@@ -982,7 +982,7 @@ You need to call the API to get the pictures in the first place. You define that
 
   Use the native browser `fetch()` method here. In a realistic setting you may need to consider browser support and might need to look at using a polyfill or external utility like the Axios project.
 
-  The process is straightforward: `fetch()` calls the API, you massage the raw response into `JSON`, then you consume that `JSON` as the object data, extracting a message object (as defined by the Dog CEO API docs), which just happens to be an array of image URLs. Set this array in `state` using `setDogImageUrls()` method returned from the `useState` Hook.
+  The process is straightforward: `fetch()` calls the API, massage the raw response into `JSON`, then consume that `JSON` as the object data, extracting a message object (as defined by the Dog CEO API docs), which just happens to be an array of image URLs. Set this array in `state` using `setDogImageUrls()` method returned from the `useState` Hook.
 
 
 ### Create the useEffect Calls
@@ -1014,7 +1014,7 @@ You do, however, want to trigger a new fetch when the user clicks the ‘`load m
   }, [loadPictures]);
   ```
 
-You can see we supply `loadPictures` as a dependency on the `useEffect` Hook. When it changes, React will execute whatever we supply to the function. In this case, we check to make sure that it’s set to ‘`true`’, calling the API again before setting the value back to ‘`false``’, which will enable the button to work again.
+You see you supply `loadPictures` as a dependency on the `useEffect` Hook. When it changes, React will execute whatever you supply to the function. In this case, check to make sure it’s set to ‘`true`’, calling the API again before setting the value back to ‘`false``’, which will enable the button to work again.
 
 You may be asking ‘won’t this just trigger this effect to be called again, even when `loadPictures` is set back to ‘`false`’?!’. The answer is ‘yes’, but by checking if it’s set to ‘`true`’ at the start of the function, you avoid some horrible infinite loop scenario.
 
@@ -1051,11 +1051,11 @@ With all your logic in place, process the images and display an attractive galle
 
 Starting with a title, add a button that simply sets the `state` to ‘`true`’. As you discovered when you mapped out the `useEffect` calls, because React is watching this value as a dependency, it will automatically trigger a fetch of some new dog pictures.
 
-Under this, we display a message to the user based on the value of `loadPictures`: ‘…loading’ if set to ’`true`’; or the number dog pictures the user can be expected to see if ‘`false`’.
+Under this, display a message to the user based on the value of `loadPictures`: ‘…loading’ if set to ’`true`’; or the number dog pictures the user can be expected to see if ‘`false`’.
 
 Now the part you have been waiting for; the pictures themselves!
 
-Using the `.map()` function built into JavaScript, arrays step through your array of dog pictures outputting an image tag.
+Use the `.map()` function built into JavaScript,  for arrays to step through your array of dog pictures outputting an image tag.
 
 #### Note!
 
@@ -1127,39 +1127,40 @@ export default UseEffectExample;
 
 ## Furry Friend Gallery App
 
-You're going to build on the previous Hooks above by creating a dog picture gallery. First though, let's take a look at what you're going to build.
+Build on the previous Hooks above by creating a dog picture gallery. First though, take a look at what you're going to build.
 
-Upi’ll be building on the previous example, a dog picture gallery, but this time with a few enhancements.
+You will build on the previous example, a dog picture gallery, but this time with a few enhancements.
 
 Take a look at the app in action.
 
 ![](assets/furry-friends-gallery.png)
 
-You have a much improved UI thanks to the Bulma CSS framework.You’re accepting a number of dogs to search for from the user, displaying the dog pictures in a flexbox grid, and keeping track of how many dog pictures have been searched for to date.
+You have a much improved UI thanks to the Bulma CSS framework. You accept a number of dogs to search for from the user, display the dog pictures in a flexbox grid, and keep track of how many dog pictures have been searched for to date.
 
 This will also be your first journey into development using the **Create React App** starter project, provided by Facebook itself.
 
 You’re not building anything super complex just yet. There are a few moving parts to consider and some judicious use of both the `useState` and `useEffect` Hooks.
 
-## Build the Furry Frien Gallery
+## Build the Furry Friends Gallery
 
 This code-along assignment walks through using **Create React Ap**p to build a fully-functioning picture gallery; the Furry Friend Gallery.
 
 ### Introduction
 
-As you experienced in the quick code along of the Furry Friend Gallery, you’re going to build an app that talks to your familiar Dog CEO API, loads in a few starter pictures before turning control over to the user, allowing them to choose several images they’d like to fetch.
+As you experienced in the quick code along of the Furry Friend Gallery, you
+ will build an app that talks to your familiar Dog CEO API, loads in a few starter pictures before turning control over to the user, allowing them to choose several images they’d like to fetch.
 
-You’re going to start by creating a new React project using [Create React App](https://create-react-app.dev/).
+Start by creating a new React project using [Create React App](https://create-react-app.dev/).
 
 ### Create React App (CRA) Starter Project
 
-Until now, you’ve been using [Parcel JS](https://parceljs.org/) to set up and configure your React apps. It makes sense for smaller projects or apps and there’s certainly no problem with continuing to choose Parcel for more complex needs.
+Until now, you used [Parcel JS](https://parceljs.org/) to set up and configure your React apps. It makes sense for smaller projects or apps and there’s certainly no problem with continuing to choose Parcel for more complex needs.
 
-However, out in the real world commercial environments, you’ll often come across React projects with much more complexity around their configuration; from employing static code analysis using a tool like [ESLint](https://eslint.org/) or [Babel JS](https://babeljs.io/) to allow you to use the latest JavaScript features cross-browser, and code bundling and optimization with help from [Webpack](https://webpack.js.org/).
+However, out in the real world commercial environments, you often come across React projects with much more complexity around their configuration; from employing static code analysis using a tool like [ESLint](https://eslint.org/) or [Babel JS](https://babeljs.io/) to allow you to use the latest JavaScript features cross-browser, and code bundling and optimization with help from [Webpack](https://webpack.js.org/).
 
 **Create React App** is an official React starter project, developed and maintained by the Facebook Open Source team and it offers all of the above (and more) in one, convenient package with just one dependency.
 
-### CRA advantages
+### CRA Advantages
 
 Behind the scenes, the **Create React App** maintains an up-to-date and working configuration that employs modern coding best practices for setting up and working with a React project. It abstracts all of the complex setup required for Webpack to bundle your project’s files, as well as giving you a list of great code linting rules to ensure you’re adhering to generally accepted ‘good code’ standards.
 
@@ -1177,7 +1178,7 @@ For more information about this and a great guide on how to set up your own Reac
 
 ## Furry Friends Gallery Setup
 
-With that out of the way, let’s get started with your new gallery app by navigating to your `FEFReact` folder on your local machine in the terminal.
+With that out of the way, get started with your new gallery app by navigating to your `FEFReact` folder on your local machine in the terminal.
 
 1. `cd desktop`
 
@@ -1190,11 +1191,11 @@ With that out of the way, let’s get started with your new gallery app by navig
 
 From here, use the following command to create a brand new React project using the **Create React App** starter.
 
-`npm create react-app furry-friend-gallery`
+`npm create react-app furry-friends-gallery`
 
 Your terminal or command window will start processing and pulling in all the resources it needs to create a new project. This takes a while, so just wait until it finishes.
 
-When it’s done, you’ll have a success message in the terminal window featuring a list of commands.
+When it’s done, you have a success message in the terminal window featuring a list of commands.
 
 ![](assets/cra-terminal.png)
 
@@ -1204,7 +1205,7 @@ Before you do anything else, it’s a good idea to jump straight into the new pr
 
 So, follow the advice in your terminal output and enter the following commands:
 
-1. `cd furry-friend-gallery`
+1. `cd furry-friends-gallery`
 2. `npm start`
 
 After a few moments, you should see a webpage open up with a spinning React logo and a simple message:
@@ -1215,7 +1216,7 @@ Boom!! Everything’s looking great and your new project is almost ready to go!
 
 ### Clean up the Default Files
 
-*Create React App* does load in a few bare-bones files and styles to give you a jumping-off point. However, you’ll need to make a few changes to get everything cleaned up and ready for your new gallery app.
+*Create React App* does load in a few bare-bones files and styles to give you a jumping-off point. However, you need to make a few changes to get everything cleaned up and ready for your new gallery app.
 
 First; open `index.js`, located in `/furry-friend-gallery/src/` and remove the following line:
 
@@ -1225,11 +1226,11 @@ It should be on line 3 of the `index.js` file. This will just remove a link to t
 
 #### Note!
 
-If you're using a later version of React for your build-along projects, you'll want to remove the `<React.StrictMode>` tags from your `index.js` file. Strict mode was a troubleshooting tool that helped identify some common problems in development apps. However, it can also cause some unintended behaviour while you're getting familiar with some of the trickier Hooks, such as `useMemo`. You can read more about [strict](https://reactjs.org/docs/strict-mode.html) mode on the official React docs, but for now turn it off for this app, and I recommend doing the following for all of the upcoming projects too. 
+If you use a later version of React for your build-along projects, remove the `<React.StrictMode>` tags from your `index.js` file. Strict mode was a troubleshooting tool that helped identify some common problems in development apps. However, it can also cause some unintended behaviour while you're getting familiar with some of the trickier Hooks, such as `useMemo`. You can read more about [strict](https://reactjs.org/docs/strict-mode.html) mode on the official React docs, but for now turn it off for this app, and I recommend doing the following for all of the upcoming projects too. 
 
 To remove strict mode from your app, still in the `index.js` file, locate the code around line 9-10 that looks like this `<React.StrictMode>` and remove it. Also, find its matching closing tag, `</React.StrictMode>` a few lines further down and remove that too.
 
-Once you've removed strict mode and the default `index.css` file, your `index.js` file should look like this:
+Once you remove strict mode and the default `index.css` file, your `index.js` file should look like this:
 
 ```
 import React from 'react';
@@ -1268,7 +1269,7 @@ return (
 );
 ```
 
-Your project still contains a few default files, components, and assets loaded in by default, but you’re not going to worry about them for now as they’re not doing any harm just sitting there and they’re not currently being loaded anyway.
+Your project still contains a few default files, components, and assets loaded in by default, but don't worry about them for now as they’re not doing any harm just sitting there and they’re not currently being loaded anyway.
 
 ### Bulma CSS Framework
 
@@ -1278,13 +1279,13 @@ CSS frameworks specifically, give you access to a design system, providing many 
 
 You’ll be using one frequently throughout this course, the [Bulma CSS](https://bulma.io/documentation/components/card/) framework. It’s quite lightweight, simple to implement, and is based on modern CSS using Flexbox for much of its layout options.
 
-It can be loaded via an `npm` package or simply dropped into an `HTML` file as an external stylesheet resource (which we’ll be doing here). There is even a React-based component library you can add to your project.
+It can be loaded via an `npm` package or simply dropped into an `HTML` file as an external stylesheet resource (which you’ll be doing here). There is even a React-based component library you can add to your project.
 
 Take a look at the [Bulma doc](https://bulma.io/documentation/s) to familiarize yourself with the elements and components. For now,you’ll be adding to your app and using the CSS classes it gives to build your components.
 
 ## Create your Furry Friends Files
 
-Your project will to consist of just three files:
+Your project will consist of just three files:
 
 1. `App.js` — this is where the main action takes place
 
@@ -1313,7 +1314,7 @@ You can also edit the title of the page between the `<title></title>` tags if yo
 
 ### Create DogInfoCard.jsx
 
-`DogInfoCard` will be what’s known as a presentational component. It deals with the presentational aspects but usually no logic (or very little). A presentational component will accept one or more values as props or direct arguments and simply return a block of JSX to render out.
+`DogInfoCard` will be a presentational component. It deals with the presentational aspects. but usually no logic (or very little). A presentational component will accept one or more values as props or direct arguments and simply return a block of JSX to render out.
 
 Create a new file in the `/src` directory called `DogInfoCard.jsx` and drop in the following contents:
 
@@ -1340,17 +1341,17 @@ export default ({ imgUrl, breed }) => (
 );
 ```
 
-You use the destructuring syntax again to break the `imgUrl` and breed values out from the props object supplied to this component.
+Use the destructuring syntax again to break the `imgUrl` and breed values out from the props object supplied to this component.
 
-The markup here is based on Bulma’s card component. The subtle difference here is you’ve employed a little image display trick on the figure element.
+The markup here is based on Bulma’s card component. The subtle difference is you’ve employed a little image display trick on the figure element.
 
-Because the dog images are returned from the API in different sizes and aspect ratios, you can’t just drop them directly in using an `<img />` tag. You could but they’d look wonky and misshapen.
+Because the dog images are returned from the API in different sizes and aspect ratios, you can’t just drop them directly in using an `<img />` tag. You could, but they’d look wonky and misshapen.
 
-What you do here is apply the image to the figure element as a background which (via some styling we’ll take care of next) allows more control of how things look when the images are weird sizes and shapes.
+Apply the image to the figure element as a background, which (via some styling you’ll take care of next) allows more control of how things look when the images are weird sizes and shapes.
 
-However, to keep things nice and semantic and look after those users working with screen-readers, you’ll still use an `<img />` tag with the correct `src` and `alt` attributes, but apply a handy helper class, ‘`is-sr-only`’ which means the image won’t be visible on screen.
+However, to keep things nice and semantic and look after those users working with screen-readers, use an `<img />` tag with the correct `src` and `alt` attributes, but apply a handy helper class, ‘`is-sr-only`’ which means the image won’t be visible on screen.
 
-You render the breed name into the ‘`card-content`’ `div` as a nice addition so people can see what breed they’re looking at.
+Render the breed name into the ‘`card-content`’ `div` as a nice addition so people can see what breed they’re looking at.
 
 ### Edit App.css
 
@@ -1402,7 +1403,7 @@ const loadDogPictures = async (dogsToLoad = 8) => {
 };
 ```
 
-Here, you define the outline of the function, adding the `async` keyword before your single argument, `dogsToLoad`. Also set as a default to ‘`8`’. So, you specify a number of dogs' pictures to fetch from the API or leave it blank and you’ll get eight back.
+Here, define the outline of the function, adding the `async` keyword before your single argument, `dogsToLoad`. Set as a default to ‘`8`’. So, specify a number of dogs' pictures to fetch from the API or leave it blank and you’ll get eight back.
 
 Next, add your variables:
 
@@ -1416,9 +1417,9 @@ Next, add your variables:
 
 You have the static API URL, which is the base URL Dog CEO provides for a single random image. You can append this with a number (to a maximum of fifty) to return that many images.
 
-Next, you’ use the `await` keyword in front of the `fetch()` command which will pause the execution of things until the `fetch` method finishes up and returns. Notice how you use the template literals version of a String here to combine the base API URL and the number of pictures to fetch.
+Next, use the `await` keyword in front of the `fetch()` command which will pause the execution of things until the `fetch` method finishes up and returns. Notice how you use the template literals version of a String here to combine the base API URL and the number of pictures to fetch.
 
-Perform another `await` as we call to the `json()` method on the response from the API call. This will get your dog-related data in a nice, malleable JSON format, ready for doing with as you please.
+Perform another `await` as you call to the `json()` method on the response from the API call. This will get your dog-related data in a nice, malleable JSON format, ready for doing with as you please.
 
 What happens next is some manipulation of the data returned from the API. In its raw state, the API returns something like this:
 
@@ -1433,9 +1434,9 @@ What happens next is some manipulation of the data returned from the API. In its
 }
 ```
 
-Loop through the image URLs in the messages array, capturing the URL, generating an `id` value, and working out the breed.
+Loop through the image URLs in the messages array, capture the URL, generate an `id` value, and work out the breed.
 
-To do that, start by using `map()` to look at each image URL in turn.
+Start by using `map()` to look at each image URL in turn.
 
 **App.js**
 
@@ -1497,7 +1498,7 @@ const loadDogPictures = async (dogsToLoad = 8) => {
 ```
 ## App.js variables
 
-As with all good components, you start with the variables you’ will use. Define these at the top of the component to be used as you go along.
+As with all good components, start with the variables you will use. Define these at the top of the component to be used as you go along.
 
 **App.js**
 
@@ -1533,7 +1534,7 @@ Notice the use of JavaScript’s built-in async/await pairing in use in this fun
 
 ## useEffect Hooks
 
-This is where things get a little more interesting. You will use two separate calls to the `useEffect` Hook to handle two side-effects.
+This is where things get a little more interesting. You use two separate calls to the `useEffect` Hook to handle two side-effects.
 
 Let’s deal with the first:
 
@@ -1545,11 +1546,11 @@ Let’s deal with the first:
   }, [dogPictures]);
 ```
 
-This Hook call is just one line, but notice you’ve passed in `dogPictures` into the dependency array. What you’re saying here is ‘when `dogPictures` changes, execute whatever code is inside of the `useEffect` call’.
+This Hook call is just one line, but notice you passed in `dogPictures` into the dependency array. What you’re saying here is ‘when `dogPictures` changes, execute whatever code is inside of the `useEffect` call’.
 
 Inside the body of the function, set the `totalDogsSearched` value in state to the current value plus the length of the new array of pictures you’ll have when the value of `dogPictures` changes.
 
-You might be wondering about the unusual way  you’ve called the `setTotalDogsSearched()` function to update the `totalDogsSearched` value. Previously, you just passed in the new value you wish state to have, and that’s the way you usually do things.
+You might be wondering about the unusual way you called the `setTotalDogsSearched()` function to update the `totalDogsSearched` value. Previously, you just passed in the new value you wish state to have, and that’s the way you usually do things.
 
 However, if you did that here, although it would technically work, you’d be breaking one of the rules of Hooks and you’d most likely get an ESLint error that looks like this:
 
@@ -1559,9 +1560,9 @@ React Hook useEffect has a missing dependency: ‘totalDogsSearched’. Either i
 
 Because you’re referencing a value from your component (in this case, the state value `totalDogsSearched`) but not including it in the list of dependencies passed to `useEffect` you get this error. It’s a potential problem because you run the risk of using stale data. Each time the component updates, changes, or rerenders the value of `totalDogsSearched` could be different. You’re referencing that value and so you can see how it could cause problems.
 
-However, if you include it in the dependencies array, you’ll most likely run into an infinite loop because this effect will then be called when dogPictures or `totalDogsSearched` changes. But of course, you are changing `totalDogsSearched` so you can update your UI. Every time it changes, you call the `setTotalDogsSearched()` function to update it, then the effect runs again, and so on until our app stops working.
+However, if you include it in the dependencies array, you most likely run into an infinite loop because this effect will then be called when dogPictures or `totalDogsSearched` changes. But of course, you are changing `totalDogsSearched` so you can update your UI. Every time it changes, you call the `setTotalDogsSearched()` function to update it, then the effect runs again, and so on until our app stops working.
 
-The basic rule of thumb is if you’re going to reference a function or a value from state or props inside of `useEffect`, then you must include it in the dependency array.
+The basic rule of thumb is; if you’re going to reference a function or a value from state or props inside of `useEffect`, then you must include it in the dependency array.
 
 There is much more information available on this subject if you head over to the official [React documentation](https://reactjs.org/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often).
 
@@ -1569,7 +1570,7 @@ However, you fix this by using the functional form of the state update method. S
 
 This fixes the potential ‘stale data’ error you might run into and doesn’t run foul of the Hooks rules.
 
-Now define one last use of your `useEffect` Hook  you’ll call with an empty dependency array, so it’s only triggered on the first component mount. In here, you’ll need to make sure you kick off an initial load of some dog pictures to populate our app with.
+Define one last use of your `useEffect` Hook you’ll call with an empty dependency array, so it’s only triggered on the first component mount. In here, make sure you kick off an initial load of some dog pictures to populate our app with.
 
 ```
   useEffect(() => {
@@ -1581,7 +1582,7 @@ Now define one last use of your `useEffect` Hook  you’ll call with an empty de
     })();
   }, []);
 ```
-Once that’s defined you’ll see  you’re using the same form of functional update for setting various state values here. You also wrap all of these updates in a self-executing anonymous function (otherwise known as an immediately invoked function expression) that employs the async/await syntax.
+Once that’s defined you see you’re using the same form of functional update for setting various state values here. You also wrap all of these updates in a self-executing anonymous function (otherwise known as an immediately invoked function expression) that employs the async/await syntax.
 
 You could have defined a regular function in here too and then immediately called it, and that would work just fine. I’ve gone with personal preference here and opted for a simpler syntax
 
@@ -1661,17 +1662,15 @@ The picture display section looks like this:
       </div>
 ```
 
-You have a heading level three-element where you display the total number of pictures searched for using the `totalDogsSearched` value in state.
+You have a heading level three element where you display the total number of pictures searched for using the `totalDogsSearched` value in state.
 
 Next, show an animated progress bar if the `isLoading` value is set to ‘`true`’.
 
-Similarly, if isLoading is ‘`false`’, map over the `dogPictures` array in state, returning a new `DogCardInfo` component for each item in the array. This component is wrapped in a `div` with a ‘`column`’ class that will automatically render them side-by-side in the UI.
+Similarly, if `isLoading` is ‘`false`’, map over the `dogPictures` array in state, returning a new `DogCardInfo` component for each item in the array. This component is wrapped in a `div` with a ‘`column`’ class that will automatically render them side-by-side in the UI.
 
 ### The complete App.js file
 
-Here’s the complet `App` component:
-
-**App.js**
+Here’s the complete **App.js**
 
 ```
 import React, { useState, useEffect } from 'react';
