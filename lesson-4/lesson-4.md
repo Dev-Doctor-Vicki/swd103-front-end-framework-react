@@ -178,29 +178,10 @@ You were briefly introduced to Netlify as an option for hosting your React apps 
 
 ## L04HandsOnFurryFriends2
 
-### Project Setup
+### Requirements
 
-1. Go to Starter Code,
-
-  - https://codesandbox.io/s/l04-hands0n-furry-friends2-653l9v?file=/src/App.js
-
-   ![](assets/lo4-starter-code.png)
-
-2. Fork the Starter Code
-
-  ![](assets/fork-starter-code.png)
-
-3. Sign in If you aren't already.
-
-  ![](assets/sign-in.png)
-
-4. Save project
-
-  ![](assets/save-file.png)
-
-5. Export to GitHub
-
-  ![](assets/create-github-repo.png)
+1. Follow all instructions below
+2. Deploy your Furry Friends Gallery II to Netlife
 
 ### Step One - Create a New Account on Netlify
 
@@ -387,3 +368,9 @@ Mine will look different from yours, but the point here is you can click this li
 Take a look at your public app and take it for a spin: select some breeds from the left, page through them, view the dog pictures.
 
 Although you haven’t built anything new in this lesson, you covered an awful lot of ground in understanding how building and deploying your apps in a realistic setting works. You should give yourself a huge pat on the back and go grab a well-earned rest before we tackle the next lesson. 
+
+#### Submission
+
+1. Copy your Furry Friend's Galleryy II Netlify URL and paste on a document.
+2. Zip the document
+3, Upload the Zip Folder
