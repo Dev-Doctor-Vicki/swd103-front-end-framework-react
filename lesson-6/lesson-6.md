@@ -1,10 +1,10 @@
 # React Hooks Deep Dive
 
-You’ve covered Hooks fairly lightly up to this point and mainly focused on the two most used, namely `useState and `useEffect. 
+You covered Hooks fairly lightly up to this point and mainly focused on the two most used, namely `useState` and `useEffect`. 
 
-As you’ve previously discovered, Hooks were introduced to the React core library in version 16.8 (the current version at the time of writing this very module has just passed 18.0).  Their concept is quite simple: they allow us to ‘hook’ into various React features without using JavaScript classes.
+As you previously discovered, Hooks were introduced to the React core library in version 16.8 (the current version at the time of writing this very module has just passed 18.0).  Their concept is quite simple: they allow us to ‘hook’ into various React features without using JavaScript classes.
 
-In this lesson, you’re going to take a deeper dive into the available Hooks React provides out of the box.
+In this lesson, you take a deeper dive into the available Hooks React provides out of the box.
 
 There are a few things to note about Hooks from the [official documentation](https://reactjs.org/docs/hooks-intro.html):
 
@@ -46,13 +46,13 @@ const BadExample = (props) => {
 
 Notice how in `GoodExample` the `useState` Hook is called at the top level, so is an immediate descendant of the `GoodExample` function. (Note that they don’t have to be physically at the top of the component, but this is good idea from a readability point of view). We call `setMyValue` within a conditional `if` statement, but this isn’t calling the Hook, merely a value or variable returned from the `useState` Hook.
 
-However, in `BadExample`, we’re declaring a variable and calling the `useState` Hook inside of the conditional statement `if`(props.anotherCondition), which violates Rule 1 of Hooks.
+However, in `BadExample`, you declare a variable and call the `useState` Hook inside of the conditional statement `if`(props.anotherCondition), which violates Rule 1 of Hooks.
 
 The second rule is short and simple: you can only use Hooks from React Functions, either function-based components or your own custom Hooks (which we’ll talk about in a moment).
 
 ## Available Hooks
 
-React comes with quite a few Hooks built-in and these are the ones you’re going to explore throughout this lesson. 
+React comes with quite a few Hooks built-in and these are the ones you  explore throughout this lesson. 
 
 Here they are at a glance:
 
@@ -70,9 +70,9 @@ Here they are at a glance:
 
 - `useRef`
 
-You’re not going to cover `useState` or `useEffect` as you’ve already looked a little deeper at those in earlier lessons. Similarly you’re not going to cover `useReducer` here, because it will have a dedicated lesson. You need to cover the Redux topic before you can understand how to effectively use `useReduce`r. 
+You won't cover `useState` or `useEffect` as you already looked a little deeper at those in earlier lessons. Similarly you’re not going to cover `useReducer` here, because it will have a dedicated lesson. You need to cover the Redux topic before you can understand how to effectively use `useReduce`r. 
 
-There are a couple of Hooks not mentioned here, namely `useImperativeHandle`, `useLayoutEffect`, and `useDebugValue` that we’re going to leave alone this time around as you won't come across them very often.
+There are a couple of Hooks not mentioned here, namely `useImperativeHandle`, `useLayoutEffect`, and `useDebugValue` that you leave alone this time around as you won't come across them very often.
 
 ### useState Hook
 
@@ -114,11 +114,11 @@ The `useEffect` Hook can be thought of as an initial replacement for the other R
 
 ![](assets/useEffect.png)
 
-React components are concerned primarily with shuffling all the pieces into place to render some slice of the UI to the user. Anything that depends on mutations, subscriptions, timers, logging, or similar code you’d refer to as a ‘side-effect’ needs to live inside of the `useEffect` Hook. 
+React components are concerned primarily with shuffling all the pieces into place to render some slice of the UI to the user. Anything that depends on mutations, subscriptions, timers, logging, or similar code you refer to as a ‘side-effect’ needs to live inside of the `useEffect` Hook. 
 
 By default, `useEffect` runs on each and every render of the component. You can prevent this, however, by passing an optional argument: an array of dependencies.  This will mean the `useEffect` contents will only be run when any of the items in the dependency array change. 
 
-Another optional aspect is a return function. You don’t have to include a return function, but there are some times where you’ll want to perform some sort of clean up between `useEffect` firings. It might be that you need to remove an event listener, or a subscription to a data handler, or API. If you left these things in place, you could end up with memory leaks in your app. Fortunately, you can return a function from `useEffect` that is called each time the component unmounts or is removed from the UI. 
+Another optional aspect is a return function. You don’t have to include a return function, but there are some times where you want to perform some sort of clean up between `useEffect` firings. It might be you need to remove an event listener, or a subscription to a data handler, or API. If you left these things in place, you could end up with memory leaks in your app. Fortunately, you can return a function from `useEffect` that is called each time the component unmounts or is removed from the UI. 
 
 ### useReducer Hook
 
@@ -126,13 +126,18 @@ The `useReducer` Hook is a different approach to managing state. It’s similar 
 
 The `useReducer` Hook is heavily tied to the Redux state management pattern, which can be tricky to get your head around at first, so we’ll be leaving that until a later lesson.  Once you start covering Redux, you’ll look at the `useReducer` Hook in lots of depth.
 
-## L05HandsOn Project
+## L06HandsOn Project
+
+### Requirements
+
+1. Follow guided learning
+2. Create code for each hook
 
 **Project Setup**
 
-You’ll create a few demos; one for each new Hookyou learn. 
+You will create several demos; one for each new Hook you learn. 
 
-However, rather than making a brand-new project for each of the new Hooks you’re covering, you’ll make a single project that contains several components you can swap in and out to demonstrate a specific Hook you want to see in action.
+However, rather than making a brand-new project for each of the new Hooks you cover, you make a single project that contains several components you can swap in and out to demonstrate a specific Hook you want to see in action.
 
 Go all the way back to Lesson 2 for this one and quickly build up a skeleton project using Parcel JS.
 
@@ -150,12 +155,12 @@ Once you’re ready to go with Parcel, create a new project folder on your machi
 
 `cd fefreact`
 `cd lesson 5`
-`mkdir l05handson`
-`cd l05handson`
+`mkdir l06handson`
+`cd l06handson`
 
 ### Add React to the Project
 
-You Have your new, empty folder opened in VS Code. 
+You have your new, empty folder opened in VS Code. 
 
 Parcel will wire up all the moving parts, but you need to do a few things first:
 
@@ -167,13 +172,13 @@ Parcel will wire up all the moving parts, but you need to do a few things first:
 
 #### Initialise the Project
 
-The first step is to initialise your project with a `package.json` file. To do that you’re going to run the command:
+The first step is initialise your project with a `package.json` file. To do that you’re going to run the command:
 
 `npm init -y`
 
 #### Add React Dependencies
 
-Next you're going to add React to the project. Still in the terminal, type the following command to add both packages to the project:
+Next add React to the project. Still in the terminal, type the following command to add both packages to the project:
 
 `npm add react react-dom`
 
@@ -191,11 +196,11 @@ When you’re done, it should look like this:
 }
 ```
 
-## Coeg the Project Files
+## Code the Project Files
 
 With the initial setup almost done, the last pieces of the puzzle are to add a few files to your skeleton project.
 
-You'll need:
+You need:
 
 - `styles.css`: basic styles to make your app look slightly more interesting than the out-of-the-box HTML. 
 
@@ -219,7 +224,7 @@ Once you have the files created, it’s time to fill them in, starting with your
 
 It’s nice to have a few basic styles available to improve the built-in look and feel browsers give by default. Copy and paste in some really simple styles that just affect the body, font size, and line height. You’ve also got a couple of basic styles for form elements.  
 
-You’ll need some additional styles as you move through the Hooks examples, but you’ll add those as you need them so you can discuss them at the right time.
+You need some additional styles as you move through the Hooks examples, but you add those as you need them so you can discuss them at the right time.
 
 At this stage, the `styles.css` file should look like this:
 
@@ -301,7 +306,7 @@ With that done, save the file and move on to the main JavaScript entry point, th
 
 ### index.js
 
-Your `index.js` file is the first place you really set up your React app to load and inject it into your HTML page.  You’ll need to do a few things inside this file:
+Your `index.js` file is the first place you really set up your React app to load and inject it into your HTML page.  You need to do a few things inside this file:
 
 - Import React
 
@@ -309,7 +314,7 @@ Your `index.js` file is the first place you really set up your React app to load
 
 - Use React DOM to render your app to the browser
 
-Save the file. Onto your `App` component!
+Save the file. On to your `App` component!
 
 **index.js** 
 
@@ -326,7 +331,7 @@ ReactDOM.render(<App />, document.querySelector('#root'));
 
 The last thing to do is build your `App` component which will render a particular Hook example component.
 
-Open the `App.js` component and the first thing you’re going to do is set your imports. You can see you’ve got React in scope, quickly followed by each of your Hooks example components.
+Open the `App.js` component and the first thing you do is set your imports. You can see you’ve got React in scope, quickly followed by each of your Hooks example components.
 
 **App.js**
 
@@ -341,9 +346,11 @@ import UseRefExample from './UseRefExample';
 
 // styles
 import './styles.css';
+```
 
-Next, we need to outline a really simple body for App. 
+Next, outline a really simple body for App. 
 
+```
 const App = () => (
     <>
         <UseContextExample />
@@ -356,15 +363,15 @@ const App = () => (
 export default App;
 ```
 
-There’s nothing much going on here. You’re using the fragment shorthand React provides to contain your Hooks examples, but notice we commented out all but the `UseContextExample.jsx` component, as that’s the one we’ll be working on.
+There’s nothing much going on here. You use the fragment shorthand React provides to contain your Hooks examples, but notice we commented out all but the `UseContextExample.jsx` component, as that’s the one we’ll be working on.
 
-As you progress through each new Hook, you’ll simply comment the previous one out and uncomment the current one so you can work on that.
+As you progress through each new Hook, you simply comment the previous one out and uncomment the current one so you can work on that.
 
 You’ve not covered comments in React so far, but they’re exactly the same as regular JavaScript comments. The only difference is that if you’re commenting inside of a JSX block, you should wrap the comment block in curly braces, i.e. `{/* this is a comment */}`.
 
 ## Hook: useContext
 
-The first Hook you’ll explore in this section is `useContext`. Context in React is defined very clearly in the [official React documentation](https://reactjs.org/docs/context.html):
+The first Hook you explore in this section is `useContext`. Context in React is defined very clearly in the [official React documentation](https://reactjs.org/docs/context.html):
 
 By making various items of data available in a ‘global’ sense, context solves a familiar problem you saw in the previous lesson, prop drilling. Prop drilling is the process of passing data down through multiple layers of child components. 
 
@@ -384,9 +391,9 @@ It often looks like this:
 
 The main `App` component receives a user object and then passes it down to the `Header` component, which passes it down again to `Navigation`, which in turn passes it on to `Avatar`, and so on down the tree. `
 
-In this really contrived and over-simplified example you already see how things could get messy if you had a number of different items of data to pass through multiple child components. This practice also creates  redundancy. In essence, many of these parent components become middle men for the user object; they themselves don’t do anything with `user`, they merely pass it on down the component tree. 
+In this really contrived and over-simplified example you already see how things could get messy if you had a number of different items of data to pass through multiple child components. This practice also creates redundancy. In essence, many of these parent components become middle men for the user object; they themselves don’t do anything with `user`, they merely pass it on down the component tree. 
 
-With context, you can create a context provider to wrap your `App` component in. This provider would then carry your user data across the components until wyou hit the `Avatar` component. At this point, you’d grab the context using a consumer wrapper. 
+With context, you create a context provider to wrap your `App` component in. This provider would then carry your user data across the components until wyou hit the `Avatar` component. At this point, grab the context using a consumer wrapper. 
 
 This non-Hook version of React’s context looks like this:
 
@@ -419,7 +426,7 @@ function Avatar() {
 
 Straightforward enough, but it looks a little clunky. Things only get worse when you start to use multiple slices of context; you have to wrap providers inside providers and do the same with the consumer end.
 
-## Using the useContext Hook
+## Use the useContext Hook
 
 The `useContext` Hook offers a much more efficient experience when detailing with context. Much of the way you define a context object will be the same - this holds true for the provider wrapper too. The main difference is how you consume the context; that’s where `useContext` comes in.
 
@@ -438,7 +445,7 @@ The default value for your context can be anything you like: a primitive value, 
 
 ### Wrap the top-level Component in a Context Provider
 
-Next, you’ll wrap whatever your topmost component happens to be in a context provider. The topmost component might be your app’s entry point, or it might be a specific area within your app that contains a specific group of components, such as an account management area.
+Next, wrap whatever your topmost component happens to be, in a context provider. The topmost component might be your app’s entry point, or it might be a specific area within your app that contains a specific group of components, such as an account management area.
 
 ```
 // i.e. MyTopLevelComponent.jsx
@@ -473,7 +480,7 @@ function ChildComponent1() {
 }
 ```
 
-### Using Multiple Contexts
+### Use Multiple Contexts
 
 If for whatever reason you need to access multiple contexts within a component, the `useContext` Hook makes it really easy. You simply call `useContext` as many times as you need, one for each context object you want to consume:
 
@@ -506,7 +513,7 @@ Context also offers a simple alternative to something like Redux. You’re going
 
 It’s also important to note at this point that context is not particularly suitable for two-way communication between components. You can facilitate data back upstream by passing event handlers and functions down via context (you can see an example of this very thing in the official context docs), but its primary purpose is to provide access to global state data across portions of your app without the need for prop drilling. This is generally a one-way street.
 
-## l06assignment- Build the useContext Example
+## Build the useContext Example
 
 Now that you have a better understanding of React’s context and how to use the `useContext` Hook, build a simple example that uses context to change themes.
 
@@ -542,7 +549,7 @@ Add these styles to the bottom of the file:
 
 You’re going to create a layout container that houses a sidebar with some navigation, and a main article element that holds some dummy content. The styles here add a bit of background color to the sidebar to distinguish it, as well as adding a little bit of padding and spacing, and set the display type as ‘flex’ on the container. You’ll see why this is important in a moment.
 
-This is a familiar layout trope you’ll see on just about every website you visit. The difference here is you’re going to control both the position of the sidebar and the type of theme that’s applied to the content (i.e. light or dark), all with your friend and mine, `useContext`.
+This is a familiar layout trope you see on just about every website you visit. The difference here is you’re going to control both the position of the sidebar and the type of theme that’s applied to the content (i.e. light or dark), all with your friend and mine, `useContext`.
 
 With the styles taken care of, open the example component, `UseContextExample.jsx`.
 
@@ -554,306 +561,7 @@ Start with your imports section, importing `React`, `useContext`, and `createCon
 
 Next, define a couple of plain JavaScript objects, one for some styles, and another for some layout information: 
 
-**
- 
-Beginner's Guide to Real World React
-WELCOME:
-INTRODUCTION
-INTRODUCTION:
-Start Here
-MODULE 0:
-INTRODUCTION
-INTRODUCTION: (3:45)
-Course introduction
-LESSON 1: (2:01)
-About the author
-LESSON 2: (1:48)
-Conventions used and helpful links
-LESSON 3: (0:37)
-Reporting errors and getting support
-LESSON 4: (0:46)
-Downloading the course code
-MODULE 1:
-REACT - A MODERN UI LIBRARY
-INTRODUCTION: (4:03)
-What is React?
-LESSON 1: (4:11)
-Comparisons with similar frameworks
-LESSON 2: (1:36)
-Drawbacks of React
-LESSON 3: (0:47)
-First React app - The Greeting App
-LESSON 4: (24:16)
-Building the Greeting App
-LESSON 5: (25:30)
-Refactoring the Greeting App
-LESSON 6: (3:30)
-React core concepts
-MODULE 2:
-INTRODUCING REACT HOOKS
-INTRODUCTION: (3:55)
-Introducing React Hooks
-LESSON 1: (26:53)
-Common Hooks
-LESSON 2: (0:43)
-Furry Friend Gallery app
-LESSON 3: (18:55)
-Building the Furry Friend Gallery
-MODULE 3:
-FETCHING DATA WITH REACT
-INTRODUCTION: (5:06)
-Introduction to fetching data with React
-LESSON 1: (1:16)
-Furry Friends Gallery Mark II
-LESSON 2: (30:47)
-Building the Furry Friends Gallery Mark II
-MODULE 4:
-DEPLOYING AN APP TO THE WORLD
-INTRODUCTION: (9:12)
-Deploying an app to the world
-LESSON 1: (4:04)
-Building an app to deploy
-LESSON 2: (13:55)
-Setting up deployment on Netlify
-MODULE 5:
-THINKING IN REACT
-INTRODUCTION: (10:10)
-Thinking in React
-LESSON 1: (5:55)
-Component relationships
-LESSON 2: (4:14)
-Project structure
-LESSON 3: (0:47)
-Form Builder project
-LESSON 4: (23:54)
-Building the Form Builder
-MODULE 6:
-REACT HOOKS DEEP DIVE
-INTRODUCTION: (6:29)
-Hooks Deep Dive
-LESSON 1: (5:28)
-Hooks project setup
-LESSON 2: (11:24)
-useContext Hook
-LESSON 3: (7:55)
-useRef Hook
-LESSON 4: (8:48)
-useMemo Hook
-LESSON 5: (8:01)
-useCallback Hook
-MODULE 7:
-NAVIGATION IN COMPLEX APPS
-INTRODUCTION: (5:11)
-Navigation in complex apps
-LESSON 1: (6:19)
-Introducing React Router
-LESSON 2: (0:35)
-Admin Console app
-LESSON 3: (26:43)
-Building the Admin Console
-LESSON 4: (9:38)
-Extending the Admin Console
-MODULE 8:
-STATE MANAGEMENT WITH REDUX
-LESSON 1: (2:39)
-State management in complex apps
-LESSON 2: (9:34)
-Introducing Redux
-LESSON 3: (0:46)
-Event Sign Up App
-LESSON 4: (29:49)
-Building the Event Sign Up App
-LESSON 5: (14:20)
-Extending the Event Sign-Up App
-LESSON 6: (15:00)
-Using the useReducer Hook
-MODULE 9:
-THE DINOSAUR SEARCH APP
-LESSON 1: (5:44)
-The Dinosaur Search App
-LESSON 2: (18:41)
-Project setup and scaffolding
-LESSON 3: (19:47)
-Building the services
-LESSON 4: (35:01)
-Building the components
-LESSON 5: (4:31)
-Exploring the app
-LESSON 6: (2:28)
-Closing thoughts and learning paths
-Beginner's Guide to Real World React
-React Hooks Deep Dive
-useContext Hook
-Learn about the useContext Hook, its use cases and implementation.
-
-LESSON
-DISCUSSION 1
-Hook: useContext#
-The first Hook we’ll explore in this module is useContext. Context in React is defined very clearly in the official React documentation:
-
-Context is designed to share data that can be considered “global” for a tree of React components, such as the current authenticated user, theme, or preferred language. 
-
-By making various items of data available in a ‘global’ sense, context solves a familiar problem that we saw in the first lesson of the previous module, prop drilling. Prop drilling is the process of passing data down through multiple layers of child components. 
-
-It often looks like this:
-
-<App user={user} />
-// App then renders...
-<Header user={user} />
-// Header then renders...
-<Navigation user={user} />
-// Navigation then renders...
-<Avatar user={user} />
-// Avatar then renders...
-<LoggedInStatus loggedIn={user.loggedIn} />
-You can see that the main App component receives a user object and then passes it down to the Header component, which passes it down again to Navigation, which in turn passes it on to Avatar, and so on down the tree. 
-
-In this really contrived and over-simplified example you can already see how things could get messy if you had a number of different items of data to pass through multiple child components. This practice also creates a lot of redundancy. In essence, a lot of these parent components become middle men for the user object; they themselves don’t do anything with user, they merely pass it on down the component tree. 
-
-With context, we can create a context provider to wrap our App component in. This provider would then carry our user data across the components until we hit the Avatar component. At this point, we’d grab the context using a consumer wrapper. 
-
-This non-Hook version of React’s context looks like this:
-
-// Create a context object with a default value of 'null'
-const UserContext = React.createContext(null);
-​
-function App() {
-    // grab some user details from somewhere
-    const userDetails = fetchUserDetails();
-​
-    // wrap the main child(ren) component(s) in a Context.Provider
-    return (
-        <UserContext.Provider value={userDetails}>
-            <Header />
-        </UserContext.Provider>
-    )
-}
-​
-// Header and other components omitted...
-​
-function Avatar() {
-    return (
-        <UserContext.Consumer>
-            {value => <p>{value.name}</p>}
-        </UserContext.Consumer>
-    );
-}
-Straightforward enough, but it looks a little clunky. Things only get worse when you start to use multiple slices of context; you have to wrap providers inside providers and do the same with the consumer end.
-
-Using the useContext Hook#
-The useContext  Hook offers a much more efficient experience when detailing with context. Much of the way you define a context object will be the same - this holds true for the provider wrapper too. The main difference is how you consume the context; that’s where useContext comes in.
-
-Let’s walk through the steps needed to create and consume context in React.
-
-Define a context object#
-The first step is to define your context object:
-
-// i.e. MyContext.js
-export const MyContext = React.createContext('default value here');
-The default value for your context can be anything you like: a primitive value, function, object, you name it. 
-
-Wrap the top-level component in a context provider#
-Next, you’ll want to wrap whatever your topmost component happens to be in a context provider. The topmost component might be your app’s entry point, or it might be a specific area within your app that contains a specific group of components, such as an account management area.
-
-// i.e. MyTopLevelComponent.jsx
-import { MyContext } from './MyContext.js';
-​
-function MyTopLevelComponent() {
-    return (
-        <MyContext.Provider value={'specific value here'}>
-            <ChildComponent1 />
-            <ChildComponent2 />
-            <ChildComponent3 />
-        </MyContext.Provider>
-    );
-}
-Consume the context with useContext#
-To grab the context and use whatever value it contains, implement the useContext Hook like this:
-
-// i.e. ChildComponent1.jsx
-import React, { useContext } from 'react';
-import { MyContext } from './MyContext.js';
-​
-function ChildComponent1() {
-    const myContextValue = useContext(MyContext);
-​
-    return (
-        <p>{myContextValue}</p>     
-    );
-}
-Using multiple contexts#
-If for whatever reason you need to access multiple contexts within a component, the useContext Hook makes it really easy. You simply call useContext as many times as you need, one for each context object you want to consume:
-
-function MySuperComponent() {
-    const user = useContext(UserContext);
-    const theme = useContext(ThemeContext);
-    const messages = useContext(MessageContext);
-​
-    return (
-        <div style={{background: theme.background}}>
-            <h1>Welcome {user.name}</h1>
-            <p>{messages.greetingMessage}</p>
-        </div>
-    );
-}
-Looks nice and clear and clean, doesn’t it? No more wrapping consumers within consumers to access multiple context objects.
-
-Note, the useContext Hook is awesome, but it still requires the use of a provider further up the tree to provide the context that it consumes!
-
-When to use Context#
-Context is a great fit for some use cases, theming being one of them. Its primary purpose is to provide a means to share data between many components within a nesting structure. However, its use can be abused and you may be tempted to use context when some component refactoring (or component composition changes) could achieve the same result.
-
-Using context can also make components less reusable as they’re more inherently tied to their context-providing parents, higher up the component chain.
-
-The official React documentation on context has a great example on using component composition (i.e. how you create your components) over using context, and I’d recommend checking those out.
-
-Context also offers a simple alternative to something like Redux. We’re going to study Redux in detail in an upcoming module, but for now just know that, whilst more complex in its implementation, Redux essentially offers the same end result of providing access to a broader idea of state.
-
-It’s also important to note at this point that context is not particularly suitable for two-way communication between components. You can facilitate data back upstream by passing event handlers and functions down via context (you can see an example of this very thing in the official context docs), but its primary purpose is to provide access to global state data across portions of your app without the need for prop drilling. This is generally a one-way street.
-
-Building the useContext example#
-Now that we have a better understanding of React’s context and how to use the useContext Hook, let’s build a simple example that uses context to change themes.
-
-Open up the project we set up in the previous lesson and open the styles file styles.css. So far, it only has some basic, general styles. We’re going to add a few more for the UseContextExample component, just to illustrate the theming idea.
-
-Add these styles to the bottom of the file:
-
-/* UseContextExample styles ---------------------------- */
-.layout-container {
-    position: relative;
-    display: flex;
-    padding: 2rem;
-    border: 1px solid hsl(0, 11%, 80%);
-    border-radius: 3px;
-}
-.sidebar {
-    background-color:hsla(210, 28%, 85%, 0.45);
-    border-radius: 2px;
-    width: 25%;
-    padding: 0 1rem;
-    margin: 0 0.5rem;
-}
-.sidebar a {
-    display: block;
-    margin: 1rem 0;
-    color: inherit;
-}
-.layout-container article {
-    padding: 0 1rem;
-}
-We’re going to be creating a layout container that houses a sidebar with some navigation, and a main article element that holds some dummy content. The styles here add a bit of background color to the sidebar to distinguish it, as well as adding a little bit of padding and spacing, and set the display type as ‘flex’ on the container. We’ll see why this is important in a moment.
-
-This is a familiar layout trope that you’ll see on just about every website you visit. The difference here is that we’re going to control both the position of the sidebar and the type of theme that’s applied to the content (i.e. light or dark), all with your friend and mine, useContext.
-
-With the styles taken care of, open the example component, UseContextExample.jsx.
-
-As usual, we’ll start with our imports section, importing React, useContext and createContext. You don’t have to import createContext - you could just write React.createContext as we did in the earlier examples - but it’s a nicety I’m employing here.
-
-UseContextExample.jsx
-import React, { useContext, createContext } from 'react';
-Next, we’re going to define a couple of plain JavaScript objects, one for some styles, and another for some layout information: 
-
-UseContextExample.jsx**
+**UseContextExample.jsx**
 
 ```
 const styles = {
@@ -872,7 +580,7 @@ const layout = {
 };
 ```
 
-The styles object has light and dark properties filled with a couple of familiar CSS key:value pairs (light having a light background with dark text, and dark vice versa). 
+You can see the styles object has light and dark properties filled with a couple of familiar CSS key:value pairs (light having a light background with dark text, and dark vice versa). 
 
 The layout object offers a couple more CSS values which will translate to flex direction values when we inject them into our layout container JSX in a little while.
 
@@ -883,14 +591,11 @@ Next, define your initial context object and default values:
 ```
 const ThemeContext = createContext({...styles.light, direction: layout.left});
 ```
-
-You named your variable `ThemeContex`t as is the convention for context objects (i.e. <NameOfContext>Context). Then call React’s `createContext` function, passing in some defaults. You pass an object with the light styles and left direction for the layout.
+Really easy this one: name your variable `ThemeContext` as is the convention for context objects (i.e. <NameOfContext>Context). Then call React’s `createContext` function, pass in some defaults. In your case, pass an object with the light styles and left direction for the layout.
 
 ### The Layout Component
 
-Now for the star of the show, the main component that will consume your context. You’ll provide the context in the default exported component later on. For now, however, define a skeleton component called Layout. 
-
-**UseContextExample.jsx**
+Now for the star of the show, the main component that will consume your context. Worry about providing the context in the default exported component later on. For now, define a skeleton component called `Layout`. 
 
 ```
 const Layout = () => {
@@ -901,7 +606,7 @@ const Layout = () => {
 }
 ```
 
-The first thing you do here is consume the context using the `useContext` Hook. That looks like this:
+The first thing is consume the context using the `useContext` Hook. That looks like this:
 
 **UseContextExample.jsx**
 
@@ -910,11 +615,11 @@ const Layout = () => {
     const theme = useContext(ThemeContext);
 ```
 
-You call the `useContext` Hook, just like in the mini examples from earlier, and pass it the `ThemeContext` object created earlier. 
+Call the `useContext` Hook, just like in the mini examples from earlier in this lesson, and pass it the `ThemeContext` object created earlier. 
 
 The theme variable will now have access to whatever was passed into the context provider or, if that isn’t available, whatever was passed to the context object as a default. 
 
-You haven’t defined the context provider yet, but have passed in the default values. So, your theme variable will look like this:
+In your case you haven’t defined the context provider yet, but have passed in the default values. So, uour theme variable will look like this:
 
 ```
 {
@@ -971,13 +676,13 @@ Next, it’s time for some JSX:
         </section>
 ```
 
-Everything within the `section` element, which is your layout container, is pretty standard HTML. You have a sidebar with a `nav` element and some dummy links. Inside the `article` element, you have a `title` and some good old fashioned lorem ipsum placeholder text.
+Everything within the section element, which is your layout container, is pretty standard HTML. You have a sidebar with a `nav` element and some dummy links. Inside the `article` element, you have a title and some good old fashioned lorem ipsum placeholder text.
 
-The `section` element, however, is where you consume your context data. Using React’s inline style attribute (the one that looks like `style={{}})`, you're setting `backgroundColor`, `color`, and `flexDirection` CSS properties. The values for those properties are being provided from the theme context pulled in using the `useContext` Hook. Pretty neat, and very little effort. 
+The `section` element, however, is where you consume your context data. Using React’s inline style attribute (the one that looks like style={{}}), set `backgroundColor`, `color`,  and `flexDirection` CSS properties. The values for those properties are being provided from the theme context pulled in using the `useContext` Hook. Pretty neat, and very little effort. 
 
-### The context Provider and default export
+### The Context Provider and default export
 
-OK, you’ve defined some context and consumed it in the Layout component, but the `useState` Hook won’t do a thing unless you first provide the context to components looking to consume it.
+OK, you defined some context and consumed it in the Layout component, but the `useState` Hook won’t do a thing unless you first provide the context to components looking to consume it.
 
 For your default export, create a super-simple inline function that returns your provider wrapper and the Layout component as a child.
 
@@ -991,17 +696,17 @@ export default () => (
 );
 ```
 
-To provide context to child components, you must wrap them in a provider component which takes the form of `<ContextObject>.Provider`. Since your context object was created as `ThemeContext`, your provider wrapper component looks like `<ThemeContext.Provider>`. 
+To provide context to child components, wrap them in a provider component which takes the form of `<ContextObject>.Provider`. Since your context object was created as `ThemeContext`, your provider wrapper component looks like `<ThemeContext.Provider>`. 
 
-The `value={}` attribute is where you pass whatever values you want into the context object to be consumed later. In your case, you’re passing the `value` attribute an object, but it could be a primitive value, such as an integer or a string. 
+The `value={}` attribute is where you pass whatever values you want into the context object to be consumed later. In your case, you pass the value attribute an object, but it could be a primitive value, such as an integer or a string. 
 
-Finally, inside your provider, add the Layout component. Just as with any other component you could add more child components here if you wanted and each would have access to the context values using the `useContext` Hook.
+Finally, inside your provider, add the `Layout` component. Just as with any other component you could add more child components here if you wanted, and each would have access to the context values using the `useContext` Hook.
 
-## Run the Example
+## Runn the Example
 
 With the heavy lifting done, head over to the `App.js` file and make sure all the other components you imported are commented out except for the `UseContextExample` component. 
 
-Ideally, at this point, your `App` component should look like this:
+Ideally, at this point, your App component should look like this:
 
 **App.js**
 
@@ -1028,42 +733,42 @@ const App = () => (
 
 export default App;
 ```
+
 Update and save the file if needed and open your terminal window. Type the good old `npm start` command and view the result in the browser.
 
 ![](assets/usecontext-example.png)
 
-You should see a dark text on white background theme with the sidebar on the left. Change things up and alter the theme details the default component uses. 
+You should see a dark text on white background theme with the sidebar on the left. Change things up and alter the theme details that the default component uses. 
 
-Open `UseContextExample.jsx`, at the bottom of the file where you export a default component, change the contents of the `value` attribute passed to the `ThemeContext.Provider` wrapper to the `styles.dark` value for the color scheme, and `layout.right` for the direction. 
+Back in `UseContextExample`, right at the bottom of the file where you export a default component, change the contents of the value attribute passed to the `ThemeContext.Provider` wrapper to the `styles.dark` value for the color scheme, and `layout.right` for the direction. 
 
-Back in the browser, refresh the page if it hasn’t hot-reloaded for you already and take a look. Well, look at that! You have a light text on dark background and the sidebar is now on the right-hand side. And all you’ve done is update two values!
+Back in the browser, refresh the page if it hasn’t hot-reloaded for you already and take a look. Well, look at that! You have a light text on dark background and the sidebar is now on the right-hand side. And all you've done is update two values!
 
-That’s all there is to the `useContext` Hook, and indeed React’s context in general. It’s a fairly simple, yet elegant, beast. I encourage you to play around with this example and see what else you can pass around using the context mechanism, or try providing and consuming multiple contexts. 
+That’s all there is to the `useContext` Hook, and indeed React’s context in general. It’s a fairly simple, yet elegant, beast. I encourage you to have a play with this example and see what else you can pass around using the context mechanism, or try providing and consuming multiple contexts. 
 
-Next up, you’ll be looking at the `useRef` Hook.
-
+Next up, you will look at the useRef Hook.
 
 ## Hook: useRef
 
-The `useRef` Hook provides a way to store and retrieve a mutable (that is, subject to change) reference object. It has a `.current` property that can be initialized to a starting value. The object that’s returned from `useRef` will be persisted for the lifetime of the component, which is quite handy. 
+The `useRe`f Hook provides a way to store and retrieve a mutable (that is, subject to change) reference object. It has a `.current` property that can be initialized to a starting value. The object that’s returned from `useRef` will be persisted for the lifetime of the component, which is quite handy. 
 
-From the official [React docs](https://reactjs.org/docs/hooks-reference.html#useref) on `useRef`:
+From the {official React docs](https://reactjs.org/docs/hooks-reference.html#useref) on `useRef`:
 
-"Essentially, `useRef` is like a “box” that can hold a mutable value in its `.current` property."
+"Essentially, `useRef` is like a “box” that can hold a mutable value in its .current property."
 
-If you’ve seen `React.createRef` function or seen those funny `ref={}` style attributes, especially in class components, then the `useRef` Hook functions in a very similar way. 
+If you’ve come across the `React.createRef` function or seen those funny `ref={}` style attributes, especially in class components, then the `useRef` Hook functions in a very similar way. 
 
-### Use Cases for useRef
+### Use cases for useRef
 
-One of the most common use cases for the `useRef` Hook is to attach a reference to the underlying DOM element a `ref` is assigned to. For our demo, you’re going to build a simple modal popup that, when closed, returns focus to the corresponding input element in a form. 
+One of the most common use cases for the `useRef` Hook is to attach a reference to the underlying DOM element a ref is assigned to. For your demo, build a simple modal popup that, when closed, returns focus to the corresponding input element in a form. 
 
-You use the `useRef` Hook to provide a way to access the input element in the React-generated DOM. With a reference to this element, you can access native properties and functions, such as the `focus()` function. 
+Use the `useRef` Hook to provide a way to access the input element in the React-generated DOM. With a reference to this element, you can access native properties and functions, such as the `focus()` function. 
 
 However, the `useRef()`  Hook isn’t just for DOM refs. A `ref` object is a generic container with a mutable current property. This property can hold any value and is comparable to an instance property on a class.
 
 ### Use the useRef Hook
 
-Using the useRef Hook couldn’t be simpler:
+Using the `useRef` Hook couldn’t be simpler:
 
 ```
 import { useRef } from 'react';
@@ -1081,19 +786,17 @@ const MyComponent = props => {
 };
 ```
 
-Call the `value` of ‘`null`’ as an initial value (though this could be anything you want). In the return function, define a standard HTML input element and assign your `inputRef` variable to the `ref={}` attribute. This essentially wires the underlying DOM input element into the `useRef`’s ‘`current`’ property, so later on, in the `handleSomething` function, you can grab a reference to the input element. 
+Call the `useRef` Hook, passing in a value of ‘`null`’ as an initial value (though this could be anything you want). In the return function, define a standard HTML input element and assign your `inputRef` variable to the `ref={}` attribute. This essentially wires the underlying DOM input element into the `useRef`’s ‘`current`’ property, so that later on, in the `handleSomething` function, you can grab a reference to the input element. 
 
-In your case, you’ve gone with the common example of calling the `focus()` function to bring the browser focus into the input element.
+We have gone with the common example of calling the `focus(`) function to bring the browser focus into the input element.
 
-Of course, if you want to change the value of the `ref`’s ‘current’ property, you can do so as you would with any JavaScript assignment — `e.g. inputRef.current = ‘my value here’`.
+Of course, if you want to change the value of the ref’s ‘`current`’ property, you can do so as you would with any JavaScript assignment — e.g. `inputRef.current = ‘my value here’`.
 
-## L06HansOnnAssignment; Build the useRef Example
+## Build the useRef Example
 
-With your fundamental knowledge of the Hook in place, let’s build something to showcase it in action! For this demo assignment, you’ll be creating a form with a modal popup. Once the user clears the modal, you want to return focus to the correct area of the form, a specific input element. 
+With your fundamental knowledge of the Hook in place, build something to showcase it in action! For this demo, you will create a form with a modal popup. Once the user clears the modal, return focus to the correct area of the form, a specific input element. 
 
-Back in your project in VS Code, open up the `styles.css` file and add the following additional styles at the bottom: 
-
-**styles.css**
+Back in your project in VS Code, open the `styles.css` file and add the following additional styles at the bottom: 
 
 ```
 /* UseRefExample styles ---------------------------- */
@@ -1123,7 +826,7 @@ Back in your project in VS Code, open up the `styles.css` file and add the follo
 
 Youalready have some default styles for form elements, such as inputs. These styles are concerned with the modal’s onscreen positioning and toggling its visibility. CSS’s flex property gives a super clean and simple way to position an element in the center of the screen, such as our modal friend here.
 
-With your helper styles in place, open the `UseRefExample.jsx` file. Unsurprisingly you will import the `useRef` Hook from React’s library first:
+With your helper styles in place, open the `UseRefExample.jsx` file. Unsurprisingly you import the `useRef` Hook from React’s library first:
 
 **UseRefExample.jsx**
 
@@ -1133,7 +836,7 @@ import React, { useState, useRef } from 'react';
 
 ### The ModalBox Component
 
-Next, define a `ModalBox` component that will house some dummy content to be displayed when you eventually click on a button to trigger the modal into view:
+Next, define a `ModalBox` component that will house some dummy content to be displayed when we eventually click on a button to trigger the modal into view:
 
 **UseRefExample.jsx**
 
@@ -1159,13 +862,13 @@ const ModalBox = ({ isOpen, handleModalClick }) => (
 );
 ```
 
-It’s a purely presentational component and receives two props, `isOpen` and `handleModalClick`. The `isOpen` prop is used in a ternary `if` statement to apply an `is-active` CSS class that will show or hide the modal. The `handleModalClick` prop will be a function weyou’re just assigning to the modal’s buttons. 
+It’s a purely presentational component and receives two props, `isOpen` and `handleModalClick`. The `isOpen` prop is used in a ternary if statement to apply an is-active CSS class that will show or hide the modal. The `handleModalClick` prop will be a function just assigned to the modal’s buttons. 
 
-Ultimately, your default parent component will handle the toggling of the `isOpen` prop value via the `handleModalClick` click event, but for now, our presentational `ModalBox` component doesn’t need to know, or care, about this. When a user clicks either cancel or save, the component simply fires the `handleModalClick`.
+Ultimately, your default parent component will handle the toggling of the `isOpen` prop value via the `handleModalClick` click event, but for now, your presentational `ModalBox` component doesn’t need to know, or care, about this. When a user clicks either cancel or save, the component simply fires the `handleModalClick`.
 
 ### The default Export
 
-Of course, the `ModalBox` component on its own isn’t enough to do anything, so your default parent component is going to handle a few things for you:
+Of course, the `ModalBox` component on its own isn’t enough to do anything, so your default parent component is going to handle a few things:
 
 - It will hold a modal visibility toggle, a boolean value.
 
@@ -1173,9 +876,7 @@ Of course, the `ModalBox` component on its own isn’t enough to do anything, so
 
 - And it will handle toggling of the modal’s visibility via a click handling event that will be passed into the `ModalBox` component.
 
-Underneath your `ModalBox` component outline an empty scaffolded default export:
-
-****UseRefExample.jsx****
+Underneath uour `ModalBox` component, outline an empty scaffolded default export:
 
 ```
 export default () => {
@@ -1186,7 +887,7 @@ export default () => {
 };
 ```
 
-Define a couple of variables:
+First things first. Define a couple of variables:
 
 **UseRefExample.jsx**
 
@@ -1196,11 +897,11 @@ export default () => {
     const groupsInputRef = useRef(null);
 ```
 
-Notice the familiar `useState` Hook to define a `modalIsOpen` boolean value. Use this to keep track of the visibility status of the modal. By default you want it to be closed, so initialize it to ‘`false`’. 
+Notice the familiar use of the `useState` Hook to define a `modalIsOpen` boolean value. Use this to keep track of the visibility status of the modal. By default you want it to be closed, so initialize it to ‘`false`’. 
 
-Under here, create a `groupsInputRef` variable that uses the `useRef` Hook, passing in ‘`null`’ as you call it.Aassign this returned `ref` to the corresponding input element in a moment. For now, just define the `ref` and call the Hook to kick things off.
+Under here, create a `groupsInputRef` variable that uses the `useRef` Hook, passing in ‘`null`’ as you call it. Assign this returned `ref` to the corresponding input element in a moment. For now, just define the `ref` and call the Hook to kick things off.
 
-Next, you need a way to allow the `ModalBox` component to effectively close itself, or rather notify us it needs to be closed. Do this by passing it a function, which you'll define now.
+Next, you need a way to allow the` ModalBox` component to effectively close itself, or rather notify us that it needs to be closed. dDo this by passing it a function, which we’ll define now.
 
 **UseRefExample.jsx**
 
@@ -1217,7 +918,7 @@ The `onModalClick` function, when called, will accomplish two things:
 
 2. Next, it will call the `focus()` function from the `groupsInputRef` variable’s current property. 
 
-Remember, the `ref`’s current property will be pointing to the underlying input element in the DOM, giving access to its properties and values, `focus()` being one of them.
+Remember, the ref’s current property will be pointing to the underlying input element in the DOM, thus giving access to its properties and values, `focus()` being one of them.
 
 Next, fill out the JSX inside the section element: 
 
@@ -1240,11 +941,12 @@ Next, fill out the JSX inside the section element:
                 <button className="button-primary">submit form</button>
             </form>
 ```
-You have a plain old `form` element with some equally plain labels and inputs. For a real form, you’d want to add a little more markup here such as `state` syncing on change events, styling classes, and maybe some accessibility attributes. You also want to handle the form’s submission. If you click the submit button now, the form will submit to nowhere and the page will refresh.
+
+You have a plain old form element with some equally plain labels and inputs. For a real form, add a little more markup here such as state syncing on change events, styling classes, and maybe some accessibility attributes. You'd also want to handle the form’s submission. If you click the submit button now, the form will submit to nowhere and the page will refresh.
 
 For now, the main thing to draw your attention to is the ‘`select groups`’ button which is wired up to an `onClick` event. It’s an inline anonymous arrow function that simply calls the `setModalIsOpen` state Hook, passing in a value of ‘`true`’. 
 
-Underneath your form element, add the `ModalBox` component:
+Underneath your form element, add the ModalBox component:
 
 **UseRefExample.jsx**
 
@@ -1254,16 +956,15 @@ Underneath your form element, add the `ModalBox` component:
         </section>
 ```
 
-We’re passing in the modalIsOpen value and onModalClick function into the props isOpen and handleModalClick, as we looked at when we defined the ModalBox component.
+You pass the `modalIsOpen` value and `onModalClick` function into the props `isOpen` and `handleModalClick`, as you looked at when we defined the `ModalBox` component.
 
-Now, that’s you done with the code!
+And that’s you done with the code!
 
+### Runn the Example
 
-### Run the Example
+Ahh the best part, running the code! As with your previous example, make sure to open up the `App.j`s file and comment out all the components apart from `UseRefExample`. 
 
-This is the best part, running the code! As with your previous example, make sure to open the `App.js` file and comment out all the components except `UseRefExample`. 
-
-Your `App` component should look like this:
+Your App component should look like this:
 
 **App.js**
 
@@ -1291,25 +992,27 @@ const App = () => (
 export default App;
 ```
 
-Update and save the file, then open the terminal and run the trusty `npm start` command, viewing the result in the browser:
+Update and save the file. Open the terminal and run the trusty `npm start` command, viewing the result in the browser:
 
-![](assets/useref-example.png)
+![](assets/useref-example%20(1).png)
 
 You have a simple form with a few fields. None of them are hooked up to anything so don’t worry about what you put in there. The interesting part is the ‘`select groups`’ button. Click on that and you’ll see your modal window appear in all its dimmed-out glory.
 
 Again, select whatever you want in the modal (nothing’s hooked up here either), then either save or cancel from the modal’s footer. When it closes, notice how the input element under the ‘`Groups`’ label is highlighted and given focus? 
 
-You might see this pattern a lot in enterprise applications or admin consoles where you open a new window, select multiple items, and then get returned to a main form of some kind to continue editing. That’s what you’ve achieved here. Once you’re finished with the modal, the focus is automatically sent back to the correct place in the form. 
+You might see this pattern a lot in enterprise applications or admin consoles where you open a new window, select multiple items, and then get returned to a main form of some kind to continue editing. That’s what you achieved here. Once you’re finished with the modal, the focus is automatically sent back to the correct place in the form. 
 
 All this is achieved with the `useRef` Hook!
 
-Coming up next, you’ll explore the `useMemo` Hook. I’ll see you over there.
+Coming up next, you explore the `useMemo` Hook. I’ll see you over there.
 
-## useMemo Hook
+## Hook: useMemo
 
-Now you come to one of the slightly more complex Hooks.  The `useMemo` Hook accepts a function and a list of dependencies, much like the `useEffect` Hook. It returns a memoized value (yes, that is a weird word!)  
+Now to one of the slightly more complex Hooks.  The `useMemo` Hook accepts a function and a list of dependencies, much like the `useEffect` Hook. It returns a memoized value (yes, that is a weird word!)  
 
-What’s special about this memoized value is that it is only recomputed when there is a change in one of the values in the dependency array. 
+What’s special about this memoized value is it is only recomputed when there is a change in one of the values in the dependency array. 
+
+The dependency array you pass is important. If you don’t pass in a dependency array to the `useMemo` Hook, its contents will be regenerated on each render, thus undermining its use.
 
 The use of the `useMemo` Hook is quite simple. The function `expensiveComputedFunction` will only be called when either `depOne` or `depTwo` changes. 
 
@@ -1322,27 +1025,25 @@ const someMemoizedValue = useMemo(() => {
 }, [depOne, depTwo]);
 ```
 
-### Suitable applications for useMemo
+### Suitable Applications for useMemo
 
-Much like its sibling (of sorts) the `useCallback` Hook (which you’ll learn about next), the `useMemo` Hook is usually found when it comes time to profile your application for performance optimization. 
+Much like its sibling (of sorts) the `useCallback` Hook (which you learn about in the next lesson), the `useMemo` Hook is usually found when it comes time to profile your application for performance optimization. 
 
-The best employment of this particular Hook is to prevent multiple frequent calls to functions that are computationally expensive, especially when their expected value hasn’t changed or is not expected to have changed. These extra calls can create optimization bottlenecks and are largely unnecessary.
+The best employment of this particular Hook is to prevent multiple frequent calls to functions computationally expensive, especially when their expected value hasn’t changed or is not expected to have changed. These extra calls can create optimization bottlenecks and are largely unnecessary.
 
-You’ll often find `useMemo` dealing with big data items such as graphs, charts, plotting data, and large mathematical equations. 
+You often find `useMemo` dealing with big data items such as graphs, charts, plotting data, and large mathematical equations. 
 
-### Optimization Caveats
+### Optimization cCveats
 
-It’s worth a quick mention here that there is a temptation to over-optimize your code, either too liberally or too early. Optimization should be kept in mind, but it should be based on as much empirical data as possible. 
+It’s worth a quick mention here that there is a temptation to over-optimize your code, either too liberally or too early. For me, optimization should be kept in mind, but it should be based on as much empirical data as possible. 
 
 Try to resist the temptation to pepper your code with `useMemo` and `useCallback` at every opportunity as the complexity you add and the readability you lose are often not worth the trade-off for slight gains in perceived performance.
 
-### L06HandsOnAssignment: Build a useMemo Example
+### Build the useMemo Example
 
-Before going on,  take a quick look at the excellent Hooks reference site, [useHooks.com](https://usehooks.com/) by Gabe Ragland. You’ll be using a modified version of Gabe’s `useMemo` example in your demo here.
+Before going on, take a quick look at the excellent Hooks reference site, [useHooks.com](https://usehooks.com/) by Gabe Ragland. You be using a modified version of Gabe’s `useMemo` example in your demo here.
 
-For this demo you don’t have any extra styles to add, so fire up the `UseMemoExample.jsx` file and start by defining some imports and helper functions. WYou’ll be using a few Hooks here, so import them upfront.
-
-**UseMemoExample.jsx**
+For this demo you don’t have any extra styles to add, so fire up the `UseMemoExample.jsx` file and start by defining some imports and helper functions. You'll be using a few Hooks here, so import them upfront. 
 
 ```
 import React, { useState, useMemo, useEffect } from 'react';
@@ -1368,15 +1069,13 @@ const countLettersInWord = (word) => {
 
 With `getTimeDifference`, you want to work out the time that has elapsed between a passed in start and end time. The passed in times here will be standard JavaScript date time values. You work out the difference, using the modulus operator to divide the result by 60 to arrive at a value in seconds.
 
-For `countLettersInWord` employ a bit of a cheat here, or at least, a forced ‘expensive’ computation. In the real world you’d be looking at a big data calculation or math equation processing function, but here, we have a simple `while` expression that increases a `counter`, `i`, around three billion times. Once that’s finished, the function just returns the length of the string word that we pass in as an argument. 
+For `countLettersInWord` you employ a bit of a cheat here, or at least, a forced ‘expensive’ computation. In the real world you'd be looking at a big data calculation or math equation processing function, but here, we have a simple `while` expression that increases a counter, `i`, around three billion times. Once that’s finished, the function just returns the length of the string word that we pass in as an argument. 
 
-You’ll be memoizing the `countLettersInWord` function later on as we pretend it is a computationally expensive function.
+You'll be memoizing the `countLettersInWord` function later on.
 
-### Defining the Default Component Export
+### Define the dDfault Component Export
 
-Now for the main event, defining the default component export.Sstart by scaffolding out the component before filling it in:
-
-****UseMemoExample.jsx****
+Now for the main event, defining the default component export. Start by scaffolding out the component before filling it in:
 
 ```
 export default () => {
@@ -1388,9 +1087,9 @@ export default () => {
 };
 ```
 
-### Add the Variables
+### Add the vVriables
 
-First, you need variables. For starters, add some non-Hooks variables:
+First up, you need variables. For starters, add some non-Hooks variables:
 
 **UseMemoExample.jsx**
 
@@ -1400,7 +1099,7 @@ export default () => {
     const timeStart = new Date();
 ```
 
-`wordList` is an array of random strings you’re going to count later in the component. Meanwhile, `timeStart` is set to a brand new `Date()` result that will represent the `date-timestamp` of when the component first renders. 
+`wordList` is an array of random strings you're going to count later on in the component. Meanwhile, `timeStart` is set to a brand new `Date()` result that will represent the date-timestamp of when the component first renders. 
 
 Next, you need some state values using `useState`:
 
@@ -1412,11 +1111,11 @@ Next, you need some state values using `useState`:
     const [currentWord, setCurrentWord] = useState(wordList[0]);
 ```
 
-The variable `count` will be increased each time you click a specific button, which you’ll define in the upcoming JSX. With `computedTime` you’ll keep track of the time it takes to count the letters in each of your words when the next word count is triggered. And finally, `currentWord` will hold onto the current word you’re counting the length of.
+The variable `count` will be increased each time you click a specific button, which you define in the upcoming JSX. With `computedTime` keep track of the time it takes to count the letters in each of your words when the next word count is triggered. And finally, `currentWord` will hold onto the current word you're counting the length of.
 
 ### Define the Functions
 
-To define some functions, and most importantly, use your new Hook:
+Now to define some functions, and most importantly, use your new Hook:
 
 **UseMemoExample.jsx**
 
@@ -1431,13 +1130,13 @@ To define some functions, and most importantly, use your new Hook:
     //const letterCount = countLettersInWord(currentWord);
 ```
 
-You can ignore the commented-out line for now. You’ll come back to that when you run the final app. It’s going to help you illustrate an important point, but for now you can skip over it.
+You can ignore the commented-out line for now. You'll come back to that when you run the final app. It’s going to help illustrate an important point, but for now skip over it.
 
-The first function, `handleLoadNextWord` is going to be called from a button click that you’ll add in shortly, when you build out the JSX. It looks at the array of words, `wordList` and works out the index of the currently selected word. From here, it calls the `setCurrentWord` function to update the current word held in state. It does this by grabbing the next word in the `wordList` array, incrementing the `wordIndex` by one, or setting it back to the start if it’s going to overshoot.
+The first function, `handleLoadNextWord` is going to be called from a button click that you’ll add in shortly, when you build out the JSX. It looks at the array of words, `wordList` and works out the index of the currently selected word. From here, it calls the `setCurrentWord` function to update the current word held in state — it does this by grabbing the next word in the `wordList` array, incrementing the `wordIndex` by one, or setting it back to the start if it’s going to overshoot.
 
-The next function is where things get spicy. You’re finally calling the `useMemo` Hook, passing it an arrow function that returns the value from the `countLettersInWord` function defined earlier. This function is supplied the `currentWord` held in state. You’re also using `currentWord` in the dependency array, so when this changes, you’ll run this memoized function again to get the new word count.
+The next function is where things get spicy. You finally call the `useMemo` Hook, passing it an arrow function that returns the value from the `countLettersInWord` function defined earlier. This function is supplied the `currentWord` held in state. You’re also using `currentWord` in the dependency array, so that when this changes, you’ll run this memoized function again to get the new word count.
 
-The last bit of logic to get down is to use the `useEffect` Hook to work out how long it took to render the component:
+The last bit of logic is to use the `useEffect` Hook to work out how long it took to render the component:
 
 **UseMemoExample.jsx**
 
@@ -1446,14 +1145,13 @@ The last bit of logic to get down is to use the `useEffect` Hook to work out how
         setComputedTime(getTimeDifference(timeStart, new Date()));
     }, [currentWord]);
 ```
+Again, you use `currentWord` as a dependency value, so that when it changes you work out the time difference using your `getTimeDifference` helper, passing in the start time when the component began rendering, and the time now, when we call this function. 
 
-Again, you’re using `currentWord` as a dependency value, so that when it changes you work out the time difference using your `getTimeDifference` helper, passing in the start time when the component began rendering, and the time now, when youcall this function. 
-
-This doesn’t have anything to with the workings of `useMemo` but it will allow you to visually see how long each word’s letter count computation took to complete.
+This doesn’t have anything to with the workings of `useMemo`, but it will allow you to visually see how long each word’s letter count computation took to complete.
 
 ### Define the JSX
 
-Your final task is to add in the JSX so you actually see something when we load this puppy up. 
+Your final task is to add in the JSX so you actually see something when you load this puppy up. 
 
 Underneath the `h1` element in your skeleton JSX, add the following:
 
@@ -1489,11 +1187,11 @@ The final two paragraphs are further visual niceties to highlight what’s going
 
 The second paragraph lets you view the count value in state, checking first if it is zero and displaying a slightly different message if the count hasn’t been touched yet.
 
-#### Run the Example
+### Run the Example
 
-Now for the fun part, seeing your hard work in action. Just as before, make sure to open up the `App.js` file and comment out all the components except `UseMemoExample`. 
+Now for the fun part, seeing your hard work in action. Just as before, make sure to open the `App.js` file and comment out all the components except `UseMemoExample`. 
 
-Your `App` component should look like this:
+Your App component should look like this:
 
 **App.js**
 
@@ -1521,21 +1219,13 @@ const App = () => (
 export default App;
 ```
 
-Update and save the file, then open the terminal and run the age old `npm start` command, and open your browser to view the result:
+Update and save the file. Then open up the terminal and run the age old `npm start` command, and open your browser to view the result:
 
 ![](assets/usememo-example.png)
 
-It’s not much to look at, but it does a really great job of illustrating the benefits of "useMemo". You can see on initial page load, and every time you hit the ‘`load next word`’ button, your mocked expensive function is called and the time difference is calculated, then output to the screen. 
+Sure, it’s not much to look at, but it does a really great job of illustrating the benefits of `useMemo`. You can see that on initial page load, and every time you hit the ‘load next word’ button, your mocked expensive function is called and the time difference is calculated, then output to the screen. 
 
-Each word takes two to three seconds to ‘`count`’. Because the currently-selected word is changed each time you hit that button, the memoized function is re-run, the component re-renders and the output is updated. 
-
-If you hit the ‘`notch up the count`’ button, the component re-renders all the same, updating the output (notice how the count is increased), but this time, the `letterCount` variable is using the memoized value from the `countLettersInWord()` function. That’s because, although the `count` variable has changed, the `currentWord` variable hasn’t. Because this dependency hasn’t changed, you don’t need to rerun the expensive function. You can just use the memoized value. 
-
-Just to hammer home how valuable `useMemo` can be, hop back into the `UseMemoExample` component and swap out the current `letterCount` variable with the commented out `letterCount` line. Just delete or comment out the first line which uses the `useMemo` Hook, and uncomment the very next line which is unmemoized. 
-
-Reload the app and you’ll notice that not much has changed when you hit ‘`load next word`’. However, if you hit ‘`notch up the count`’, now you’ll see it takes time to simply update a single number by 1. 
-
-## Hook: useCallBack
+## Hook: useCallback
 
 In a similar fashion to the `useMemo` Hook, `useCallback` gives a means to optimize your applications somewhat. It also provides a form of memoization. 
 
@@ -1549,7 +1239,7 @@ const someMemoizedCallback = useCallback(() => {
 }, [depOne, depTwo]);
 ```
 
-### Memoizing Functions
+### Memoize fFnctions
 
 "Great", you’re thinking, "but why would anyone want to memoize a callback function?"
 
@@ -1567,33 +1257,21 @@ function MyEpicComponent() {
 }
 ```
 
-Each time `MyEpicComponent` re-renders, `handleButtonClick` is recreated as a brand-new function object. For most components this isn’t a problem and is usually nothing you need to worry about; this re-creating of functions is inexpensive and not going to cause you any problems, performance-based or otherwise.
+Each time `MyEpicComponent` re-renders, `handleButtonClick` is recreated as a brand-new function object. For most components this isn’t a problem and is usually nothing you need to concern yourself with; this re-creating of functions is inexpensive and not going to cause you any problems, performance-based or otherwise.
 
-However, there are some situations you might face where you don’t want this behavior. One such example might be when the function is a dependency of other Hooks. In this situation, you’d want to have access to the same function object across different renderings, not some brand-new instance (or you’d be back in infinite looping territory again).
+However, there are some situations you might face where you don’t want this behavior. One such example might be when the function is a dependency of other Hooks. In this situation, you’d want to have access to the same function object across different renderings, not some brand-new instance (or we’d be back in infinite looping territory again).
 
-In essence, given the same dependency values, `useCallback` returns the same function instance between renders.
+## Build the useCallback Example
 
-#### Further Reading on useCallback
+The `useCallback` Hook is one of those tools you may not use or come across a great deal, but when you do need to use it, the benefits are huge. Because of the rather infrequent need to use this Hook, our example is going to be a little more contrived, in order to highlight those benefits.
 
-You can discover more on the `useCallback` Hook at the official [React docs](https://reactjs.org/docs/hooks-reference.html#usecallback) website. Once you’ve checked those out, I’d also recommend the following articles:
+You'll be building a message generator and some buttons that increment counters within the component. You will keep track of the functions your component recreates across each render so you can see how `useCallback` comes into play.
 
-- Dmitri Pavlutin’s [guide](https://dmitripavlutin.com/dont-overuse-react-usecallback/)  to `useCallback`
-
-- [When to use useCallback](https://aheadcreative.co.uk/articles/when-to-use-react-usecallback/) by Ahead Creative
-
-- And an [article](https://kentcdodds.com/blog/usememo-and-usecallback) from Kent C Dodds
-
-## L06HandsOnAssignment: useCallback
-
-The `useCallback` Hook is one of those tools you may not use or come across a great deal, but when you do need to use it, the benefits are huge. Because of the rather infrequent need to use this Hook, your example is going to be a little more contrived, to highlight those benefits.
-
-You’ll be building a message generator and some buttons that increment counters within the component. You will keep track of the functions your component recreates across each render so you can see how `useCallback` comes into play.
-
-Start by opening the ```UseCallbackExample.jsx``` file and building it out.
+Start by opening the `UseCallbackExample.jsx` file and building it out.
 
 ### Imports and External Variables
 
-First things first, you’ll need to import `React`, `useState`, and of course, the `useCallback` Hook.
+First things first, import `React`, `useState`, and of course, the `useCallback `Hook.
 
 **UseCallbackExample.jsx**
 
@@ -1601,7 +1279,7 @@ First things first, you’ll need to import `React`, `useState`, and of course, 
 import React, { useState, useCallback } from 'react';
 ```
 
-Next, you need a couple of constants that will live outside of your main component:
+Next, you need a couple of constants that will live outside of our main component:
 
 **UseCallbackExample.jsx**
 
@@ -1616,11 +1294,11 @@ const messages = [
 const functionStore = new Set();
 ```
 
-You have a simple array of string messages weyou’ll use within your component. With `functionStore` you’re creating a shiny new instance of a `Set` object. You can store lists or collections of anything you like in a `Set` object, but the key part here is that `Set` naturally keeps things unique. The importance of this will become apparent in a little while.
+You have a simple array of string messages you'll use within your component. With `functionStore` you're creating a shiny new instance of a `Set` object. You can store lists or collections of anything you like in a `Se`t object, but the key part here is that `Set` naturally keeps things unique for us. The importance of this will become apparent in a little while.
 
 ### Define the Default Exported Component
 
-Create the default export component, as you’ve started with in the previous lessons:
+Create the default export component, as you've started with in the previous lessons:
 
 ```
 export default () => {
@@ -1631,8 +1309,9 @@ export default () => {
 };
 ```
 
-### Add Variables
-Youe'll outline a couple of variables at the top of your new component:
+### Add in Variables
+
+As I’m sure you’re becoming familiar with by now, you'll outline a couple of variables at the top of our new component:
 
 **UseCallbackExample.jsx**
 
@@ -1646,7 +1325,7 @@ You have two state variables, `counter` and `message`. Your `counter` variable w
 
 ### Implement useCallback
 
-Now for the `useCallback` part. Create three click-handling functions here: one to increase the count, another to decrease it, and a last one to generate a new message. Each will update one of the state variables you just created.
+Now for the `useCallback` part. Create three click-handling functions here: one to increase the count, another to decrease it, and a last one to generate a new message — each will update one of the state variables we just created.
 
 **UseCallbackExample.jsx**
 
@@ -1667,9 +1346,9 @@ Now for the `useCallback` part. Create three click-handling functions here: one 
 
 Both `increaseCounter` and `decreaseCounter` implement the `useCallback` Hook, using the `counter` variable as a dependency. Remember, each time a dependency changes, `useCallback` will generate a new callback function object. Both these functions update the `counter` value in state, either by adding one or removing one.
 
-The `generateRandomMessage` function depends on the `message` state variable, and updates this value in state, pulling a random string from our messages array.
+The `generateRandomMessage` function depends on the `message` state variable, and updates this value in state, pulling a random string from your messages array.
 
-The very last thing you’ll do before getting on with the JSX is add these new functions into the `functionStore`:
+The very last thing before getting on with the JSX is add these new functions into the `functionStore like` so:
 
 **UseCallbackExample.jsx**
 
@@ -1679,11 +1358,11 @@ The very last thing you’ll do before getting on with the JSX is add these new 
     functionStore.add(generateRandomMessage);
 ```
 
-Now, each time the component re-renders, it will attempt to add each of your three click handler functions into the `functionStore` `Set`. If one of the function objects already exists within the `Set` then it won’t be added. 
+Now, each time the component re-renders, it will attempt to add each of your three click handler functions into the `functionStore` Set. If one of the function objects already exists within the `Set` then it won’t be added. 
 
-Later on, you’ll extract the number of functions in the `Set` to see how many new function objects have been created on each re-render.
+Later on, you extract the number of functions in the `Set` to see how many new function objects have been created on each re-render.
 
-### Defining the JSX
+### Define the JSX
 
 With your logic in place, all that remains is to outline the JSX for your UI. 
 
@@ -1710,30 +1389,35 @@ With your logic in place, all that remains is to outline the JSX for your UI.
     );
 ```
 
-You’re starting off by outputting the current count using the `counter` value from state. Next, do the same but for `message`, using the double pipe operator shortcut to display an instructional string, should message be empty.
+Start off by outputting the current count using the `counter` value from state. Next, do the same but for `message`, using the double pipe operator shortcut to display an instructional string, should message be empty.
 
-Next, you have three buttons you’re attaching to your click handlers: one to increase the counter, one to decrease it, and a final one to trigger a message generation.
+Next, have three buttons you're attaching to your click handlers: one to increase the counter, one to decrease it, and a final one to trigger a message generation.
 
-The final piece of JSX is to output a simple message to the user, showing the number of items in the `functionStore` `Set`. To do that, call `Set`’s `.size` property, which is equivalent to an array’s `.length` property.
+The final piece of JSX is to output a simple message to the user, showing the number of items in the `functionStor`e Set. To do that, call `Set`’s `.size` property, which is equivalent to an array’s `.length` property.
 
-#### Run the Example
+### Runn the eEample
 
 Ready to see it in action? Head on over to the terminal and fire up the `npm start` command, opening the project in the browser once it’s built.
 
-![](assets/usecallback-example.png)
+![](assets/usecallback-example%20(1).png)
 
-As you can see, what you’ve got is quite simple. The current `count` is `0`, you have no `message` set, and your buttons are ready to be clicked. 
+As you can see, what you have is quite simple. The current `count` is 0, no message set, and our buttons are ready to be clicked. 
 
-Look at the line under the `<hr />` element that counts the number of functions this component has created. You can see that your three click handler functions have been created and added into the `Set`, so the size of the `Set` is naturally 3. 
+But take a look at the line under the `<hr />` element that counts the number of functions this component has created. You can see that your three click handler functions have been created and added into the `Set,` so the size of the Set is naturally 3. 
 
-So what happens if you click one of the buttons? Click ‘`generate a message`’ to choose a random value from the messages array. 
+So what happens if you click one of the buttons? cClick ‘`generate a message`’ to choose a random value from the messages array. 
 
 Notice that, even though the component has re-rendered, only one additional function has been created. In this case it was the `generateRandomMessage` click handler function and that’s because the value in state (i.e. message) changed. This state value is passed as a dependency to the `useCallback` Hook, hence the function is recreated.
 
-This time, lclick on ‘`counter +`’ and see what happens.
+This time, click on ‘`counter +`’ and see what happens.
 
-This time you'll see the size of `functionStore` jumps from 4 to 6. On this re-render, `generateRandomMessage` is kept the same because you haven’t changed its dependency, `message`. However, you’ve altered the counter state variable, which both `increaseCounter` and `decreaseCounter` depend on. Therefore, both of these functions have been recreated on this particular rendering.
+This time you'll see the size of `functionStore` jumps from 4 to 6. On this re-render, `generateRandomMessage` is kept the same because you haven’t changed its dependency, message. However, you altered the counter state variable, which both `increaseCounter` and `decreaseCounter` depend on. Therefore, both of these functions have been recreated on this particular rendering.
 
-## Submit
+That’s everything wrapped up in this bumper lesson on diving deep into React Hooks. In the next lesson you’ll be looking at navigation within React projects.
+
+
+
+
+
 
 
