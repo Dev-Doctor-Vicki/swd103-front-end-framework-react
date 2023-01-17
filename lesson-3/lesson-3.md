@@ -2,7 +2,7 @@
 
 This lesson introduces concepts and approaches you can use to deal with fetching data within React, including the JavaScript Fetch API.
 
-## Fetching Data
+## Fetch Data
 
 At some point, you will have to interact with data from an external source. In a frontend application where React is employed, this will most likely be via an `API`. 
 
@@ -59,9 +59,9 @@ Although it has support for older browsers (especially Internet Explorer), the `
 
 ## Use the Fetch API
 
-The more recent approach to handle resource fetching, especially to external APIs, is the built-in Fetch API. 
+The more recent approach to handle resource fetching, especially to external APIs, is the built-in [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API). 
 
-It offers a more straightforward implementation than the previous `XMLHttpRequest` option and boasts a more powerful and flexible feature set. Because it employs `Promises` quite heavily, subsequent action calls can be chained or swapped out for the `async/await` syntax. 
+It offers a more straightforward implementation than the previous `XMLHttpRequest` option; and boasts a more powerful and flexible feature set. Because it employs `Promises` quite heavily, subsequent action calls can be chained or swapped out for the `async/await` syntax. 
 
 The downsides to the Fetch API are:
 
@@ -124,7 +124,7 @@ In the next section, you will implement Axios to build on your Furry Friends Gal
 
 ## Furry Friends Gallery Mark II
 
-Your code-along project for this lesson is to build a new Furry Friends Gallery. This time, you will ueg a new API and common UI patterns, such as a sidebar filter. Take a look at what you will build.
+Your code-along project for this lesson is to build a new Furry Friends Gallery. This time, you will use a new API and common UI patterns, such as a sidebar filter. Take a look at what you will build.
 
 Your project will be based on the foundation of the Furry Friend’s Gallery you built in the last lesson. 
 
@@ -132,13 +132,13 @@ Here’s what you will build:
 
 ![](assets/react-dog-filter.jpeg)
 
-You replaced the original `input` box (allowed users to choose the number of pictures to display) with a sidebar containing a breeds filter. When the user selects a breed’s radio button, the dog pictures in the right-hand pane refresh using an API call. 
+You replace the original `input` box (allowed users to choose the number of pictures to display) with a sidebar containing a breeds filter. When the user selects a breed’s radio button, the dog pictures in the right-hand pane refresh using an API call. 
 
 The list of breeds in the sidebar is also provided from the API. You’ll be able to page this list using previous and next buttons, each page being fetched directly from the API. 
 
 This mechanism of filtering and listing data items, and paging those data items, all while interacting with an API endpoint, is a very common pattern in web development. Although it seems you’re just listing and filtering pictures of cute dogs, I’m sure you can already recognize this familiar layout pattern from just about every online shop or product category page.
 
-You will use the `Create React App` starter project again to quickly scaffold your project, as well as the excellent `Axios` HTTP client package to handle API calls and data fetching. 
+You will use the [`Create React App` starter project](https://create-react-app.dev/) again to quickly scaffold your project, as well as the excellent `Axios` HTTP client package to handle API calls and data fetching. 
 
 You’ll touch on the subject of a data handler to act as a middle man between your API and components. For this project, you’re going to use a slightly different API for your dog picture needs: [TheDogAPI - Dogs as a Service](https://thedogapi.com/). 
 
@@ -157,6 +157,8 @@ You will move to this slightly different API provider for a few reasons:
 Overall, however, The Dog API will allow you to simulate a more realistic environment for requesting and receiving data in a realistic project.
 
 Your first move will be to set up a new project using the Create React App helper, so let’s get started.
+
+## L03HandsOnAssignment
 
 ### Project Setup
 
@@ -180,7 +182,8 @@ As you did in the last project, it’s always best to spin up the default, uncha
 
 Enter the following command:
 
-`npm start`
+1. `cd furry-friends-two`
+2. `npm start`
 
 Once the project’s built and launched, you should be able to fire up http://localhost:3000 in a browser and see dark background and spinning React logo you’ll soon come to know and love. 
 
@@ -194,9 +197,9 @@ First, open `index.js`, located in `/furry-friend-gallery/src/` and remove the f
 
 It should be on line 3 of the `index.js` file. This will just remove a link to the default styles from the project we won’t need. 
 
-After that, locate `/src/index.css` and delete the file.
+Locate `/src/index.css` and delete the file.
 
-Next, find the `/src/App.css` file and open it up. Highlight all the contents and delete the existing styles. Save and close the file.
+Find the `/src/App.css` file and open it. Highlight all the contents and delete the existing styles. Save and close the file.
 
 Finally, open the main `App.js` file located at  `/src/App.js`. This currently contains starter JSX which you will replace, as well as a link to a logo file you will remove.
 
@@ -218,7 +221,7 @@ Your project still contains default files, components, and assets loaded in by d
 
 ## Add Project Dependencies
 
-You’ll create and edit the files you need to get your project running, but first, add a couple of dependencies to your project. 
+Create and edit the files you need to get your project running, but first, add a couple of dependencies to your project. 
 
 ### Bring Axios Onboard
 
@@ -229,6 +232,8 @@ Fortunately, it’s very straightforward to add. Back in a terminal window, make
 `npm add axios`
 
 That’s it, quick and simple. Now,  import `Axios` and any of its helper methods using the import statement;
+
+**App.js**
 
 ` import axios from ‘axios'`
 
@@ -250,7 +255,7 @@ You can also edit the title of the page between the `<title></title>` tags too i
 
 ## Create Your App’s Files
 
-Now that you will be implementing a data handler to act as a middle man between the API and your components, there are a couple more files you will use.:
+You will be implementing a data handler to act as a middle man between the API and your components. There are a couple more files you will use.:
 
 1. `App.js` — the familiar project starting point where all the magic happens.
 
@@ -280,15 +285,15 @@ You’ll be taken to the following page where you enter your email address and a
 
 ![](assets/dog-api-signup.jpeg)
 
-After clicking ‘SIGNUP’, you’ll see a thank you screen and a message to check your inbox for the key. Head to your email and you should receive an email containing your shiny new API key like this:
+After clicking ‘SIGNUP’, you see a thank you screen and a message to check your inbox for the key. Head to your email and you should receive an email containing your shiny new API key like this:
 
 ![](assets/dog-api-example-key.png)
 
-With your API, it’s time to take a quick look at the documentation, which is another important aspect of your role as a frontend developer, especially when working with APIs. 
+With your API, take a quick look at the documentation, which is another important aspect of your role as a frontend developer, especially when working with APIs. 
 
 ### Experiment with The Dog API Documentation
 
-In a real-life frontend role, you’ll very likely come across a situation where you have to connect to APIs to fetch important data for your UI. When facing this, you’ll hopefully have access to quality API documentation that outlines what endpoints are available, as well as information that explains how to call the endpoint — what parameters to supply, what the format of the data returned is, and so on.
+In a real-life frontend role, you will come across a situation where you have to connect to APIs to fetch important data for your UI. When facing this, you’ll hopefully have access to quality API documentation that outlines what endpoints are available, as well as information that explains how to call the endpoint — what parameters to supply, what the format of the data returned is, and so on.
 
 With that in mind, take a quick peek at [The Dog API documentation](https://docs.thedogapi.com/). Fire up the URL in your browser of choice and you’ll see a screen similar to this. 
 
@@ -306,7 +311,7 @@ The most useful part of this page is the ‘Send a Test Request’ section. If y
 
 ![](assets/dog-api-test.jpeg)
 
-You will use the API URL, https://api.thedogapi.com/v1, in a moment.
+You use the API URL, https://api.thedogapi.com/v1, in a moment.
 
 The response from the test API call looks like this:
 
@@ -343,7 +348,7 @@ For example, you might have a staging file and a production one, each containing
 
 There are no hard and fast rules to what you can keep in such a file, but generally, you’ll store relatively insensitive information that changes between different environments, such as URLs, names of things, or version numbers.
 
-For your project, however, you’ll store the API URL and your API key in a `.env` file of your very own. 
+For your project, however, store the API URL and your API key in a `.env` file of your very own. 
 
 At the root of your project, create a new file and don’t give it a name. Instead, just type the file extension directly, so it should read `.env`. 
 
@@ -397,11 +402,11 @@ export default ({ imgUrl, pictureId }) => (
 
 There’s nothing particularly special or fancy about this `component`.  It’s merely a repeatable presentational component used to show a nicely styled picture of each dog picture returned from the API.
 
-The main difference here is  you brought in a `pictureId` value unique to each picture. You’re going to use it to display it under the picture of each dog, purely for presentational reasons.
+The main difference here is you brought in a `pictureId` value unique to each picture. You use it to display it under the picture of each dog, purely for presentational reasons.
 
 ### Edit App.css
 
-With the existing `App.css` file that comes with the Create React App project starter, we need to update the styles so our dog pictures and radio buttons for breeds look much nicer. 
+With the existing `App.css` file that comes with the Create React App project starter, update the styles so your dog pictures and radio buttons for breeds look much nicer. 
 
 Open the `/src/App.css` file and replace the default starter contents with the following:
 
@@ -428,7 +433,7 @@ Open the `/src/App.css` file and replace the default starter contents with the f
   margin-right: 0.5em;
 }
 ```
-As well as making each dog picture card component have a sensible height, you’re making sure each breed radio button is displayed on its own line and playing with the spacing a little.
+As well as making each dog picture card component have a sensible height, make sure each breed radio button is displayed on its own line and playing with the spacing a little.
 
 ## Create api.js
 
@@ -442,7 +447,7 @@ Now start coding the API methods.
 
 ### Data Handlers
 
-With the `api.js` file, you’ll be introducing the concept of a data handler. Put simply, a data handler is a middle man of sorts that handles the communication between a data source and a data consumer. In your case, the data source is The Dog API and your data consumer is any component that wants information from the API, such as the `BreedList.jsx` component.
+With the `api.js` file, you  introduce the concept of a data handler. Put simply, a data handler is a middle man of sorts that handles the communication between a data source and a data consumer. In your case, the data source is The Dog API and your data consumer is any component that wants information from the API, such as the `BreedList.jsx` component.
 
 You could, of course, just have the code directly in each component, which is fine for small projects. But as soon as you start to repeat this API handling code things start to get messy:
 
@@ -558,7 +563,7 @@ You’re employing the async/await coupling in all your methods because you’re
 
 The Dog API documentation explains which parameters are available and what they do. 
 
-Once the data returns, simply supply it back to the caller of `fetchBreeds` as an object with the breeds value being all the breeds data the API returned, as well as a `totalBreeds` value, which will be a numerical value of the total number of breeds the API has to offer. You’ll be using this later to page the results.
+Once the data returns, supply it back to the caller of `fetchBreeds` as an object with the breeds value being all the breeds data the API returned, as well as a `totalBreeds` value, which will be a numerical value of the total number of breeds the API has to offer. You’ll be using this later to page the results.
 
 ### Define the fetchPictures() Function
 
@@ -581,15 +586,15 @@ export const fetchPictures = async (breed = '', count = 20) => {
 };
 ```
 
-You need to know the breed to return specific pictures from that breed. So, if the breed parameter is empty or not populated, then return an empty array. This saves an unnecessary API call, but it also prevents the calling method from receiving a null value. An empty array is much nicer to deal with.
+You need to know the breed to return specific pictures from that breed. So, if the breed parameter is empty or not populated, return an empty array. This saves an unnecessary API call, but it also prevents the calling method from receiving a null value. An empty array is much nicer to deal with.
 
-All being well, call the `callAPI()` once more, supplying an API URL of `images/search` and another `params` object specifying the breed and number of pictures to return (you’ve defaulted this to 20 in the arguments of the function). 
+All being well, call the `callAPI()` once more, supply an API URL of `images/search` and another `params` object specifying the breed and number of pictures to return (you’ve defaulted this to 20 in the arguments of the function). 
 
-Finally, just return the pictures data the API returns.
+Finally, return the pictures data the API returns.
 
 ### The Complete api.js file
 
-Once everything’s been added, the complete `api.js` should look like this:
+Once everything is added, the complete `api.js` should look like this:
 
 **api.js**
 
@@ -678,7 +683,7 @@ export default ({ dispatchBreedChange }) => {
 
 You’re destructuring the incoming props object to just a single argument, `dispatchBreedChange`. This will be a function passed down from the parent component called when a user selects an individual breed.
 
-Remember, you’re keeping things within compartmentalized areas of responsibility. In practice, this means your `BreedList` component will list some breeds and handle paging through them, but it doesn’t know or care about what happens when someone selects a breed (other than keeping track of which selection they made). 
+Remember, keep things within compartmentalized areas of responsibility. In practice, this means your `BreedList` component will list some breeds and handle paging through them, but it doesn’t know or care about what happens when someone selects a breed (other than keeping track of which selection they made). 
 
 That job will fall to the parent component, which will be `App.js` , but we’ll cover that shortly. For now, all `BreedList` cares about is that once a user selects a breed radio button, it can call the `dispatchBreedChange()` function and carry on its way.
 
@@ -696,7 +701,7 @@ With your skeleton component in place, the first thing is to define some variabl
   const [totalPages, setTotalPages] = useState(0);
 ```
 
-You need to create several state values using the `useState` Hook. 
+Create several state values using the `useState` Hook. 
 
 In order, here are the uses of the variables:
 
@@ -726,13 +731,13 @@ Each time a user selects a radio button, the `onChange` event is fired. Capture 
   };
 ```
 
-This function should look quite familiar by now. Handling input changes via change event handlers is often done in this fashion. You can see we update value in state using the Hook `setValue` with the `e.target.value` value provided to us via the synthetic event. 
+This function should look quite familiar by now. Handling input changes via change event handlers is often done in this fashion.  You update value in state using the Hook `setValue` with the `e.target.value` value provided via the synthetic event. 
 
 The extra bit you do here is inform the parent component that something has changed by calling the `dispatchBreedChange()` function from props after checking that it’s not a null or empty value. 
 
 ### Handle paging Changes
 
-Each time a user changes a page of dog breeds using ‘`next breed`’ or ‘`previous breed`’ buttons, you’ll call this next function, `handlePageClick()` which accepts a `newPageNumber` argument.
+Each time a user changes a page of dog breeds using ‘`next breed`’ or ‘`previous breed`’ buttons, you call this next function, `handlePageClick()` which accepts a `newPageNumber` argument.
 
 **BrredList.jsx**
 
@@ -746,7 +751,7 @@ Each time a user changes a page of dog breeds using ‘`next breed`’ or ‘`pr
   };
 ```
 
-The purpose of this function is update the newly chosen page number in state using `setCurrentPage(newPageNumber)`. However, you need to do a quick check before just in case the user has somehow managed to make a potentially faulty choice.
+The purpose of this function is update the newly chosen page number in state using `setCurrentPage(newPageNumber)`. However, do a quick check before just in case the user has somehow managed to make a potentially faulty choice.
 
 Check the new page number and if it’s less than ``0 (page 1 of the results is actually page `0` in the array because arrays are zero-indexed) or greater than or equal to the total number of pages, return from the method without doing anything to prevent errors in the UI from accessing pages that don’t exist.
 
@@ -774,7 +779,7 @@ Let’s implement it now:
 
 Notice how you pass in the `currentPage` variable in state to the dependencies array of the `useEffect` Hook. Now, every time `currentPage` changes, this `useEffect` Hook will fire.
 
-You’re defining an asynchronous function `loadBreeds()` which in turn calls the `fetchBreeds()` function from your API data handler. Pass it the current page and an arbitrary page size value of ’15’ — you could make this whatever value you wish and it will increase or decrease the number of breeds returned per page. 
+Define an asynchronous function `loadBreeds()` which in turn calls the `fetchBreeds()` function from your API data handler. Pass it the current page and an arbitrary page size value of ’15’ — you could make this whatever value you wish and it will increase or decrease the number of breeds returned per page. 
 
 The function follows a pretty simple flow:
 
@@ -802,7 +807,7 @@ The last move is to generate some JSX to return to the user. Start by adding in 
         )}
 ```
 
-The `<progress>`  element is a native HTML element, but you can style it with Bulma to give it a little more pizazz. 
+The `<progress>` element is a native HTML element, but you can style it with Bulma to give it a little more pizazz. 
 
 Next, you need an opposite block of JSX for when `isLoading` is ‘`false`’. This will be the default. 
 
@@ -836,9 +841,9 @@ Next, you need an opposite block of JSX for when `isLoading` is ‘`false`’. T
         }
 ```
 
-Again, you’re leaning on the Bulma framework’s specific way of defining radio buttons, making sure to assign `handleChange` to each radio button’s `onChange` event. 
+Again, you lean on the Bulma framework’s specific way of defining radio buttons, making sure to assign `handleChange` to each radio button’s `onChange` event. 
 
-For the previous and next paging buttons,  assign `handlePageClick` to their `onClick` events. The only difference is we pass in a value of the `currentPage` one lower or higher depending on if they use clicks ‘`previous`’ or ‘`next`’ respectively. 
+For the previous and next paging buttons,  assign `handlePageClick` to their `onClick` events. The only difference is you pass in a value of the `currentPage` one lower or higher depending on if they use clicks ‘`previous`’ or ‘`next`’ respectively. 
 
 ### The Complete BreedList Component File
 
@@ -923,12 +928,11 @@ export default ({ dispatchBreedChange }) => {
 }
 ```
 
-
 ## Edit App.js
 
 While `DogCardInfo` and `BreedList` take care of their respective areas, the `App` component really orchestrates everything and wires up the two.
 
-Start mapping out the `App` component with the imports you’ll need:
+Map out the `App` component with the imports you need:
 
 **App.js**
 
@@ -946,9 +950,9 @@ import BreedList from './components/BreedList';
 import './App.css';
 ```
 
-There shouldn’t be anything too unfamiliar here. You’re pulling in React into scope, as well as `useState` and `useEffect` Hooks you’ll be using later on. You need `fetchPictures()` function from your API data handler, as well as the two components to display the breeds and dog pictures.
+There shouldn’t be anything too unfamiliar here. You pull in React into scope, as well as `useState` and `useEffect` Hooks you’ll be using later on. You need `fetchPictures()` function from your API data handler, as well as the two components to display the breeds and dog pictures.
 
-Last, you need to pull in the `App.css` file, or your styles won’t be applied.
+Last, pull in the `App.css` file, or your styles won’t be applied.
 
 Next, define your variables:
 
@@ -968,7 +972,7 @@ Next, define your variables:
 
 ### Fetch Pictures with the useEffect Hook
 
-Just like in the `BreedList` component, the `useEffect` Hook is a great place to take care of fetching data from The Dog API when one or more conditions change. In your case, you want to fetch an updated list of dog pictures from the API when the user selects a new breed — i.e. when the `selectedBreedId` value in state changes.
+Just like in the `BreedList` component, the `useEffect` Hook is a great place to take care of fetching data from The Dog API when one or more conditions change. In your case, fetch an updated list of dog pictures from the API when the user selects a new breed — i.e. when the `selectedBreedId` value in state changes.
 
 **App.js**
 
@@ -989,11 +993,11 @@ Just like in the `BreedList` component, the `useEffect` Hook is a great place to
 
 This has a very familiar look and operation to the `useEffect` defined in the `BreedList` component. Update the UI loading state, fetch pictures from the API, update state with the picture data, and reset the loading state to false.
 
-Notice that you’re passing in `selectedBreedId` to the dependencies array so the `useEffect` Hook fires whenever this value in state changes.
+Notice you pass in `selectedBreedId` to the dependencies array so the `useEffect` Hook fires whenever this value in state changes.
 
 ## Complete App by Building out the Return JSX
 
-With all the logic in place, the final thing to do is to outline the UI in JSX for the user. Your return statement looks like this:
+With all the logic in place, the final thing to do is outline the UI in JSX for the user. Your return statement looks like this:
 
 **App.js**
 
@@ -1032,7 +1036,7 @@ With all the logic in place, the final thing to do is to outline the UI in JSX f
     </div>
 ```
 
-The upper half of the JSX is a simple `<header>` tag with a title and strapline underneath. Following that, you’re using Bulma’s `columns` class which allows you to define two columns; one narrower left-hand column for the sidebar, with the larger right-hand panel for the picture gallery.
+The upper half of the JSX is a simple `<header>` tag with a title and strapline underneath. Following that, you use Bulma’s `columns` class which allows you to define two columns; one narrower left-hand column for the sidebar, with the larger right-hand panel for the picture gallery.
 
 In the left-hand column, add a title ‘`Search by breed`’ and then add your `BreedList` component. 
 
@@ -1128,8 +1132,8 @@ Save all of the files and run the project. Open up a terminal and enter the foll
 
 After a moment or two, the project will finish building and (depending on your setup) a browser window should open up and display the development URL, https://localhost:3000. If it doesn’t, then open up your favorite browser window and navigate to that URL yourself.
 
-Take a look at the running app and play with it. You’ll see a list of available breeds in the left-hand sidebar complete with previous and next buttons. Browse through the pages of dog breeds until you find one you like, and make a selection. 
+Take a look at the running app and play with it. You see a list of available breeds in the left-hand sidebar complete with previous and next buttons. Browse through the pages of dog breeds until you find one you like, and make a selection. 
 
-Once you’ve selected a breed radio button, you’ll see the right-hand panel update with a filtered list of dog pictures that match your chosen breed. Exciting stuff!
+Once you select a breed radio button, you see the right-hand panel update with a filtered list of dog pictures that match your chosen breed. Exciting stuff!
 
-Congratulations, you’ve just built a fully working, browsable, gallery app that pages a list of breeds from an API, and then responds to user input, retrieving a filtered list of images from the same API. All the while, you’ve been using axios under the hood to provide a great cross-browser data-fetching experience.
+Congratulations, you’ve just built a fully working, browsable, gallery app that pages a list of breeds from an API, and then responds to user input, retrieving a filtered list of images from the same API. All the while, you used axios under the hood to provide a great cross-browser data-fetching experience!
