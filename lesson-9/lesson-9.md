@@ -14,7 +14,17 @@ In this lesson you’re going to swap out the reducer and store creation mechani
 
 I’ve used a lot of different redux approaches across a number of commercial projects and I much prefer the one the Redux Toolkit offers.
 
-## Start where you left off with the Events SignUp App.
+## L09HandsOnProject1
+
+
+### Requirements
+
+1. Follow guided learning
+2. Create code for each hook
+
+## Setup
+
+Start where you left off with the Events SignUp App.
 
 ### Switch up Dependencies
 
@@ -602,7 +612,22 @@ What the Hook returns is an array containing the current `state` of the app and 
 
 The `useReducer` Hook focuses on what it does so well, but you still have a few missing pieces of the puzzle. For example, you no longer inherently have any central store mechanism, nor an obvious means to pass access to your app’s `state` or the `dispatch` function to different components. It’s not the end of the world, but it's common practice to create a centralized "store" mechanism just like you’ve seen with the other redux approaches this far, and then pass both the `state` and `dispatch` items across your app via React’s Context system. 
 
+#### Submission
+
+1. Zip project folder
+2. Upload folder
+
 ## L09HandsOnProject Update
+
+### Requirements
+
+1. Follow guided learning
+2. Create code for each hook
+
+## Setup
+
+1. Make a copy of the `L09HandsOnProject1`
+2. Rename it `L09HandsOnProjectUpdate`
 
 You have a few changes to make to your project again, starting with removing the React Redux libraries, and working your way through the same files from the last part to switch over to using the `useReducer` Hook.
 
@@ -853,5 +878,411 @@ import initialState from '../data/initialState';
 import events from './eventReducer';
 ```
 
+Next, create your own `combineReducers` function:
 
+**src/reducers/reducers.js**
 
+```
+const combineReducers = reducers => {
+    return (state = {}, action) => {
+        const newState = {};
+        for(let key in reducers) {
+            newState[key] = reducers[key](state[key], action);
+        }
+        return newState;
+    };
+};
+```
+
+It might look a little fussy and tricky to read, but wyou’re effectively going to pass this function an object that has a set of `key:value` pairs representing `reducerKeyName:actualReducerFunction`. What you do then is return a sub-function that accepts a `state` and `action` argument. It is this sub-function that will be called by the `useReducer` Hook (as you’ll see in a moment). It almost acts like a reducer factory of sorts. 
+
+This sub-function will be used by the `useReducer` Hook, but instead of a `switch` statement that matches action types, it loops through the reducers argument’s keys and calls each reducer function in turn, passing it the correct slice of `state` - the one that matches the same key value in the state object.
+
+In essence you’ve created a higher-order function. It returns a function that calls each reducer function to carry out any `state` updates. This returned function is the one doing the `state` updates and returning a new copy of `state`. 
+
+It might look a little weird, but it’ll become clearer as you progress through the edits. Next, you’re going to call the `combineReducers` function, passing in an object that contains your single reducer function events that you imported earlier. You’ll stash this in a `const` for now and refer to it in a moment.
+
+**src/reducers/reducers.js**
+
+```
+const rootReducer = combineReducers({
+    events
+});
+```
+
+Next you want to define and export a `Context` instance. For that, you’ll be using the `createContext` function provided by React. You’ll remember this from the lesson on Hooks and `useContext`.
+
+**src/reducers/reducers.js**
+
+```
+export const StoreContext = createContext(null);
+```
+
+Next, you’re going to define a store provider component that pulls together the result of the `useReducer` Hook, your `Context`, and also returns a wrapped component instance that you already consumed in the `index.js file`.
+
+**src/reducers/reducers.js**
+
+```
+export const StoreProvider = ({ children }) => {
+    const [state, dispatch] = useReducer(rootReducer, initialState);
+    const store = useMemo(() => [state, dispatch], [state]);
+    return (
+        <StoreContext.Provider value={store}>{children}</StoreContext.Provider>
+    );
+};
+```
+
+What’s going on here is you’re accepting a children property that you’ve grabbed from props. This component will be passed any child components via the children property. In your case this will be your entire app as this component wraps the `<App />` component, as you’ve recently seen during the `index.js` file edits.
+
+The first line in this component is the use of the `useReducer` Hook. You pass it your `rootReducer` variable (which is the result of the `combineReducers` function) and `initialState`. It returns an array containing `state` and `dispatch`. These are what you’ll need to pass along to child components in your app.
+
+From here, you’re going to make a redux store. You’re using the `useMemo` Hook here to prevent any unnecessary extra rendering. One of the criticisms levelled at this method of approaching redux is that any changes in state cause multiple re-renders of components. This may not be a particular issue in your app (it certainly won’t be here) and I’d caution again about becoming too focused on optimizations. That said, you’re looking at a realistic scenario here and building for potential future scale. You’ll use the `useMemo` Hook to keep an eye on state and only update the store value when changes occur.
+
+Finally, you’re returning the `StoreContext.Provider` component, passing the store value into the `value={}` attribute so it’s available across your apps when you need it. You’re wrapping this component around your children property that you grabbed at the start.
+
+The very last thing to do here is create a little nicety in the form of a helpful function. In the first lesson you had a bunch of separate, yet specific, action functions, such as `addEventAttendee`. While you’ve not gone down that route this time (although you could have), it’ll still be nice to have a little help in reducing repetitive code when you need to call the dispatch function and pass it an action:
+
+**src/reducers/reducers.js**
+
+```
+// Helper
+export const createAction = (type, payload) => ({
+    type, payload
+});
+```
+
+A very simple one here - you’re creating an inline arrow function `createAction` that accepts a `type` and a `payload`, and returns them as a new object with keys of the same name. It might not look like much, but it’ll save you from having to write the same, messy-looking code each time you want to pass an action to the `dispatch` function. You’ll see an example of this shortly when you edit your first component.
+
+### The Completed reducers.js File
+
+When complete, the `reducers.s` file will look like this:
+
+**src/reducers/reducers.js**
+
+```
+import React, { useReducer, useMemo, createContext } from 'react';
+
+// Data
+import initialState from '../data/initialState';
+
+// Reducers
+import events from './eventReducer';
+
+const combineReducers = reducers => {
+    return (state = {}, action) => {
+        const newState = {};
+        for(let key in reducers) {
+            newState[key] = reducers[key](state[key], action);
+        }
+        return newState;
+    };
+};
+
+const rootReducer = combineReducers({
+    events
+});
+
+export const StoreContext = createContext(null);
+
+export const StoreProvider = ({ children }) => {
+    const [state, dispatch] = useReducer(rootReducer, initialState);
+    const store = useMemo(() => [state, dispatch], [state]);
+    return (
+        <StoreContext.Provider value={store}>{children}</StoreContext.Provider>
+    );
+};
+
+// Helper
+export const createAction = (type, payload) => ({
+    type, payload
+});
+```
+
+## Edit EventSignUpList.jsx
+
+Now you’re going to edit the `EventSignUpList` component. Open the file and make some changes. First, the imports:
+
+**src/components/EventSignUpList.jsx**
+
+```
+import React, { useContext } from 'react';
+
+// Actions and redux
+import { actions } from '../reducers/eventReducer';
+import { StoreContext, createAction } from '../reducers/reducers';
+```
+
+You’re ridding yourself of the react-redux imports as they’re no longer necessary. You’re also bringing in the `useContext` Hook here so that you can grab hold of the values from the store we just made.
+
+Next, you’re removing the various action functions that you had previously, and replacing them with the action types, actions instead. After this, we’re bringing in both the `StoreContext` and `createAction` helper from your reducers file. 
+
+You only have two more changes to make to wire everything up. For the first you are going to replace the existing variables logic:
+
+**src/components/EventSignUpList.jsx**
+
+```
+const EventSignUpList = () => {
+    const [state, dispatch] = useContext(StoreContext);    
+    const eventAttendees = state.events.eventAttendees; 
+```
+
+Instead of the previous `useSelector` and `useDispatch` Hooks, you’ve made use of the `useContext` Hook, passing it the imported `StoreContext` Context object and grabbing the result as an array of `state` and `dispatch`. You may remember this pattern of consuming Context from your time in the `useContext` Hook lesson.
+
+Of course, once you have both `state` and `dispatch` you can grab the `eventAttendees` from state and house it in a nice convenience variable.
+
+The final change is to make a slight amendment to the click events of your buttons:
+
+**src/components/EventSignUpList.jsx**
+
+```
+        <div className="buttons">
+            <button className="button is-info is-small" onClick={() => dispatch(createAction(actions.TOGGLE_ATTENDANCE, {id: item.id, attending: !item.attending}))}>change attendance</button>
+            <button className="button is-danger is-small" onClick={() => dispatch(createAction(actions.DELETE_ATTENDEE, item.id))}>delete</button>                                            
+        </div>
+```
+
+You’re still calling `dispatch` (although it’s not the same one you used in the last lesson now), but instead of passing a specific action function, such as `toggleEventAttendance`, this time you’re passing in the result of your `createAction` helper. You’ll pass your helper an action type, such as `actions.TOGGLE_ATTENDANCE`, and either a value or an object that contains the changes you want to see in `state`. 
+
+#### The Completed Component
+
+And that’s it; done. The completed component now looks like this:
+
+**src/components/EventSignUpList.jsx**
+
+```
+import React, { useContext } from 'react';
+
+// Actions and redux
+import { actions } from '../reducers/eventReducer';
+import { StoreContext, createAction } from '../reducers/reducers';
+
+const EventSignUpList = () => {
+    const [state, dispatch] = useContext(StoreContext);    
+    const eventAttendees = state.events.eventAttendees; 
+
+    return (
+        <div className="box">        
+            {
+                eventAttendees && eventAttendees.length ?
+                <>
+                    <h2 className="subtitle is-size-5">Hurrah, {eventAttendees.length} {eventAttendees.length > 1 ? "people have" : "person has"} signed up to our event!</h2>
+                    <table className="table is-striped is-fullwidth">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Number</th>
+                                <th>Attending</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                eventAttendees.map(item => (
+                                    <tr key={item.id}>
+                                        <td>{item.name}</td>
+                                        <td>{item.email}</td>
+                                        <td>{item.number}</td>
+                                        <td><span className={`has-text-${item.attending ? 'success' : 'danger'}`}>{item.attending ? "Yes" : "No"}</span></td>
+                                        <td>
+                                            <div className="buttons">
+                                                <button className="button is-info is-small" onClick={() => dispatch(createAction(actions.TOGGLE_ATTENDANCE, {id: item.id, attending: !item.attending}))}>change attendance</button>
+                                                <button className="button is-danger is-small" onClick={() => dispatch(createAction(actions.DELETE_ATTENDEE, item.id))}>delete</button>                                            
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+                        </tbody>
+                    </table>
+                </>
+                : <h2>Oh dear...looks like no one has signed up yet :(</h2>
+            }
+        </div>
+    );
+};
+
+export default EventSignUpList;
+```
+
+### Edit EventSignUpForm.jsx
+
+The last series of changes before you fire up the machine once again is inside the `EventSignUpForm` component. 
+
+The changes here will be very similar to those you just made in the `EventSignUpList` component, so let’s start with the imports and go from there:
+
+**src/components/EventSignUpForm.jsx**
+
+```
+import React, { useState, useContext } from 'react';
+
+// Actions and redux
+import { StoreContext, createAction } from '../reducers/reducers';
+import { actions } from '../reducers/eventReducer';
+
+// Components
+import EventDetails from './EventDetails';
+```
+
+The React part is largely untouched except for the addition of the `useContext` Hook. You’ve swapped the `addEventAttendee` import for  `actions` . And you’ve brought in both `StoreContext` and `createAction` once more.
+
+Now for the changes to the variables section:
+
+**src/components/EventSignUpForm.jsx**
+
+```
+const EventSignUpForm = () => {
+    const [state, dispatch] = useContext(StoreContext);
+    const [signUpComplete, setSignUpComplete] = useState(false);
+    const [formFields, setFormFields] = useState(_baseFormFields);
+```
+
+You’re consuming the `StoreContext` Context and extracting out your `state` and `dispatch`, and removing the `useDispatch()` Hook that you no longer need. With those in place, let’s move on and make a small edit in the `handleFormSubmit` event handler:
+
+**src/components/EventSignUpForm.jsx**
+
+```
+    const handleFormSubmit = evt => {
+        evt.preventDefault();
+
+        dispatch(createAction(actions.ADD_ATTENDEE, {...formFields}));
+        setSignUpComplete(true);    
+    };
+```
+
+You removed the `newEventAttendee` object you created, and added this as an inline object, using the spread syntax, to the updated `dispatch` function call where you’ve also added the `ADD_ATTENDEE` action type.
+
+And believe it or not  - that’s this component done! By abstracting the logic into event handling functions right from the start, the JSX in this component has remained untouched throughout three whole lessons!
+
+The complete component now looks like this:
+
+**src/components/EventSignUpForm.jsx**
+
+```
+import React, { useState, useContext } from 'react';
+
+// Actions and redux
+import { StoreContext, createAction } from '../reducers/reducers';
+import { actions } from '../reducers/eventReducer';
+
+// Components
+import EventDetails from './EventDetails';
+
+const _baseFormFields = {
+    name: '',
+    email: '',
+    number: ''
+};
+
+const EventSignUpForm = () => {
+    const [state, dispatch] = useContext(StoreContext);
+    const [signUpComplete, setSignUpComplete] = useState(false);
+    const [formFields, setFormFields] = useState(_baseFormFields);
+    
+    const handleOnChange = evt => {
+        setFormFields({
+            ...formFields,
+            [evt.target.id]: evt.target.value, 
+        });
+    };
+
+    const handleFormSubmit = evt => {
+        evt.preventDefault();
+
+        dispatch(createAction(actions.ADD_ATTENDEE, {...formFields}));
+        setSignUpComplete(true);    
+    };
+
+    const resetForm = () => {
+        setFormFields({..._baseFormFields});
+        setSignUpComplete(false);
+    };
+
+    return (
+        <>
+            <EventDetails />            
+            <div className="box">
+                {
+                    !signUpComplete && (
+                        <form onSubmit={handleFormSubmit}>
+                            <div className="field is-horizontal">
+                                <div className="field-label is-normal">
+                                    <label className="label">From</label>
+                                </div>
+                                <div className="field-body">
+                                    <div className="field">
+                                        <p className="control is-expanded">
+                                            <input className="input" type="text" placeholder="Name" id="name" value={formFields.name} onChange={handleOnChange}  />                                
+                                        </p>
+                                    </div>
+                                    <div className="field">
+                                        <p className="control is-expanded">
+                                            <input className="input" type="email" placeholder="Email" id="email" value={formFields.email} onChange={handleOnChange} />                                
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="field is-horizontal">
+                                <div className="field-label"></div>
+                                <div className="field-body">
+                                    <div className="field is-expanded">
+                                        <div className="field has-addons">
+                                            <p className="control">
+                                                <a className="button is-static" href="#nogo">
+                                                    +44
+                                                </a>
+                                            </p>
+                                            <p className="control is-expanded">
+                                                <input className="input" type="tel" placeholder="Your phone number" id="number" value={formFields.number} onChange={handleOnChange} />
+                                            </p>
+                                        </div>
+                                        <p className="help">Do not enter the first zero</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="field is-horizontal">
+                                <div className="field-label"></div>
+                                <div className="field-body">
+                                    <div className="field">
+                                        <div className="control">
+                                            <button className="button is-primary">
+                                                Sign me up!
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    )
+                }                
+                {
+                    signUpComplete && (
+                        <>
+                            <p className="is-subtitle is-size-4 has-text-primary">
+                                Thanks for signing up! We'll see you soon
+                                <button className="button is-link is-pulled-right" onClick={resetForm}>Add another</button>
+                            </p>
+                        </>
+                    )
+                }                
+            </div>
+        </>
+    );
+};
+
+export default EventSignUpForm;
+```
+
+### Run the code
+
+At last, your big moment. Open a terminal window and run the `npm start` command, waiting for the site to open in the browser. 
+
+Looking around the UI you’ll see that not much has changed. You can continue adding new sign-ups, editing their attendance, deleting them, and everything works as it did before. However, although you haven’t changed anything in the UI, you have drastically changed the plumbing of the code that powers it. 
+
+This is the second big change you’ve made to an existing redux system, which is no small feat, and you should be hugely pleased with yourself for sticking with it. From here on out, you’ll have a lot more confidence to implement a redux system in your own projects, and recognize and work with similar systems in other projects. 
+
+Throughout this lesson you’ve learned about the redux state management pattern, how it fits in with React, some libraries that help to power it, and different options to implement it within a React project.
+
+And with that you’ll close the books on this penultimate module. In the next and final lesson in this course, you’ll be putting everything you’ve learned to good use by building your very own data-driven app, "The Dinosaur Search App".
