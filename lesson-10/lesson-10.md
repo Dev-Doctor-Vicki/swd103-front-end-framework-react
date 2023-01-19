@@ -101,3 +101,23 @@ With this being a larger, more complex app than you’ve built thus far in the c
 4. And finally, in section five, you’ll fire everything up and bask in your mighty coding glory as you take the Dinosaur Search App for a test flight.  
 
 Let’s dive into the next section and get cracking. 
+
+## Section 2: Project Setup and Scaffolding
+
+You put the foundations of the Dinosaur Search App in place, such as creating a new React app and exploring the supporting API
+
+You may be unsurprised to learn that dinosaurs are quite old and that there isn’t much data around for a fair few of them. What is a little surprising however, is that there are zero live APIs out in the wild that deal with dinosaur-exclusive data!
+
+But fear not, because I have got you covered. In the accompanying course material there is [starter project code](https://github.com/Dev-Doctor-Vicki/api-server-starter) for this project that includes a `client` and a `server` folder. You’ll be building everything you have planned in the `client` folder, but the `server` folder houses a fully-functional Node-based API that will provide you with all you need to serve your app. 
+
+- If you’re interested in learning more about this Node server starter-kit, then here is a [helpful article](https://robkendal.co.uk/blog/how-to-build-a-restful-node-js-api-server-using-json-files) on this very subject.
+
+You’re going to quickly spin up the API `server` and take a brief look at the queries you can make, and the sort of data you’ll get back, as well as how to start it.  
+
+### Open and Run the Starter Project
+
+Here’s where you can grab the project files for this course, if you haven’t already done so. You’ll need them for this last project as they include the API server, which you won't be building from scratch!
+
+Click below to download the Starter Code.
+
+[](assets/start)
