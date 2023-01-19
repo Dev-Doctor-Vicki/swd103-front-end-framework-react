@@ -86,7 +86,6 @@ You’ll also need to import a new action, `selectAttendees` from the `eventRedu
 
 In the meantime, to use these new Hooks, edit the `EventSignUp` declaration:
 
-**src/components/EventSignUpList.jsx**
 
 <details>
 <summary>src/components/EventSignUpList.jsx</summary>
@@ -111,7 +110,9 @@ However, you do have to change the click events on your buttons. Scroll down a l
 
 And that’s it; done. The completed changed component now looks like this:
 
-**src/components/EventSignUpList.jsx**
+
+<details>
+<summary>src/components/EventSignUpList.jsx</summary>
 
 ```
 import React from 'react';
@@ -168,6 +169,10 @@ const EventSignUpList = () => {
 
 export default EventSignUpList;
 ```
+
+</details>
+
+
 
 ### Edit EventSignUpForm.jsx
 
