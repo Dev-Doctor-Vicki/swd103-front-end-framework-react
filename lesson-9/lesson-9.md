@@ -178,7 +178,8 @@ export default EventSignUpList;
 
 Now that you’ve seen the changes you need to make, you can make those exact same changes in your `EventSignUpForm` file. Open it up and start with the imports section:
 
-**src/components/EventSignUpForm.jsx**
+<details>
+<summary>src/components/EventSignUpForm.jsx</summary>
 
 ```
 import React, { useState } from 'react';
@@ -191,6 +192,7 @@ import { addEventAttendee } from '../reducers/eventReducer';
 // Components
 import EventDetails from './EventDetails';
 ```
+</details>
 
 Again, you’ve removed the `connect` import and replaced it with the `useDispatch` Hook. You’re not going to use any data from state in this component so you won’t be needing the `useSelector` Hook. 
 
@@ -204,7 +206,8 @@ export default EventSignUpForm;
 
 Back up at the component declaration line, remove the `addEventAttendee` call in the props destructuring.Aadd a new variable, `dispatch`, that calls the `useDispatch` Hook.
 
-**src/components/EventSignUpForm.jsx**
+<details>
+<summary>src/components/EventSignUpForm.jsx</summary>
 
 ```
 const EventSignUpForm = () => {
@@ -212,10 +215,13 @@ const EventSignUpForm = () => {
     const [formFields, setFormFields] = useState(_baseFormFields);
     const dispatch = useDispatch();
 ```
+</details>
 
 The only part you need to change in the component’s logic functions is in the `handleFormSubmit` event. 
 
-**src/components/EventSignUpForm.jsx**
+
+<details>
+<summary>src/components/EventSignUpForm.jsx</summary>
 
 ```
     const handleFormSubmit = evt => {
@@ -229,12 +235,15 @@ The only part you need to change in the component’s logic functions is in the 
         dispatch(addEventAttendee(newEventAttendee));
         setSignUpComplete(true);    
 ```
+</details>
+
 
 You’ve explicitly created a `newEventAttendee` variable here that copies across the form field values from state, and adds a new property `attending`, setting it to `true`. You then pass this to the `addEventAttendee` just as you did before, but notice how you’re wrapping this all up in the `dispatch()` function again. 
 
 And that’s it. The JSX remains pristine, and the complete component now looks like this:
 
-**src/components/EventSignUpForm.jsx**
+<details>
+<summary>src/components/EventSignUpForm.jsx</summary>
 
 ```
 import React, { useState } from 'react';
@@ -358,6 +367,8 @@ const EventSignUpForm = () => {
 
 export default EventSignUpForm;
 ```
+</details?>
+
 
 ## Edit configureStore.js
 
@@ -422,7 +433,8 @@ And that’s it. That’s the change. The rest of the file remains the same, but
 
 You’re almost there, but let’s edit the `penultimate` file before getting into the most dramatically changed file, `eventReducer.js`. Open the `index.js` file and make two small changes:
 
-**src/index.js**
+<details>
+<summary>src/index.js</summary>
 
 ```
 import React from 'react';
@@ -436,6 +448,7 @@ import { Provider } from 'react-redux';
 
 import store from './config/configureStore';
 ```
+</details>
 
 Previously, you had a two-step process going on: you imported `configureStore` and then called it to create a store variable. Now, however, your store is created as an export in the `configureStore.js` file, so all you need to do is import it, and assign it directly to the `Provider` component’s `store={}` attribute. 
 
@@ -486,7 +499,9 @@ You use the `createSlice` method to effectively create a slice of your app’s s
 
 The `createSlice` function returns a selection of actions and an overall reducer that you’ll export near the end of the file. But first, you need to recreate your three state editing functions, which will replace the previous switch statement you had. 
 
-**src/reducers/eventReducer.js**
+
+<details>
+<summary>src/reducers/eventReducer.js</summary>
 
 ```
     reducers: {
@@ -498,6 +513,7 @@ The `createSlice` function returns a selection of actions and an overall reducer
             state.loading = false;
         },
 ```
+</details>
 
 You’ve added the `addEventAttendee` as a property in the reducer object. It is an arrow function that will be passed `state` and `action` values as arguments. `state` will represent the slice of `state` that you’re working with, and `action` will be an object whose payload property will be whatever you pass to the function. For example, remember in the `EventSignUpList` component where you called `dispatch(toggleEventAttendance(item.id))`? You pass in `item.id`, and it is this value that will be recalled when you access the `action.payload` in your reducer function here.
 
@@ -509,7 +525,9 @@ With Redux Toolkit,  it uses a package called [Immer](https://immerjs.github.io/
 
 Let’s fill out the remaining two reducer functions:
 
-**src/reducers/eventReducer.js**
+
+<details>
+<summary>src/reducers/eventReducer.js</summary>
 
 ```
         toggleEventAttendance: (state, action) => {   
@@ -522,12 +540,15 @@ Let’s fill out the remaining two reducer functions:
             state.eventAttendees = state.eventAttendees.filter(item => item.id !== action.payload);
         },
 ```
+</details>
 
 Both `toggleEventAttendanc`e and `deleteEventAttendee` are broadly the same as they were before. With the former, you must find a matching item in `state` whose attending value you can update. With the latter, you filter the existing `eventAttendees`, removing the one with the matching `id` value.
 
 The last thing to do here is to export some important pieces of the puzzle. Previously, when you had explicit action types and action functions, you exported them for use in component files. You still need to do that, but you’ll achieve it in a slightly different way:
 
-**src/reducers/eventReducer.js**
+
+<details>
+<summary>src/reducers/eventReducer.js</summary>
 
 ```
 export const { addEventAttendee, toggleEventAttendance, deleteEventAttendee } = eventSlice.actions;
@@ -536,6 +557,7 @@ export const selectAttendees = state => state.events.eventAttendees;
 
 export default eventSlice.reducer;
 ```
+</details>
 
 The `createSlice` function provides a few items on its return, namely some actions and a reducer. 
 
@@ -548,6 +570,9 @@ The remaining export is `selectAttendees`. You may recall this from whenyou edit
 After all of these impressive changes, your complete file now looks like this:
 
 **src/reducers/eventReducer.js**
+
+<details>
+<summary>src/reducers/eventReducer.js</summary>
 
 ```
 import { createSlice } from '@reduxjs/toolkit'
@@ -585,6 +610,7 @@ export const selectAttendees = state => state.events.eventAttendees;
 
 export default eventSlice.reducer;
 ```
+</details>
 
 ### Run the Code
 
@@ -677,7 +703,9 @@ You’re beginning your edits with the `index.js` file this time as there’s ve
 
 Open the file and let’s change the imports around redux things:
 
-**src/index.js**
+
+<details>
+<summary>src/index.js</summary>
 
 ```
 import React from 'react';
@@ -689,6 +717,7 @@ import reportWebVitals from './reportWebVitals';
 // Reducer store
 import { StoreProvider } from './reducers/reducers';
 ```
+</details>
 
 Notice the top imports are the same, but you’ve removed the store you brought in previously from your `configureStore.js` file which no longer exists. 
 
@@ -699,6 +728,9 @@ With your `StoreProvider` import at the ready, simply use it to directly replace
 The changed file should look like this:
 
 **src/index.js**
+
+<details>
+<summary>src/index.js</summary>
 
 ```
 import React from 'react';
@@ -725,6 +757,7 @@ ReactDOM.render(
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
 ```
+</details>
 
 ### Edit eventReducer.js
 
@@ -734,7 +767,9 @@ Remove everything in this file except for the `uuid` import at the top.
 
 Now, you won’t need to create any action functions this time, but you will be reinstating your action types. Create the simple JavaScript `key:value` object now:
 
-**src/reducers/eventReducer.js**
+
+<details>
+<summary>rc/reducers/eventReducer.js</summary>
 
 ```
 import uuid from 'react-uuid';
@@ -746,10 +781,13 @@ export const actions = {
     DELETE_ATTENDEE: 'delete attendance'
 };
 ```
+</details>
 
 There you go, pretty much identical to those from the first lesson. Next, create your `eventReducer` variable, complete with `switch` statement to work through the possible action types, and export it from the file as the default export.
 
-**src/reducers/eventReducer.js**
+
+<details>
+<summary>src/reducers/eventReducer.js</summary>
 
 ```
 // Reducer
@@ -799,6 +837,7 @@ const eventReducer = (state, action) => {
 
 export default eventReducer;
 ```
+</details>
 
 This should look very familiar as it's virtually identical to the reducer function from earlier. There are a couple of subtle differences here, mainly where you’re referencing the `action.payload` value directly, rather than extracting it via destructuring into separate variables.
 
@@ -808,6 +847,9 @@ With all that wrapped up, save and close the completed file which now looks like
 
 **src/reducers/eventReducer.js**
 
+<details>
+<summary>src/reducers/eventReducer.js</summary>
+
 ```
 import uuid from 'react-uuid';
 
@@ -865,6 +907,7 @@ const eventReducer = (state, action) => {
 
 export default eventReducer;
 ```
+</details>
 
 ## Edit reducers.js
 
@@ -876,7 +919,9 @@ You’re also going to need to create a helper function that will create actions
 
 Let’s start with some imports. You’re pulling in a lot of things from React, including the new `useReducer` Hook.You’ve got your initial state and your events reducer that you just finished changing.
 
-**src/reducers/reducers.js**
+
+<details>
+<summary>src/reducers/reducers.js</summary>
 
 ```
 import React, { useReducer, useMemo, createContext } from 'react';
@@ -887,10 +932,13 @@ import initialState from '../data/initialState';
 // Reducers
 import events from './eventReducer';
 ```
+</details>
 
 Next, create your own `combineReducers` function:
 
-**src/reducers/reducers.js**
+
+<details>
+<summary>src/reducers/reducers.js</summary>
 
 ```
 const combineReducers = reducers => {
@@ -903,6 +951,7 @@ const combineReducers = reducers => {
     };
 };
 ```
+</details>
 
 It might look a little fussy and tricky to read, but wyou’re effectively going to pass this function an object that has a set of `key:value` pairs representing `reducerKeyName:actualReducerFunction`. What you do then is return a sub-function that accepts a `state` and `action` argument. It is this sub-function that will be called by the `useReducer` Hook (as you’ll see in a moment). It almost acts like a reducer factory of sorts. 
 
@@ -930,7 +979,9 @@ export const StoreContext = createContext(null);
 
 Next, you’re going to define a store provider component that pulls together the result of the `useReducer` Hook, your `Context`, and also returns a wrapped component instance that you already consumed in the `index.js file`.
 
-**src/reducers/reducers.js**
+
+<details>
+<summary>src/reducers/reducers.js</summary>
 
 ```
 export const StoreProvider = ({ children }) => {
@@ -941,6 +992,7 @@ export const StoreProvider = ({ children }) => {
     );
 };
 ```
+</details>
 
 What’s going on here is you’re accepting a children property that you’ve grabbed from props. This component will be passed any child components via the children property. In your case this will be your entire app as this component wraps the `<App />` component, as you’ve recently seen during the `index.js` file edits.
 
@@ -969,6 +1021,9 @@ When complete, the `reducers.s` file will look like this:
 
 **src/reducers/reducers.js**
 
+<details>
+<summary>src/reducers/reducers.js</summary>
+
 ```
 import React, { useReducer, useMemo, createContext } from 'react';
 
@@ -1007,6 +1062,7 @@ export const createAction = (type, payload) => ({
     type, payload
 });
 ```
+</details>
 
 ## Edit EventSignUpList.jsx
 
@@ -1042,7 +1098,9 @@ Of course, once you have both `state` and `dispatch` you can grab the `eventAtte
 
 The final change is to make a slight amendment to the click events of your buttons:
 
-**src/components/EventSignUpList.jsx**
+
+<details>
+<summary>src/components/EventSignUpList.jsx</summary>
 
 ```
         <div className="buttons">
@@ -1050,6 +1108,7 @@ The final change is to make a slight amendment to the click events of your butto
             <button className="button is-danger is-small" onClick={() => dispatch(createAction(actions.DELETE_ATTENDEE, item.id))}>delete</button>                                            
         </div>
 ```
+</details>
 
 You’re still calling `dispatch` (although it’s not the same one you used in the last lesson now), but instead of passing a specific action function, such as `toggleEventAttendance`, this time you’re passing in the result of your `createAction` helper. You’ll pass your helper an action type, such as `actions.TOGGLE_ATTENDANCE`, and either a value or an object that contains the changes you want to see in `state`. 
 
@@ -1057,7 +1116,9 @@ You’re still calling `dispatch` (although it’s not the same one you used in 
 
 And that’s it; done. The completed component now looks like this:
 
-**src/components/EventSignUpList.jsx**
+
+<details>
+<summary>src/components/EventSignUpList.jsx</summary>
 
 ```
 import React, { useContext } from 'react';
@@ -1114,6 +1175,7 @@ const EventSignUpList = () => {
 
 export default EventSignUpList;
 ```
+</details>
 
 ### Edit EventSignUpForm.jsx
 
@@ -1121,7 +1183,9 @@ The last series of changes before you fire up the machine once again is inside t
 
 The changes here will be very similar to those you just made in the `EventSignUpList` component, so let’s start with the imports and go from there:
 
-**src/components/EventSignUpForm.jsx**
+
+<details>
+<summary>src/components/EventSignUpForm.jsx</summary>
 
 ```
 import React, { useState, useContext } from 'react';
@@ -1133,12 +1197,15 @@ import { actions } from '../reducers/eventReducer';
 // Components
 import EventDetails from './EventDetails';
 ```
+</details>
 
 The React part is largely untouched except for the addition of the `useContext` Hook. You’ve swapped the `addEventAttendee` import for  `actions` . And you’ve brought in both `StoreContext` and `createAction` once more.
 
 Now for the changes to the variables section:
 
-**src/components/EventSignUpForm.jsx**
+
+<details>
+<summary>src/components/EventSignUpForm.jsx</summary>
 
 ```
 const EventSignUpForm = () => {
@@ -1146,10 +1213,13 @@ const EventSignUpForm = () => {
     const [signUpComplete, setSignUpComplete] = useState(false);
     const [formFields, setFormFields] = useState(_baseFormFields);
 ```
+</details>
 
 You’re consuming the `StoreContext` Context and extracting out your `state` and `dispatch`, and removing the `useDispatch()` Hook that you no longer need. With those in place, let’s move on and make a small edit in the `handleFormSubmit` event handler:
 
-**src/components/EventSignUpForm.jsx**
+
+<details>
+<summary>src/components/EventSignUpForm.jsx</summary>
 
 ```
     const handleFormSubmit = evt => {
@@ -1159,6 +1229,7 @@ You’re consuming the `StoreContext` Context and extracting out your `state` an
         setSignUpComplete(true);    
     };
 ```
+</details>
 
 You removed the `newEventAttendee` object you created, and added this as an inline object, using the spread syntax, to the updated `dispatch` function call where you’ve also added the `ADD_ATTENDEE` action type.
 
@@ -1166,7 +1237,9 @@ And believe it or not  - that’s this component done! By abstracting the logic 
 
 The complete component now looks like this:
 
-**src/components/EventSignUpForm.jsx**
+
+<details>
+<summary>rc/components/EventSignUpForm.jsx</summary>
 
 ```
 import React, { useState, useContext } from 'react';
@@ -1284,6 +1357,7 @@ const EventSignUpForm = () => {
 
 export default EventSignUpForm;
 ```
+</details>
 
 ### Run the code
 
