@@ -20,7 +20,7 @@ I’ve used a lot of different redux approaches across a number of commercial pr
 ### Requirements
 
 1. Follow guided learning
-2. Create code for each hook
+2. Save code frequently.
 
 ## Setup
 
