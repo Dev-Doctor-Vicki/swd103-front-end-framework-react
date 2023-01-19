@@ -88,11 +88,14 @@ In the meantime, to use these new Hooks, edit the `EventSignUp` declaration:
 
 **src/components/EventSignUpList.jsx**
 
+<details>
+<summary>**src/components/EventSignUpList.jsx**</summary>
 ```
 const EventSignUpList = () => {
     const eventAttendees = useSelector(selectAttendees);
     const dispatch = useDispatch();
 ```
+</details>
 
 Although you’ve kept the imported actions from your event reducer file, your component will no longer be passed them via props, so you can safely remove them from your component’s declaration. 
 
@@ -1286,3 +1289,8 @@ This is the second big change you’ve made to an existing redux system, which i
 Throughout this lesson you’ve learned about the redux state management pattern, how it fits in with React, some libraries that help to power it, and different options to implement it within a React project.
 
 And with that you’ll close the books on this penultimate module. In the next and final lesson in this course, you’ll be putting everything you’ve learned to good use by building your very own data-driven app, "The Dinosaur Search App".
+
+#### #### Submission
+
+1. Zip project folder
+2. Upload folder
