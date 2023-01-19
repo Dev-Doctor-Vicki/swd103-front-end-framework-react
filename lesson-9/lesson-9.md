@@ -1,4 +1,4 @@
-# Redux ALternatives
+# Redux Alternatives
 
 This lesson takes things further by extending the Event Sign-Up App to use the Redux Toolkit for even easier state management.
 
@@ -154,7 +154,7 @@ const EventSignUpList = () => {
 export default EventSignUpList;
 ```
 
-### Editing EventSignUpForm.jsx
+### Edit EventSignUpForm.jsx
 
 Now that you’ve seen the changes you need to make, you can make those exact same changes in your `EventSignUpForm` file. Open it up and start with the imports section:
 
@@ -566,7 +566,7 @@ export const selectAttendees = state => state.events.eventAttendees;
 export default eventSlice.reducer;
 ```
 
-### Run the cCde
+### Run the Code
 
 With all of your changes complete, fire up the terminal again and run the familiar `npm start` command. When the app loads in a browser, take a look around, add a couple of attendees to your puppy event, log in and change their status or delete them. 
 
@@ -588,7 +588,7 @@ In this third and final activity of the lesson, you’re going to go over anothe
 
 You may remember the `useReducer` Hook in your React Hooks Deep Dive lesson, but said you’d be covering it later on. Well that time has come, so let’s get learning!
 
-### Us useReducer and Context
+### Use useReducer and Context
 
 The `useReducer` Hook is provided by React natively without any third-party requirements. It’s quite a simple Hook to use, with its implementation looking like this:
 
@@ -630,7 +630,7 @@ This time I’m just going to issue the npm command, `npm remove @reduxjs/toolki
 
 With that done, start with some of the foundational work and build the changes up from there. 
 
-### Remov configureStore.js
+### Remove configureStore.js
 
 Dead easy one to start with - find the `/config` folder that contains the `configureStore.js` file, and just delete it altogether. You’ll still be creating the idea of a store, but you’ll do the work in your central `reducers.js` file this time. 
 
@@ -710,7 +710,7 @@ export const actions = {
     TOGGLE_ATTENDANCE: 'change attendance',
     DELETE_ATTENDEE: 'delete attendance'
 };
-``
+```
 
 There you go, pretty much identical to those from the first lesson. Next, create your `eventReducer` variable, complete with `switch` statement to work through the possible action types, and export it from the file as the default export.
 
