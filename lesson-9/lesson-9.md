@@ -89,12 +89,14 @@ In the meantime, to use these new Hooks, edit the `EventSignUp` declaration:
 **src/components/EventSignUpList.jsx**
 
 <details>
-<summary>**src/components/EventSignUpList.jsx**</summary>
+<summary>src/components/EventSignUpList.jsx</summary>
+
 ```
 const EventSignUpList = () => {
     const eventAttendees = useSelector(selectAttendees);
     const dispatch = useDispatch();
 ```
+
 </details>
 
 Although you’ve kept the imported actions from your event reducer file, your component will no longer be passed them via props, so you can safely remove them from your component’s declaration. 
