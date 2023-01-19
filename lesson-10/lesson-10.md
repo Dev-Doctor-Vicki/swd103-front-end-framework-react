@@ -120,4 +120,4 @@ Here’s where you can grab the project files for this course, if you haven’t 
 
 Click below to download the Starter Code.
 
-[](assets/start)
+[Starter Code](/Users/vickibealman/Desktop/FEFReact/lesson-10/assets/start)
