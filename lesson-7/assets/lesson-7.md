@@ -1,6 +1,6 @@
 # React Router: Navigation
 
-In this lesson you'll explore the third party `React Router` library to add a routing and navigation system to your applications.
+In this lesson you explore the third party `React Router` library to add a routing and navigation system to your applications.
 
 As you’ve already discovered, frameworks and libraries such as `React` are referred to as Single Page Applications (SPAs). The very nature of an SPA means the application deals with a single page. There is no navigation associated with it. 
 
@@ -100,7 +100,7 @@ Further down, you have a series of evaluation statements that compare the `route
 
 So, if you click the anchor element with the `‘/about’` string assigned to it, `route` will match this and display the `<h1>` element with the text ‘`About our app`’. 
 
-There are a number of different ways to approach this. Instead of those repeated route evaluations, you could use a function that runs a switch statement to return the correct JSX for us. 
+There are a number of different ways to approach this. Instead of those repeated route evaluations, you could use a function that runs a switch statement to return the correct JSX. 
 
 Also, you’re not limited to simple JSX such as the `<h1>` element. These could have been full-blown components, each having their own navigation elements within them, implemented in a similar way. However, this could quickly become too complex to manage and make maintaining the software a challenge. 
 
@@ -145,7 +145,7 @@ With React Router you get access to a superb routing system that primarily relie
 
 - Support for complex, layered navigation such as in sub areas and layouts
 
-You may never need to use many of the features React Router offers, but it really does cater for any routing scenario you can throw at it. Getting to know the far ends of React Router is a course in itself, so for now, you’ll be focusing on the main elements you need to employ React Router in your app and make it work.
+You may never need to use many of the features React Router offers, but it really does provide for any routing scenario you can throw at it. Getting to know the far ends of React Router is a course in itself, so for now, you’ll be focusing on the main elements you need to employ React Router in your app and make it work.
 
 ## Use React Router
 
@@ -195,7 +195,7 @@ So, if a user navigates to the URL `/` (which is usually the home page), this `R
 
 ![](Route-options.png)
 
-For more flexibility or to cater for more complex needs, the `Route` component provides several additional attributes. Let’s talk about them so you can understand how they work:
+For more flexibility or to provide for more complex needs, the `Route` component provides several additional attributes. Let’s talk about them so you can understand how they work:
 
 - `path` - This should contain the URL path you wish to match a given route against. It can also handle route parameters. For example, you can see here you’re aiming to match the `/account` URL that contains an `:id` parameter. So, it would match URLs like `/account/123` or `/account/7`, etc.
 
@@ -266,11 +266,11 @@ After that, locate and delete `/src/index.css` and `/src/App.css` files.
 
 Finally, open the main `App.js` file located at `/src/App.js`. Highlight everything in this file and delete it, saving the empty file, ready to be populated with your new routing demo code.
 
-Your project still contains a few default files, components and assets, but don't worry about them for now as they’re not doing any harm just sitting there and they’re not currently being loaded anyway.
+Your project still contains a few default files, components, and assets, but don't worry about them for now as they’re not doing any harm just sitting there and they’re not currently being loaded anyway.
 
 ## Adding Project Dependencies
 
-You’ll create and edit the files you need to get your project running, but first you need to add a couple of dependencies to your project. 
+Create and edit the files you need to get your project running, but first you need to add a couple of dependencies to your project. 
 
 ### Bring React Router Onboard
 
@@ -343,8 +343,6 @@ Open the `/assets/styles.scss` and copy in the following styles:
 
 **src/assets/style.scss**
 
-**src/assets/style.scss**
-
 ```
 // IMPORTS
 @import "../../node_modules/bulma/css/bulma.min.css";
@@ -368,7 +366,7 @@ aside {
 }
 ```
 
-The import statement at the top of the file brings the Bulma CSS framework styles into the project. Next, we set a couple of SCSS variables and a scant couple of styles to mildly color the sidebar and menu that we’ll be fleshing out later.
+The import statement at the top of the file brings the Bulma CSS framework styles into the project. Next, set a couple of SCSS variables and a scant couple of styles to mildly color the sidebar and menu that we’ll be fleshing out later.
 
 ## Build the Presentational Component
 
@@ -386,6 +384,8 @@ export default () => (
 	</>
 );
 ```
+
+**NOTE!**
 
 You’ll be making use of this exact same template for the remaining presentational components so it might be worth copying and pasting it somewhere as you build these out, before you fill in the specific JSX.
 
@@ -880,7 +880,7 @@ After a typical level 1 page heading, you have an HTML table filled with simulat
 
 ## Routes.js
 
-Now you proceed to the slightly more advanced components and supporting files that will require a little more thought and focus. They’re concerned with your app’s navigation. 
+Now proceed to the slightly more advanced components and supporting files that will require a little more thought and focus. They’re concerned with your app’s navigation. 
 
 You’ll start with the `routes.js` file located in the main code folder `/src`. You can, of course, use React Router as we’ve seen in the previous lessons: you define `Link` components with string path attributes, and matching Route components that handle those paths when the URL changes. 
 
@@ -1220,7 +1220,7 @@ export default Nav;
 
 ## Sidebar.jsx
 
-The Sidebar component’s main function is to render out a title for the particular section of your app that wyou’re visiting, as well as any sub-navigation links that may exist. This is a nicety for our users as it’s more than likely they’ll want to perform multiple actions within a given section of the app and this way they don’t have to search around in the top-level navigation to access them.
+The Sidebar component’s main function is to render out a title for the particular section of your app that you’re visiting, as well as any sub-navigation links that may exist. This is a nicety for our users as it’s more than likely they’ll want to perform multiple actions within a given section of the app and this way they don’t have to search around in the top-level navigation to access them.
 
 ### Imports
 
@@ -1700,7 +1700,7 @@ const App = () => {
 export default App;
 ```
 
-### Runn the Demo
+### Run the Demo
 
 Enough code; time to run your app!
 
@@ -1799,6 +1799,399 @@ import { Link } from 'react-router-dom';
 // Data
 import users from '../data/users.json';
 ```
+
+### Helper functions
+
+Outline a single helper function here, `getEditTime()`. This is a really simple function that creates a new `Date()` object, and then crafts a return string from various Date functions. The returned string represents the current time.
+
+**src/components/Users.jsx**
+
+```
+const getEditTime = () => {
+    const now = new Date();
+    return `${now.getHours()}:${now.getMinutes()}:${now.getMilliseconds()}`;
+};
+```
+
+You'll be using this function to provide an edit time in your table’s action links and it’ll be passed to the routing system as a query string parameter value.
+
+### Update the JSX
+
+Make three edits here. 
+
+1. First, remove all of the existing table data, i.e. everything inside of the `<tbody>` tag. 
+
+2. Next, add a new header row to your table and name it `Actions`.
+
+3. The final edit involves adding new body contents for the table. It’ll look like this:
+
+**src/components/Users.jsx**
+
+```
+        <table className="table">
+            <thead>
+                <tr>
+                    <th>User id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Department</th>
+                    <th>Employment date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>        
+            <tbody>
+                {
+                    users.data.map(user => (
+                        <tr>
+                            <th>{user.id}</th>
+                            <td>{user.name}</td>        
+                            <td>{user.email}</td>
+                            <td>{user.department}</td>
+                            <td>{user.employment_date}</td>
+                            <td>
+                                <Link to={`/users/${user.id}?edited=${getEditTime()}`}>
+                                    edit
+                                </Link>
+                            </td>
+                        </tr>
+                    ))
+                }
+            </tbody>
+        </table>
+```
+
+It looks the same as any single row from the hard-coded version, but this time you're outputting each row as a result of the `map()` function, iterating over your users that we brought in as part of the imports section.
+
+Notice that you've replaced the static strings with their dynamic counterparts from each user data object.
+
+You also added an additional `<td>` element here too, that will represent your `Actions` column data. In this case, it’s a Link component. 
+
+You're building up a dynamic URL path to pass to the Link component which will end up looking like this:
+
+- /users/1?edited=12:01:03
+
+- /users/2?edited=12:02:08
+
+- /users/3?edited=12:03:04
+
+- …and so on
+
+You haven’t defined any route to handle this type of URL path just yet. For now, it’s enough to know that you're generating a number of similar URL paths, each with a different user id value, appended with a query string parameter, edited - the value of which is set to the current time returned from our helper function. 
+
+### The cCmplete Updated Component
+
+If you’ve followed all the amendments as above, your complete component should now look like this:
+
+**src/components/Users.jsx**
+
+```
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+// Data
+import users from '../data/users.json';
+
+const getEditTime = () => {
+    const now = new Date();
+    return `${now.getHours()}:${now.getMinutes()}:${now.getMilliseconds()}`;
+};
+
+export default () => (
+    <>
+        <h1 className="title is-size-2">Team users</h1>
+        <table className="table">
+            <thead>
+                <tr>
+                    <th>User id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Department</th>
+                    <th>Employment date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>        
+            <tbody>
+                {
+                    users.data.map(user => (
+                        <tr>
+                            <th>{user.id}</th>
+                            <td>{user.name}</td>        
+                            <td>{user.email}</td>
+                            <td>{user.department}</td>
+                            <td>{user.employment_date}</td>
+                            <td>
+                                <Link to={`/users/${user.id}?edited=${getEditTime()}`}>
+                                    edit
+                                </Link>
+                            </td>
+                        </tr>
+                    ))
+                }
+            </tbody>
+        </table>
+    </>
+);
+```
+
+## Create EditUser.jsx
+
+Before you update your `routes.js` file, create a component to handle the routes that are created dynamically in your `Users` component. They’ll be in the format `/users/[user id]?edited=[HH:MM:SS]`.
+
+The query string part has no effect on the routing, it’s just a series of values passed as part of the URL. With the query string taken out, write the URL like this:
+
+`/users/:id`
+
+This is a parameterized URL where the `:id` value is unknown until it is requested, but you want to match a URL path that looks like this, ahead of time. When a user visits a URL that looks like `/users/123`, it’s going to be handled by the `EditUser` component you're going to build now. 
+
+Create a new file in the `/components` folder called `EditUser.jsx` and let’s get editing.
+
+### Imports
+
+Start with the imports at the top of the file which look like this:
+
+**src/components/EditUser.jsx**
+
+```
+import React from 'react';
+import { useParams, useLocation } from 'react-router-dom';
+
+// Data
+import users from '../data/users.json';
+```
+
+Aside from the ever-present React, you pull in `useLocation` (which you've seen before) and another Hook from React Router, `useParams`, which returns a `key:value` paired object of all the parameters supplied to the route. You loop through them as with any regular JavaScript object, or use the destructuring syntax to grab specific `key:value` pairs as you wull do in a moment.
+
+You also plug in your users JSON data from the `users.json`  file.
+
+## Helper Functions
+
+Even though the `useLocation` Hook gives easy access to any query string value via its `.search` property, the query string is returned in its raw, rather ugly and unhelpful state - something like this: `?item1=xyz&item2=abc`.
+
+To get a specific value from this jumble of characters, create a helper function,  `getQSValue` which looks like this:
+
+**src/components/EditUser.jsx**
+
+```
+const getQSValue = (queryString, searchTerm) => {
+    const allTerms = queryString.replace('?', '').split('&');
+    const foundTerm = allTerms.find(termPair => termPair.split('=')[0] === searchTerm);
+
+    if(foundTerm) {
+        return foundTerm.split('=')[1];
+    }
+
+    return '';
+};
+```
+
+The `getQSValue` function accepts two string parameters,  `queryStrin`g and `searchTerm`. The job of this function is to look at the query string value you pass it, break it into chunks of `key:values`, and find a match against the `searchTerm` parameter. 
+
+### Default Export and Variables
+
+Define the default export for the component as follows:
+
+```
+export default () => {
+    return (
+        <>
+        </>
+    );
+};
+```
+
+Add some variables to kick things off:
+
+**src/components/EditUser.jsx**
+
+```
+export default () => {
+    const params = useLocation();
+    const { id } = useParams();
+    const user = users.data.find(user => user.id.toString() === id.toString()) || users.data[0];
+```
+
+You're using the `useLocation` Hook and stuffing it into a params variable. Next, use the `useParams` Hook and grab the `id` value from the URL’s parameters (remember in the URL `/users/123`, the `id` part will be returned to us as `123`). 
+
+Finally, find the specific user information the URL you're viewing requires. To do that, ysearch through our users array using the `Array.find()` method, matching the `user.id` value against the `id` value from the route parameter of the same name.
+
+If you don’t find one, we just pick the first user from the bunch.
+
+### Add in the JSX
+
+Finally, outline some JSX for the UI:
+
+**src/components/EditUser.jsx**
+
+```
+    return (
+        <>
+            <h1 className="title is-size-2">Editing {user.name}, {user.id}</h1>
+            <h2 className="subtitle">
+                Last edit made on <strong>{getQSValue(params.search, 'edited') || 'unknown'}</strong>
+            </h2>
+            <div className="field">
+                <label className="label">Name</label>
+                <div className="control">
+                    <input className="input" type="text" placeholder="Sally Appleseed" value={user.name} />
+                </div>
+            </div>
+
+            <div className="field">
+                <label className="label">Employment date</label>
+                <div className="control">
+                    <input className="input" type="text" placeholder="01 Jan 2010" value={user.employment_date}/>
+                </div>
+            </div>
+
+            <div className="field">
+                <label className="label">Email</label>
+                <div className="control">
+                    <input className="input" type="email" placeholder="Email" value={user.email}/>                
+                </div>
+            </div>
+
+            <div className="field">
+                <label className="label">Department</label>
+                <div className="control">
+                    <input className="input" type="text" placeholder="Office" value={user.department}/>                
+                </div>
+            </div>
+
+            <div className="field is-grouped">
+                <div className="control">
+                    <button className="button is-link">Update user</button>
+                </div>
+                <div className="control">
+                    <button className="button is-link is-light">cancel</button>
+                </div>
+            </div>
+        </>
+    );
+```
+
+You have a series of simple labels with HTML inputs whose values are set to the relevant properties of the selected user object.
+
+The main point of note here is that the `<h2>` element contains information about when this user was last edited. Notice how you're using the `getQSValue` function with the `params.search` value to grab the edited query string value that will be passed to the route in the URL. 
+
+This value is still just mocked of course (as you saw in the Users component), but it illustrates how to easily grab query string values from route information using React Router and the Hooks it provides.
+
+#### The completed Component
+
+With all the code added to your new `EditUser` component, it should be looking like this:
+
+**src/components/EditUser.jsx**
+
+```
+import React from 'react';
+import { useParams, useLocation } from 'react-router-dom';
+
+// Data
+import users from '../data/users.json';
+
+const getQSValue = (queryString, searchTerm) => {
+    const allTerms = queryString.replace('?', '').split('&');
+    const foundTerm = allTerms.find(termPair => termPair.split('=')[0] === searchTerm);
+
+    if(foundTerm) {
+        return foundTerm.split('=')[1];
+    }
+
+    return '';
+};
+
+export default () => {
+    const params = useLocation();
+    const { id } = useParams();
+    const user = users.data.find(user => user.id.toString() === id.toString()) || users.data[0];
+
+    return (
+        <>
+            <h1 className="title is-size-2">Editing {user.name}, {user.id}</h1>
+            <h2 className="subtitle">
+                Last edit made on <strong>{getQSValue(params.search, 'edited') || 'unknown'}</strong>
+            </h2>
+            <div className="field">
+                <label className="label">Name</label>
+                <div className="control">
+                    <input className="input" type="text" placeholder="Sally Appleseed" value={user.name} />
+                </div>
+            </div>
+
+            <div className="field">
+                <label className="label">Employment date</label>
+                <div className="control">
+                    <input className="input" type="text" placeholder="01 Jan 2010" value={user.employment_date}/>
+                </div>
+            </div>
+
+            <div className="field">
+                <label className="label">Email</label>
+                <div className="control">
+                    <input className="input" type="email" placeholder="Email" value={user.email}/>                
+                </div>
+            </div>
+
+            <div className="field">
+                <label className="label">Department</label>
+                <div className="control">
+                    <input className="input" type="text" placeholder="Office" value={user.department}/>                
+                </div>
+            </div>
+
+            <div className="field is-grouped">
+                <div className="control">
+                    <button className="button is-link">Update user</button>
+                </div>
+                <div className="control">
+                    <button className="button is-link is-light">cancel</button>
+                </div>
+            </div>
+        </>
+    );
+};
+```
+
+## Edit routes.js
+
+So, you have a nice new dynamic component, `Users` and a component that will handle your parameterized routes. However, all of that is for nothing if you don’t update our list of routes. 
+
+Open the `routes.js` file. Believe it or not, because of your hard work in the last lesson, you have very little to do here to wire up your new route. 
+
+Add a new import that brings your `EditUser` component in:
+
+```
+import EditUser from ‘./components/EditUser';
+```
+
+The last thing to do is to create a new routing object under the `/users` section:
+
+**src/routes.js**
+
+```
+            {
+                name: "Edit User",
+                url: "/:id",
+                component: <EditUser />
+```
+
+The name for the menu item will be ‘`Edit User`’ and you need the sub-URL to just contain the parameterized part, which is `/:id` . Useuse the newly-imported `EditUser` component for this route and save the file.
+
+That’s it. Really! You don’t need to update the `App.js` file with the new route, because that’s all handled programmatically thanks to the work you carried out in the last lesson. 
+
+### Run Your uUdated app
+
+For the last time in this lesson, head back into the terminal and run the `npm start` command.
+
+Everything should work much as it did before. However, this time around, when you head to the `/users` URL, you see your user table is now populated from the JSON data in the `users.jso`n file, and you have a shiny new edit button. 
+
+Click any of the edit buttons and notice the new URL that’s updated in the browser’s address bar. It’ll contain a particular user id and you should see the correct user data being populated in your mock edit form fields. 
+
+And that’s it for another lesson. You have learned a lot about how to add routing into a React app using the popular React Router library. You covered basic routing and more complex topics such as parameterized routing and query strings.
+
+I’ll look forward to seeing you in the next lesson as you continue your React journey.
+
+
+
 
 
 
