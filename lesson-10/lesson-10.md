@@ -121,3 +121,301 @@ Here’s where you can grab the project files for this course, if you haven’t 
 Click below to download the Starter Code.
 
 [Starter Code](assets/start)
+
+
+Once you’ve downloaded the project files, I’d recommend creating a new folder on your local machine to house them. For example I created the following empty folder on my local machine, called /code/demos/dino-search-app. 
+
+Copy the contents of `/lesson-10/start/` into your new local folder. When you’re finished you should have a folder structure that looks like this:
+
+```
+/dino-search-app
+
+--/client
+
+--/server
+```
+
+Open the project in VS Code (or your favorite editor) and let’s take a look at the API files.
+
+### Queries and Routing
+
+In the `/data` folder you have `dinos.json` file. If you take a look at this file, you’ll find a huge list of more than 50 objects that each represent a collection of information points for a particular dinosaur. Each has a unique id value, name, location, image filename, and some other relevant info.
+
+Open the `/server.js` file and you’ll see the bare minimum required to get an ExpressJS-powered Node server up and running. This file creates the server, `app` and plugs in the `/routes/routes.js` file, which serves various API end points. 
+
+The other thing to note here is that you explicitly define a static `/images` route that will allow you to serve images directly from the API as image data, rather than a set of JSON results, as with the dinosaur data. In the frontend client app we can call this endpoint `/images/image_name.jpg` and simulate grabbing an image from a CDN, rather than having to house the dinosaur images locally in your frontend project where they don’t really belong.
+
+If you look in the `/routes` folder, you have a main `routes.js` file that collects the other two files in this folder (`dinos.js` and `login.js` ), and plugs them into the Express JS server you just outlined.
+
+### login.js
+
+The `login.js` file serves a single route, `/api/login`, and is fairly dumb in its operation. If there is both a `username` and a `password` value supplied, it will generate a dummy JWT token and return it to the caller. If neither is supplied, then it returns a `401` error to indicate the user is unauthorized. Of course, this is not in the least bit secure or hooked to up an actual authentication system, but it will serve the purpose of simulating one for your frontend client app, which doesn’t need to care about the backend implementation anyway, just what’s returned from the API.
+
+### dinos.js
+
+The `dinos.js` file is where the API peovides for all the dinosaur-related endpoints. It handles:
+
+- `/api/dinos` for fetching all dinosaur information.
+
+- `/api/dinos/search/:term` for fetching a filtered list of dino information based on whether the `:term` parameter is a single character or a name of some sort.
+
+- `/api/dinos/:id` for grabbing a single dinosaur object.
+
+You don’t need to go into go into great detail about the inner workings of the API setup here (you can refer to [the article](https://robkendal.co.uk/blog/how-to-build-a-restful-node-js-api-server-using-json-files) on this exact thing if you’re curious, but the basic operation is that each API endpoint uses the Node `fs` function to read the `dinos.json` file. Depending on the endpoint called, the resulting JSON data is filtered and formatted and then returned to the caller as JSON data.
+
+### Runn the API
+
+Before you plough on with the front-facing client app, quickly spin up the API server and check that it’s working OK. 
+
+In your terminal, navigate to the root of the `/server` folder. If this is the first time you’re running it, you’ll need to install the dependencies with the following command:
+
+`npm install`
+
+Once that’s finished, run the start command:
+
+`npm start`
+
+Nothing exciting will happen at this point, but you should see a message in the terminal saying ‘listening on port 4000…’ which means the API server is running.
+
+If you open a browser and navigate to http://localhost:4000, you will see a white screen with the message ‘welcome to the development dinosaur api-server’ displayed. If you navigate to the main dinosaur route, http://localhost:4000/api/dinos, you’ll see a more interesting result — the list of all dinosaur information objects returned to the browser as JSON data.
+
+## Project SetUp
+
+Now that you have a good idea of what’s what with the API server part of the project, you need to focus on building the frontend client app in your beloved React. Once again you’ll be calling on the Create React App project to get off to a best-practice flying start. 
+
+### Install a New Create React App Project
+
+Since you’ve already have a starter project and a folder, `/client`, where you want your frontend files to live, using the default Create React App project command can be a little more cumbersome, but let’s walk through it and see if we make it out the other side unscathed. 
+
+Open a terminal window to the dinosaur project folder and leave it at the project root (the one at the same level as the `/client` and `/server` folders). Now run the familiar command:
+
+```
+npm create react-app dino-search-app
+```
+
+Once it’s finished, open the folder on your machine and cut-and-paste all of the contents into the `/client` folder. Once this is done, delete the dino-search-app folder, as you don’t need it.
+
+### Project Clean Up
+
+Now that you have a shiny new Create React App instance installed and ready to go, let’s move through the same parts as in previous lessons, and clean up the default files a little. 
+
+- Open `index.js`, and remove the reference to `import ‘./index.css'`. 
+
+- Delete the `/src/index.css` and `/src/App.css` files.
+
+- Open the main `App.js` file and empty it so you can add your demo-specific code later on.
+
+### Add Dependencies
+
+You’ll need to add a few dependencies to your app:
+
+- `axios` - your old friend axios will help talk to your dino API and fetch the important fossil data for.
+
+- `bulma` - no surprises here, Bulma will add nice styles and look and feel to the UI.
+
+- `react-router-dom` - again you’ll be leaning on this package to route your users between pages and areas of the app.
+
+- `@fortawesome/fontawesome`-free - this is a new one, but the popular font-icon library provides support to Bulma, allowing you to display some nice icons along with the dinosaur information.
+
+- `node-sass` - you’ve used node-sass previously to compile your `.scss` files into the browser-useable `.css` files.
+
+Let’s work through them, adding them all to the project via the familiar `npm add [dependency name]` syntax you know and love. I’m adding them one by one here for clarity and to ensure there’s no mistakes that could be caused by misspellings or typos. 
+
+- `npm add axios`
+- `npm add bulma`
+- `npm add react-router-dom`
+- `npm add @fontawesome/fontawesome-free`
+- `npm add node-sass`
+
+### Wire up the Proxy
+
+This is going to be an unfamiliar part of the process that you’ve not covered yet. However, the Create React App scripts offer a special property, `proxy` that you can add to your `package.json` file. 
+
+Open the `package.json file and add the following line at the end of the file:
+
+```
+"proxy": "http://localhost:4000"
+```
+
+Essentially the proxy property here allows you to proxy (i.e. an intermediary for requests) requests between front and back-end apps using the same port. It’s something that can happen more frequently in local development scenarios. 
+
+Your front-end app and the API you’re calling aren’t running on the same port, but this does have an added benefit of not having to deal with irksome [CORs errors](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) and blockages, especially when you don’t have any security concerns at the moment since you’re running everything on your local, sealed off machine. Also, it means you can avoid writing longer API URLs because the value you add here is automatically prepended to requests that aren’t text/HTML in nature — e.g. API calls. 
+
+You can read more about the proxy function in the [Create React App documentation](https://create-react-app.dev/docs/proxying-api-requests-in-development/).
+
+### Add the Dino Logo
+
+You will use a little cartoon dinosaur mascot as your logo in a few places throughout your app, namely this little guy:
+
+![](assets/cartoon-dino.png)
+
+You can grab him from the finished course files or download him from this lesson text. Simply right-click and save him somewhere on your desktop. 
+
+Make sure to name him `cartoon-dino.png` and copy him into the `/client/public/` folder in your project. 
+
+## Files and Foolders Creation
+
+With all your dependencies added and your proxy set up, create all the files and folders you need for the project and build them out.
+
+```
+root/
+├─ server/
+├─ client/
+│  ├─ services/
+│  │  ├─ api.service.js
+│  │  ├─ auth.service.js
+│  │  ├─ dino.service.js
+│  ├─ redux/
+│  │  ├─ authReducer.js
+│  │  ├─ dinoReducer.js
+│  │  ├─ initialState.js
+│  │  ├─ reducers.js
+│  ├─ components/
+│  │  ├─ DinoBrowse.jsx
+│  │  ├─ DinoCard.jsx
+│  │  ├─ DinoDetails.jsx
+│  │  ├─ DinoSearch.jsx
+│  │  ├─ Favourites.jsx
+│  │  ├─ Layout.jsx
+│  │  ├─ LoginForm.jsx
+│  │  ├─ Navigation.jsx
+│  ├─ assets/
+│  │  ├─ styles.scss
+│  ├─ index.js
+│  ├─ App.js
+```
+
+### index.js
+
+Included out of the box; you only need to bring in a Redux provider component here and wrap it around your app’s starting point.
+
+### App.js
+
+Another default component; but you’ll be building this out as a centralized routing station of sorts to handle navigation route matching to the correct components via the React Router library.
+
+### services/api.service.js
+
+The first of your service-layer handlers that you’re introducing to act as a clean middleman that will handle API requests for other parts of the app, returning necessary data.
+
+### services/auth.service.js
+
+The second data-handling service helper; the auth service will handle any user sign-in requests, calling the API and any Redux interactions you need as part of it. It’ll also offer two custom Hooks you’ll explore in more detail as you build out the code.
+
+### services/dino.service.js
+
+The final service helper will handle requests to the API for dinosaur-related data and update any relevant Redux calls.
+
+### redux/authReducer.js
+
+Just as in the previous lesson on Redux, the `authReducer`  will deal with updates to the auth-specific slice of global app state.
+
+### redux/dinoReducer.js
+
+Another reducer that will deal with dinosaur information updates to global state.
+
+### redux/initialState.js
+
+Just like you had in the Redux lesson, `initialState` offers a good blank slate starting point for your app’s initial global state.
+
+### redux/reducers.js
+
+This will be almost identical to the same file from the previous lesson. Its function is to pull together the separate reducers and combine them all, wrapping everything up in an exported `Provider` component.
+
+### assets/styles.scss
+
+Nothing flashy here; just a `.scss` file that pulls in the FontAwesome and Bulma styles and adds a couple of helpful styles for some of the components you’ll be building later on.
+
+### components/DinoBrowse.jsx
+
+When built, this component will render a list of dinosaur information card elements and allow the user to search by name or by alphabetical letter category.
+
+### components/DinoCard.jsx
+
+A semi-presentational component that will display relevant dinosaur information in a tidy and clear manner and allow users to favorite a dinosaur.
+
+### components/DinoDetails.jsx
+
+This will be a much larger component that handles retrieving data for a specific individual dinosaur and then displaying it, again allowing the user to favorite (or unfavorite) the dino in question should they choose.
+
+### components/DinoSearch.jsx
+
+A relatively simple component with some scant logic that displays a search box and a couple of buttons to the user to allow them to search for dinosaurs by name. This will also represent the home page for your app.
+
+### components/Favorites.jsx
+
+The `Favorites` component will display a list of dinosaurs in a similar fashion to the `DinoBrowse` component. The difference here is that it will retrieve the list of dinos to view from the favorited information held in our global Redux store.
+
+### components/Layout.jsx
+
+With this component you’re effectively adding a styled structure around the other child components. It’ll contain app-wide UI that includes things like a header and navigation, as well as some global spacing elements. It’s also purely presentational.
+
+### components/LoginForm.jsx
+
+Perhaps unsurprisingly, this is what you’ll show users when they wish to sign into the app. It’ll house a simple username/password form and pass these details on to the API via the service handlers.
+
+### components/Navigation.jsx
+
+Another semi-presentational component that will provide an app-wide navigation element containing various React Router Link components that ferry your user around the child pages and areas within your app.
+
+Now you’re clear on what you’re building, and created the bare bones of the files, let’s work through them and flesh them out!
+
+## Styles.scss
+
+Open the `/assets/styles.scss` and copy in the following styles:
+
+<details>
+<summary>src/assets/styles.scss</Summary>
+
+```
+// IMPORTS
+@import "../../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
+@import "../../node_modules/bulma/css/bulma.min.css";
+
+// Overrides
+body {
+    min-height: 100vh;
+}
+
+.field-label {
+    flex-grow: 0.5;
+}
+
+.dino-card {
+    figure {
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+
+        img {
+            visibility: hidden;
+            height: 0;
+            width: 0;
+        }
+    }
+}
+
+// Dino card
+.dino-card {
+    .dino-card__favourite {
+        z-index: 2;
+
+        &:hover {
+            text-decoration: none;
+        }        
+    }
+    
+    &.is-favourite {
+        border: 1px solid #01ca592e;
+    }
+}
+
+// Dino details
+.dino-info {
+    .dino-info__favourite {
+        &:hover {
+            text-decoration: none;
+        }        
+    }
+}
+```
+</details>
