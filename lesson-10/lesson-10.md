@@ -419,3 +419,189 @@ body {
 }
 ```
 </details>
+
+The import statement at the top of the file brings the Bulma CSS framework styles into the project. The rest of the file should be fairly clear; you don’t have any tricky styles or crazy CSS wizardry here. The remaining styles are helpful to handle the oddly-shaped images you have for your dinosaurs, setting background sizes and such. You also remove some unsightly underlines around the favorite icons you’ll add in later on.
+
+### index.js
+
+There’s barely any work to do in the `index.js` file. You just need to bring in the `StoreProvider` you’ll create shortly and wrap it around the `App` component. 
+
+Open the file and import the `StoreProvider` at the top of the file. 
+
+<details>
+<summary>src/index.js</summary>
+
+```
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+
+// Reducer store
+import { StoreProvider } from './redux/reducers';
+
+
+ReactDOM.render(
+  <React.StrictMode>
+    <StoreProvider>
+      <App />
+    </StoreProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+```
+
+</details>
+
+Next, just wrap this component around the `App` component as you did in the last lesson, and save the file. 
+
+That’s us all done here for now. Let’s move on to the last edit in this part. 
+
+## App.js and Routing with React Router
+
+Your `App` component is a routing office of sorts. It’s not going to house any logic, but it will contain the main navigation routing paths and their corresponding components that handle them. 
+
+### Add the Imports
+
+Open the empty `App.js` file and let’s bring in the imports:
+
+<details>
+<summary>src/App.js</summary>
+
+```
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+
+// Styles
+import './assets/styles.scss';
+
+// Components
+import Layout from './components/Layout';
+import LoginForm from './components/LoginForm';
+import DinoSearch from './components/DinoSearch';
+import DinoBrowse from './components/DinoBrowse';
+import DinoDetails from './components/DinoDetails';
+import Favorites from './components/Favouites';
+
+```
+</details>
+
+You’re bringing in many tools from the react-router-dom toolbox here to help with routing, just as you did in the React Router lesson. Next you have your styles file to help applying Bulma to your app. Finally, you’re bringing in all the components you’ll need to handle the various routing scenarios as per your user flow diagram.
+
+Don’t worry that you haven’t built these files out yet. You’ll be doing that as we move along. You can bring them onboard here because you won’t need to edit the `App` component any further, and at the moment, none of the components will need any additional logic to be carried out here either.
+
+### Add the Component Body
+
+Now, let’s add in the body of the component and set up the route handling:
+
+<details>
+<summary>src/App.js</summary>
+
+```
+const App = () => {
+
+  return (
+    <Router>
+      <Layout>
+        <Switch>
+          <Route path="/login" component={LoginForm} />
+          <Route path="/favourites" component={Favourites} />
+          <Route path="/search" component={DinoSearch} />
+          <Route path="/browse/:name" component={DinoBrowse} /> 
+          <Route path="/browse" component={DinoBrowse} />          
+          <Route path="/dinos/:id" component={DinoDetails} />
+          <Route path="/" exact component={DinoSearch} />
+          <Route>
+            <h1 className="title is-size-2">404 - Page not found</h1>
+            <p>Apologies, you've hit a route we hadn't planned for.</p>
+            <p>Go back to the <Link to="/">search page</Link> to start again</p>
+          </Route>
+        </Switch>      
+      </Layout>
+    </Router>
+  )
+};
+
+export default App;
+```
+
+</details>
+
+As a general rule, you should wrap your app in the `<Router />` component (or each major part if the app is large enough to justify this approach), which is what you’re doing here. By doing this, you allow all the child parts and components of your app access to the React Router system. 
+
+For example, this is useful for how you’re using the `<Layout />` component here, which is added just under the `<Router />` component. When you build it out later on, it will contain a navigation element that uses some other Hooks and features of the React Router system. To make use of these, you need to provide access to React Router’s main component higher up in the component tree, just like you’re doing here.
+
+After this, you’ll recognize the `Switch` component that you’ve used. The `Switch` component is designed to match and render routes exclusively. In practice, it means you have more precise control over what is rendered for each route. You have very distinct route-handling needs here for each separate page in your dino-searching app. `Switch` helps make better matches against each navigation route a user visits. 
+
+You can read more about `Switch` on the [React Router docs](https://reactrouter.com/web/api/Switch).
+
+Inside of the `Switch` component is the meat and potatoes of your route-matching system. You can see that you have a number of mostly self-explanatory routes that will render the components you imported earlier, depending on the route they chose. 
+
+You can recognize the route parameter format from the earlier lesson on routing here, too. Routes like `/browse/:name` will match URLs such as `/browse/an-interesting-name` or `/browse/123`. Notice too, how you are listing route paths in order of most-specific to least-specific. The `Switch` component works in this way too, so you’re mirroring that. You’re not making much use of this system here by supplying different components for the same route, but which features a parameter, but you may want to in other apps, so it’s useful to see an ideal approach to handling that scenario.
+
+**NOTICE!**
+
+Notice that in this app you’ve decided to just hard-code the route paths as strings. In the lesson on routing, you opted to pull your routes from a `routes.js` file and dynamically loop through them. To keep the overhead a little lower in this more complex dino app, you’ve chosen the direct paths-as-a-string approach, but you just as easily use whatever method you like here. As long as each `Route` component has a path attribute to match against a URL and a `component` attribute to know what to render when the path matches, the routing system is happy. 
+
+So, each `Route` component here matches a path and renders the correct component to handle it. You have one final, non-explicit `Route`, which will be rendered if nothing else matches. For example, if a user navigates to `/apples`, you don’t have a matching route for that, and this catch-all block of JSX will be rendered. It’s just a simple `h1` element explaining the classic ‘404 - Page not found’ message and giving users a way out, back to the safety of the home page.
+
+#### Completed component
+
+With everything finished in the App component, it should look like this:
+
+<details>
+<summary>src/App.js</summary>
+
+```
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+
+// Styles
+import './assets/styles.scss';
+
+// Components
+import Layout from './components/Layout';
+import LoginForm from './components/LoginForm';
+import DinoSearch from './components/DinoSearch';
+import DinoBrowse from './components/DinoBrowse';
+import DinoDetails from './components/DinoDetails';
+import Favourites from './components/Favourites';
+
+const App = () => {
+
+  return (
+    <Router>
+      <Layout>
+        <Switch>
+          <Route path="/login" component={LoginForm} />
+          <Route path="/favourites" component={Favourites} />
+          <Route path="/search" component={DinoSearch} />
+          <Route path="/browse/:name" component={DinoBrowse} /> 
+          <Route path="/browse" component={DinoBrowse} />          
+          <Route path="/dinos/:id" component={DinoDetails} />
+          <Route path="/" exact component={DinoSearch} />
+          <Route>
+            <h1 className="title is-size-2">404 - Page not found</h1>
+            <p>Apologies, you've hit a route we hadn't planned for.</p>
+            <p>Go back to the <Link to="/">search page</Link> to start again</p>
+          </Route>
+        </Switch>      
+      </Layout>
+    </Router>
+  )
+};
+
+export default App;
+```
+
+</details>
+
+### Next Steps
+
+That’s all there is to the `App` component. It’s a navigation route-handling train station, passing the user the correct component for their selected route. In the next part, you’ll work through the services and Redux files to put the data-handling underpinnings in place that will support your UI components.
