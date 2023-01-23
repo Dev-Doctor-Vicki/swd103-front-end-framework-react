@@ -158,11 +158,23 @@ Overall, however, The Dog API will allow you to simulate a more realistic enviro
 
 Your first move will be to set up a new project using the Create React App helper, so let’s get started.
 
-## L03HandsOnAssignment
+## :pushpin:
+L03HandsOnAssignment
+
+### Requirements
+
+1. Read all the guided learning text carefully for understanding.
+2. Follow all instructions and coding step-by-step.
+3. Create all files and folders for the Greeting App.
+4. Complete all coding as demonstrated in all files.
+5. Zip `L03ReactHandsOnPProject` Folder
+6. Attach the zipped folder below where indicated for submission.
 
 ### Project Setup
 
 Open a terminal window and navigate to the parent folder where you want to create the new project. Next, type the create react-app command as follows:
+
+:writing_hand:
 
 1. `cd desktop`
 
@@ -180,7 +192,9 @@ The command line will finish installing the dependencies. Wait until you see the
 
 As you did in the last project, it’s always best to spin up the default, unchanged app you just made to make sure you’re starting from a solid, — and more importantly —  working base.
 
-Enter the following command:
+Enter the following commands:
+
+:writing_hand:
 
 1. `cd furry-friends-two`
 2. `npm start`
@@ -191,23 +205,27 @@ Once the project’s built and launched, you should be able to fire up http://lo
 
 Create React App does load a few bare-bones files and styles to give you a jumping-off point. You’ll make a few changes to get everything cleaned up and ready for your new gallery app.
 
-First, open `index.js`, located in `/furry-friend-gallery/src/` and remove the following line:
+:writing_hand:
+
+- First, open `index.js`, located in `/furry-friend-gallery/src/` and remove the following line:
 
 `import ‘./index.css' ` 
 
-It should be on line 3 of the `index.js` file. This will just remove a link to the default styles from the project we won’t need. 
+  It should be on line 3 of the `index.js` file. This will just remove a link to the default styles from the project we won’t need. 
 
-Locate `/src/index.css` and delete the file.
+- Locate `/src/index.css` and delete the file.
 
-Find the `/src/App.css` file and open it. Highlight all the contents and delete the existing styles. Save and close the file.
+- Find the `/src/App.css` file and open it. Highlight all the contents and delete the existing styles. Save and close the file.
 
 Finally, open the main `App.js` file located at  `/src/App.js`. This currently contains starter JSX which you will replace, as well as a link to a logo file you will remove.
 
-First, locate the following line (around line 2) that imports a `logo.svg` file, and remove it:
+:writing_hand:
+
+- First, locate the following line (around line 2) that imports a `logo.svg` file, and remove it:
 
 `import logo from ‘./logo.svg'`
 
-Now, select everything in the return statement (everything between `return (` and `)` and replace it with the following so the new return statement looks like this:
+2. Now, select everything in the return statement (everything between `return (` and `)` and replace it with the following so the new return statement looks like this:
 
 ```
 return (
@@ -229,9 +247,13 @@ The first dependency to add is the `Axios npm package`. The benefits of Axios ha
 
 Fortunately, it’s very straightforward to add. Back in a terminal window, make sure you’re in the root project location and enter the following command:
 
+:writing_hand:
+
 `npm add axios`
 
 That’s it, quick and simple. Now,  import `Axios` and any of its helper methods using the import statement;
+
+:writing_hand:
 
 **App.js**
 
@@ -244,6 +266,10 @@ You could add Bulma as a dependency just like Axios, but for familiarity’s sak
 Open the file `/public/index.html` . If you remember, this is the template `HTML` file the project uses to render the initial output of the app. 
 
 Next, add the following line somewhere between the opening and closing `<head></head>` tags:
+
+:writing_hand:
+
+**index.html**
 
 ```
 <link
@@ -352,9 +378,15 @@ For your project, however, store the API URL and your API key in a `.env` file o
 
 At the root of your project, create a new file and don’t give it a name. Instead, just type the file extension directly, so it should read `.env`. 
 
+:writing_hand:
+
 `touch /src/.env`
 
 Open the file and add the following information:
+
+:writing_hand:
+
+**.env**
 
 ```
 REACT_APP_DOG_API_URL=https://api.thedogapi.com/v1/
@@ -379,7 +411,10 @@ If you don’t have a `/components` folder underneath your `/src` folder, create
 
 Copy in the following component body:
 
-**src/components/DogCardInfo.jsx**
+:writing_hand:
+
+<details>
+<summary>DogCardInfo.jsx<.summery>
 
 ```
 import React from 'react';
@@ -399,6 +434,7 @@ export default ({ imgUrl, pictureId }) => (
   </div>
 );
 ```
+</details>
 
 There’s nothing particularly special or fancy about this `component`.  It’s merely a repeatable presentational component used to show a nicely styled picture of each dog picture returned from the API.
 
@@ -410,7 +446,10 @@ With the existing `App.css` file that comes with the Create React App project st
 
 Open the `/src/App.css` file and replace the default starter contents with the following:
 
-**App.css**
+:writing_hand:
+
+<details>
+<summary>App.css</summary>
 
 ```
 .dog-card .card-image {
@@ -433,11 +472,15 @@ Open the `/src/App.css` file and replace the default starter contents with the f
   margin-right: 0.5em;
 }
 ```
+</details>
+
 As well as making each dog picture card component have a sensible height, make sure each breed radio button is displayed on its own line and playing with the spacing a little.
 
 ## Create api.js
 
 Now for the really interesting part…fetching your data! Start by creating a new folder called `lib` under the `/src` folder. Next, create a new file, `api.js`.
+
+:writing_hand:
 
 1. `mkdir /src/lib`
 
@@ -477,6 +520,8 @@ You’ll dive into data handlers in more detail in an upcoming lesson, but for n
 
 Back in the `api.js` file, the first thing to do is bring in Axios and your environment variables:
 
+:writing_hand:
+
 **api.js**
 
 ```
@@ -490,7 +535,10 @@ The `process.env`is how you reference any environment variables.
 
 Next, define the `callAPI()` function which will actually go out and talk to the API:
 
-**api.js**
+:writing_hand:
+
+<details>
+<summary>api.js</summary>
 
 ```
 const callAPI = async (url, params = null) => {
@@ -512,10 +560,13 @@ const callAPI = async (url, params = null) => {
   }
 };
 ```
+</details>
 
 The `callAPI()` function accepts a url and a params parameter. The url will be the endpoint of the API we want to call. The `params` will be an object of any `key:value` pairs that need to be passed to the API.
 
 Let’s break things down a little. First up is an object called `requestConfig`.
+
+:writing_hand:
 
 **api.js**
 
@@ -543,7 +594,10 @@ In a production app, you’d want to handle the error in more detail and more gr
 
 With your generic `callAPI()` function in place, move to separate functions that request specific API endpoints and handle their returned data. The first of those  is `fetchBreeds()`. 
 
-**api.js**
+:writing_hand:
+
+<details>
+<summary>api.js</summary>
 
 ```
 export const fetchBreeds = async (page, count = 10) => {
@@ -558,6 +612,7 @@ export const fetchBreeds = async (page, count = 10) => {
   };
 };
 ```
+</details>
 
 You’re employing the async/await coupling in all your methods because you’re dealing with asynchronous behaviors. First, call the `callAPI()` function and pass in the ‘`breeds`’ URL, along with a `params` object that populates the limit and page properties. These are used by The Dog API to determine how many results to return per page, as well as which slice of results (i.e. which page) from the entire results available. 
 
@@ -569,7 +624,10 @@ Once the data returns, supply it back to the caller of `fetchBreeds` as an objec
 
 The last function to define in the `api.js` file is the `fetchPictures()` function. Here, you’ll be expecting a list of pictures of dogs that belong to a specific breed. 
 
-**api.js**
+:writing_hand:
+
+<details>
+<summary>api.js</summary>
 
 ```
 export const fetchPictures = async (breed = '', count = 20) => {
@@ -585,8 +643,9 @@ export const fetchPictures = async (breed = '', count = 20) => {
   return pictures.data;
 };
 ```
+</details>
 
-You need to know the breed to return specific pictures from that breed. So, if the breed parameter is empty or not populated, return an empty array. This saves an unnecessary API call, but it also prevents the calling method from receiving a null value. An empty array is much nicer to deal with.
+You need to know the breed, to return specific pictures from that breed. So, if the breed parameter is empty or not populated, return an empty array. This saves an unnecessary API call, but it also prevents the calling method from receiving a null value. An empty array is much nicer to deal with.
 
 All being well, call the `callAPI()` once more, supply an API URL of `images/search` and another `params` object specifying the breed and number of pictures to return (you’ve defaulted this to 20 in the arguments of the function). 
 
@@ -596,7 +655,10 @@ Finally, return the pictures data the API returns.
 
 Once everything is added, the complete `api.js` should look like this:
 
-**api.js**
+:writing_hand:
+
+<details>
+<summary>api.js</summary>
 
 ```
 import axios from 'axios';
@@ -648,12 +710,17 @@ export const fetchPictures = async (breed = '', count = 20) => {
   return pictures.data;
 };
 ```
+</details>
 
 ## Create BreedList.jsx
 
 The `BreedList` component is going to ask your data handler for a list of dog breeds, display them as radio buttons in pages of a certain size, and handle paging between them. 
 
 Start by creating a new file in the `/components` folder called `BreedList.jsx`.
+
+:writing_hand:
+
+- `touch/src/components/BreedList.jsx`
 
 Open the `/src/components/BreedList.jsx` file and start with your imports section:
 
@@ -691,7 +758,10 @@ That job will fall to the parent component, which will be `App.js` , but we’ll
 
 With your skeleton component in place, the first thing is to define some variables:
 
-**BreedList.jsx**
+:writing_hand:
+
+<details>
+<summary>BreedList.jsx</summary>
 
 ```
   const [value, setValue] = useState('');
@@ -700,8 +770,9 @@ With your skeleton component in place, the first thing is to define some variabl
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
 ```
+</details>
 
-Create several state values using the `useState` Hook. 
+Create several `state` values using the `useState` Hook. 
 
 In order, here are the uses of the variables:
 
@@ -719,7 +790,10 @@ In order, here are the uses of the variables:
 
 Each time a user selects a radio button, the `onChange` event is fired. Capture it using the following function; `handleChange()`:
 
-**BrredList.jsx**
+:writing_hand:
+
+<details>
+<summary>BreedList.jsx</summary>
 
 ```
   const handleChange = e => {
@@ -730,16 +804,20 @@ Each time a user selects a radio button, the `onChange` event is fired. Capture 
     }
   };
 ```
+</details>
 
 This function should look quite familiar by now. Handling input changes via change event handlers is often done in this fashion.  You update value in state using the Hook `setValue` with the `e.target.value` value provided via the synthetic event. 
 
 The extra bit you do here is inform the parent component that something has changed by calling the `dispatchBreedChange()` function from props after checking that it’s not a null or empty value. 
 
-### Handle paging Changes
+### Handle Paging Changes
 
 Each time a user changes a page of dog breeds using ‘`next breed`’ or ‘`previous breed`’ buttons, you call this next function, `handlePageClick()` which accepts a `newPageNumber` argument.
 
-**BrredList.jsx**
+:writing_hand:
+
+<details>
+<summary>BreedList.jsx</summary>
 
 ```
   const handlePageClick = newPageNumber => {
@@ -750,18 +828,22 @@ Each time a user changes a page of dog breeds using ‘`next breed`’ or ‘`pr
     setCurrentPage(newPageNumber);
   };
 ```
+</details>
 
 The purpose of this function is update the newly chosen page number in state using `setCurrentPage(newPageNumber)`. However, do a quick check before just in case the user has somehow managed to make a potentially faulty choice.
 
-Check the new page number and if it’s less than ``0 (page 1 of the results is actually page `0` in the array because arrays are zero-indexed) or greater than or equal to the total number of pages, return from the method without doing anything to prevent errors in the UI from accessing pages that don’t exist.
+Check the new page number, and if it’s less than `0`, (page 1 of the results is actually page `0` in the array, because arrays are zero-indexed) or greater than or equal to the total number of pages, return from the method without doing anything to prevent errors in the UI from accessing pages that don’t exist.
 
-### Update breeds with useEffect
+### Update Breeds with useEffect
 
 The last piece of the puzzle with your functions (before you move onto the JSX) is  handle the fetching and processing of your dog breeds data. This is a perfect job for the `useEffect` Hook. 
 
 Let’s implement it now:
 
-**BrredList.jsx**
+:writing_hand:
+
+<details>
+<summary>BreedList.jsx</summary>
 
 ```
   useEffect(() => {
@@ -776,6 +858,7 @@ Let’s implement it now:
     loadBreeds();
   }, [currentPage]);
 ```
+</details>
 
 Notice how you pass in the `currentPage` variable in state to the dependencies array of the `useEffect` Hook. Now, every time `currentPage` changes, this `useEffect` Hook will fire.
 
@@ -811,7 +894,10 @@ The `<progress>` element is a native HTML element, but you can style it with Bul
 
 Next, you need an opposite block of JSX for when `isLoading` is ‘`false`’. This will be the default. 
 
-**BreedList.jsx**
+:writing_hand:
+
+<details>
+<summary>BreedList.jsx</summary>
 
 ```
         {
@@ -840,16 +926,20 @@ Next, you need an opposite block of JSX for when `isLoading` is ‘`false`’. T
           )
         }
 ```
+</details>
 
 Again, you lean on the Bulma framework’s specific way of defining radio buttons, making sure to assign `handleChange` to each radio button’s `onChange` event. 
 
-For the previous and next paging buttons,  assign `handlePageClick` to their `onClick` events. The only difference is you pass in a value of the `currentPage` one lower or higher depending on if they use clicks ‘`previous`’ or ‘`next`’ respectively. 
+For the `previous` and `next` paging buttons,  assign `handlePageClick` to their `onClick` events. The only difference is you pass in a value of the `currentPage` one lower or higher depending on if they use clicks ‘`previous`’ or ‘`next`’ respectively. 
 
 ### The Complete BreedList Component File
 
 After everything’s been added, the complet `BreedList` component should look like this:
 
-**BreedList.jsx**
+:writing_hand:
+
+<details>
+<summary>BreedList.jsx</summary>
 
 ```
 import React, {useEffect, useState} from 'react';
@@ -927,6 +1017,7 @@ export default ({ dispatchBreedChange }) => {
   );
 }
 ```
+</details>
 
 ## Edit App.js
 
@@ -934,7 +1025,10 @@ While `DogCardInfo` and `BreedList` take care of their respective areas, the `Ap
 
 Map out the `App` component with the imports you need:
 
-**App.js**
+:writing_hand:
+
+<details>
+<summary>App.js</summary>
 
 ```
 import React, { useState, useEffect } from 'react';
@@ -949,6 +1043,7 @@ import BreedList from './components/BreedList';
 // styles
 import './App.css';
 ```
+</details>
 
 There shouldn’t be anything too unfamiliar here. You pull in React into scope, as well as `useState` and `useEffect` Hooks you’ll be using later on. You need `fetchPictures()` function from your API data handler, as well as the two components to display the breeds and dog pictures.
 

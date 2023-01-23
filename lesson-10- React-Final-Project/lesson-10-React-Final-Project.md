@@ -1,4 +1,4 @@
-# :information_source: Final Project: Dinosaur Search App
+# Final Project: Dinosaur Search App
 
 In this final lesson, you'll be putting your skills together and building a Dinosaur Search App.
 
