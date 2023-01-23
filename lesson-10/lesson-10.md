@@ -201,6 +201,8 @@ Once it’s finished, open the folder on your machine and cut-and-paste all of t
 
 Now that you have a shiny new Create React App instance installed and ready to go, let’s move through the same parts as in previous lessons, and clean up the default files a little. 
 
+:writing_hand:
+
 - Open `index.js`, and remove the reference to `import ‘./index.css'`. 
 
 - Delete the `/src/index.css` and `/src/App.css` files.
@@ -223,6 +225,8 @@ You’ll need to add a few dependencies to your app:
 
 Let’s work through them, adding them all to the project via the familiar `npm add [dependency name]` syntax you know and love. I’m adding them one by one here for clarity and to ensure there’s no mistakes that could be caused by misspellings or typos. 
 
+:writing_hand:
+
 - `npm add axios`
 - `npm add bulma`
 - `npm add react-router-dom`
@@ -231,9 +235,11 @@ Let’s work through them, adding them all to the project via the familiar `npm 
 
 ### Wire up the Proxy
 
-This is going to be an unfamiliar part of the process that you’ve not covered yet. However, the Create React App scripts offer a special property, `proxy` that you can add to your `package.json` file. 
+This is going to be an unfamiliar part of the process you’ve not covered yet. However, the Create React App scripts offer a special property, `proxy` that you can add to your `package.json` file. 
 
-Open the `package.json file and add the following line at the end of the file:
+Open the `package.json` file, and add the following line at the end of the file:
+
+:writing_hand:
 
 ```
 "proxy": "http://localhost:4000"
@@ -365,6 +371,8 @@ Now you’re clear on what you’re building, and created the bare bones of the 
 
 Open the `/assets/styles.scss` and copy in the following styles:
 
+:writing_hand:
+
 <details>
 <summary>src/assets/styles.scss</Summary>
 
@@ -430,6 +438,8 @@ There’s barely any work to do in the `index.js` file. You just need to bring i
 
 Open the file and import the `StoreProvider` at the top of the file. 
 
+:writing_hand:
+
 <details>
 <summary>src/index.js</summary>
 
@@ -473,6 +483,8 @@ Your `App` component is a routing office of sorts. It’s not going to house any
 
 Open the empty `App.js` file and let’s bring in the imports:
 
+:writing_hand:
+
 <details>
 <summary>src/App.js</summary>
 
@@ -501,6 +513,8 @@ Don’t worry that you haven’t built these files out yet. You’ll be doing th
 ### Add the Component Body
 
 Now, let’s add in the body of the component and set up the route handling:
+
+:writing_hand:
 
 <details>
 <summary>src/App.js</summary>
@@ -549,13 +563,15 @@ You can recognize the route parameter format from the earlier lesson on routing 
 
 **NOTICE!**
 
-Notice that in this app you’ve decided to just hard-code the route paths as strings. In the lesson on routing, you opted to pull your routes from a `routes.js` file and dynamically loop through them. To keep the overhead a little lower in this more complex dino app, you’ve chosen the direct paths-as-a-string approach, but you just as easily use whatever method you like here. As long as each `Route` component has a path attribute to match against a URL and a `component` attribute to know what to render when the path matches, the routing system is happy. 
+Notice in this app you decided to just hard-code the route paths as strings. In the lesson on routing, you opted to pull your routes from a `routes.js` file and dynamically loop through them. To keep the overhead a little lower in this more complex dino app, you’ve chosen the direct paths-as-a-string approach, but you just as easily use whatever method you like here. As long as each `Route` component has a path attribute to match against a URL and a `component` attribute to know what to render when the path matches, the routing system is happy. 
 
 So, each `Route` component here matches a path and renders the correct component to handle it. You have one final, non-explicit `Route`, which will be rendered if nothing else matches. For example, if a user navigates to `/apples`, you don’t have a matching route for that, and this catch-all block of JSX will be rendered. It’s just a simple `h1` element explaining the classic ‘404 - Page not found’ message and giving users a way out, back to the safety of the home page.
 
 #### Completed component
 
 With everything finished in the App component, it should look like this:
+
+:writing_hand:
 
 <details>
 <summary>src/App.js</summary>
@@ -610,11 +626,11 @@ That’s all there is to the `App` component. It’s a navigation route-handling
 
 ## Build the Services
 
-Now we focus on building the data-handling services and core Redux management system for the Dinosaur Search App.
+Now focus on building the data-handling services and core Redux management system for the Dinosaur Search App.
 
 ### Build the Services and Core Structure
 
-You’re going to introduce something a little different in this final project, the concept of services. If you’ve been developing for a little while, the idea of a service layer won’t be anything surprising or new to you, but for the rest of you, introducing some data-handling services will give some separation between different layers of your app. 
+You’re going to add something a little different in this final project, the concept of services. If you’ve been developing for a little while, the idea of a service layer won’t be anything surprising or new to you, but for the rest of you, introducing some data-handling services will give some separation between different layers of your app. 
 
 Ideally, the frontend UI should just concern itself with asking for data, receiving it, and then displaying it to the user, allowing them to interact with it. It shouldn’t know (or care) where this data comes from, or how. 
 
@@ -625,6 +641,8 @@ However, for now let’s start with implementing a Redux system using the `useRe
 ### initialState.js
 
 You’ll begin by opening the `initialState.js` file in the `/redux` folder. Add the following `initialState` object in its entirety:
+
+:writing_hand:
 
 <details>
 <summary>src/redux/initialState.js</summary>
@@ -663,6 +681,8 @@ As you may expect, the `authReducer.js` file will handle state updates that rela
 
 Start by creating a set of actions:
 
+:writing_hand:
+
 <details>
 <summary>src/redux/authReducer.js</summary>
 
@@ -677,6 +697,8 @@ export const actions = {
 </details>
 
 The `actions` variable is just a plain JavaScript object that houses some hard-coded action strings. Next, it’s time for the physical reducer code:
+
+:writing_hand:
 
 <details>
 <summary>src/redux/authReducer.js</summary>
@@ -721,6 +743,8 @@ The only time you’re concerned with using the `action` argument passed to the 
 #### The Complete File
 
 The file in its entirety now looks like this:
+
+:writing_hand:
 
 <details>
 <summary>src/redux/authReducer.js</summary>
@@ -771,6 +795,8 @@ The `dinoReducer.js` file is going to look very familiar to the `authReducer` fi
 
 Let’s define this reducer’s actions:
 
+:writing_hand:
+
 <details>
 <summary>src/redux/dinoReducer.js</summary>
 
@@ -788,6 +814,8 @@ export const actions = {
 This time you have four actions, two for fetching dinosaurs and two to handle the favoriting and unfavoriting of a particular dinosaur.
 
 Let’s add in the reducer body:
+
+:writing_hand:
 
 <details>
 <summary>src/redux/dinoReducer.js</summary>
@@ -844,6 +872,8 @@ Conversely, when a user unfavorites a dinosaur you need to perform a slightly bi
 #### The Complete File
 
 The completed reducer file should look like this:
+
+:writing_hand:
 
 <details>
 <summary>src/redux/dinoReducer.js</summary>
@@ -904,6 +934,8 @@ export default dinoReducer;
 Open the `reducers.js` file and pull everything together to wire up the various parts of your Redux system. 
 
 Here’s the code that’s going to power things:
+
+:writing_hand:
 
 <details>
 <summary>src/redux/reducers.js</summary>
@@ -970,6 +1002,8 @@ Start with the `api.service.js` file. This will be a service to service other se
 
 Open it and let’s fill it out, starting with a bare scaffold:
 
+:writing_hand:
+
 <details>
 <summary>api.services.js</summary>
 
@@ -1001,6 +1035,8 @@ Finally, you have a barebones JavaScript class, `ApiService`, that contains two 
 
 Let’s flesh out the two class methods:
 
+:writing_hand:
+
 <details>
 <summary>src/services/api.service.js</summary>
 
@@ -1025,6 +1061,8 @@ In each method, you call an axios function, `get()` for `get()`, and `post()` fo
 #### The Complete File
 
 The completed API service file should now look like this:
+
+:writing_hand:
 
 <details>
 <summary>src/services/api.service.js</summary>
@@ -1054,7 +1092,7 @@ export default new ApiService();
 ```
 </details>
 
-With this first service complete, I must admit that it doesn’t look very exciting at the moment, nor does it do anything particularly exciting yet. However, it gives a great starting point to extend the interaction with the API. Even if it’s doing little more than calling the API and returning the response to the caller, you could add logging in here, intercept the request or response, inject authentication bearer tokens, or a myriad of other things if you so choose. 
+With this first service complete, I must admit it doesn’t look very exciting at the moment, nor does it do anything particularly exciting yet. However, it gives a great starting point to extend the interaction with the API. Even if it’s doing little more than calling the API and returning the response to the caller, you could add logging in here, intercept the request or response, inject authentication bearer tokens, or a myriad of other things if you so choose. 
 
 The important take-away here is that you’ve created a helper service whose responsibility is to deal directly with the API.
 
@@ -1067,6 +1105,8 @@ The Auth service will provide two super-useful custom Hooks when you’re finish
 2. `withAuthenticationRequired` which will be a wrapper function that will check the authenticated status of your user, and either return them the component they want if they’re authenticated, or redirect them to the `/login` path if they’re not.
 
 Let’s start with the imports:
+
+:writing_hand:
 
 <details>
 <summary>src/services/auth.service.js</summary>
@@ -1094,8 +1134,10 @@ This is going to be your very first custom Hook! It might sound a little dauntin
 
 Let’s start with the scaffold function:
 
+:writing_hand:
+
 ```
-// custom useAuth Hook -------------------------------------------------------------------
+// custom useAuth Hook 
 export const useAuth = () => {
     
     return {        
@@ -1110,6 +1152,8 @@ Let’s create the variables first and then move onto the functions:
 
 **src/services/auth.service.js**
 
+:writing_hand:
+
 ```
 export const useAuth = () => {
     const [state, dispatch] = useContext(StoreContext);
@@ -1118,6 +1162,8 @@ export const useAuth = () => {
 Just like you did in the previous lesson, you’re calling the `useContext` Hook here with the imported `StoreContext` object. This will give access to your app’s `state` and the `dispatch()` function to make updates to said state.
 
 Next, let’s create a function to allow your users to log in:
+
+:writing_hand:
 
 <details>
 <summary>src/services/auth.service.js</summary>
@@ -1165,6 +1211,8 @@ That’s the largest function done in the `useAuth` Hook. The next, `logout()`, 
 
 **src/services/auth.service.js**
 
+:writing_hand:
+
 ```
     const logout = () => {
         dispatch(createAction(actions.SIGN_OUT_USER, null));
@@ -1174,6 +1222,8 @@ That’s the largest function done in the `useAuth` Hook. The next, `logout()`, 
 In an actual app with a proper authentication system, there might be a need to call an API endpoint to flush any caches, clear tokens or sessions at the server level and so on. However, you can simply clear out the user property in state by calling the `dispatch()`, function passing it the `SIGN_OUT_USER` action, and your work is done.
 
 The last thing to do is to return an object that provides these various methods to anyone wanting to consume and use them. Let’s define that now:
+
+:writing_hand:
 
 <details>
 <summary>src/services/auth.service.js</summary>
@@ -1198,6 +1248,8 @@ For example, you don’t want unauthenticated users to view the `/favorites` rou
 
 Let’s start with the outline:
 
+:writing_hand:
+
 ```
 const withAuthenticationRequired = (Component, options) => {
     return function WithAuthenticationRequired(props) {
@@ -1209,6 +1261,8 @@ const withAuthenticationRequired = (Component, options) => {
 Later on when you flesh out the components, you’ll see this in action, but for now trust that you’ll call this component function as `withAuthenticationRequired()`,  passing it a component that you want to ultimately render. What gets returned immediately is another function component named the same, but capitalised as `WithAuthenticationRequired`. 
 
 Let’s add some variables into this returned function:
+
+:writing_hand:
 
 <details>
 <summary>src/services/auth.service.js</summary>
@@ -1224,6 +1278,8 @@ export const withAuthenticationRequired = (Component, options) => {
 Having just defined the `useAuth` Hook, you’re using it here to grab the `isAuthenticated` variable that it exports. You’ll then destructure the incoming options argument and extract the location value from it. 
 
 Next up, the main logic:
+
+:writing_hand:
 
 <details>
 <summary>src/services/auth.service.js</summary>
@@ -1255,6 +1311,8 @@ With this higher-order component finished, you can use it wherever you like, to 
 
 The completed Auth service file should now look like this:
 
+:writing_hand:
+
 <details>
 <summary>src/services/auth.service.js</summary>
 
@@ -1269,7 +1327,7 @@ import { StoreContext, createAction } from '../redux/reducers';
 // Services 
 import ApiService from './api.service';
 
-// custom useAuth Hook -------------------------------------------------------------------
+// custom useAuth Hook 
 export const useAuth = () => {
     const [state, dispatch] = useContext(StoreContext);
 
@@ -1312,7 +1370,7 @@ export const useAuth = () => {
 };
 
 
-// withAuthenticationRequired Hook ----------------------------------------------------------
+// withAuthenticationRequired Hook 
 export const withAuthenticationRequired = (Component, options) => {
     return function WithAuthenticationRequired(props) {
         const { isAuthenticated } = useAuth();
@@ -1341,6 +1399,8 @@ The last file to edit in this part is  `dino.service.js` . The primary purpose o
 
 Open the file and let’s start with the imports which will look very similar to the `auth.service.js` ones:
 
+:writing_hand:
+
 <details>
 <summary>src/services/dino.service.js</summary>
 
@@ -1359,6 +1419,8 @@ import ApiService from './api.service';
 There you go. The only real difference is you're using the Redux actions from the `dinoReducer` instead of the `authReducer`. 
 
 Next up, let’s define the skeleton export and main logic in this file; the `useDinos` Hook:
+
+:writing_hand:
 
 <details>
 <summary>src/services/dino.service.js</summary>
@@ -1401,6 +1463,8 @@ Finally, you have a similar return object as you had in the `Auth` service. You�
 
 Let’s flesh out those empty functions, starting with the add and remove from favorites:
 
+:writing_hand:
+
 <details>
 <summary>src/services/dino.service.js</summary>
 
@@ -1420,6 +1484,8 @@ You’ll cover both of these functions in one go because they’re almost identi
 ### loadDinos Function
 
 Now let’s fill out the `loadDinos`  function:
+
+:writing_hand:
 
 <details>
 <summary>src/services/dino.service.js</summary>
@@ -1479,6 +1545,8 @@ Of course, you don’t always want to load a bunch of dinosaurs. Sometimes, you 
 
 Let’s fill in the final blanks for the logic in this function:
 
+:writing_hand:
+
 <details>
 <summary>src/services/dino.service.js</summary>
 
@@ -1518,6 +1586,8 @@ Once you have a response back from the API, check for errors (returning early if
 
 After all your hard work, the completed Dino service file should now look like this:
 
+:writing_hand:
+
 <details>
 <summary>src/services/dino.service.js</summary>
 
@@ -1531,7 +1601,7 @@ import { StoreContext, createAction } from '../redux/reducers';
 // Services 
 import ApiService from './api.service';
 
-// custom useAuth Hook -------------------------------------------------------------------
+// custom useAuth Hook 
 export const useDinos = () => {
     const [state, dispatch] = useContext(StoreContext);
 
@@ -1622,6 +1692,8 @@ Let’s start with the `Layout.jsx` component.
 
 The `Layout` component is simple and presentational in nature. You used it in the `App` component to wrap a set of child components in some common styles and structure including things like a header and navigation. Now’s the time to put those common elements in place, and you’re going to define the entire file here in one go since it’s quite small:
 
+:writing_hand:
+
 <details>
 <summary>src/components/Layout.jsx</summary>
 
@@ -1664,6 +1736,8 @@ Let’s start with the imports:
 
 **src/redux/initialState.js**
 
+:writing_hand:
+
 ```
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -1675,6 +1749,8 @@ import { useAuth } from '../services/auth.service';
 You need the `Link` component from React Router so that you can navigate your users around the app when they click on a menu item, so pull that in. You’re also going to be checking if a user is authenticated or not, using your custom Hook, `useAuth` so you’ll bring that in too.
 
 Now for the skeleton component body and default export:
+
+:writing_hand:
 
 <details>
 <summary>src/redux/initialState.js</summary>
@@ -1697,6 +1773,8 @@ export default Navigation;
 After calling the `useAuth()` Hook here, you can pull out just the `isAuthenticated` check and the `logout` function to sign a user out of the app. With the return statement you have an HTML `<nav />` element with some Bulma classes in place that will wrap your menu items. 
 
 Let’s define those next.
+
+:writing_hand:
 
 <details>
 <summary>src/components/Navigation.jsx</summary>
@@ -1757,6 +1835,8 @@ The second checks to see if the user isn’t logged in, and if that’s the case
 #### The Complete File
 
 The completed file should now look like this:
+
+:writing_hand:
 
 <details>
 <summary>src/components/Navigation.jsx</summary>
@@ -1824,6 +1904,8 @@ Let’s bring in some imports:
 
 **src/components/LoginForm.jsx**
 
+:writing_hand:
+
 ```
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
@@ -1835,6 +1917,8 @@ import { useAuth } from '../services/auth.service';
 You’ll be using the `useState` Hook so grab that from React, and you’ll need to redirect the user if they sign in successfully, so you’ll need the `Redirect` component from React Router, too. Finally, you’ll be using various functions from the `useAuth` Hook so let’s pull that in too.
 
 Before you flesh out the main component logic, define the skeleton body and default return:
+
+:writing_hand:
 
 <details>
 <summary>src/components/LoginForm.jsx</summary>
@@ -1853,6 +1937,8 @@ export default LoginForm;
 ### Variables and Logic Functions
 
 With the skeleton in place, let’s put some flesh on those code bones:
+
+:writing_hand:
 
 <details>
 <summary>src/components/LoginForm.jsx</summary>
@@ -1893,6 +1979,8 @@ Once you have a response from the API, the code moves on and you set the value o
 ### Component Body
 
 Now you’ll move on to the main JSX part:
+
+:writing_hand:
 
 <details>
 <summary>src/redux/authReducer.js</summary>
@@ -1948,6 +2036,8 @@ After the form fields, you have a default submit button with some Bulma button s
 The completed file should now look like this:
 
 Finally, after the form, we have a shortcut evaluation again that looks for a truthy value of errors in state and displays an error-styled notification message to explain to the user that there were problems signing in and to try again. 
+
+:writing_hand:
 
 <details>
 <summary>src/redux/authReducer.js</summary>
@@ -2030,6 +2120,8 @@ Let’s start with the imports, component scaffolding and export:
 
 **src/redux/dinoReducer.js**
 
+:writing_hand:
+
 ```
 import React from 'react';
 import { useHistory } from 'react-router-dom';
@@ -2038,6 +2130,8 @@ import { useHistory } from 'react-router-dom';
 Nothing flashy here, you pull in React and then a new one, the `useHistory` Hook from React Router. This will enable you to interact with browser history properties and functions via the React Router system. 
 
 Now for the skeleton component:
+
+:writing_hand:
 
 <details>
 <summary>src/redux/dinoReducer.js</summary>
@@ -2069,6 +2163,8 @@ You have a standard function component here that you define and export straight 
 
 With your barebones event handling functions in place, let’s add some logic to them, starting with the `handleLuckyClick` function. 
 
+:writing_hand:
+
 <details>
 <summary>src/components/DinoSearch.jsx</summary>
 
@@ -2085,6 +2181,8 @@ With your barebones event handling functions in place, let’s add some logic to
 When a user clicks the ‘I’m feeling lucky’ button, you want to bypass the form field search input and just direct the user to the `/browse` page, but supply a random alphabetical character to the page as a URL parameter. This is what the `handleLuckyClick` function will achieve. 
 
 First, define a string of the alphabetical characters and then grab one randomly, stashing the value in the `randChar` variable. You’re using a common pattern of combining `Math.floor` and `Math.random`, multiplied by the length of a particular string or array. Once you have this random alpha character, you can use `history.push()` to add the path `/browse/[our-random-character]` into the browser’s history and then navigate your user over to the new page.
+
+:writing_hand:
 
 <details>
 <summary>src/components/DinoSearch.jsx</summary>
@@ -2103,6 +2201,8 @@ With `handleSearchSubmit`, you have a very similar function. You stop the form f
 ### Component Body
 
 All that’s left is to flesh out the component’s JSX, so let’s take care of that now:
+
+:writing_hand:
 
 <details>
 <summary>src/redux/dinoReducer.js</summary>
@@ -2144,6 +2244,8 @@ In the form element, you’re attaching the `handleSearchSubmit` handler functio
 #### The Complete File
 
 The completed file should now look like this:
+
+:writing_hand:
 
 <details>
 <summary>src/components/DinoSearch.jsx</summary>
@@ -2210,6 +2312,8 @@ Let’s move on to creating the `DinoCard` component. This component looks longe
 
 Open the `/components/DinoCard.jsx` file and start with the imports section and the component skeleton:
 
+:writing_hand:
+
 <details>
 <summary>src/components/DinoCard.jsx</summary>
 
@@ -2236,6 +2340,8 @@ Again you’ll be making use of your old friend the `Link` component, from React
 ### Variables and Functions
 
 With your skeleton in place, let’s fill out the variables and single function:
+
+:writing_hand:
 
 <details>
 <summary>src/components/DinoCard.jsx</summary>
@@ -2290,6 +2396,8 @@ Personally, I feel the first approach is too much JSX and adds unnecessary clutt
 ### Component Body
 
 Let’s add the JSX and then step through some of the finer points:
+
+:writing_hand:
 
 <details>
 <summary>src/components/DinoCard.jsx</summary>
@@ -2353,6 +2461,8 @@ Let’s add the JSX and then step through some of the finer points:
 
 This hunk of JSX renders a card-style element using Bulma’s card styles. It’ll house an image of the dino in question, and some basic details such as its name and location, as well as providing the user with an option to view more details via a link in the bottom of the card. However, this is a decent chunk of JSX to consume in one go, so let’s break it down into sections and run through it.
 
+:writing_hand:
+
 <details>
 <summary>src/components/DinoCard.jsx</summary>
 
@@ -2384,6 +2494,8 @@ In this section right at the top, you define a button whose `onClick` event call
 ```
 
 In the next section you have the card-image container which houses a figure element. You’re constructing a dynamic image `src` path here using the `imgBaseURL` and image values, but you're also hiding the actual `img` element, choosing instead to apply the dinosaur’s image as a background using CSS styles. This is a handy trick to know when you’re dealing with a set of images with a variety of dimensions — you can’t make different dimensions fit into a particular image aspect ratio, but you can apply those images as a background and stretch and shape them a little to cover the same space without distorting the image. 
+
+:writing_hand:
 
 <details>
 <summary>src/components/DinoCard.jsx</summary>
@@ -2432,6 +2544,8 @@ Finally, in the `card-content` section, you’re wrapping a `Link` component aro
 #### The Complete File
 
 The completed file should now look like this:
+
+:writing_hand:
 
 <details>
 <summary>src/components/DinoCard.jsx</summary>
@@ -2535,6 +2649,8 @@ export default DinoCard;
 
 You have a lot of the building blocks in place now, so it’s time to start putting the parent components together, starting with  `DinoBrowse`. Open the file and let’s start with some imports.
 
+:writing_hand:
+
 <details>
 <summary>src/components/DinoBrowse.jsx</summary>
 
@@ -2554,6 +2670,8 @@ You’re using both the `useState` and `useEffect` Hooks from React here, as wel
 
 Now onto the skeleton component and default export:
 
+:writing_hand:
+
 <details>
 <summary>src/components/DinoBrowse.jsx</summary>
 
@@ -2572,6 +2690,8 @@ export default DinoBrowse;
 ### Variables and functions
 
 You need to set up a couple of local state variables, as well as access a route parameter and some functions, from the `useDinos` Hook, so let’s define these all:
+
+:writing_hand:
 
 <details>
 <summary>src/components/DinoBrowse.jsx</summary>
@@ -2596,6 +2716,8 @@ After this, you’re extracting a name variable from the `useParams` Hook. If yo
 Next, pull out the `isLoading` flag and the `loadDinos` function from the `useDinos` Hook. And your final variable is `alphabet` whose value is exactly as its namesake, the alphabet — you’ll be using this in a moment when you get to the JSX.
 
 Let’s outline your functions next:
+
+:writing_hand:
 
 <details>
 <summary>src/components/DinoBrowse.jsx</summary>
@@ -2635,6 +2757,8 @@ Finally, you have an instance of the `useEffect` Hook, which is passed an empty 
 ### Component Body
 
 You have quite a lot of JSX to add to this component, so let’s get it down first and then walk through the key parts:
+
+:writing_hand:
 
 <details>
 <summary>src/components/DinoBrowse.jsx</summary>
@@ -2712,6 +2836,8 @@ You have quite a lot of JSX to add to this component, so let’s get it down fir
 
 At the high-level you have a `section` element, and a series of containing divs that set up a Flexbox grid structure. In the first column lives a side bar wrapped in a nicely-styled `.box` class:
 
+:writing_hand:
+
 <details>
 <summary>src/components/DinoBrowse.jsx</summary>
 
@@ -2744,6 +2870,8 @@ What’s happening in here (after the title ‘Search by letter’), is that you
 
 Remember when you took a look at the API in the `/dinos` routes? There was one that handled `/dinos/search/:term`, determining if the value of `:term` was a single character or a part of a name and matching dinosaurs as appropriate. Well here, you’re only going to be passing along a single character, a letter of the alphabet, so what you will get back is all the dinosaurs whose names begin with whatever letter our users have clicked on. 
 
+:writing_hand:
+
 <details>
 <summary>src/components/DinoBrowse.jsx</summary>
 
@@ -2770,6 +2898,8 @@ Remember when you took a look at the API in the `/dinos` routes? There was one t
 In this next section, you’re dealing with the larger, right-hand column where the results and search form will be. You have a dynamic title assigned to an `h1` element, that shows a different message depending on whether your user has searched for something, or you’re showing everything. 
 
 Under here you have a little search form that looks very similar to the one in the `DinoSearch` component. You allow users to enter a search term in the HTML input element, and then trigger a form submission with the default button in there. You assign the `handleSearchSubmit` function you already defined to the `onSubmit` event of the form.
+
+:writing_hand:
 
 <details>
 <summary>src/components/DinoBrowse.jsx</summary>
@@ -2812,6 +2942,8 @@ Under here you have a couple of conditional rendering sections. The first render
 #### The Complete File
 
 The completed file should now look like this:
+
+:writing_hand:
 
 <details>
 <summary>src/components/DinoBrowse.jsx
@@ -2946,6 +3078,8 @@ Open the file `DinoDetails.jsx` and let’s start filling it out.
 
 **src/components/DinoDetails.jsx**
 
+:writing_hand:
+
 ```
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
@@ -2957,6 +3091,8 @@ import { useDinos } from '../services/dino.service';
 The imports look very similar to the last component. You’re bringing in some React Hooks up top, the `useParams` Hook from React Router (because you’ll need to access the `:id` parameter from the details URL path), and the `useDinos` Hook.
 
 With the imports done, let’s flesh out the scaffolding of the basic component and export:
+
+:writing_hand:
 
 <details>
 <summary>src/components/DinoDetails.jsx</summary>
@@ -2976,6 +3112,8 @@ export default DinoDetails;
 ### Variables and Functions
 
 With the bare bones in place, the next step is to add in some variables and handler functions:
+
+:writing_hand:
 
 <details>
 <summary>src/components/DinoDetails.jsx</summary>
@@ -3019,6 +3157,8 @@ Finally you’re creating a simple `isFavorite` flag again that just checks if t
 
 Next, onto the functions:
 
+:writing_hand:
+
 <details>
 <summary>src/components/DinoDetails.jsx</summary>
 
@@ -3056,6 +3196,8 @@ Your use of the `useEffect` Hook here ensures that you start loading a dinosaur 
 ### Component Body
 
 Next up you need to outline the JSX, and I must warn you it’s going to look very long, but a lot of it is very repetitive table data.
+
+:writing_hand:
 
 <details>
 <summary>src/components/DinoDetails.jsx</summary>
@@ -3192,6 +3334,8 @@ Starting at the top, you have another section container and a Flexbox column str
 
 Under here you have an image for the dinosaur that looks and works just like you’ve used in a couple of components already. 
 
+:writing_hand:
+
 <details>
 <summary>src/components/DinoDetails.jsx</summary>
 
@@ -3213,6 +3357,8 @@ Under here you have an image for the dinosaur that looks and works just like you
 </details>
 
 The next section handles the favoriting and unfavoriting of this dinosaur. It functions in a similar fashion to the same mechanism in the `DinoCard` component. On button click you call the `handleOnFavouriteClick` function which will toggle the favorite status in app `state`. You use the `isFavorite` flag a couple of times, one to render the correct action message to the user, the other to render the correct icon (i.e. filled in heart or outlined heart). 
+
+:writing_hand:
 
 <details>
 <summary>src/components/DinoDetails.jsx</summary>
@@ -3315,6 +3461,8 @@ After the table you’re simply rendering the description of the dinosaur or a '
 #### The Complete File
 
 The completed file should now look like this:
+
+:writing_hand:
 
 <details>
 <summary>src/components/DinoDetails.jsx</summary>
@@ -3508,6 +3656,8 @@ Open the `/components/Favourites.jsx` file and let’s start with those imports.
 
 ### Imports and Component Skeleton
 
+:writing_hand:
+
 <details>
 <summary>src/components/Favorites.jsx</summary>
 
@@ -3528,6 +3678,8 @@ You’ll see a familiar set of imports here as in the last few components you bu
 The only additional import here is the `withAuthenticationRequired` component that you put together in the previous section as you built out the Dino service.
 
 You can see exactly how it’s used now as you outline the component’s skeleton:
+
+:writing_hand:
 
 <details>
 <summary>src/components/Favourites.jsx</summary>
@@ -3558,6 +3710,8 @@ This different-looking default export shouldn’t look too weird to your eyes th
 ### Variables and Functions
 
 With your skeleton done, let’s map out some variables for this component and a couple of functions:
+
+:writing_hand:
 
 <details>
 <summary>src/components/Favourites.jsx</summary>
@@ -3596,6 +3750,8 @@ Your use of the `useEffect` Hook here is quite small. You can ensure it only run
 ### Component Body
 
 Now onto the JSX. Thankfully this component’s JSX isn’t as long or intricate as some of the other components you’ve coded:
+
+:writing_hand:
 
 <details>
 <summary>src/components/Favourites.jsx</summary>
@@ -3654,6 +3810,8 @@ In the final section you have two conditional expressions that may look familiar
 #### The Complete File
 
 The completed file should now look like this:
+
+:writing_hand:
 
 <details>
 <summary>src/components/Favourites.jsx</summary>
