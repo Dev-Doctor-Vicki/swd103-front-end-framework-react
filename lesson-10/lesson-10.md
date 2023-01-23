@@ -1,4 +1,4 @@
-# :bulb: Final Project: Dinosaur Search App
+# :information_source: Final Project: Dinosaur Search App
 
 In this final lesson, you'll be putting your skills together and building a Dinosaur Search App.
 
@@ -30,7 +30,7 @@ If you want to find out more about a particular dinosaur, simply click the butto
 
 Finally, you can simulate a sign-in process which will then allow a logged-in user to view their saved favorites in a convenient list.
 
-## L10FinalProject
+## :pushpin: L10FinalProject
 
 ### Step 1: Plan out the Build
 
@@ -42,9 +42,9 @@ With larger, more complex apps such as this, even as a minimum viable product, w
 
 The user journey allowsyou to roughly map out which parts of the app connect to each other, and how a user might navigate around an app from a given starting point. With the wireframes, you’re really aiming to loosely pin together your intended UI, placing components into groups, breaking down sections into more modular chunks, and trying to think about what will live on what page or pages — especially important in a system such as React where modularity is key!
 
-I’ve already mocked these two things out for you to give you a flavor of how this could look, so let’s take a quick peek and see how these activities can be very useful tools.
+I’ve already mocked these two things out to give you a flavor of how this could look, so take a quick peek and see how these activities can be very useful tools.
 
-### User jJurney or Navigation Flow
+### User Journey or Navigation Flow
 
 Here’s an example navigation flow (or user journey) for your small dinosaur searching app. 
 
@@ -80,7 +80,7 @@ You’re not going to dwell on the wireframes too long, as I’m sure you’re k
 
 ![](assets/wireframes%20(1).png)
 
-You can see that each page’s wireframe is much like the flow diagram: quite simple and low-fi. What you’re doing here is getting down on paper (so to speak) the general idea of which parts of the UI live on which pages and roughly how they are intended to look. 
+You can see each page’s wireframe is much like the flow diagram: quite simple and low-fi. What you’re doing here is getting down on paper (so to speak) the general idea of which parts of the UI live on which pages and roughly how they are intended to look. 
 
 Again, in the wild, you might see lots of different versions of this sort of thing, from hand-drawn sketches, physical paper models and simplistic low-fi versions, through to full-on UI mock-ups made by design teams. 
 
@@ -116,14 +116,14 @@ You’re going to quickly spin up the API `server` and take a brief look at the 
 
 ### Open and Run the Starter Project
 
-Here’s where you can grab the project files for this course, if you haven’t already done so. You’ll need them for this last project as they include the API server, which you won't be building from scratch!
+Here’s where you grab the project files for this course, if you haven’t already done so. You’ll need them for this last project as they include the API server, which you won't be building from scratch!
 
 Click below to download the Starter Code.
 
 [Starter Code](assets/start)
 
 
-Once you’ve downloaded the project files, I’d recommend creating a new folder on your local machine to house them. For example I created the following empty folder on my local machine, called /code/demos/dino-search-app. 
+After you download the project files, I recommend creating a new folder on your local machine to house them. For example I created the following empty folder on my local machine, called /code/demos/dino-search-app. 
 
 Copy the contents of `/lesson-10/start/` into your new local folder. When you’re finished you should have a folder structure that looks like this:
 
@@ -135,7 +135,7 @@ Copy the contents of `/lesson-10/start/` into your new local folder. When you’
 --/server
 ```
 
-Open the project in VS Code (or your favorite editor) and let’s take a look at the API files.
+Open the project in VS Code (or your favorite editor) and take a look at the API files.
 
 ### Queries and Routing
 
@@ -163,7 +163,7 @@ The `dinos.js` file is where the API peovides for all the dinosaur-related endpo
 
 You don’t need to go into go into great detail about the inner workings of the API setup here (you can refer to [the article](https://robkendal.co.uk/blog/how-to-build-a-restful-node-js-api-server-using-json-files) on this exact thing if you’re curious, but the basic operation is that each API endpoint uses the Node `fs` function to read the `dinos.json` file. Depending on the endpoint called, the resulting JSON data is filtered and formatted and then returned to the caller as JSON data.
 
-### Runn the API
+### Run the API
 
 Before you plough on with the front-facing client app, quickly spin up the API server and check that it’s working OK. 
 
@@ -188,6 +188,8 @@ Now that you have a good idea of what’s what with the API server part of the p
 Since you’ve already have a starter project and a folder, `/client`, where you want your frontend files to live, using the default Create React App project command can be a little more cumbersome, but let’s walk through it and see if we make it out the other side unscathed. 
 
 Open a terminal window to the dinosaur project folder and leave it at the project root (the one at the same level as the `/client` and `/server` folders). Now run the familiar command:
+
+:writing_hand:
 
 ```
 npm create react-app dino-search-app
