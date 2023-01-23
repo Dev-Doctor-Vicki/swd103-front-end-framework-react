@@ -1,6 +1,6 @@
 # React - A Modern UI Library
 
-Welcome to to Front-End Foundations with Real World React. Let's see what the course will cover and what you'll learn.
+Welcome to to Front-End Foundations with "Real World React". Let's see what the course will cover and what you'll learn.
 
 ## Why this course
 
@@ -28,7 +28,7 @@ You'll join us on a deep dive into core React concepts. As you progress through 
 
 ## Part I
 
-In part one of the course, we'll take an end-to-end approach to React. We'll start with taking a look at the library itself and the problems it solves, before moving on to topics such as Hooks and handling data from an API. Finally, we'll talk about how to build and deploy our application to a popular service such as Netlify.
+In part one of the course, you'll take an end-to-end approach to React. You'll start with taking a look at the library itself and the problems it solves, before moving on to topics such as Hooks and handling data from an API. Finally, you'll learn about how to build and deploy your application to a popular service such as Netlify.
 
 Included in part one of the course are the following lessons:
 
@@ -43,7 +43,7 @@ Included in part one of the course are the following lessons:
 
 Part II
 
-In part two, we'll cover similar topics to the first part but take a deeper dive into them and look at some of the challenges we face as React developers and how to overcome them. We'll also learn about navigating around our application, and managing `state` across our application using `Redux` -- a common stumbling block for aspiring React developers.
+In part two, you'll cover similar topics to the first part, but take a deeper dive into them and look at some of the challenges you face as React developers and how to overcome them. You'll also learn about navigating around your application, and managing `state` across your application using `Redux` -- a common stumbling block for aspiring React developers.
 
 The outline for part two of the course includes the following lessons:
 
@@ -60,19 +60,19 @@ The outline for part two of the course includes the following lessons:
 
 ## What is React
 
-React is a declarative JavaScript library introduced by Facebook in 2013. We'll look at how React came about and determine some of the skills you'll need as a React developer.
+React is a declarative JavaScript library introduced by Facebook in 2013. You'll look at how React came about and determine some of the skills you'll need as a React developer.
 
 Let's start by looking at React's definition from the official React JS website:
 
 "[React](https://reactjs.org/) is a declarative, efficient, and flexible JavaScript library for building user interfaces. It lets you compose complex UIs from small and isolated pieces of code called “components”."
 
-React allows us to break down our complex user interfaces into smaller, bite-sized pieces of functionality that operate on their own; managing their `state`, given some sort of `input` data referred to as `props`. These smaller components are brought together as building blocks for larger, more complex user interfaces that interact via passed in `data` and `events`.
+React allows you to break down your complex user interfaces into smaller, bite-sized pieces of functionality that operate on their own; managing their `state`, given some sort of `input` data referred to as `props`. These smaller components are brought together as building blocks for larger, more complex user interfaces that interact via passed in `data` and `events`.
 
 **Components** are written using a combination of JavaScript and HTML, mixed together into files that commonly carry a `.JSX` file type (although this is not strictly necessary).
 
-React is declarative in nature. To clarify this, when React is described as 'declarative', it means we can tell React what we want it to do or display, without having to worry about how this will be achieved.
+React is declarative in nature. To clarify this, when React is described as 'declarative', it means you can tell React what you want it to do, or display, without having to worry about how this will be achieved.
 
-As an example, if we update `text` and `color` on a page using plain JavaScript, it would look like this (an imperative way):
+As an example, if you update `text` and `color` on a page using plain JavaScript, it would look like this (an imperative way):
 
 ```
 const myHTMLElement = document.querySelector('#my-element');
@@ -96,11 +96,11 @@ function MyReactComponent = ({text, textColor}) => (
 
 You can see in the second example you only have to describe your desired final state of the UI without physically walking through each change to the UI you want to make.
 
-The other nice thing about React is it uses an adoptive approach. So, inside your websites and applications, you can use as much or as little of React as you wish, as suits your needs.
+The other nice thing about React, is it uses an adoptive approach. So, inside your websites and applications, you can use as much or as little of React as you wish, as suits your needs.
 
-React remains one of the most popular JavaScript libraries for building robust user interfaces today and more and more people are keen to learn and adopt it into their development toolbox.
+React remains one of the most popular JavaScript libraries for building robust user interfaces today, and more and more people are keen to learn and adopt it into their development toolbox.
 
-React (much like comparable libraries such as Vue JS), is mainly JavaScript. There are a few conventions, approaches, and syntax unique to React, but the  majority of what you will produce will be JavaScript. Within that JavaScript you'll write `HTML`-like blocks of code referred to as `JSX`. Not strictly `HTML`, it is almost identical to what you would write in a standard `.HTML` file.
+React (much like comparable libraries such as Vue JS), is mainly JavaScript. There are a few conventions, approaches, and syntax unique to React, but the  majority of what you will produce will be JavaScript. Within that JavaScript, you'll write `HTML`-like blocks of code referred to as `JSX`. Not strictly `HTML`, it is almost identical to what you would write in a standard `.HTML` file.
 
 Let’s look at an example:
 
@@ -154,7 +154,7 @@ const App = ({ firstName, lastName }) => {
 
 A **functional** component is just that…a function! You’re using the **arrow function** syntax to write it, but you can see there’s nothing fancy or complex about it.
 
-The main ‘React-y’ part comes when we look at what our component returns, which is `JSX`:
+The main ‘React-y’ part comes when you look at what your component returns, which is `JSX`:
 
 ```
 <div>
@@ -173,7 +173,7 @@ So to answer the question, it really depends on the individual. I feel it’s mu
 
 Any library, framework, platform, language, design, pattern are all just tools.
 
-With that said, we’re here to become React Jedis so let’s choose React and start your learning journey.
+With that said, you’re here to become React Jedi,s so let’s choose React and start your learning journey.
 
 ## React Drawbacks
 
@@ -183,15 +183,15 @@ This can be a double-edged sword: on one hand, it’s relatively light-weight an
 
 For example;, if you want users to navigate around your application or manage your application’s `state` at a broader level, you’re going to need to use additional, third-party libraries such as `Redux` and `React Router`.
 
-A common complaint with React is the learning curve. It is not as steep as a framework as Angular, but it does not have the simplest learning curve and can leave some aspiring React developers stumped with particular mechanisms such as updating `state` and passing data via the `props` object.
+A common complaint with React is the learning curve. It is not as steep a framework as Angular, but it does not have the simplest learning curve and can leave some aspiring React developers stumped with particular mechanisms such as updating `state` and passing data via the `props` object.
 
 For experienced developers or teams using agreed development standards, this might be less of a problem. However, for newcomers to both React and frontend development in general, being turned loose with the React library without a clear set of best practices or other guidelines can lead to poor coding standards, code quality issues, and frustration as you receive conflicting advice on how to approach `component` development.
 
-Don’t worry.  In this course, you’ll explore some of the most popular and common approaches to fill in the blanks React leaves us with.
+Don’t worry.  In this course, you’ll explore some of the most popular and common approaches to fill in the blanks React leaves you with.
 
 ## First React App - The Greeting App
 
-Before you dive into more deep and challenging topics, let's have some fun building an app. Your first React app will present your users with an input and send them a friendly greeting message. you  build a really simple React app that accepts a `name` from our user and displays this as part of a nice greeting message.
+Before you dive into more deep and challenging topics, let's have some fun building an app. Your first React app will present your users with an input, and send them a friendly greeting message. You build a really simple React app that accepts a `name` from your user and displays this as part of a nice greeting message.
 
 Let’s look at what you’ll be building.
 
@@ -201,11 +201,11 @@ This is the finished example you will build, before you refactor it. Once it’s
 
 If I enter my details and hit the update button, you see the text ‘we haven’t been introduced’ is replaced with my name, ‘Vicki Bealman’.
 
-This is a straightforward demo not too complex, but highlights a number of key React concepts you’ll be building on throughout the course.
+This is a straightforward project, not too complex, but highlights a number of key React concepts you’ll be building on throughout the course.
 
-Next you break the Greeting App down into its `component` parts and take a sneak peak under the hood at how everything pins together.
+Next, you break the Greeting App down into its `component` parts and take a sneak peak under the hood at how everything pins together.
 
-## L01 Hands On Guided Learning: Build the Greeting App
+## :pushpin: L01 Hands On Guided Learning: Build the Greeting App
 
 Welcome to your very first React hands-on practice assignment, as part of this React Course.
 
@@ -228,7 +228,11 @@ You' will do something similar so you get familiar with using a common means to 
 
 `Parcel JS` is a simple code bundler much like `Webpack`, but without much of the complex configuration and setup. In its own words `Parcel JS` is a ‘blazing fast, zero-config web application bundler’.
 
-Open the [Parcel JS](https://parceljs.org) website and head to the ‘getting started’ section. Install it globally on your machine by using the commands on this page:
+Open the [Parcel JS](https://parceljs.org) website and head to the ‘getting started’ section for additional information. 
+
+- Install it globally on your machine by using the commands on this page:
+
+:writing_hand:
 
 `npm i -g parcel-bundler`
 
@@ -237,6 +241,8 @@ Or
 `yarn -global add parcel-bundler`
 
 Open a brand new project in **VS Code**.
+
+:writing_hand:
 
 1. `cd desktop`
 
@@ -253,11 +259,11 @@ Open a brand new project in **VS Code**.
 
 You have a new, empty folder you opened in VS Code. You have a `.gitignore` file and a `readme` because you connected the project with a git repository. 
 
-- You’re not going to use those files and you can ignore them.
+- You’re not going to use those files and you can ignore them for now.
 
 You don’t need to do any configuration to make it work, because you’re using `Parcel`. You **do need** to add React to your project.
 
-Open your terminal in VS Code and it will open in the current working directory of your project. From here, complete three steps to get your project up and running with everything you need:
+Open your terminal in VS Code, and it will open in the current working directory of your project. From here, complete three steps to get your project up and running with everything you need:
 
 1. Initialize your project
 
@@ -269,7 +275,9 @@ Open your terminal in VS Code and it will open in the current working directory 
 
 1. The first step is to initialize your project with a `package.json` file. Run the command:
 
-	`npm init -y`
+:writing_hand:
+
+`npm init -y`
 
 2. Add the `-y` flag which will automatically answer `yes` to all the initialization questions; ‘who's the author?’, ‘what's the license?’, and questions you don’t care about for our example.
 
@@ -281,19 +289,25 @@ Open your terminal in VS Code and it will open in the current working directory 
 
 4. Back in your terminal, type the following command to add both packages to the project:
 
-	`npm install react react-dom`
+:writing_hand:
+
+`npm install react react-dom`
 
 ### Add Scripts for Building and Running the Code
 
 5. The final part of setup involves the `package.json` file. You should see the `react` and `react-dom` dependencies in there.
 
-AFter you build your app, call `Parcel` to bundle everything, and run it. It’s not a huge job, but you can add a simple shortcut to help out.
+After you build your app, call `Parcel` to bundle everything, and run it. It’s not a huge job, but you can add a simple shortcut to help out.
 
 In your `package.json` file, add a new property, ‘`scripts`’ and add a new command property under this and call it ‘`start`’. Next, add the command:
+
+:writing_hand:
 
 `parcel index.html —open`
 
 The new part of the `package.json` file should look like this:
+
+:writing_hand:
 
 ```
 "scripts": {
@@ -303,7 +317,7 @@ The new part of the `package.json` file should look like this:
 
 You have just written a terminal shortcut that will allow you to type `npm start` and have your `Parcel` command open your starting file, and the `--open` flag tells `Parcle` to open the running code in a browser once the files have been compiled and Parcel’s development server is up and running.
 
-`Parcel` works by giving the app an entry point, in this case, your `index.html` file which youl build next. From there, `Parcel` determines which files it needs to include in the bundle based on your imports and file references.
+`Parcel` works by giving the app an entry point, in this case, your `index.html` file which you build next. From there, `Parcel` determines which files it needs to include in the bundle based on your imports and file references.
 
 ## Code the Project Files
 
@@ -313,17 +327,25 @@ For your greeting app, create four files. So create them now. You'll need:
 
 1. A **style**s file, called `styles.css`. You just have some basic styles to make your app look slightly more interesting than the out-of-the-box HTML.
 
+:writing_hand:
+
 `touch styles.css`
 
 2. Your **Parcel** starting point, `index.html`. This is the very first entry point Parcel is going to look for to `render` your app.
+
+:writing_hand:
 
 `touch index.html`
 
 3. A starting point for the JavaScript, which will be `index.js`.
 
+:writing_hand:
+
 `touch index.js`
 
 4. And finally, your main React component, which you call `app.js`. This is your main entry point for the React side of things.
+
+:writing_hand:
 
 `touch app.js`
 
@@ -332,6 +354,11 @@ After you have the files created, fill them in. Start with your `styles.css` fil
 ### Styles.css
 
 Your styles file isn’t absolutely essential at this point, but it’s nice to have a few basic styles improve the built-in look and feel browsers give by default.
+
+:writing_hand:
+
+<details>
+<summary>Styles.css</summary>
 
 ```
 body {
@@ -365,6 +392,7 @@ button:hover {
   background: #c9c6c6;
 }
 ```
+</details>
 
 You see some simple styles that just affect the `body`, `font size`, and `line-height`. Later, you add an `input` and a `button` to your app, so you also added some nice styles for those.
 
@@ -375,6 +403,11 @@ You see some simple styles that just affect the `body`, `font size`, and `line-h
 Add `HTML` to your `index.html` file. 
 
 - I suggest using **Emmet Extension** that comes with VS Code, because it allows you to type the name of the `HTML` elements, like ‘`head`’ or ‘`title`’, hit the tab key, and Emmet will output the complete `HTML` element’s tag rather than having to type it all out by hand. It’s a nice little timesaver.
+
+:writing_hand:
+
+<details>
+<summary>index.html</summary>
 
 ```
 <html>
@@ -387,8 +420,9 @@ Add `HTML` to your `index.html` file.
   </body>
 </html>
 ```
+</details>
 
-Add the `HTML` tag first. Inside that add a `<head>` tag, and within that, add a `<title>` tag. Give it a `title` of ‘`My first React example`’.
+Add the `HTML` tag first. Inside that, add a `<head>` tag, and within that, add a `<title>` tag. Give it a `title` of ‘`My first React example`’.
 
 You need a `<body>` tag, so add that. Within the `<body>` tag, you need two things:
 
@@ -401,6 +435,8 @@ For the first one, add a `<main>` element and give it an `ID` of ‘`output`’.
 When `Parcel` runs, it looks in the `index.html` file first for any `script` tags. When it finds one pointing to `index.js`, it looks there to see what other JavaScript files it needs to import and chain together, to bundle into your working app.
 
 ### index.html contents
+
+:writing_hand:
 
 ```
 <html>
@@ -434,6 +470,8 @@ Import two React packages: `React` and `React DOM`.
 
 #### index.js
 
+:writing_hand:
+
 ```
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -455,8 +493,10 @@ Make sure your app gets rendered to the browser. To do that, call the `render` m
 
 #### index.js
 
+:writing_hand:
+
 ```
-ReactDOM.rcreateRoot(document.getElelmentById('root')).render (<App />;)
+ReactDOM.createRoot(document.getElelmentById('root')).render (<App />;)
 ```
 
 `ReactDOM.render()` accepts two arguments:
@@ -483,6 +523,8 @@ If you use React, you need to have React in scope. Import React at the top of th
 
 #### App.js
 
+:writing_hand:
+
 ```
 import React, { Component } from 'react';
 ```
@@ -492,6 +534,8 @@ import React, { Component } from 'react';
 Outline the basics of the component and then export that component so it can be used in another file, or another component.
 
 It will look like this:
+
+:writing_hand:
 
 ```
 class App extends React.Component {
@@ -507,11 +551,19 @@ For **class-based** components, you  `extend` React’s Component class. Type th
 
 To make this look a little cleaner, import the `Component` class as part of your React import at the top of the file. Add it as a named import like this:
 
+**App.js**
+
+:writing_hand:
+
 `import React, { Component } from 'react';`
 
 By doing that, you replace the `React.Component` part with just `Component`.
 
 Finally, add a `default export` for this component which is just `App`. Add this right after your class declaration.
+
+:writing_hand:
+
+**App.js**
 
 `export default App;`
 
@@ -522,6 +574,10 @@ You’re not quite finished yet, but have the building blocks in. If you run thi
 All React components have to provide a `return` which is usually a block of `JSX`. With class-based components, you have to first provide a `render()` method and then add a `return` statement within the `render()` method.
 
 To get started and to test your app, return a `heading`. Add a `render()` method, add a `return` statement within that, and add a simple message using an `<h1>` tag.
+
+:writing_hand:
+
+**App.js**
 
 ```
 render() {
@@ -539,7 +595,7 @@ The development server should start and open a web page where you see your lovel
 
 Another nice thing about Parcel’s local development server is hot reloads, responding to file changes on saving and refreshing the browser!
 
-### Preventing JSX errors with React Fragments
+### Prevent JSX errors with React Fragments
 
 An important thing to note about `JSX` is you can only return one top-level element. To highlight this, if you type a `paragraph` tag in here and say ‘`this is a paragraph`’, then click save, you'll see we get a nasty error message.
 
@@ -557,6 +613,11 @@ For these cases, use the `React.Fragment` syntax. Replace your containing `div` 
 
 #### index.html
 
+:writing_hand:
+
+<details>
+<summary>index.html</summary>
+
 ```
 // both of these statements are equal
 <React.Fragment>
@@ -569,6 +630,9 @@ For these cases, use the `React.Fragment` syntax. Replace your containing `div` 
  <p>This is a paragraph</p>
 </>
 ```
+</details>
+
+
 The shorthand version looks much neater and cleaner. Use this version wherever it’s needed.
 
 #### Note!
@@ -578,6 +642,10 @@ The shorthand version looks much neater and cleaner. Use this version wherever i
 ### Add a Dynamic Message
 
 Expand your app. In the first paragraph, return user's name once they type it in. Modify paragraph tag to include some executable code.
+
+:writing_hand:
+
+**index.html**
 
 ```
 <p>Hi there, {this.state.displayName}</p>
@@ -594,6 +662,10 @@ You haven't added your `state `yet, so do that now.
 ### Add State to Your app
 
 Within a class-based component, just like a regular JavaScript class, initialize any state values in the constructor.
+
+**App.js**
+
+:writing_hand:
 
 ```
 constructor(props) {
@@ -617,11 +689,13 @@ An important thing to know about `state` is that it is **immutable**. This means
 
 You don’t have to initialize `state` in the constructor as you’re doing here, but it’s a good habit to get into so anyone coming into the class can see what properties should be expected to exist on the `state object`, and what their `values` or their `types` should be.
 
-### Handling User Input
+### Handle User Input
 
 You have your dynamic welcome message, but you need to allow the user to enter their name so you can greet them personally.
 
 Add some instructions and an input box:
+
+:writing_hand:
 
 #### App.js
 
@@ -636,6 +710,10 @@ Set your input’s `value` to another `state `value, `{this.state.name}`. By doi
 By letting React handle your input’s `value` from `state`, it becomes a controlled component, which means React is responsible for maintaining the `state` of any `value` we assign to it.
 
 Since you added a new `state` value reference here, update your component’s `state` in the constructor:
+
+:writing_hand:
+
+**App.js**
 
 ```
 constructor(props) {
@@ -655,11 +733,19 @@ Add an event handler to the `input` element. The perfect place to do this update
 
 Add the `onChange` event to the `input` and add a handler function, `handleChange` which you define next.
 
+:writing_hand:
+
+**App.js**
+
 ```
         <input value={this.state.name} onChange={this.handleChange} />
 ```
 
 Now, define the `handleChange` event. Add it before the `render()` method in our class.
+
+:writing_hand:
+
+**App.js**
 
 ```
   handleChange = evt => {
@@ -681,6 +767,10 @@ For this to really be a true app, give your users a way to trigger a greeting me
 
 Add a button just under your `input` with a similar event handler, but this time the event will be `onClick` instead of `onChange`. You also give it some text, ‘`Update name`’:
 
+:writing_hand:
+
+**App.js**
+
 ```
   handleClick = evt => {
     this.setState({
@@ -697,16 +787,19 @@ The `displayName` value is going to be the same as the final value they enter in
 
 ## Test Your Greeting
 
-Now that yyou have everything you need, save your `App.js` file, and take a peek in the browser. Enter a `name` in the `input` box and click ‘`Update name`’.
+Now that you have everything you need, save your `App.js` file, and take a peek in the browser. Enter a `name` in the `input` box and click ‘`Update name`’.
 
 Instead of ‘`Hi there` ’, you get ‘Hi there, Vicki Bealman’ (or whatever name you entered).
-
 
 ### Finishing touches
 
 The very last part of your Greeting App is to add a little polish. Remember those styles you added at the start? Now, add them to the `app` by importing them just before the class component:
 
 #### App.js
+
+:writing_hand:
+
+**App.js**
 
 `import './styles.css';`
 
@@ -717,6 +810,10 @@ Last but not least, you have an initial message, ‘`Hi there`, ‘ and then jus
 Do this by amending your initial greeting message using a logical `OR` statement. This sounds fancy, but it’s really a shorthand `if` statement in JavaScript you see used often in React to say ‘**evaluate both sides of this argument and return whichever is true**’.
 
 #### App.js
+
+:writing_hand:
+
+**App.js**
 
 ```
 <p>
@@ -736,9 +833,10 @@ Include the submit zip folder box here, with link to open code solution after su
 
 ## Solution (Reveal after submission)
 
-### The complete App.js file
-
 When complete, your `App.js` file should look like this:
+
+<details>
+<summary>Complete App.js File</summary>
 
 ```
 import React, { Component } from 'react';
@@ -783,8 +881,9 @@ class App extends Component {
 
 export default App;
 ```
+</details>
 
-## L01 Hands On Guided Learning #2: Build the Greeting App
+## :pushpin: L01 Hands On Guided Learning #2: Build the Greeting App
 
 Welcome to your second React hands-on practice assignment, as part of this React Course.
 
@@ -805,7 +904,7 @@ You will build on the Greeting App you completed previously.
 
 ## Refactor the Greeting App
 
-With your Greeting App built, you will learn to 'think in React' by breaking down your small `App` into components and refactoring it to use them.
+With your Greeting App, you will learn to 'think in React' by breaking down your small `App` into components and refactoring it to use them.
 
 You built your first app and it’s looking and working great. Currently, it’s using the class-based component approach, but you will refactor it to achieve a few things:
 
@@ -815,7 +914,7 @@ You built your first app and it’s looking and working great. Currently, it’s
 
 - Introduce the common functional component approach to building your React components.
 
-At the moment you have one large class-based component with all the different things going on, including your event handlers for on change and on click. You have a dynamic greeting and a title in there too.
+At the moment, you have one large class-based component with all the different things going on, including your event handlers for on change and on click. You have a dynamic greeting and a title in there too.
 
 It's not a very large component, but you can see how easily it could get out of hand as you add more and more features and functionality to it. It’s not very modular and it’s certainly not very reusable.
 
@@ -823,7 +922,7 @@ It's good practice to analyze your `components` and try to break them down into 
 
 ### Thinking in Components
 
-It’s useful to look at a larger component as a whole and then think about the smaller, independent parts of functionality it contains. These smaller moving parts can be broken down into other components and used elsewhere; they’ll no longer be tied to this single, larger containing component.
+It’s useful to look at a larger component as a whole, and then think about the smaller, independent parts of functionality it contains. These smaller moving parts can be broken down into other components and used elsewhere; they’ll no longer be tied to this single, larger containing component.
 
 To do that with your `App` component, look at what it’s currently doing and see there are three distinct functions it performs that would be good candidates for separate `components`:
 
@@ -867,9 +966,13 @@ Now you have a plan. Do some setup work before you start. Like you did in the la
 
 1. First, add a new folder, and call it `components`. 
 
-	`mkdir components`
+:writing_hand: 
+
+`mkdir components`
 
 2. Within your `/components` folder, create three empty `component` files with the `.jsx` file extension (remembering to capitalize the first character in the file name):
+
+:writing_hand: 
 
 - **Title.jsx**
 	`touch /components/Title.jsx`
@@ -886,13 +989,17 @@ Start moving through the files and coding them.
 
 Start by repeating:
 
-‘React must be in scope in order to use it!’
+1. ‘React must be in scope in order to use it!’
 
-Import React first before you do anything else.
+2. Import React first before you do anything else.
 
 Instead of the class-based approach previously used for your `App` component, the `Title` component will be your very first functional one. Define a functional component as just that, a function.
 
 However, rather than define a function and then set it as the default export, do so in one line:
+
+:writing_hand: 
+
+**Title.jsx**
 
 ```
 export default props => <h1>Welcome to Software Development</h1>;
@@ -908,11 +1015,19 @@ That’s it…sort of. You have a `<h1>` being returned, but you have a fixed st
 
 Make this title dynamic. Instead of it being hardcoded to a string, use your curly brace syntax again and use a value you can pass in via your props object.
 
+:writing_hand: 
+
+**Title.jsx**
+
 ```
 export default props => <h1>{props.title}</h1>;
 ```
 
 However, take this another step further. Because you know you’re only passing in a `title` value via props, reference this value directly using object destructuring.
+
+:writing_hand: 
+
+**Title.jsx**
 
 ```
 export default ({ title }) => <h1>{title}</h1>;
@@ -945,6 +1060,10 @@ export default ({ title }) => <h1>{title}</h1>;
 
 Tackle the greeting message from your `App` component:
 
+:writing_hand: 
+
+**Greeting.jsx**
+
 ```
 <p>Hi there, {this.state.displayName || "we haven't been introduced"}</p>
 ```
@@ -953,11 +1072,15 @@ You have a paragraph tag with a string and a ‘`displayName`’ value you get f
 
 Start by importing React:
 
+:writing_hand: 
+
 **Greeting.jsx**
 
 `import React from 'react';`
 
 Like your `Title` component, do an inline default `export` next, along with an implicit `return`, because all you're doing is returning one line which is going to be your greeting with a dynamic name value.
+
+:writing_hand: 
 
 **Greeting.jsx**
 
@@ -992,6 +1115,8 @@ The next thing to build is your combined `input` and `button` component. This on
 
 Import React into your component. This time you’re also going to add an extra named import `useState`.
 
+:writing_hand: 
+
 **Input.jsx**
 
 `import React, { useState } from 'react';`
@@ -1004,7 +1129,10 @@ Hooks were introduced as part of React v16.8. They allow access to `state` and o
 
 You imported React, now define your `Input` component and export it. Be sure to copy in the `input` and `button` elements from your `App` component.
 
-**App.js**
+:writing_hand: 
+
+<details>
+<summary>Input.jsx</summary>
 
 ```
 const Input = props => {
@@ -1018,6 +1146,7 @@ const Input = props => {
 
 export default Input;
 ```
+</details>
 
 Notice how you capitalized your `const` variable `Input`. This is the naming convention, not a rule. Since you create a `component`, it’s best practice to capitalize `component`s’ names.
 
@@ -1031,6 +1160,10 @@ Because of this, you explicitly define a return statement that contains your des
 
 Your app is looking sharp so far, but you need to make a couple of edits for it to work.
 
+:writing_hand:
+
+**Input.jsx**
+
 ```
 <input value={this.state.name} onChange={this.handleChange} />
 ```
@@ -1038,6 +1171,10 @@ Your app is looking sharp so far, but you need to make a couple of edits for it 
 Looking at the input element in your return statement, you still reference a `state` value and a `handleChange` event from your `App` component. Neither of these two things works because of the differences between your `App` component, which is class-based, and your `Input` component, which is functional.
 
 Luckily, you can replace both these things with the `useState` Hook! First, define the Hook at the top of your component and then start using it with the input element.
+
+:writing_hand:
+
+**Input.jx**
 
 `const [name, setName] = useState('');`
 
@@ -1059,6 +1196,10 @@ Now, whenever you want to update the value of `name` in `state`, call the `setNa
 
 Looking back at your `input` element, you’re ready to update its attributes to use your new `state` Hook variables, `name` and `setName()`.
 
+:writing_hand:
+
+**Input.jsx**
+
 ```
       <input value={name} onChange={evt => setName(evt.target.value)} />
 ```
@@ -1068,6 +1209,10 @@ The first edit is to change the location of your `state` data for the `value={}`
 Updating this reference gives  `value={name}`.
 
 The next thing is replace the call to the missing `this.handleChange` method referenced in the `onChange={}` attribute.
+
+:writing_hand:
+
+**Input.jsx**
 
 ```
 onChange = { evt => setName(evt.target.value) }
@@ -1089,6 +1234,10 @@ Do it the same way you can pass data down to child components via the props obje
 
 To do this, update your `button` element with a similar-looking anonymous arrow function you used for the `input` element.
 
+:writing_hand:
+
+**Input.jsx**
+
 ```
       <button onClick={() => props.handleClick(name)}>Update name</button>
 ```
@@ -1099,7 +1248,10 @@ This time, instead of calling a function on the `App` component’s class as you
 
 Here's the complete `Input` component:
 
-**Input.jsx**
+:writing_hand:
+
+<details>
+<summary>Input.jsx</summary>
 
 ```
 import React, { useState } from 'react';
@@ -1117,12 +1269,15 @@ const Input = props => {
 
 export default Input;
 ```
+</details>
 
 ## Update the App Component
 
 With your three new components complete, it’s time to edit the `App` component to use them.
 
 Import your new components.
+
+:writing_hand:
 
 **App.jsx**
 
@@ -1133,6 +1288,8 @@ import Input from './components/Input';
 ```
 
 Next, you’re going to replace the exiting JSX with your imported components. Your new return statement should look much simpler now.
+
+:writing_hand:
 
 **App.jsx**
 
@@ -1167,6 +1324,10 @@ There are a few more changes to make to the `App` component before everything’
 
 - Next, update the `state` object to remove the `name` property:
 
+:writing_hand:
+
+**App.jsx**
+
 ```
 this.state = {
   name: '', // <--- remove this line
@@ -1179,6 +1340,10 @@ this.state = {
 Currently it’s referencing the `evt` object that was passed to it as an argument, so change this to `name` which will be the new string value passed in when this event is called within the `Input` component.
 
 Then, in the `setState()` method, use `this.state.name` value which you just deleted.  Update this to use the `name` argument instead.
+
+:writing_hand:
+
+**App.jsx**
 
 ```
   handleClick = name => {
@@ -1214,6 +1379,8 @@ There are a few main parts to achieve it:
 
 The current `App` component class declaration and constructor will be replaced from this:
 
+:writing_hand:
+
 **App.js**
 
 ```
@@ -1229,6 +1396,8 @@ class App extends Component {
 
 To this:
 
+:writing_hand:
+
 **App.js**
 
 ```
@@ -1239,6 +1408,8 @@ const App = props => {
 You need to use the `displayName` property from `state`, which is why you used the `useState` Hook again. Notice the same naming convention: you use `displayName` for the name of the value in `state`, and `setDisplayName` for the name of the function that will update this value in `state`.
 
 To use the `useState` Hook, you import it where you currently import `Component` right at the top of the `App.js` file. You also remove the `Component` import, since you no longer use it.
+
+:writing_hand:
 
 **App.js**
 
@@ -1254,7 +1425,10 @@ Because the `render()` method is only needed for class-based components, replace
 
 In practice, this:
 
-**App.js**
+:writing_hand:
+
+<details>
+<summary>App.js</summary>
 
 ```
   render() {
@@ -1268,10 +1442,14 @@ In practice, this:
     );
   }
   ```
+  </details>
 
   Becomes this:
 
-  **App.js**
+  :writing_hand:
+
+  <details>
+  <summary>App.js</summary>
 
   ```
       return (
@@ -1283,6 +1461,7 @@ In practice, this:
       </>
     );
 ```
+</details>
 
 ### Update the displayName in State
 
@@ -1290,11 +1469,19 @@ You updated the `displayName` property to use Hooks, and you need to update two 
 
 The first isn’t a very big change, but since you don’t have access to a class property called `this.state`, just remove it completely, referencing `displayName` directly.
 
+:writing_hand:
+
+**App.js**
+
 ```
       <Greeting name={displayName} />
 ```
 
 The very last thing to do is replace the call to a non-existent `this.handleClick` you passed into the Input component, with a direct call to the Hook method, `setDisplayName`.
+
+:writing_hand:
+
+**App.js**
 
 ```
       <Input handleClick={name => setDisplayName(name)} />
@@ -1312,11 +1499,10 @@ Include the submit zip folder box here, with link to open code solution after su
 
 ## Solution (Available after project submitted above.)
 
-### The complete App.js file
-
 When complete, your `App.js` file should look like this:
 
-**App.js**
+<details>
+<summary>The complete App.js file</summary>
 
 ```
 import React, { useState } from 'react';
@@ -1343,6 +1529,7 @@ const App = props => {
 
 export default App;
 ```
+</details>
 
 
 
