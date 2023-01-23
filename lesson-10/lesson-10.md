@@ -3960,14 +3960,7 @@ Congratulations!!! You have created the Dinoaur Search App!!!
 
 1. Record the functioning app, describing the process and finished product.
 2. Zip the project folder, with the recording in it.
-3. Upload the zip folder.
-
-
-
-
-
-
-
+3. Upload the zipped folder.
 
 
 
