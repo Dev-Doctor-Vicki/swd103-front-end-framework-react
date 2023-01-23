@@ -2707,7 +2707,7 @@ You need to set up a couple of local state variables, as well as access a route 
      } = useDinos();
     const alphabet = 'abcdefghijklmnopqrstuvwxyz';
 ```
-<details>
+</details>
 
 You have three variables, `dinoData`, `searchTerm`, and `errors` that you’re using the `useState` Hook to set up. The first will hold an array of matching dinosaur object returned from the API, while the second will track the current string value that your user is searching on — this could be a dinosaur name or alphabetical character. Finally, the third (errors) could hold error information should anything happen with the request to the API.
 
@@ -3714,7 +3714,7 @@ With your skeleton done, let’s map out some variables for this component and a
 :writing_hand:
 
 <details>
-<summary>src/components/Favourites.jsx</summary>
+<summary>src/components/Favorites.jsx</summary>
 
 ```
     const [dinoData, setDinoData] = useState([]);
