@@ -26,9 +26,7 @@ You don't have to be a coding jedi or have years of experience as this course is
 
 You'll join us on a deep dive into core React concepts. As you progress through this course, you will learn more about how React works, how you can use it to build complex web applications, and how to combine it with third-party libraries and frameworks to 'join the dots'. You will gain a detailed understanding of how you might use React in a real world setting.
 
-## Part I
-
-In part one of the course, you'll take an end-to-end approach to React. You'll start with taking a look at the library itself and the problems it solves, before moving on to topics such as Hooks and handling data from an API. Finally, you'll learn about how to build and deploy your application to a popular service such as Netlify.
+### Week 1
 
 Included in part one of the course are the following lessons:
 
@@ -39,13 +37,11 @@ Included in part one of the course are the following lessons:
 
 - Lesson 3 - Fetching data: using APIs in your code, and popular helper libraries such as Axios.
 
+### Week 2
+
+The outline for week two of the course includes the following lessons:
+
 - Lesson 4 - Deploying your first app: using Netlify to deploy our app to the public.
-
-Part II
-
-In part two, you'll cover similar topics to the first part, but take a deeper dive into them and look at some of the challenges you face as React developers and how to overcome them. You'll also learn about navigating around your application, and managing `state` across your application using `Redux` -- a common stumbling block for aspiring React developers.
-
-The outline for part two of the course includes the following lessons:
 
 - Lesson 5 - Thinking in React: structuring your projects, breaking functionality into components
 
@@ -53,9 +49,11 @@ The outline for part two of the course includes the following lessons:
 
 - Lesson 7 - Navigation in complex apps: moving users around different areas of your application
 
+### Week 3
+
 - Lesson 8 - Redux: using Redux and useReducer Hooks to manage app state
 
-- Lesson 9 - The Dinosaur Search App: putting it altogether by building our very own application
+- Lesson 9 - Redux Alternatives: Add the Redux Toolkit
 
 - Lesson 10 - Final Project: The Dinosaur Search Ap. Putting it altogether by building your very own application
 
