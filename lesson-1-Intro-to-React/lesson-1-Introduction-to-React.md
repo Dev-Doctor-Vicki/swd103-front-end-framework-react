@@ -51,6 +51,8 @@ The outline for week two of the course includes the following lessons:
 
 ### Week 3
 
+The outline for week two of the course includes the following lessons:
+
 - Lesson 8 - Redux: using Redux and useReducer Hooks to manage app state
 
 - Lesson 9 - Redux Alternatives: Add the Redux Toolkit
