@@ -35,7 +35,7 @@ Included in part one of the course are the following lessons:
 
 - Lesson 1 - React JS: an introduction to React, a modern UI library.
 
-- Lesson 2 - React Hooks: what they are and how to use them.
+- Lesson 2 - React Core Concepts: what they are and how to use them.
 
 - Lesson 3 - Fetching data: using APIs in your code, and popular helper libraries such as Axios.
 
@@ -53,9 +53,11 @@ The outline for part two of the course includes the following lessons:
 
 - Lesson 7 - Navigation in complex apps: moving users around different areas of your application
 
-- Lesson 8 - State management in complex apps: using Redux and useReducer Hooks to manage app state
+- Lesson 8 - Redux: using Redux and useReducer Hooks to manage app state
 
 - Lesson 9 - The Dinosaur Search App: putting it altogether by building our very own application
+
+- Lesson 10 - Final Project: The Dinosaur Search Ap. Putting it altogether by building your very own application
 
 
 ## What is React
@@ -1363,7 +1365,7 @@ Make a couple more changes to the `App` component to modernize it and make the c
 
 2. Replace the current `state` mechanism with another use of the `useState` Hook.
 
-### Convert a class-based COmponent to a functional one
+### Convert a class-based Component to a Functional one
 
 This process might seem a bit challenging, but it’s quite straightforward and gets easier the more you do it.
 

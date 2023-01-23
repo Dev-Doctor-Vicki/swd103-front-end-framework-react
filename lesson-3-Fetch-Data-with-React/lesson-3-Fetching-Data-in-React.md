@@ -1,4 +1,4 @@
-# Data with React
+# Fetching Data with React
 
 This lesson introduces concepts and approaches you can use to deal with fetching data within React, including the JavaScript Fetch API.
 
