@@ -1,4 +1,4 @@
-# Final Project: Dinosaur Search App
+# :bulb: Final Project: Dinosaur Search App
 
 In this final lesson, you'll be putting your skills together and building a Dinosaur Search App.
 
