@@ -3814,7 +3814,7 @@ The completed file should now look like this:
 :writing_hand:
 
 <details>
-<summary>src/components/Favourites.jsx</summary>
+<summary>src/components/Favorites.jsx</summary>
 
 ```
 import React, { useState, useEffect } from 'react';
@@ -3831,7 +3831,7 @@ const Favourites = () => {
     const [errors, setErrors] = useState(false);    
     const { 
         isLoading,   
-        favouriteDinoIds, 
+        favoriteDinoIds, 
         loadDinos
      } = useDinos();
 
@@ -3852,13 +3852,13 @@ const Favourites = () => {
     return (
         <section className="section pt-1">                     
             <h1 className="title is-size-3">
-                View your favourite dinosaurs                      
+                View your favorite dinosaurs                      
             </h1>            
             <div className="section is-small px-0">                       
                 <div className="columns is-multiline">
                     {                                
                         !isLoading && dinoData.length > 0 && 
-                            dinoData.filter(dinoItem => favouriteDinoIds.includes(dinoItem._id))
+                            dinoData.filter(dinoItem => favouiteDinoIds.includes(dinoItem._id))
                             .map(dino => (
                                 <div className="column is-3">
                                     <DinoCard 
@@ -3873,7 +3873,7 @@ const Favourites = () => {
                     isLoading && <progress className="progress is-small is-info" max="100">25%</progress>
                 }
                 {
-                    !isLoading && (dinoData.length <= 0 || favouriteDinoIds.length <= 0) && (
+                    !isLoading && (dinoData.length <= 0 || favoriteDinoIds.length <= 0) && (
                         <div className="content">
                             <p className="subtitle is-size-4 has-text-centered">
                                 You haven't favourited any dinos yet. Head over to the search page and find some first :)
@@ -3886,9 +3886,81 @@ const Favourites = () => {
     );
 };
 
-export default withAuthenticationRequired(Favourites, { location: "/favourites" });
+export default withAuthenticationRequired(Favorites, { location: "/favorites" });
 ```
 </details>
+
+### Run the API and App
+
+You’ve covered an awful lot of ground in this lesson, and you’re finally ready to fire up the coding machine and run your app. However, you’re going to push pause for a moment, and collect yourselfs, picking things back up in the next section where you’ll make sure everything’s in order.
+
+## Explore the App
+
+You've put in a lot of hard work up to this point. and all your knowledge of React has lead you here - to where you’ll fire up both the API project and the frontend React app. You’ll explore through the pages, enter some data, save some dinosaurs as favorites, and make sure everything’s working as expected.
+
+### Encountering errors
+
+Rest assured the code you’ve been working along with has been tested and works without any problems. That said, no system is ever 100% bug free and there are a lot of different variables at play here, not least of all that this is the most complex project you’ve built in the course and has the most moving parts:
+
+- Your local system being different to others.
+
+- How you’ve entered the code while coding along with the lessons.
+
+- Silly or minor errors present in the code to begin with.
+
+- Using the system in an unintended way or a way that hasn’t been catered for.
+
+React does a pretty good job of surfacing errors and you will usually find them in the terminal’s console, or the browser’s dev tools in the console area. For the API, you’ll have to rely on the terminal window’s log, as any errors that happen at the API side will be output here. Should the worst happen, just restart the API with the `npm start` command.
+
+If you come across any issues, it’s worth tracking back through the files and making sure they match up with those from the course files. 
+
+### Run the API
+
+The best place to start is to run the API. I’m using VS Code as my code editor and it has a nifty feature where I can split my terminal window; one side will run the client app and the other the API. 
+
+Either way, you’ll need a fresh, separate terminal window open. Once there, navigate to the `/server` folder from the project root and run the following command:
+
+:writing_hand:
+
+`npm start`
+
+Nothing exciting will happen here, but all things being equal, you’ll receive a message saying “listening on port 4000...”. Once you see this message, you’ll know the API is running and you can move on to starting up the main client-facing React app.
+
+### Run the App
+
+With the API whirring away in the background,  navigate to the `/client` folder from the project root in a new terminal window and use the same `npm` command to start it:
+
+:writing_hand:
+
+`npm start`
+
+This time, once the files are built and React is ready to go, you’ll see the main search component (i.e. the home page) displayed in your default system browser.
+
+### Explore the app
+
+Let’s take a good look through the app and see how it works. I’m going to bypass searching for a dinosaur and hit the ‘I’m feeling lucky’ button because you know what? I am feeling lucky today!
+
+Look at that. You’ve been taken to the `/browse` route and shown a list of dinosaurs fetched from the API by the Dino service. Because the ‘I’m feeling lucky’ route to this page includes selecting a random character to search on, your results will differ to mine here, but hopefully you’ve got a similar result. 
+
+However, I’m not happy with the choice made for me, so I’m going to browse for dinosaurs whose name starts with ‘R’. I’m drawn to the Rinchenia here so I’m going to mark her as a favorite. Next, I’m going to take a look at ‘K’. This time I’m going to mark Kentrosaurus as a favorite because it’s almost like ‘Kendal-saurus’ right?
+
+In fact, let’s take a look at the Kentrosaurus in more detail. I’ll click on the ‘see details’ button here and see a bigger picture, and some top stats. Yep, looks good. Notice as well that since I favorited this little guy, when I viewed the details for him, the favorite heart in the top right of the info box is already filled in, indicating that he’s firmly in my favorites list in our app state.
+
+Let’s check out the favorites list to see what’s what. First, however, I’ll need to sign in. If I try to sign in with just a username, we’ll get a quick loading animation on the button as we talk to the API, but then we get errors and a nice message telling us that there was a problem. 
+
+Remember that the API is set up to only throw login errors where either or both username and password are empty. Literally any value in both boxes will sign you in.
+
+If I try again with a password, this time I will be signed in and escorted to the home page where I can now view my favorites from the extra link in the navigation bar.
+
+Over on the favorites page, you can see the Kentrosaurus and Rinchenia sitting proudly among my top dinos. If I remove one, then it’s instantly removed from state via the Redux mechanisms built early on in the module, and I’m now left with a single dino in my top list.
+
+Congratulations!!! You have created the Dinoaur Search App!!!
+
+#### Submission
+
+1. Record the functioning app, describing the process and finished product.
+2. Zip the project folder, with the recording in it.
+3. Upload the zip folder.
 
 
 
