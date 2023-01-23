@@ -2,7 +2,7 @@
 
 You built and refactored a great React app. Now, it's time to talk about the fundamental principles of React components and core concepts.
 
-In this lesson, you're going to briefly introduce a core concept that lives at the heart of React and that’s how to pass data around between different components.
+In this lesson, you're going to blearn a core concept that lives at the heart of React, and that’s how to pass data around between different components.
 
 I meet a lot of students who are both new to coding or new to React and one of the common sticking points is how to deal with data; passing it to other components, and getting other data back into the original, parent component.
 
@@ -35,7 +35,8 @@ Similarly, **child** components can feed data back up to **parents** via event h
 
 Look at a quick example to illustrate this in action:
 
-**index.js**
+<details>
+<summary>index.js</summary>
 
 ```
 import React, { useState } from 'react';
@@ -59,6 +60,7 @@ const ChildComponent = props => {
   );
 };
 ```
+</details>
 
 In this simple example, you have two components, `ParentComponent` and `ChildComponent`.
 
@@ -78,7 +80,7 @@ When the user clicks the `button`, the `onClick` event is triggered, which calls
 
 ## Data Syncing
 
-Fortunately, React takes care of the syncing of the dynamic data passed between components via props on our behal; re-rendering the UI as needed.
+Fortunately, React takes care of the syncing of the dynamic data passed between components via props on your behalf; re-rendering the UI as needed.
 
 In your case, when a user clicks the `button` in `ChildComponent`, a function in `ParentComponent` is triggered which clears the items array. The new items array (which is empty) is then passed down into `ChildComponent` again, which re-renders the output, this time displaying the new message, ‘`You have 0 items in your basket`’.
 
@@ -115,7 +117,9 @@ Let’s look at a quick example.
 
 You want to know the status of a user compared with the amount of authorized roles they had within a system:
 
-**UserStatus.jsx**
+<details>
+
+<summary>UserStatus.jsx</summary>
 
 ```
 const UserStatus = props => {
@@ -133,11 +137,12 @@ const UserStatus = props => {
   return roles.length > 0 ? 'enabled' : 'disabled';
 };
 ```
-
+</details>
 
 In another component, you want to see a list of that user’s roles, perhaps for an account page. That could look like this:
 
-**RolesList.jsx**
+<details>
+<summary>RolesList.jsx</summary>
 
 ```
 const RolesList = props => {
@@ -163,10 +168,12 @@ const RolesList = props => {
   );
 };
 ```
+</details>
 
 You have much shared logic here. You can use a custom Hook to abstract this into a shared `state` logic that deals with the `roles` list.
 
-**useRolesForUser.jsx**
+<details>
+<summary>useRolesForUser.jsx</summary>
 
 ```
 const useRolesForUser = userId => {
@@ -184,10 +191,12 @@ const useRolesForUser = userId => {
   return roles;
 };
 ```
+</details>
 
 You have your custom Hook. Now you can update your examples above to use it!
 
-**UserStatus.jsx**
+<details>
+<summary>UserStatus.jsx</summary>
 
 ```
 const UserStatus = props => {
@@ -195,8 +204,10 @@ const UserStatus = props => {
   return roles.length > 0 ? 'enabled' : 'disabled';
 };
 ```
+</details>
 
-**RolesList.jsx**
+<details>
+<summary>RolesList.jsx</summary>
 
 ```
 const RolesList = props => {
@@ -212,12 +223,14 @@ const RolesList = props => {
   );
 };
 ```
+</details>
 
 ### Reduce Complexity
 
 Hooks can reduce the complexity of your components when compared to the previous class-based syntax you may have seen in the past.
 
-**MyClassComponent.jsx**
+<details>
+<summary>MyClassComponent.jsx</summary>
 
 ```
 import React from 'react';
@@ -278,12 +291,15 @@ class MyClassComponent extends React.Component {
 }
 export default MyClassComponent;
 ```
+</details>
 
 While not a very complex component in terms of what it does, it’s already becoming quite long and will prove more difficult to manage over time if it grows. You have data loading happening in several places across different parts of this `component`’s lifecycle, as well as having extra `state` management work in a constructor function, not to mention the liberal use of this to reference `state` and props values.
 
 Refactor it to use Hooks (similar to how you did it in the previous module):
 
-**MyClassComponent.jsx**
+
+<details>
+<summary>MyClassComponent.jsx</summary>
 
 ```
 import React, { useState, useEffect } from 'react';
@@ -320,6 +336,7 @@ const MyHooksComponent = ({ usersToLoad }) => {
 };
 export default MyHooksComponent;
 ```
+</details>
 
 Look at how much smaller and more readable you made your component! You also reduced much of the complexity and overhead involved in managing several lifecycle methods.
 
@@ -339,7 +356,7 @@ For additional information, read this [documentation on Hooks(https://reactjs.or
 
 In this section you take a look at the most common Hooks you'll come across and learn how to use them in your apps.
 
-## L02 Hands On Guided Learning: Common Hooks
+## :pushpin: L02 Hands On Project: Common Hooks
 
 Welcome to the Common Hooks hands-on practice assignment.
 
@@ -357,21 +374,24 @@ Before you move on to your big project in this lesson, take some time to familia
 2. Follow all instructions and coding step-by-step.
 3. Create all files and folders for the Greeting App.
 4. Complete all coding as demonstrated in all files.
-5. Zip `L02ReactHandsOnPractice1` Folder
+5. Zip `L02ReactHandsOnPProject1` Folder
 6. Attach the zipped folder below where indicated for submission.
 
 ## Project Setup
 
-You wget an introduction to 'Create React App' in the next section as a great way to build new React projects. For now, keep things simple and familiar by using 'Parcel JS' to set up your project to bundle and run your React code for these examples.
+You get an introduction to 'Create React App' in the next section as a great way to build new React projects. For now, keep things simple and familiar by using 'Parcel JS' to set up your project to bundle and run your React code for these examples.
 
 ### Configure Parcel JS
 
-1. Create a new folder in your 
-- `FEFReact`.
+1. Create a new folder in your `FEFReact`.
 
-- `mkdir FEFReact/L02HandsOnPractice1`
+:writing_hand: 
+
+- `mkdir FEFReact/L02HandsOnProject1`
 
  2. and open it in VS Code. Navigate to the terminal and let’s initialize our new project:
+
+:writing_hand: 
 
  - `cd L02HandsOnPractice1`
 
@@ -379,33 +399,45 @@ You wget an introduction to 'Create React App' in the next section as a great wa
 
 3. Install the packages you need:
 
+:writing_hand: 
+
  - `npm add react react-dom`
 
 4. Finally, open your `package.json` file and add the following config so you can call `npm start` to run the project:
 
-**package.json**
+:writing_hand: 
+
+<details>
+<summary>package.json</summary>
 
 ```
 "scripts": {
     "start": "parcel index.html"
   },
 ```
+</details>
+
 ### Create the Files
 
 Your project is set up and ready to run. Add the necessary files to your project before you code them out.
 
-- App.js
-- index.js
-- index.html
-- styles.css
-- UseEffectExample.jsx
-- UseStateExample.jsx
+:writing_hand:
+
+- `App.js`
+- `index.js`
+- `index.html`
+- `styles.css`
+- `UseEffectExample.jsx`
+- `UseStateExample.jsx`
 
 `UseStateExample.jsx` and `UseEffectExample.jsx` are where you do the main body of your work, so get your other files set up before you explore your example components.
 
 This will be the entry point for Parcel to start loading your JavaScript from. Import your main `App` component here and call React DOM’s `render()` method to mount it into the `HTML` element in your `index.html` file.
 
-**index.js**
+:writing_hand:
+
+<details>
+<summary>index.js</summary>
 
 ```
 import React from 'react';
@@ -415,6 +447,7 @@ import App from './App';
 
 ReactDOM.createRoot (document.getElementById('root')).render(<App />);
 ```
+</details>
 
 ### App.js
 
@@ -422,7 +455,10 @@ In your `App` component, the main starting point for your React app, use a Hook,
 
 Look at the file in full:
 
-**App.js**
+:writing_hand:
+
+<details>
+<summary>App.js</summary>
 
 ```
 import React, { useState } from 'react';
@@ -456,6 +492,7 @@ export default props => {
   );
 };
 ```
+</details>
 
 You imported your two example components, `UseStateExample` and `UseEffectExample` and use the example value in `state` to determine which one to show.
 
@@ -467,7 +504,10 @@ You also have two buttons that both call the `setExample()` method to update the
 
 Many of the styles here are the same basic styles from your first example built in Lesson 1, the Greeting App. You add a couple extra layout selectors at the bottom to add some flex box support and additional styling to some form elements, such as a `select` and `label`.
 
-**styles.css**
+:writing_hand:
+
+<details>
+<summary>styles.css</summary>
 
 ```
 body {
@@ -544,6 +584,7 @@ form button {
   max-height: 200px;
 }
 ```
+</details>
 
 ### index.html
 
@@ -551,7 +592,10 @@ Your `index.html` file simply provides a basic entry point for Parcel to follow 
 
 It looks like this:
 
-**index.html**
+:writing_hand:
+
+<details>
+<summary>index.html</summary>
 
 ```
 <html>
@@ -564,6 +608,7 @@ It looks like this:
   </body>
 </html>
 ```
+</details>
 
 With the basic files set up and ready, take a closer look at the `useState` and `useEffect` Hooks.
 
@@ -628,7 +673,10 @@ With the explanation out of the way, build a little example app to demonstrate h
 
 First: open the `UseStateExample.jsx` file, where you’ll import React and create the empty component’s skeleton:
 
-**UseStateExample.jsx**
+:writing_hand:
+
+<details>
+<summary>UseStateExample.jsx</summary>
 
 ```
 import React, { useState } from 'react';
@@ -639,6 +687,7 @@ const UseStateExample = () => {
 
 export default UseStateExample;
 ```
+</details>
 
 Look at how to effectively use the `useState` Hook. You’re going to build an `HTML` form that will update values in your component’s `state`, and display a message to your user once they’ve submitted the form.
 
@@ -658,7 +707,10 @@ Your component’s looking a little bare at the moment, so let’s code it out.
 
 The first thing is add your `state` values and items, right at the top of the component.
 
-**UseStateExample.jsx**
+:writing_hand:
+
+<details>
+<summary>UseStateExample.jsx</summary>
 
 ```
   const [showMessage, setShowMessage] = useState(false);
@@ -668,6 +720,7 @@ The first thing is add your `state` values and items, right at the top of the co
     fruit: ''
   });
 ```
+</details>
 
 You really can store just about anything you want in `state`. Your first `state` variable, `showMessage` is going to hold a boolean value, while `formValues` holds an object with some default key-value pairs where you track the input from your user.
 
@@ -679,7 +732,10 @@ You don’t have to add the keys in like done here, but it’s good practice. It
 
  Map out your `state` updating methods and event handlers: one for a change of any form field values, and one to handle the form submission.
 
- **UseStateExample.jsx**
+:writing_hand:
+
+<details>
+<summary>UseStateExample.jsx</summary>
 
  ```
    const handleChange = evt => {
@@ -696,10 +752,17 @@ You don’t have to add the keys in like done here, but it’s good practice. It
     setShowMessage(true);
   };
 ```
+</details>
+
+
+### UseStateExample.jsx
 
   In the `handleChange` event, you’re still using the `evt.target.value` to retrieve the current value from the underlying `HTML` element (e.g. a text input field), but you’re creating a new `updatedFormValues` object first. You're using the spread syntax (the three dots you can see before `formValues`) which will essentially copy everything from the current `formValues` object in `state` into your `updatedFormValues` object.
 
-  **UseStateExample.jsx**
+:writing_hand:
+
+<details>
+<summary>UseStateExample.jsx</summary>
 
   ```
     const handleChange = evt => {
@@ -708,6 +771,7 @@ You don’t have to add the keys in like done here, but it’s good practice. It
       [evt.target.id]: evt.target.value
     };
 ```
+</details>
 
 Immediately after this, use the bracketed notation [evt.target.id] to reference a property dynamically on the `updatedFormValues` object, specifically referencing using the form field's `id`. If it exists on the object then the value we assign to it (e.g. `evt.target.value`) will be updated. If it doesn't exist, then a new property will be created and assigned the value of `evt.target.value`.	
 
@@ -725,17 +789,24 @@ The final piece of the puzzle is to add JSX in the return method so you can rend
 
 First, a little message introducing the app to the user:
 
-**UseStateExample.jsx**
+:writing_hand:
+
+<details>
+<summary>UseStateExample.jsx</summary>
 
 ```
   return (
     <>
       <p>Complete the form below and see a nice message about yourself!</p>
 ```
+</details>
 
 Next, add `HTML` form:
 
-**UseStateExample.jsx**
+:writing_hand:
+
+<details>
+<summary>UseStateExample.jsx</summary>
 
 ```
       <form onSubmit={handleSubmit}>
@@ -758,6 +829,7 @@ Next, add `HTML` form:
         <button>Submit</button>
       </form>
 ```
+</details>
 
 There are a couple of things to highlight:
 
@@ -767,7 +839,11 @@ There are a couple of things to highlight:
 
 Once you collect your user data and submit it, you need to display a message.
 
-**UseStateExample.jsx**
+
+:writing_hand:
+
+<details>
+<summary>UseStateExample.jsx</summary>
 
 ```
       {showMessage && (
@@ -784,8 +860,13 @@ Once you collect your user data and submit it, you need to display a message.
         </div>
       )}
 ```
+</details>
 
 You have a couple of simple paragraphs where you reference the values from `state`. You also wrap this entire block in a simplified logic expression:
+
+:writing_hand:
+
+**UseStateExample.jsx**
 
 ```
 { showMessage && (...rest of expression)}
@@ -797,7 +878,10 @@ JavaScript evaluates the left side of the expression, `showMessage` and if that�
 
 The finished file looks like this:
 
-**UseStateExample.jsx**
+:writing_hand:
+
+<details>
+<summary>UseStateExample.jsx</summary>
 
 ```
 import React, { useState } from 'react';
@@ -865,6 +949,7 @@ const UseStateExample = () => {
 
 export default UseStateExample;
 ```
+</details>
 
 ## The useEffect Hook
 
@@ -880,7 +965,8 @@ Additionally, some work requires a clean up phase (e.g. subscriptions to externa
 
 Look at the syntax closer to get an idea of how it works:
 
-**MyComponent.jsx**
+<details>
+<summary>MyComponent.jsx</Summary>
 
 ```
 const MyComponent = props => {
@@ -909,12 +995,16 @@ const MyComponent = props => {
   }, [props.customer.id]);
 };
 ```
+</details>
 
 Now that you know a little more about the `useEffect` Hook, build your component.
 
-Open the file `UseEffectExample.jsx` and get the basic component scaffolding in as well as your React imports:
+- Open the file `UseEffectExample.jsx` and get the basic component scaffolding in as well as your React imports:
 
-**UseEffectExample.jsx**
+:writing_hand:
+
+<details>
+<summary>UseEffectExample.jsx</summary>
 
 ```
 import React, { useState, useEffect } from 'react';
@@ -925,7 +1015,8 @@ const UseEffectExample = () => {
 
 export default UseEffectExample;
 ```
-
+</details>      
+                             s
 In this example, you  build a simple gallery that loads everybody’s favorite: dog pictures! For this, you will use the fun [Dog CEO API](https://dog.ceo/dog-api/).
 
 ![](assets/dog-api-screenshot.png)
@@ -950,7 +1041,10 @@ Now let's get building!
 
 The first task is define some variables, namely your fixed API URL and flexible state variables:
 
-**UseEffectExampl.jsx**
+:writing_hand:
+
+<details>
+<summary>UseEffectExampl.jsx</summary>
 
 ```
 const UseEffectExample = () => {
@@ -958,16 +1052,20 @@ const UseEffectExample = () => {
   const [dogImageUrls, setDogImageUrls] = useState([]);
   const [loadPictures, setLoadPictures] = useState(false);
 ```
+</details>
 
 The Dog CEO API address will return a single image of a dog (that’s no good!), so append a random number onto this later on so we get a nice amount of dog images back.
 
 With state variables, `dogImageUrls` is set to an empty array to begin with, but it will hold a list of picture URLs once the API has been called. With `loadPictures`, set it to ‘`false`’ for now, but you can use this to toggle whether the app is in the middle of loading data or not.
 
-### Create the Image Fetching Function
+## Create the Image Fetching Function
 
 Call the API to get the pictures in the first place. You define that next:
 
-**UseEffectExample.jsx**
+:writing_hand:
+
+<details>
+<summary>UseEffectExample.jsx</summary>
 
 ```
   const loadDogPictures = () => {
@@ -977,6 +1075,7 @@ Call the API to get the pictures in the first place. You define that next:
       .then(data => setDogImageUrls(data.message));
   };
   ```
+</details>
 
   Use the `Math.random()` function to generate a random number between 1-10. Next, call the Dog CEO API, appending this random number on the end to return that number of doggo pics.
 
@@ -989,13 +1088,16 @@ Call the API to get the pictures in the first place. You define that next:
 
  Use the `useEffect` Hook in two separate calls here: one that will be used on the initial mount of the component, and the other will trigger a new load of pictures when the state value `loadPictures` changes.
 
- **UseEffectExample.jsx**
+:writing_hand:
 
+<details>
+<summary>UseEffectExample.jsx</summary>
  ```
    useEffect(() => {
     loadDogPictures();
   }, []);
 ```
+</details>
 
 You use a bit of a React trickiness here. By passing to this effect an empty dependency array, you effectively tell React to execute the effect, but only once, on the first mount.
 
@@ -1003,8 +1105,10 @@ You do that, because you want to have some dog pictures available when the compo
 
 You do, however, want to trigger a new fetch when the user clicks the ‘`load more pictures!`’ button. When they do that, the value in `state` for `loadPictures` will change. You can have React watch this value and execute our second effect only when it changes. 
 
-**UseEffectExample.jsx**
+:writing_hand:
 
+<details>
+<summary>UseEffectExample.jsx</summary>
 ```
   useEffect(() => {
     if (loadPictures) {
@@ -1013,8 +1117,9 @@ You do, however, want to trigger a new fetch when the user clicks the ‘`load m
     }
   }, [loadPictures]);
   ```
+</details>
 
-You see you supply `loadPictures` as a dependency on the `useEffect` Hook. When it changes, React will execute whatever you supply to the function. In this case, check to make sure it’s set to ‘`true`’, calling the API again before setting the value back to ‘`false``’, which will enable the button to work again.
+You supply `loadPictures` as a dependency on the `useEffect` Hook. When it changes, React will execute whatever you supply to the function. In this case, check to make sure it’s set to ‘`true`’, calling the API again before setting the value back to ‘`false``’, which will enable the button to work again.
 
 You may be asking ‘won’t this just trigger this effect to be called again, even when `loadPictures` is set back to ‘`false`’?!’. The answer is ‘yes’, but by checking if it’s set to ‘`true`’ at the start of the function, you avoid some horrible infinite loop scenario.
 
@@ -1022,7 +1127,10 @@ You may be asking ‘won’t this just trigger this effect to be called again, e
 
 With all your logic in place, process the images and display an attractive gallery of sweet dogs to your users.
  
-**UseEffectExample.jsx**
+:writing_hand:
+
+<details>
+<summary>UseEffectExample.jsx</summary>
 
 ```
   return (
@@ -1048,6 +1156,7 @@ With all your logic in place, process the images and display an attractive galle
     </>
   );
   ```
+  </details>
 
 Starting with a title, add a button that simply sets the `state` to ‘`true`’. As you discovered when you mapped out the `useEffect` calls, because React is watching this value as a dependency, it will automatically trigger a fetch of some new dog pictures.
 
@@ -1069,7 +1178,10 @@ The last thing to do is fire up your app using `npm start` in the terminal, and 
 
 Here's what the complete file will look like:
 
-**UseEffectExample.jsx**
+:writing_hand:
+
+<details>
+<summary>UseEffectExample.jsx</summary>
 
 ```
 import React, { useState, useEffect } from 'react';
@@ -1123,11 +1235,16 @@ const UseEffectExample = () => {
 
 export default UseEffectExample;
 ```
+</details>
 
+#### Submission
+
+1. Zip Project Folder
+2. Upload zipped folder
 
 ## Furry Friend Gallery App
 
-Build on the previous Hooks above by creating a dog picture gallery. First though, take a look at what you're going to build.
+Next you build on the previous Hooks above, by creating a dog picture gallery. First though, take a look at what you're going to build.
 
 You will build on the previous example, a dog picture gallery, but this time with a few enhancements.
 
@@ -1141,14 +1258,23 @@ This will also be your first journey into development using the **Create React A
 
 You’re not building anything super complex just yet. There are a few moving parts to consider and some judicious use of both the `useState` and `useEffect` Hooks.
 
-## Build the Furry Friends Gallery
+
+## :pushpin: L02HandsOnProject2: Build the Furry Friends Gallery
 
 This code-along assignment walks through using **Create React Ap**p to build a fully-functioning picture gallery; the Furry Friend Gallery.
 
+### Requirements
+
+1. Read all the guided learning text carefully for understanding.
+2. Follow all instructions and coding step-by-step.
+3. Create all files and folders for the Greeting App.
+4. Complete all coding as demonstrated in all files.
+5. Zip `L02ReactHandsOnPProject2` Folder
+6. Attach the zipped folder below where indicated for submission.
+
 ### Introduction
 
-As you experienced in the quick code along of the Furry Friend Gallery, you
- will build an app that talks to your familiar Dog CEO API, loads in a few starter pictures before turning control over to the user, allowing them to choose several images they’d like to fetch.
+As you experienced in the quick code along of the Furry Friend Gallery, you will build an app that talks to your familiar Dog CEO API, loads in a few starter pictures before turning control over to the user, allowing them to choose several images they’d like to fetch.
 
 Start by creating a new React project using [Create React App](https://create-react-app.dev/).
 
@@ -1180,6 +1306,8 @@ For more information about this and a great guide on how to set up your own Reac
 
 With that out of the way, get started with your new gallery app by navigating to your `FEFReact` folder on your local machine in the terminal.
 
+:writing_hand:
+
 1. `cd desktop`
 
 2. `cd FEFReact`
@@ -1190,6 +1318,8 @@ With that out of the way, get started with your new gallery app by navigating to
 
 
 From here, use the following command to create a brand new React project using the **Create React App** starter.
+
+:writing_hand:
 
 `npm create react-app furry-friends-gallery`
 
@@ -1205,6 +1335,8 @@ Before you do anything else, it’s a good idea to jump straight into the new pr
 
 So, follow the advice in your terminal output and enter the following commands:
 
+:writing_hand:
+
 1. `cd furry-friends-gallery`
 2. `npm start`
 
@@ -1212,13 +1344,15 @@ After a few moments, you should see a webpage open up with a spinning React logo
 
 ![](assets/app-start.png)
 
-Boom!! Everything’s looking great and your new project is almost ready to go!
+**Boom!!** Everything’s looking great and your new project is almost ready to go!
 
 ### Clean up the Default Files
 
 *Create React App* does load in a few bare-bones files and styles to give you a jumping-off point. However, you need to make a few changes to get everything cleaned up and ready for your new gallery app.
 
 First; open `index.js`, located in `/furry-friend-gallery/src/` and remove the following line:
+
+:writing_hand:
 
 `import ‘./index.css'`
 
@@ -1231,6 +1365,11 @@ If you use a later version of React for your build-along projects, remove the `<
 To remove strict mode from your app, still in the `index.js` file, locate the code around line 9-10 that looks like this `<React.StrictMode>` and remove it. Also, find its matching closing tag, `</React.StrictMode>` a few lines further down and remove that too.
 
 Once you remove strict mode and the default `index.css` file, your `index.js` file should look like this:
+
+:writing_hand:
+
+<details>
+<summary>index.js</summary>
 
 ```
 import React from 'react';
@@ -1248,18 +1387,24 @@ root.render(
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
 ```
+</details>
 
 Locate `/src/index.css` and delete the file.
 
-Next, find the `/src/App.css` file and open it. Highlight all the contents and delete the existing styles. Save and close the file.
+Next, find the `/src/App.css` file and open it. 
+- :writing_hand: Highlight all the contents and delete the existing styles. Save and close the file.
 
 Finally, open the main `App.js` file located at `/src/App.js`. This currently contains starter JSX which you’re going to replace, as well as a link to a logo file you want to remove.
 
 First, locate the following line (around line 2) that imports a `logo.svg` file, and remove it:
 
+:writing_hand:
+
 `import logo from ‘./logo.svg'`
 
 Now, select everything in the return statement (everything between `return (` and `)` and replace it with the following so the new return statement looks like this:
+
+:writing_hand:
 
 ```
 return (
@@ -1303,6 +1448,8 @@ Navigate to `/public/index.html` and open the file. This is the main starting te
 
 To load in Bulma so you can take advantage of the styles, add the following line somewhere between the opening and closing `<head></head>` tags:
 
+:writing_hand:
+
 ```
 <link
   rel="stylesheet"
@@ -1318,9 +1465,12 @@ You can also edit the title of the page between the `<title></title>` tags if yo
 
 Create a new file in the `/src` directory called `DogInfoCard.jsx` and drop in the following contents:
 
+:writing_hand:
+
 `touch /src/DogInfoCard.jsx`
 
-**DogInfoCard.jsx**
+<details>
+<summary>ogInfoCard.jsx</summary>
 
 ```
 import React from 'react';
@@ -1340,6 +1490,7 @@ export default ({ imgUrl, breed }) => (
   </div>
 );
 ```
+</details>
 
 Use the destructuring syntax again to break the `imgUrl` and breed values out from the props object supplied to this component.
 
@@ -1357,7 +1508,10 @@ Render the breed name into the ‘`card-content`’ `div` as a nice addition so 
 
 You have your list item display component read. Add a handful of styles into the `/src/App.css` file, which is loaded in at the top of our `App.js` file.
 
-**App.css**
+:writing_hand:
+
+<details>
+<summary>App.css</summary>
 
 ```
 .dog-card .card-image {
@@ -1371,6 +1525,7 @@ You have your list item display component read. Add a handful of styles into the
   background-size: cover;
 }
 ```
+</details>
 
 Nothing complicated, but you add a height to the main image container from the `DogCardInfo.jsx` component, otherwise it would collapse because its child, the image element, is hidden.
 
@@ -1379,6 +1534,10 @@ You also apply some background styles to the child figure element so the backgro
 ### Edit App.js
 
 Start by importing what you need. In your case the React defaults, your `DogCardInfo` component, and your main styles, `App.css`.
+
+:writing_hand:
+
+**App.js**
 
 ```
 import React, { useState, useEffect } from 'react';
@@ -1395,6 +1554,8 @@ import './App.css';
 
 Next, outside of the main `App` component, define a new asynchronous function, `loadDogPictures()`, which will do exactly that; load a set of pictures from the API.
 
+:writing_hand:
+
 **App.js**
 
 ```
@@ -1406,6 +1567,8 @@ const loadDogPictures = async (dogsToLoad = 8) => {
 Here, define the outline of the function, adding the `async` keyword before your single argument, `dogsToLoad`. Set as a default to ‘`8`’. So, specify a number of dogs' pictures to fetch from the API or leave it blank and you’ll get eight back.
 
 Next, add your variables:
+
+:writing_hand:
 
 **App.js**
 
@@ -1438,7 +1601,11 @@ Loop through the image URLs in the messages array, capture the URL, generate an 
 
 Start by using `map()` to look at each image URL in turn.
 
-**App.js**
+
+:writing_hand:
+
+<details>
+<summary>App.js</summary>
 
 ```
   const dogData = data.message.map(item => {
@@ -1458,6 +1625,7 @@ Start by using `map()` to look at each image URL in turn.
     };
   });
 ```
+</details>
 
 Work out the breed by manipulating the URL string, removing the protocol, splitting the rest of the URL on the forward-slash character, and pull the breed from the item in the third position in this array.
 
@@ -1469,7 +1637,11 @@ Once you have all that, return the array of dog item objects.
 
 The full function looks like this:
 
-**App.js**
+:writing_hand:
+
+<details>
+<summary>App.js</summary>
+
 
 ```
 const loadDogPictures = async (dogsToLoad = 8) => {
@@ -1496,9 +1668,13 @@ const loadDogPictures = async (dogsToLoad = 8) => {
   return dogData;
 };
 ```
+</details>
+
 ## App.js variables
 
 As with all good components, start with the variables you will use. Define these at the top of the component to be used as you go along.
+
+:writing_hand:
 
 **App.js**
 
@@ -1514,6 +1690,8 @@ You have `dogPictures` which you create as an empty array to hold loaded dog pic
 ### handleSubmit() function
 
 You need a way to handle your form submissions and that’s where the `handleSubmit()` function comes in.
+
+:writing_hand:
 
 **App.js**
 
@@ -1537,6 +1715,8 @@ Notice the use of JavaScript’s built-in async/await pairing in use in this fun
 This is where things get a little more interesting. You use two separate calls to the `useEffect` Hook to handle two side-effects.
 
 Let’s deal with the first:
+
+:writing_hand:
 
 **App.js**
 
@@ -1572,6 +1752,10 @@ This fixes the potential ‘stale data’ error you might run into and doesn’t
 
 Define one last use of your `useEffect` Hook you’ll call with an empty dependency array, so it’s only triggered on the first component mount. In here, make sure you kick off an initial load of some dog pictures to populate our app with.
 
+:writing_hand:
+
+<details>
+<summary>App.js</summery>
 ```
   useEffect(() => {
     (async () => {
@@ -1582,6 +1766,8 @@ Define one last use of your `useEffect` Hook you’ll call with an empty depende
     })();
   }, []);
 ```
+</details>
+
 Once that’s defined you see you’re using the same form of functional update for setting various state values here. You also wrap all of these updates in a self-executing anonymous function (otherwise known as an immediately invoked function expression) that employs the async/await syntax.
 
 You could have defined a regular function in here too and then immediately called it, and that would work just fine. I’ve gone with personal preference here and opted for a simpler syntax
@@ -1592,6 +1778,10 @@ What would a component be without returning some markup to render your UI?!
 
 Define a simple return statement with a container div element:
 
+:writing_hand:
+
+**App.js**
+
 ```
 return <div className='container'></div>;
 ```
@@ -1600,7 +1790,10 @@ Here, you need two sections: one for the search form and another to render the d
 
 First, define the `header` and search form.
 
-**App.js**
+:writing_hand:
+
+<details>
+<summary>App.js</summary>
 
 ```
       <header className='columns section has-text-centered'>
@@ -1632,13 +1825,19 @@ First, define the `header` and search form.
         </div>
       </header>
 ```
+</details>
+
 Notice the few extra divs and class names from Bulma. You attached the `handleSubmit` function to the form and wired up the input element’s value to the `numOfDogs` value in state, as well as adding an inline state update in the `onChange` event to update that value whenever a user enters some text.
 
 The button element in this section just serves to trigger the submission of the form.
 
 The picture display section looks like this:
 
-**App.js**
+
+:writing_hand:
+
+<details>
+<summary>App.js</summary>
 
 ```
       <hr />
@@ -1661,6 +1860,7 @@ The picture display section looks like this:
           ))}
       </div>
 ```
+</details>
 
 You have a heading level three element where you display the total number of pictures searched for using the `totalDogsSearched` value in state.
 
@@ -1671,6 +1871,11 @@ Similarly, if `isLoading` is ‘`false`’, map over the `dogPictures` array in 
 ### The complete App.js file
 
 Here’s the complete **App.js**
+
+:writing_hand:
+
+<details>
+<summary>App.js</summary>
 
 ```
 import React, { useState, useEffect } from 'react';
@@ -1786,9 +1991,15 @@ function App() {
 
 export default App;
 ```
+</details>
 
 ### View Your Hard Work
 
 With everything coded up and set to go, that just leaves you to complete a final check to make sure everything’s working as it should.
 
 If everything’s working as planned, you should have a great looking site that shows us nothing but some well-behaved dogs doing what they do best.
+
+#### Submission
+
+1. Zip the Project Folder
+2. Upload the zipped folder
