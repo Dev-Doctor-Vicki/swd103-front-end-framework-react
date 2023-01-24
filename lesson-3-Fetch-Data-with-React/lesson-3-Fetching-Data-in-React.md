@@ -158,8 +158,7 @@ Overall, however, The Dog API will allow you to simulate a more realistic enviro
 
 Your first move will be to set up a new project using the Create React App helper, so let’s get started.
 
-## :pushpin:
-L03HandsOnAssignment
+## :pushpin: L03HandsOnAssignment
 
 ### Requirements
 
@@ -724,6 +723,8 @@ Start by creating a new file in the `/components` folder called `BreedList.jsx`.
 
 Open the `/src/components/BreedList.jsx` file and start with your imports section:
 
+:writing_hand:
+
 **BreedList.jsx**
 
 ```
@@ -734,6 +735,8 @@ import { fetchBreeds } from '../lib/api';
 React must be in scope, but you’ll be using the `useEffect` and `useState` Hooks in a moment, so bring them along for the ride, too. After that, you need the `fetchBreeds()` function from your `api.js` file to fetch the list of dog breeds.
 
 With the imports done, the best step is to outline the empty or bare-bones component and default export for the file:
+
+:writing_hand:
 
 **BreedList.jsx**
 
@@ -879,6 +882,8 @@ Finally, update the loading value in state back to ‘`false`’ to update the U
 ### Fill out the return Statement’s JSX
 
 The last move is to generate some JSX to return to the user. Start by adding in a conditional block of JSX that will show when `isLoading` is set to ‘`true`’:
+
+:writing_hand:
 
 **BreedList.jsx**
 
@@ -1051,6 +1056,8 @@ Last, pull in the `App.css` file, or your styles won’t be applied.
 
 Next, define your variables:
 
+:writing_hand:
+
 **App.js**
 
 ```
@@ -1068,6 +1075,8 @@ Next, define your variables:
 ### Fetch Pictures with the useEffect Hook
 
 Just like in the `BreedList` component, the `useEffect` Hook is a great place to take care of fetching data from The Dog API when one or more conditions change. In your case, fetch an updated list of dog pictures from the API when the user selects a new breed — i.e. when the `selectedBreedId` value in state changes.
+
+:writing_hand:
 
 **App.js**
 
@@ -1094,7 +1103,10 @@ Notice you pass in `selectedBreedId` to the dependencies array so the `useEffect
 
 With all the logic in place, the final thing to do is outline the UI in JSX for the user. Your return statement looks like this:
 
-**App.js**
+:writing_hand:
+
+<details>
+<summary>App.js</summary>
 
 ```
     <div className='container'>
@@ -1130,6 +1142,7 @@ With all the logic in place, the final thing to do is outline the UI in JSX for 
       </div>
     </div>
 ```
+</details>
 
 The upper half of the JSX is a simple `<header>` tag with a title and strapline underneath. Following that, you use Bulma’s `columns` class which allows you to define two columns; one narrower left-hand column for the sidebar, with the larger right-hand panel for the picture gallery.
 
@@ -1147,7 +1160,10 @@ If you’re not loading and you have a list of pictures, then use the array map 
 
 With all of the above added in, the complete `App component should look like this:
 
-**App.js**
+:writing_hand:
+
+<details>
+<summary>App.js</summary>
 
 ```
 import React, { useState, useEffect } from 'react';
@@ -1218,7 +1234,7 @@ function App() {
 
 export default App;
 ```
-
+</details>
 Run the Project
 
 Save all of the files and run the project. Open up a terminal and enter the following command:
