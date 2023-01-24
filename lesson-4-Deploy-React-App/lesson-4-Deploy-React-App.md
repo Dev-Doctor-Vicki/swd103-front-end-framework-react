@@ -176,12 +176,12 @@ You were briefly introduced to Netlify as an option for hosting your React apps 
 3. set up a build and deployment project for the Furry Friends Gallery Mark II, and finally, 
 4. deploy your app to the world.
 
-## L04HandsOnFurryFriends2
+## :pinpush: L04HandsOnFurryFriends2
 
 ### Requirements
 
 1. Follow all instructions below
-2. Deploy your Furry Friends Gallery II to Netlife
+2. Deploy your Furry Friends Gallery II to Netlify
 
 ### Step One - Create a New Account on Netlify
 
@@ -222,7 +222,7 @@ The first step in the wizard is to choose the source for the  app.
 
 In your case, choose GitHub. Click the GitHub button and you may see a popup asking to authenticate to your GitHub account. Once you’ve done that, you’ll be returned to the new site wizard and will be moved onto the next step, picking a repository.
 
-### Pick a repository
+### Pick a Repository
 
 In this step of the wizard, choose the repository where your deployable code is located. You can see mine is called real-world-react-module-4-demo in the screenshot, but yours might be called something different.
 
@@ -257,7 +257,7 @@ In your case, open the project, Furry Friends Gallery Mark II, and look in the `
 },
 ```
 
-Similarly, if you ran the npm build command and let it finish, you’d see a new folder in your project called `/build`. This is the location of the built and processed project files ready to be deployed. So, pass `build` as a folder to the ‘`publish directory`’ input here.
+Similarly, if you ran the `npm build` command and let it finish, you’d see a new folder in your project called `/build`. This is the location of the built and processed project files ready to be deployed. So, pass `build` as a folder to the ‘`publish directory`’ input here.
 
 ### Advanced Build Options
 
@@ -269,9 +269,9 @@ In the previous section, we introduced the concept of environment variables and 
 
 When you built the Furry Friends Gallery Mark II in the very last lesson, you used two environment variables to access your Dog API, namely `REACT_APP_DOG_API_URL` and `REACT_APP_DOG_API_KEY`.
 
-So how do you make these variables available at build time for an app in Netlify? Fortunately, like all good build pipelines, Netlify provides us with the option to add environment variables to be used at build time.
+So, how do you make these variables available at build time for an app in Netlify? Fortunately, like all good build pipelines, Netlify provides you with the option to add environment variables to be used at build time.
 
-If you take a look toward the bottom of the build settings screen you see an ‘Advanced build settings’ section.
+If you take a look toward the bottom of the build settings screen, you see an ‘Advanced build settings’ section.
 
 ![](assets/adv-build.png)
 
@@ -279,11 +279,13 @@ This is where you add your variables to enable the site to connect with your Dog
 
 Click the ‘New variable’ button twice and you’ll see two sets of two inputs appear that hold `key` and `value` values respectively.
 
-Enter your environment variables for the API URL and access key into these new inputs like this:
+Enter your environment variables for the API URL and access key you obtained earlier into these new inputs like this:
+
+- Use `npm build` vs `yarn build`
 
 ![](assets/variables-enter.png)
 
-With that covered, it’s time to deploy our hard work!
+With that covered, it’s time to deploy your hard work!
 
 Hit the green ‘Deploy site’ button and you’ll be taken to the project’s dashboard to check on the build progress.
 
@@ -315,7 +317,7 @@ Looking under the ‘Production deploys’ area of the project dashboard, you se
 
 ![](assets/prod-build-errors.png)
 
-Click on the most recently failed build to view the build log. Under this wall of white on black terminal style text you can scroll down to see the specific point in the build where things went wrong and look for a possible solution.
+Click on the most recently failed build to view the build log. Under this wall of white on black terminal style text, you can scroll down to see the specific point in the build where things went wrong and look for a possible solution.
 
 The error here is a rather specific build environment error unique to Netlify. From the middle of 2020, Netlify started adding a CI=true environment variable to all builds on its platform. All build environments such as Netlify will have a list of standard, internal environment variables they make available to projects during builds, but this one causes an easy-to-fix issue with Create React App in particular.
 
@@ -335,7 +337,7 @@ This section is where you can discover and edit all the settings related to your
 
 ![](assets/edit-settings.png)
 
-For now, however, you’re concerned with the very top box ‘Build settings’. Click the ‘Edit settings’ button and change the ‘Build command:’ input box from yarn build to CI= yarn build.
+For now, however, you’re concerned with the very top box ‘Build settings’. Click the ‘Edit settings’ button and change the ‘Build command:’ input box from yarn build to `CI= npm build`.
 
 ![](assets/ci-setting.png)
 
@@ -355,7 +357,7 @@ This will add a new deployment item to the existing list and mark it as ‘in pr
 
 Hopefully, if everything goes according to plan, you reach a nice blue box surrounding the message ‘Netlify Build Complete’. If you reach this point, everything’s built and you’ll be able to go view your deployed project at your very own unique URL.
 
-## Step Five - Viewing the Deployed App
+## Step Five - View the Deployed App
 
 Back at the top of the screen, click the ‘`< Deploys`’ link to get back to the Deploys dashboard, and then take a look at the nice green URL under your project name.
 
@@ -373,4 +375,4 @@ Although you haven’t built anything new in this lesson, you covered an awful l
 
 1. Copy your Furry Friend's Galleryy II Netlify URL and paste on a document.
 2. Zip the document
-3, Upload the Zip Folder
+3. Upload the Zip Folder
