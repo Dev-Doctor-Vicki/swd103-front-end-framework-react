@@ -1235,9 +1235,12 @@ function App() {
 export default App;
 ```
 </details>
+
 Run the Project
 
 Save all of the files and run the project. Open up a terminal and enter the following command:
+
+:writing_hand:
 
 `npm start`
 
@@ -1247,4 +1250,4 @@ Take a look at the running app and play with it. You see a list of available bre
 
 Once you select a breed radio button, you see the right-hand panel update with a filtered list of dog pictures that match your chosen breed. Exciting stuff!
 
-Congratulations, you’ve just built a fully working, browsable, gallery app that pages a list of breeds from an API, and then responds to user input, retrieving a filtered list of images from the same API. All the while, you used axios under the hood to provide a great cross-browser data-fetching experience!
+**Congratulations**! You’ve just built a fully working, browsable, gallery app that pages a list of breeds from an API, and then responds to user input, retrieving a filtered list of images from the same API. All the while, you used axios under the hood to provide a great cross-browser data-fetching experience!
