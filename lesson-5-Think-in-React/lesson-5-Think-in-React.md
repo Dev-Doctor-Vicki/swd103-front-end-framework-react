@@ -67,7 +67,7 @@ class MyClassComponent extends React.Component {
 	}
 }
 ```
-s
+
 You might remember the look of this style of component construction from our earlier lessons where you built out some class-based components and refactored them.
 
 This component will accept some props such as `firstName` and `lastName`, does some string manipulation to turn it into a single name property in state and renders a paragraph element pulling in the name and age values from state. 
@@ -448,7 +448,7 @@ So my advice is the same as the official React advice from their documentation w
 
 You can always change things as you go and refactor it as you need!
 
-## L04HandsOn Project-Form Builder
+## :pushpin: L04HandsOn Project-Form Builder
 
 ### Requirements
 
@@ -493,7 +493,10 @@ But at this stage, it’s a super useful exercise to do a bit of planning before
 
 Sticking with the finished demo you just looked at above, if you were to code this all up in one big component, it would look like this:
 
-**LonFormExample.js**
+
+<details>
+
+<summary>LongFormExample.js</summary
 
 ```
 function MyLongForm (props) {
@@ -600,6 +603,7 @@ function MyLongForm (props) {
   );
 }
 ```
+</details>
 
 Ok, so this is already a really long component with much repetition, or very very close to having identical blocks of code — e.g. the label and input element combinations.
 
@@ -637,6 +641,8 @@ This part of the build should be starting to look familiar by now as you create 
 
 Open a terminal window and navigate to the parent folder you want to create the new project in. Next, type the `create-react-app` command as follows:
 
+:writing_hand:
+
 `npm create react-app form-builder`
 
 Let the command line finish installing the dependencies. Wait until you see the ‘success’ message and `npm`` commands to start and build the app.
@@ -644,6 +650,8 @@ Let the command line finish installing the dependencies. Wait until you see the 
 ### Test the New Project
 
 Give everything a quick check to see if it’s working before you take the coding hatchet out.
+
+:writing_hand:
 
 ```
 cd form-builder
@@ -656,6 +664,8 @@ Once it’s built and ready, navigate to http://localhost:3000 in a browser chec
 
 Open `index.js`, located in `/form-builder/src/` and remove the default styles:
 
+:writing_hand:
+
 `import ‘./index.css' ` 
 
 It should be on line 3 of the `index.js file`. This will just remove a link to the default styles from the project you won’t need. 
@@ -666,9 +676,13 @@ Find the `/src/App.css` file and open it. Highlight all the contents and delete 
 
 Open the main `App.js` file located at  `/src/App.js`.  Locate the following line (around line 2) that imports a `logo.svg` file, and remove it:
 
+:writing_hand:
+
 `import logo from ‘./logo.svg'`
 
 Now, select everything in the return statement (everything between return `()` and replace it with the following so the new return statement looks like this:
+
+:writing_hand:
 
 ```
 return (
@@ -685,6 +699,8 @@ The final stage in the setup is to, once more, bring Bulma onboard to help style
 Open up the file `/public/index.html` . If you remember, this is the template HTML file the project uses to render the initial output of the app. 
 
 Next, add the following line somewhere between the opening and closing `<head></head>` tags:
+
+:writing_hand:
 
 ```
 <link
@@ -715,7 +731,10 @@ However, at some point, you do have to let uour form field component know what y
 
 Inside of the `/data` folder, create a new file called `formfields.json` and populate it with the following basic data:
 
-**formfields.json**
+:writing_hand:
+
+<details>
+<summary>formfields.json</summary>
 
 ```
 {
@@ -731,6 +750,7 @@ Inside of the `/data` folder, create a new file called `formfields.json` and pop
   ]
 }
 ```
+</details>
 
 Thinking about the sort of properties your HTML input elements can have and the other sort of information you would like to have displayed by your form field input structure, you arrive at this structure.
 
@@ -752,7 +772,10 @@ You can make some of these optional, such as the help text and required values.
 
 Add a couple more fields to get a feel for how the rendered form fields will look in the end:
 
-**formfields.json**
+:writing_hand:
+
+<details>
+<summary>formfields.json</summary>
 
 ```
 {
@@ -780,6 +803,7 @@ Add a couple more fields to get a feel for how the rendered form fields will loo
   ]
 }
 ```
+</details>
 
 You see already you left a couple of properties out of the password and phone number objects and you’ll discover how this affects the rendered output later on.
 
@@ -788,6 +812,10 @@ You see already you left a couple of properties out of the password and phone nu
 The first link in the chain is the `FormFieldInput` component. Create a new file, `FormFieldInput.jsx` in the `/components` folder. 
 
 Fill it with a basic structure before you build it out from there:
+
+:writing_hand:
+
+**FormFiledInput.jsx**
 
 ```
 import React, { useState } from 'react';
@@ -806,7 +834,10 @@ export default FormFieldInput;
 
 Next up, define some props the `FormFieldInput` component will receive. These will be pretty much the same as those in the JSON file you just defined. Add them into the component using the JavaScript destructuring syntax we used previously:
 
-**src/components/FormFieldInput.jsx**
+:writing_hand:
+
+<details>
+<summary>src/components/FormFieldInput.jsx</summary>
 
 ```
 const FormFieldInput = ({
@@ -819,6 +850,7 @@ const FormFieldInput = ({
   handleFieldChange
 }) => {
 ```
+</details>
 
 You see they share the same name as the properties in the JSON file. This is useful as it means you can pass these directly from the JSON file into the component as you’ll see a little bit later on.
 
@@ -828,7 +860,10 @@ The only additional prop you need is the `handleFieldChange`. You use this as pa
 
 With your incoming props mapped out, set up your state and handle any changes on the input element.
 
-**src/components/FormFieldInput.jsx**
+:writing_hand:
+
+<details>
+<summary>src/components/FormFieldInput.jsx</summary>
 
 ```
   const [value, setValue] = useState('');
@@ -841,6 +876,7 @@ With your incoming props mapped out, set up your state and handle any changes on
     }
   };
 ```
+</details>
 
 You use the `useState` Hook you imported at the top of the component to keep track of your input element’s value. 
 
@@ -861,7 +897,10 @@ Don't worry about the mechanics of that function for now because ultimately, as 
 
 The final part of the puzzle is to outline the HTML (or JSX) that will be rendered. Define that now and then walk through it:
 
-**src/components/FormFieldInput.jsx**
+:writing_hand:
+
+<details>
+<summary>src/components/FormFieldInput.jsx</summary>
 
 ```
   return (
@@ -885,6 +924,7 @@ The final part of the puzzle is to outline the HTML (or JSX) that will be render
       </div>
   );
 ```
+</details>
 
 There’s nothing fancy in the HTML here, but it does have a few extra bits and pieces of structure to make the styling work. You can read more about the generic controls and inputs layout and styling directly in the Bulma CSS form [documentation](https://bulma.io/documentation/form/general/). 
 
@@ -896,7 +936,7 @@ With `placeholder`, if that’s empty or null, then the input just won’t displ
 
 With `required`, you cater to a null value. If you pass `true` or `false`, that’s fine, because `required` will exist and have some boolean value. However, if it’s `null` or `empty` or `undefined` (or some other ‘falsey’ value) then this could cause issues. To cater to this, add a simple logical `OR` short circuit, the `required || false`. You’ll become familiar with this as you look through React projects. It’s a common expression to find that essentially says ‘evaluate the first part of the expression and if it’s false, evaluate and return the second. 
 
-So, if required is null or undefined, set the attribute to ‘false’. 
+So, if required is `null` or `undefined`, set the attribute to ‘`false`’. 
 
 You do a similar thing for the help text. Check to see if `helpText` is available. If it is, then check the section part of the expression after the `&&` and return it. This happens to be a JSX expression, which is also JavaScript, but it will get rendered out as a paragraph element containing your help text. 
 
@@ -906,7 +946,10 @@ This is a really handy and neat looking way to dictate if a portion of JSX is sh
 
 Here’s what the complete component should look like:
 
-**src/components/FormFieldInput.jsx**
+:writing_hand:
+
+<details>
+<summary>src/components/FormFieldInput.jsx</summary>
 
 ```
 import React, { useState } from 'react';
@@ -954,6 +997,7 @@ const FormFieldInput = ({
 
 export default FormFieldInput;
 ```
+</details>
 
 ## Create the Form Component
 
@@ -963,7 +1007,10 @@ In terms of complexity, the `Form` component acts as a middle man of sorts. It c
 
 Scaffold out the basic component first:
 
-**Form.jsx**
+:writing_hand:
+
+<details>
+<summary>Form.jsx</summary>
 
 ```
 import React, {useState} from 'react';
@@ -984,6 +1031,7 @@ const Form = () => {
 
 export default Form;
 ```
+</details>
 
 Nice and simple to start with. Import `React` and `useState` from React. Then bring in your `FormFieldInput` component and define a `Form` component.
 
@@ -1010,7 +1058,10 @@ const Form = ({
 
 You have your props defined. Outline some variables and event handlers:
 
-**src/components/Form.jsx**
+:writing_hand:
+
+<details>
+<summary>src/components/Form.jsx</summary>
 
 ```
   const [formValues, setFormValues] = useState({});
@@ -1029,6 +1080,7 @@ You have your props defined. Outline some variables and event handlers:
     }
   }
 ```
+</details>
 
 The `formValues` variable uses the familiar `useState` Hook and you use it to add or update any new form field values as they change.
 
@@ -1044,7 +1096,10 @@ All that’s left to do now is add a number of `FormFieldInput` components into 
 
 Leaving the majority of the current JSX you defined intact, replace the commented section, `//` Form fields here with the following code:
 
-**src/components/Form.jsx**
+:writing_hand:
+
+<details>
+<summary>rc/components/Form.jsx</summary>
 
 ```
       {
@@ -1057,6 +1112,7 @@ Leaving the majority of the current JSX you defined intact, replace the commente
         )
       }
 ```
+</details>
 
 Your `formFields` prop is an array of objects, each containing a set of form field properties. You’re using the `.map()` function on the array to loop through and return a new array full of JSX markup; in this case, each item in the `formFields` array will return a new `FormFieldInput` component.
 
@@ -1119,7 +1175,10 @@ Although the second version is more explicit in that you know exactly what’s b
 
 Here’s what the complete component should look like:
 
-**src/components/Form.jsx**
+:writing_hand:
+
+<details>
+<summary>rc/components/Form.jsx</summary>
 
 ```
 import React, {useState} from 'react';
@@ -1167,6 +1226,7 @@ const Form = ({
 
 export default Form;
 ```
+</details>
 
 ## Edit App.js
 
@@ -1199,7 +1259,10 @@ function App() {
 
 And finally add in the JSX. First, add in the structural elements infused with the Bulma styles. 
 
-**src/App.js**
+:writing_hand:
+
+<details>
+<summary>src/App.js</summary>
 
 ```
 return (
@@ -1238,6 +1301,7 @@ return (
     </div>
 );
 ```
+</details>
 
 Everything so far should look pretty straightforward. Bulma, like most CSS frameworks, dictates a lot of additional styles and some additional markup to layout and style everything according to its own approach. Here, you add a `section`, `container`, `title` and some columns which Bulma bases on the flexbox CSS model. The box class will give your form a nice surrounding border and box-shadow. 
 
@@ -1247,7 +1311,10 @@ The only other thing for now is you have a ‘clear results’ button that calls
 
 Output some of the form values you can expect to receive when the form is submitted:
 
-**src/App.js**
+:writing_hand:
+
+<details>
+<summary>src/App.js</summary>
 
 ```
               <div className="notification">
@@ -1264,6 +1331,7 @@ Output some of the form values you can expect to receive when the form is submit
                 </ul>
               </div>
 ```
+</details>
 
 The first code block uses the logical `AND` shortcut to check if the `submittedFormValues` object in state has any values. Use JavaScript’s `Object.values()` for this job. You can read the [MDN developer documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Object/values) on this for more information. If the object in state doesn’t have any values, it’s an empty object, so check the other side of the expression. The right hand side happens to be a paragraph tag informing the user they need to submit the form to see some results. 
 
@@ -1292,7 +1360,10 @@ As soon as the value of `submittedFormValues` in state changes, the component wi
 
 Here’s what the complete component should look like:
 
-**src/App.js**
+:writing_hand:
+
+<details>
+<summary>src/App.js</summary>
 
 ```
 import React, { useState } from 'react';
@@ -1352,6 +1423,7 @@ function App() {
 
 export default App;
 ```
+</details>
 
 ## Run the Project
 
