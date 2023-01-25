@@ -14,7 +14,7 @@ In this lesson you’re going to swap out the reducer and store creation mechani
 
 I’ve used a lot of different redux approaches across a number of commercial projects and I much prefer the one the Redux Toolkit offers.
 
-## L09HandsOnProject1
+## :pushpin: L09HandsOnProject1
 
 
 ### Requirements
@@ -38,6 +38,8 @@ I’m going to do the former to save me having to install all the packages over 
 
 You only have the one new dependency to add now, so back in the terminal issue the following command:
 
+:writing_hand:
+
 ```
 npm add @reduxjs/toolkit
 ```
@@ -50,11 +52,15 @@ Not every file is going to change, but a lot of them are. Fortunately, most of t
 
 Let’s get started by editing your existing components.
 
+:writing_hand:
+
 ### Edit EventSignUpList.jsx
 
 Open the `EventSignUpList` component and take out your code scalpel and get cutting.
 
 Head to the bottom of the file and replace all the mapping functions with a more familiar, typical component export line:
+
+:writing_hand:
 
 **src/components/EventSignUpList.jsx**
 
@@ -66,6 +72,8 @@ You no longer need to explicitly map various elements of state and dispatch to y
 
 Next, back at the top of the file, change the following line:
 
+:writing_hand:
+
 **src/components/EventSignUpList.jsx**
 
 ```
@@ -73,6 +81,8 @@ import { connect } from 'react-redux';
 ```
 
 Remove the `connect` import and swap it for two Hooks, `useSelector` and `useDispatch`:
+
+:writing_hand:
 
 **src/components/EventSignUpList.jsx**
 
@@ -86,6 +96,7 @@ You’ll also need to import a new action, `selectAttendees` from the `eventRedu
 
 In the meantime, to use these new Hooks, edit the `EventSignUp` declaration:
 
+:writing_hand:
 
 <details>
 <summary>src/components/EventSignUpList.jsx</summary>
@@ -110,6 +121,7 @@ However, you do have to change the click events on your buttons. Scroll down a l
 
 And that’s it; done. The completed changed component now looks like this:
 
+:writing_hand:
 
 <details>
 <summary>src/components/EventSignUpList.jsx</summary>
@@ -178,6 +190,8 @@ export default EventSignUpList;
 
 Now that you’ve seen the changes you need to make, you can make those exact same changes in your `EventSignUpForm` file. Open it up and start with the imports section:
 
+:writing_hand:
+
 <details>
 <summary>src/components/EventSignUpForm.jsx</summary>
 
@@ -198,6 +212,8 @@ Again, you’ve removed the `connect` import and replaced it with the `useDispat
 
 Next, just as before, scroll to the bottom of the file and replace all of the mapping functions with a single export statement:
 
+:writing_hand:
+
 **src/components/EventSignUpForm.jsx**
 
 ```
@@ -205,6 +221,8 @@ export default EventSignUpForm;
 ```
 
 Back up at the component declaration line, remove the `addEventAttendee` call in the props destructuring.Aadd a new variable, `dispatch`, that calls the `useDispatch` Hook.
+
+:writing_hand:
 
 <details>
 <summary>src/components/EventSignUpForm.jsx</summary>
@@ -219,6 +237,7 @@ const EventSignUpForm = () => {
 
 The only part you need to change in the component’s logic functions is in the `handleFormSubmit` event. 
 
+:writing_hand:
 
 <details>
 <summary>src/components/EventSignUpForm.jsx</summary>
@@ -241,6 +260,8 @@ The only part you need to change in the component’s logic functions is in the 
 You’ve explicitly created a `newEventAttendee` variable here that copies across the form field values from state, and adds a new property `attending`, setting it to `true`. You then pass this to the `addEventAttendee` just as you did before, but notice how you’re wrapping this all up in the `dispatch()` function again. 
 
 And that’s it. The JSX remains pristine, and the complete component now looks like this:
+
+:writing_hand:
 
 <details>
 <summary>src/components/EventSignUpForm.jsx</summary>
@@ -367,12 +388,14 @@ const EventSignUpForm = () => {
 
 export default EventSignUpForm;
 ```
-</details?>
+</details>
 
 
 ## Edit configureStore.js
 
 Next, let’s make a big change to the `configureStore.js` file. Open it up and change the imports as follows:
+
+:writing_hand:
 
 **src/config/configureStore.js**
 
@@ -387,6 +410,8 @@ Notice how you’ve removed `initialState` as you no longer need it. You’ve re
 
 Next, replace the current `configureStore` declaration and export, combining them into a new, single export line:
 
+:writing_hand:
+
 **src/config/configureStore.js**
 
 ```
@@ -400,6 +425,8 @@ Instead of rolling your own `configureStore` function, you’ll use the imported
 All you need to provide to the new `configureStore` is the `reducer` property, passing it a root reducer. 
 
 The new, edited `configureStore.j`s file now looks like this:
+
+:writing_hand:
 
 **src/config/configureStore.js**
 
@@ -418,6 +445,8 @@ export default configureStore({
 
 Speaking of root reducers, you need to find the  `reducers.js` file and make a single, solitary change. Open the file and replace the import library with `@reduxjs/toolkit`.  
 
+:writing_hand:
+
 **src/reducers/reducers.js**
 
 ```
@@ -432,6 +461,8 @@ And that’s it. That’s the change. The rest of the file remains the same, but
 ### Edit index.js
 
 You’re almost there, but let’s edit the `penultimate` file before getting into the most dramatically changed file, `eventReducer.js`. Open the `index.js` file and make two small changes:
+
+:writing_hand:
 
 <details>
 <summary>src/index.js</summary>
@@ -460,6 +491,8 @@ Your final set of changes will also be the most dramatic. You’re going to hack
 
 Open up the file and let’s change those imports:
 
+:writing_hand:
+
 **src/reducers/eventReducer.js**
 
 ```
@@ -480,6 +513,8 @@ Now, rather than try to edit the existing `eventReducer` function, create it aga
 
 With that out of the way, create a new skeleton reducer function and export it:
 
+:writing_hand:
+
 ```
 export const eventSlice = createSlice({
     name: 'events',
@@ -499,6 +534,7 @@ You use the `createSlice` method to effectively create a slice of your app’s s
 
 The `createSlice` function returns a selection of actions and an overall reducer that you’ll export near the end of the file. But first, you need to recreate your three state editing functions, which will replace the previous switch statement you had. 
 
+:writing_hand:
 
 <details>
 <summary>src/reducers/eventReducer.js</summary>
@@ -525,6 +561,7 @@ With Redux Toolkit,  it uses a package called [Immer](https://immerjs.github.io/
 
 Let’s fill out the remaining two reducer functions:
 
+:writing_hand:
 
 <details>
 <summary>src/reducers/eventReducer.js</summary>
@@ -546,6 +583,7 @@ Both `toggleEventAttendanc`e and `deleteEventAttendee` are broadly the same as t
 
 The last thing to do here is to export some important pieces of the puzzle. Previously, when you had explicit action types and action functions, you exported them for use in component files. You still need to do that, but you’ll achieve it in a slightly different way:
 
+:writing_hand:
 
 <details>
 <summary>src/reducers/eventReducer.js</summary>
@@ -569,7 +607,7 @@ The remaining export is `selectAttendees`. You may recall this from whenyou edit
 
 After all of these impressive changes, your complete file now looks like this:
 
-**src/reducers/eventReducer.js**
+:writing_hand:
 
 <details>
 <summary>src/reducers/eventReducer.js</summary>
@@ -638,6 +676,8 @@ You may remember the `useReducer` Hook in your React Hooks Deep Dive lesson, but
 
 The `useReducer` Hook is provided by React natively without any third-party requirements. It’s quite a simple Hook to use, with its implementation looking like this:
 
+:writing_hand:
+
 ```
 const [state, dispatch] = useReducer(reducer, initialArg, init);
 ```
@@ -653,7 +693,7 @@ The `useReducer` Hook focuses on what it does so well, but you still have a few 
 1. Zip project folder
 2. Upload folder
 
-## L09HandsOnProject Update
+## L09HandsOnProject2 Update
 
 ### Requirements
 
@@ -703,6 +743,7 @@ You’re beginning your edits with the `index.js` file this time as there’s ve
 
 Open the file and let’s change the imports around redux things:
 
+:writing_hand:
 
 <details>
 <summary>src/index.js</summary>
@@ -727,7 +768,7 @@ With your `StoreProvider` import at the ready, simply use it to directly replace
 
 The changed file should look like this:
 
-**src/index.js**
+:writing_hand:
 
 <details>
 <summary>src/index.js</summary>
@@ -767,6 +808,7 @@ Remove everything in this file except for the `uuid` import at the top.
 
 Now, you won’t need to create any action functions this time, but you will be reinstating your action types. Create the simple JavaScript `key:value` object now:
 
+:writing_hand:
 
 <details>
 <summary>rc/reducers/eventReducer.js</summary>
@@ -785,6 +827,7 @@ export const actions = {
 
 There you go, pretty much identical to those from the first lesson. Next, create your `eventReducer` variable, complete with `switch` statement to work through the possible action types, and export it from the file as the default export.
 
+:writing_hand:
 
 <details>
 <summary>src/reducers/eventReducer.js</summary>
@@ -845,7 +888,7 @@ That aside, you still have to create a copy of `state` with your updates applied
 
 With all that wrapped up, save and close the completed file which now looks like this:
 
-**src/reducers/eventReducer.js**
+:writing_hand:
 
 <details>
 <summary>src/reducers/eventReducer.js</summary>
@@ -919,6 +962,7 @@ You’re also going to need to create a helper function that will create actions
 
 Let’s start with some imports. You’re pulling in a lot of things from React, including the new `useReducer` Hook.You’ve got your initial state and your events reducer that you just finished changing.
 
+:writing_hand:
 
 <details>
 <summary>src/reducers/reducers.js</summary>
@@ -936,6 +980,7 @@ import events from './eventReducer';
 
 Next, create your own `combineReducers` function:
 
+:writing_hand:
 
 <details>
 <summary>src/reducers/reducers.js</summary>
@@ -961,6 +1006,8 @@ In essence you’ve created a higher-order function. It returns a function that 
 
 It might look a little weird, but it’ll become clearer as you progress through the edits. Next, you’re going to call the `combineReducers` function, passing in an object that contains your single reducer function events that you imported earlier. You’ll stash this in a `const` for now and refer to it in a moment.
 
+:writing_hand:
+
 **src/reducers/reducers.js**
 
 ```
@@ -971,6 +1018,8 @@ const rootReducer = combineReducers({
 
 Next you want to define and export a `Context` instance. For that, you’ll be using the `createContext` function provided by React. You’ll remember this from the lesson on Hooks and `useContext`.
 
+:writing_hand:
+
 **src/reducers/reducers.js**
 
 ```
@@ -978,6 +1027,7 @@ export const StoreContext = createContext(null);
 ```
 
 Next, you’re going to define a store provider component that pulls together the result of the `useReducer` Hook, your `Context`, and also returns a wrapped component instance that you already consumed in the `index.js file`.
+:writing_hand:
 
 
 <details>
@@ -1004,6 +1054,8 @@ Finally, you’re returning the `StoreContext.Provider` component, passing the s
 
 The very last thing to do here is create a little nicety in the form of a helpful function. In the first lesson you had a bunch of separate, yet specific, action functions, such as `addEventAttendee`. While you’ve not gone down that route this time (although you could have), it’ll still be nice to have a little help in reducing repetitive code when you need to call the dispatch function and pass it an action:
 
+:writing_hand:
+
 **src/reducers/reducers.js**
 
 ```
@@ -1019,7 +1071,7 @@ A very simple one here - you’re creating an inline arrow function `createActio
 
 When complete, the `reducers.s` file will look like this:
 
-**src/reducers/reducers.js**
+:writing_hand:
 
 <details>
 <summary>src/reducers/reducers.js</summary>
@@ -1068,6 +1120,8 @@ export const createAction = (type, payload) => ({
 
 Now you’re going to edit the `EventSignUpList` component. Open the file and make some changes. First, the imports:
 
+:writing_hand:
+
 **src/components/EventSignUpList.jsx**
 
 ```
@@ -1084,6 +1138,8 @@ Next, you’re removing the various action functions that you had previously, an
 
 You only have two more changes to make to wire everything up. For the first you are going to replace the existing variables logic:
 
+:writing_hand:
+
 **src/components/EventSignUpList.jsx**
 
 ```
@@ -1098,6 +1154,7 @@ Of course, once you have both `state` and `dispatch` you can grab the `eventAtte
 
 The final change is to make a slight amendment to the click events of your buttons:
 
+:writing_hand:
 
 <details>
 <summary>src/components/EventSignUpList.jsx</summary>
@@ -1116,6 +1173,7 @@ You’re still calling `dispatch` (although it’s not the same one you used in 
 
 And that’s it; done. The completed component now looks like this:
 
+:writing_hand:
 
 <details>
 <summary>src/components/EventSignUpList.jsx</summary>
