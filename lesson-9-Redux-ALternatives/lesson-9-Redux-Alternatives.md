@@ -1027,8 +1027,8 @@ export const StoreContext = createContext(null);
 ```
 
 Next, you’re going to define a store provider component that pulls together the result of the `useReducer` Hook, your `Context`, and also returns a wrapped component instance that you already consumed in the `index.js file`.
-:writing_hand:
 
+:writing_hand:
 
 <details>
 <summary>src/reducers/reducers.js</summary>
@@ -1241,6 +1241,7 @@ The last series of changes before you fire up the machine once again is inside t
 
 The changes here will be very similar to those you just made in the `EventSignUpList` component, so let’s start with the imports and go from there:
 
+:writing_hand:
 
 <details>
 <summary>src/components/EventSignUpForm.jsx</summary>
@@ -1261,6 +1262,7 @@ The React part is largely untouched except for the addition of the `useContext` 
 
 Now for the changes to the variables section:
 
+:writing_hand:
 
 <details>
 <summary>src/components/EventSignUpForm.jsx</summary>
@@ -1275,6 +1277,7 @@ const EventSignUpForm = () => {
 
 You’re consuming the `StoreContext` Context and extracting out your `state` and `dispatch`, and removing the `useDispatch()` Hook that you no longer need. With those in place, let’s move on and make a small edit in the `handleFormSubmit` event handler:
 
+:writing_hand:
 
 <details>
 <summary>src/components/EventSignUpForm.jsx</summary>
@@ -1295,9 +1298,10 @@ And believe it or not  - that’s this component done! By abstracting the logic 
 
 The complete component now looks like this:
 
+:writing_hand:
 
 <details>
-<summary>rc/components/EventSignUpForm.jsx</summary>
+<summary>src/components/EventSignUpForm.jsx</summary>
 
 ```
 import React, { useState, useContext } from 'react';
