@@ -322,7 +322,7 @@ With that done, save the file and move on to the main JavaScript entry point, th
   </body>
 </html>
 ```
-<details>
+</details>
 
 ### index.js
 
@@ -601,6 +601,8 @@ With the styles taken care of, open the example component, `UseContextExample.js
 Start with your imports section, importing `React`, `useContext`, and `createContext`. 
 
 **UseContextExample.jsx**
+
+:writing_hand:
 
 `import React, { useContext, createContext } from 'react';`
 
