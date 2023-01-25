@@ -126,7 +126,7 @@ The `useReducer` Hook is a different approach to managing state. It’s similar 
 
 The `useReducer` Hook is heavily tied to the Redux state management pattern, which can be tricky to get your head around at first, so we’ll be leaving that until a later lesson.  Once you start covering Redux, you’ll look at the `useReducer` Hook in lots of depth.
 
-## L06HandsOn Project
+## :pushpin: L06HandsOn Project
 
 ### Requirements
 
@@ -145,6 +145,8 @@ Go all the way back to Lesson 2 for this one and quickly build up a skeleton pro
 
 If you haven’t already got Parcel installed on your machine from Lesson 2, go ahead and add it globally using the commands as follows:
 
+:writing_hand:
+
 `npm i -g parcel-bundler`
 
 or
@@ -153,10 +155,12 @@ or
 
 Once you’re ready to go with Parcel, create a new project folder on your machine and open it up in VS Code.
 
-`cd fefreact`
-`cd lesson 5`
-`mkdir l06handson`
-`cd l06handson`
+:writing_hand:
+
+1. `cd fefreact`
+2. `cd lesson 5`
+3. `mkdir l06handson`
+4. `cd l06handson`
 
 ### Add React to the Project
 
@@ -174,11 +178,15 @@ Parcel will wire up all the moving parts, but you need to do a few things first:
 
 The first step is initialise your project with a `package.json` file. To do that you’re going to run the command:
 
+:writing_hand:
+
 `npm init -y`
 
 #### Add React Dependencies
 
 Next add React to the project. Still in the terminal, type the following command to add both packages to the project:
+
+:writing_hand:
 
 `npm add react react-dom`
 
@@ -186,9 +194,13 @@ Next add React to the project. Still in the terminal, type the following command
 
 Open the `package.json` file, add a new property ‘`scripts`’, with a new command property under this called ‘`start`’. Next, add the command:
 
+:writing_hand:
+
 `parcel index.html --open`
 
 When you’re done, it should look like this:
+
+:writing_hand:
 
 ```
 "scripts": {
@@ -228,7 +240,10 @@ You need some additional styles as you move through the Hooks examples, but you 
 
 At this stage, the `styles.css` file should look like this:
 
-**styles.css**
+:writing_hand:
+
+<details>
+<summary>styles.css</summary>
 
 ```
 body {
@@ -277,6 +292,7 @@ button:hover {
     background-color: rgb(10, 128, 55);
 }
 ```
+</details>
 
 ### index.html
 
@@ -290,7 +306,10 @@ Within the `body` tag, there are two things:
 
 With that done, save the file and move on to the main JavaScript entry point, the `index.js` file.
 
-**index.html**
+:writing_hand:
+
+<details>
+<summary>index.html</summary>
 
 ```
 <html>
@@ -303,6 +322,7 @@ With that done, save the file and move on to the main JavaScript entry point, th
   </body>
 </html>
 ```
+<details>
 
 ### index.js
 
@@ -315,6 +335,8 @@ Your `index.js` file is the first place you really set up your React app to load
 - Use React DOM to render your app to the browser
 
 Save the file. On to your `App` component!
+
+:writing_hand:
 
 **index.js** 
 
@@ -333,7 +355,10 @@ The last thing to do is build your `App` component which will render a particula
 
 Open the `App.js` component and the first thing you do is set your imports. You can see you’ve got React in scope, quickly followed by each of your Hooks example components.
 
-**App.js**
+:writing_hand:
+
+<details>
+<summary>App.js</summary>
 
 ```
 import React from 'react';
@@ -362,6 +387,7 @@ const App = () => (
 
 export default App;
 ```
+</details>
 
 There’s nothing much going on here. You use the fragment shorthand React provides to contain your Hooks examples, but notice we commented out all but the `UseContextExample.jsx` component, as that’s the one we’ll be working on.
 
@@ -397,6 +423,9 @@ With context, you create a context provider to wrap your `App` component in. Thi
 
 This non-Hook version of React’s context looks like this:
 
+<details>
+<summary>**EXAMPLE ONLY**</summary>
+
 ```
 // Create a context object with a default value of 'null'
 const UserContext = React.createContext(null);
@@ -423,6 +452,8 @@ function Avatar() {
 	);
 }
 ```
+</details>
+
 
 Straightforward enough, but it looks a little clunky. Things only get worse when you start to use multiple slices of context; you have to wrap providers inside providers and do the same with the consumer end.
 
@@ -436,6 +467,8 @@ Walk through the steps needed to create and consume context in React.
 
 The first step is to define your context object:
 
+**EXAMPLE ONLY**
+
 ```
 // i.e. MyContext.js
 export const MyContext = React.createContext('default value here');
@@ -446,6 +479,8 @@ The default value for your context can be anything you like: a primitive value, 
 ### Wrap the top-level Component in a Context Provider
 
 Next, wrap whatever your topmost component happens to be, in a context provider. The topmost component might be your app’s entry point, or it might be a specific area within your app that contains a specific group of components, such as an account management area.
+
+**EXAMPLE ONLY**
 
 ```
 // i.e. MyTopLevelComponent.jsx
@@ -466,6 +501,8 @@ function MyTopLevelComponent() {
 
 To grab the context and use whatever value it contains, implement the `useContext` Hook like this:
 
+**EXAMPLE ONLY**
+
 ```
 // i.e. ChildComponent1.jsx
 import React, { useContext } from 'react';
@@ -483,6 +520,8 @@ function ChildComponent1() {
 ### Use Multiple Contexts
 
 If for whatever reason you need to access multiple contexts within a component, the `useContext` Hook makes it really easy. You simply call `useContext` as many times as you need, one for each context object you want to consume:
+
+**EXAMPLE ONLY**
 
 ```
 function MySuperComponent() {
@@ -521,8 +560,13 @@ Open the project you set up in the previous section and open the styles file `st
 
 Add these styles to the bottom of the file:
 
+:writing_hand:
+
+<details>
+<summary>styles.css</summary>
+
 ```
-/* UseContextExample styles ---------------------------- */
+/* UseContextExample styles */
 .layout-container {
     position: relative;
     display: flex;
@@ -546,6 +590,7 @@ Add these styles to the bottom of the file:
     padding: 0 1rem;
 }
 ```
+</details>
 
 You’re going to create a layout container that houses a sidebar with some navigation, and a main article element that holds some dummy content. The styles here add a bit of background color to the sidebar to distinguish it, as well as adding a little bit of padding and spacing, and set the display type as ‘flex’ on the container. You’ll see why this is important in a moment.
 
@@ -561,7 +606,10 @@ Start with your imports section, importing `React`, `useContext`, and `createCon
 
 Next, define a couple of plain JavaScript objects, one for some styles, and another for some layout information: 
 
-**UseContextExample.jsx**
+:writing_hand:
+
+<details>
+<summary>UseContextExample.jsx</summary>
 
 ```
 const styles = {
@@ -579,6 +627,7 @@ const layout = {
     right: 'row-reverse'
 };
 ```
+</details>
 
 You can see the styles object has light and dark properties filled with a couple of familiar CSS key:value pairs (light having a light background with dark text, and dark vice versa). 
 
@@ -586,16 +635,23 @@ The layout object offers a couple more CSS values which will translate to flex d
 
 Next, define your initial context object and default values:
 
+:writing_hand:
+
 **UseContextExample.jsx**
 
 ```
 const ThemeContext = createContext({...styles.light, direction: layout.left});
 ```
+
 Really easy this one: name your variable `ThemeContext` as is the convention for context objects (i.e. <NameOfContext>Context). Then call React’s `createContext` function, pass in some defaults. In your case, pass an object with the light styles and left direction for the layout.
 
 ### The Layout Component
 
 Now for the star of the show, the main component that will consume your context. Worry about providing the context in the default exported component later on. For now, define a skeleton component called `Layout`. 
+
+:writing_hand:
+
+**UseContextExample.jsx**
 
 ```
 const Layout = () => {
@@ -608,6 +664,8 @@ const Layout = () => {
 
 The first thing is consume the context using the `useContext` Hook. That looks like this:
 
+:writing_hand:
+
 **UseContextExample.jsx**
 
 ```
@@ -619,7 +677,7 @@ Call the `useContext` Hook, just like in the mini examples from earlier in this 
 
 The theme variable will now have access to whatever was passed into the context provider or, if that isn’t available, whatever was passed to the context object as a default. 
 
-In your case you haven’t defined the context provider yet, but have passed in the default values. So, uour theme variable will look like this:
+In your case you haven’t defined the context provider yet, but have passed in the default values. So, your theme variable will look like this:
 
 ```
 {
@@ -631,7 +689,10 @@ In your case you haven’t defined the context provider yet, but have passed in 
 
 Next, it’s time for some JSX: 
 
-**UseContextExample.jsx**
+:writing_hand:
+
+<details>
+<summary>UseContextExample.jsx</summary>
 
 ```
         <section 
@@ -676,6 +737,8 @@ Next, it’s time for some JSX:
         </section>
 ```
 
+</details>
+
 Everything within the section element, which is your layout container, is pretty standard HTML. You have a sidebar with a `nav` element and some dummy links. Inside the `article` element, you have a title and some good old fashioned lorem ipsum placeholder text.
 
 The `section` element, however, is where you consume your context data. Using React’s inline style attribute (the one that looks like style={{}}), set `backgroundColor`, `color`,  and `flexDirection` CSS properties. The values for those properties are being provided from the theme context pulled in using the `useContext` Hook. Pretty neat, and very little effort. 
@@ -685,6 +748,8 @@ The `section` element, however, is where you consume your context data. Using Re
 OK, you defined some context and consumed it in the Layout component, but the `useState` Hook won’t do a thing unless you first provide the context to components looking to consume it.
 
 For your default export, create a super-simple inline function that returns your provider wrapper and the Layout component as a child.
+
+:writing_hand:
 
 **UseContextExample.jsx**
 
@@ -702,13 +767,16 @@ The `value={}` attribute is where you pass whatever values you want into the con
 
 Finally, inside your provider, add the `Layout` component. Just as with any other component you could add more child components here if you wanted, and each would have access to the context values using the `useContext` Hook.
 
-## Runn the Example
+## Run the Example
 
 With the heavy lifting done, head over to the `App.js` file and make sure all the other components you imported are commented out except for the `UseContextExample` component. 
 
-Ideally, at this point, your App component should look like this:
+Ideally, at this point, your `App` component should look like this:
 
-**App.js**
+:writing_hand:
+
+<details>
+<summary>App.js</summary>
 
 ```
 import React from 'react';
@@ -733,6 +801,7 @@ const App = () => (
 
 export default App;
 ```
+</details>
 
 Update and save the file if needed and open your terminal window. Type the good old `npm start` command and view the result in the browser.
 
@@ -770,6 +839,8 @@ However, the `useRef()`  Hook isn’t just for DOM refs. A `ref` object is a gen
 
 Using the `useRef` Hook couldn’t be simpler:
 
+**EXAMPLE ONLY**
+
 ```
 import { useRef } from 'react';
 
@@ -798,6 +869,11 @@ With your fundamental knowledge of the Hook in place, build something to showcas
 
 Back in your project in VS Code, open the `styles.css` file and add the following additional styles at the bottom: 
 
+:writing_hand:
+
+<details>
+<summary>styles.css</summary>
+
 ```
 /* UseRefExample styles ---------------------------- */
 .modal-container {
@@ -823,10 +899,13 @@ Back in your project in VS Code, open the `styles.css` file and add the followin
     box-shadow: 1px 1px 2px aliceblue;
 }
 ```
+</details>
 
-Youalready have some default styles for form elements, such as inputs. These styles are concerned with the modal’s onscreen positioning and toggling its visibility. CSS’s flex property gives a super clean and simple way to position an element in the center of the screen, such as our modal friend here.
+You already have some default styles for form elements, such as inputs. These styles are concerned with the modal’s onscreen positioning and toggling its visibility. CSS’s flex property gives a super clean and simple way to position an element in the center of the screen, such as our modal friend here.
 
 With your helper styles in place, open the `UseRefExample.jsx` file. Unsurprisingly you import the `useRef` Hook from React’s library first:
+
+:writing_hand:
 
 **UseRefExample.jsx**
 
@@ -838,7 +917,10 @@ import React, { useState, useRef } from 'react';
 
 Next, define a `ModalBox` component that will house some dummy content to be displayed when we eventually click on a button to trigger the modal into view:
 
-**UseRefExample.jsx**
+:writing_hand:
+
+<details>
+<summary>UseRefExample.jsx</summary>
 
 ```
 const ModalBox = ({ isOpen, handleModalClick }) => (
@@ -861,12 +943,13 @@ const ModalBox = ({ isOpen, handleModalClick }) => (
     </div>
 );
 ```
+</details>
 
 It’s a purely presentational component and receives two props, `isOpen` and `handleModalClick`. The `isOpen` prop is used in a ternary if statement to apply an is-active CSS class that will show or hide the modal. The `handleModalClick` prop will be a function just assigned to the modal’s buttons. 
 
 Ultimately, your default parent component will handle the toggling of the `isOpen` prop value via the `handleModalClick` click event, but for now, your presentational `ModalBox` component doesn’t need to know, or care, about this. When a user clicks either cancel or save, the component simply fires the `handleModalClick`.
 
-### The default Export
+### The Default Export
 
 Of course, the `ModalBox` component on its own isn’t enough to do anything, so your default parent component is going to handle a few things:
 
@@ -876,7 +959,11 @@ Of course, the `ModalBox` component on its own isn’t enough to do anything, so
 
 - And it will handle toggling of the modal’s visibility via a click handling event that will be passed into the `ModalBox` component.
 
-Underneath uour `ModalBox` component, outline an empty scaffolded default export:
+Underneath your `ModalBox` component, outline an empty scaffolded default export:
+
+:writing_hand:
+
+**UseRefExample.jsx**
 
 ```
 export default () => {
@@ -922,7 +1009,10 @@ Remember, the ref’s current property will be pointing to the underlying input 
 
 Next, fill out the JSX inside the section element: 
 
-**UseRefExample.jsx**
+:writing_hand:
+
+<details>
+<summary>seRefExample.jsx</summary>
 
 ```
     return (
@@ -941,12 +1031,15 @@ Next, fill out the JSX inside the section element:
                 <button className="button-primary">submit form</button>
             </form>
 ```
+</details>
 
 You have a plain old form element with some equally plain labels and inputs. For a real form, add a little more markup here such as state syncing on change events, styling classes, and maybe some accessibility attributes. You'd also want to handle the form’s submission. If you click the submit button now, the form will submit to nowhere and the page will refresh.
 
 For now, the main thing to draw your attention to is the ‘`select groups`’ button which is wired up to an `onClick` event. It’s an inline anonymous arrow function that simply calls the `setModalIsOpen` state Hook, passing in a value of ‘`true`’. 
 
 Underneath your form element, add the ModalBox component:
+
+:writing_hand:
 
 **UseRefExample.jsx**
 
@@ -966,7 +1059,10 @@ Ahh the best part, running the code! As with your previous example, make sure to
 
 Your App component should look like this:
 
-**App.js**
+:writing_hand:
+
+<details>
+<summary>App.js</summary>
 
 ```
 import React from 'react';
@@ -991,6 +1087,7 @@ const App = () => (
 
 export default App;
 ```
+</details>
 
 Update and save the file. Open the terminal and run the trusty `npm start` command, viewing the result in the browser:
 
@@ -1016,6 +1113,8 @@ The dependency array you pass is important. If you don’t pass in a dependency 
 
 The use of the `useMemo` Hook is quite simple. The function `expensiveComputedFunction` will only be called when either `depOne` or `depTwo` changes. 
 
+**EXAMPLE ONLY**
+
 ```
 const someMemoizedValue = useMemo(() => { 
 	// ...do your expressions here...
@@ -1033,7 +1132,7 @@ The best employment of this particular Hook is to prevent multiple frequent call
 
 You often find `useMemo` dealing with big data items such as graphs, charts, plotting data, and large mathematical equations. 
 
-### Optimization cCveats
+### Optimization Caveats
 
 It’s worth a quick mention here that there is a temptation to over-optimize your code, either too liberally or too early. For me, optimization should be kept in mind, but it should be based on as much empirical data as possible. 
 
@@ -1045,13 +1144,20 @@ Before going on, take a quick look at the excellent Hooks reference site, [useHo
 
 For this demo you don’t have any extra styles to add, so fire up the `UseMemoExample.jsx` file and start by defining some imports and helper functions. You'll be using a few Hooks here, so import them upfront. 
 
+:writing_hand:
+
+**UseMemoExample.jsx**
+
 ```
 import React, { useState, useMemo, useEffect } from 'react';
 ```
 
 Next, your helper functions:
 
-**UseMemoExample.jsx**
+:writing_hand:
+
+<details>
+<summary>UseMemoExample.jsx</summary>
 
 ```
 const getTimeDifference = (startTime, endTime) => {
@@ -1066,6 +1172,7 @@ const countLettersInWord = (word) => {
     return word.length
 };
 ```
+</details>
 
 With `getTimeDifference`, you want to work out the time that has elapsed between a passed in start and end time. The passed in times here will be standard JavaScript date time values. You work out the difference, using the modulus operator to divide the result by 60 to arrive at a value in seconds.
 
@@ -1073,9 +1180,13 @@ For `countLettersInWord` you employ a bit of a cheat here, or at least, a forced
 
 You'll be memoizing the `countLettersInWord` function later on.
 
-### Define the dDfault Component Export
+### Define the Default Component Export
 
 Now for the main event, defining the default component export. Start by scaffolding out the component before filling it in:
+
+:writing_hand:
+
+**UseMemoExample.jsx**
 
 ```
 export default () => {
@@ -1087,9 +1198,11 @@ export default () => {
 };
 ```
 
-### Add the vVriables
+### Add the Variables
 
 First up, you need variables. For starters, add some non-Hooks variables:
+
+:writing_hand:
 
 **UseMemoExample.jsx**
 
@@ -1102,6 +1215,8 @@ export default () => {
 `wordList` is an array of random strings you're going to count later on in the component. Meanwhile, `timeStart` is set to a brand new `Date()` result that will represent the date-timestamp of when the component first renders. 
 
 Next, you need some state values using `useState`:
+
+:writing_hand:
 
 **UseMemoExample.jsx**
 
@@ -1116,6 +1231,8 @@ The variable `count` will be increased each time you click a specific button, wh
 ### Define the Functions
 
 Now to define some functions, and most importantly, use your new Hook:
+
+:writing_hand:
 
 **UseMemoExample.jsx**
 
@@ -1138,6 +1255,8 @@ The next function is where things get spicy. You finally call the `useMemo` Hook
 
 The last bit of logic is to use the `useEffect` Hook to work out how long it took to render the component:
 
+:writing_hand:
+
 **UseMemoExample.jsx**
 
 ```
@@ -1155,7 +1274,10 @@ Your final task is to add in the JSX so you actually see something when you load
 
 Underneath the `h1` element in your skeleton JSX, add the following:
 
-**UseMemoExample.jsx**
+:writing_hand:
+
+<details>
+<summary>UseMemoExample.jsx</summary>
 
 ```
     return (
@@ -1178,6 +1300,7 @@ Underneath the `h1` element in your skeleton JSX, add the following:
         </section>
     );
 ```
+</details>
 
 - The first paragraph gives a nice reference to the current word held in state so you can see what’s being calculated.
 
@@ -1193,7 +1316,10 @@ Now for the fun part, seeing your hard work in action. Just as before, make sure
 
 Your App component should look like this:
 
-**App.js**
+:writing_hand:
+
+<details>
+<summary>App.js</summary>
 
 ```
 import React from 'react';
@@ -1218,8 +1344,9 @@ const App = () => (
 
 export default App;
 ```
+</details>
 
-Update and save the file. Then open up the terminal and run the age old `npm start` command, and open your browser to view the result:
+Update and save the file. Then open the terminal and run the age old `npm start` command, and open your browser to view the result:
 
 ![](assets/usememo-example.png)
 
@@ -1231,6 +1358,8 @@ In a similar fashion to the `useMemo` Hook, `useCallback` gives a means to optim
 
 However, the big difference between the two Hooks is that `useMemo` provides a way to memoize a value, while `useCallback` memoizes a function. It looks and feels almost identical to the implementation of `useMemo`, too. You define and use the `useCallback` Hook like this:
 
+**EXAMPLE ONLY**
+
 ```
 const someMemoizedCallback = useCallback(() => { 
 	// run a function here
@@ -1239,13 +1368,15 @@ const someMemoizedCallback = useCallback(() => {
 }, [depOne, depTwo]);
 ```
 
-### Memoize fFnctions
+### Memoize Functions
 
 "Great", you’re thinking, "but why would anyone want to memoize a callback function?"
 
 Well, the complicated answer is "it depends".
 
 Start with a little 101 on React components. Each time a component re-renders, React will create new versions of items like function objects.  Take the following code snippet as an example:
+
+**EXAMPLE ONLY**
 
 ```
 function MyEpicComponent() {
@@ -1273,6 +1404,8 @@ Start by opening the `UseCallbackExample.jsx` file and building it out.
 
 First things first, import `React`, `useState`, and of course, the `useCallback `Hook.
 
+:writing_hand:
+
 **UseCallbackExample.jsx**
 
 ```
@@ -1280,6 +1413,8 @@ import React, { useState, useCallback } from 'react';
 ```
 
 Next, you need a couple of constants that will live outside of our main component:
+
+:writing_hand:
 
 **UseCallbackExample.jsx**
 
@@ -1294,11 +1429,13 @@ const messages = [
 const functionStore = new Set();
 ```
 
-You have a simple array of string messages you'll use within your component. With `functionStore` you're creating a shiny new instance of a `Set` object. You can store lists or collections of anything you like in a `Se`t object, but the key part here is that `Set` naturally keeps things unique for us. The importance of this will become apparent in a little while.
+You have a simple array of string messages you'll use within your component. With `functionStore` you're creating a shiny new instance of a `Set` object. You can store lists or collections of anything you like in a `Set` object, but the key part here is that `Set` naturally keeps things unique for us. The importance of this will become apparent in a little while.
 
 ### Define the Default Exported Component
 
 Create the default export component, as you've started with in the previous lessons:
+
+:writing_hand:
 
 ```
 export default () => {
@@ -1311,7 +1448,9 @@ export default () => {
 
 ### Add in Variables
 
-As I’m sure you’re becoming familiar with by now, you'll outline a couple of variables at the top of our new component:
+As I’m sure you’re becoming familiar with by now, you'll outline a couple of variables at the top of your new component:
+
+:writing_hand:
 
 **UseCallbackExample.jsx**
 
@@ -1327,7 +1466,10 @@ You have two state variables, `counter` and `message`. Your `counter` variable w
 
 Now for the `useCallback` part. Create three click-handling functions here: one to increase the count, another to decrease it, and a last one to generate a new message — each will update one of the state variables we just created.
 
-**UseCallbackExample.jsx**
+:writing_hand:
+
+<details>
+<summary>UseCallbackExample.jsx</summary>
 
 ```
     const increaseCounter = useCallback(() => {
@@ -1343,12 +1485,15 @@ Now for the `useCallback` part. Create three click-handling functions here: one 
         setMessage(randomMessage);
     }, [message]);
 ```
+</details>
 
 Both `increaseCounter` and `decreaseCounter` implement the `useCallback` Hook, using the `counter` variable as a dependency. Remember, each time a dependency changes, `useCallback` will generate a new callback function object. Both these functions update the `counter` value in state, either by adding one or removing one.
 
 The `generateRandomMessage` function depends on the `message` state variable, and updates this value in state, pulling a random string from your messages array.
 
 The very last thing before getting on with the JSX is add these new functions into the `functionStore like` so:
+
+:writing_hand:
 
 **UseCallbackExample.jsx**
 
@@ -1366,7 +1511,10 @@ Later on, you extract the number of functions in the `Set` to see how many new f
 
 With your logic in place, all that remains is to outline the JSX for your UI. 
 
-**UseCallbackExample.jsx**
+:writimg_hand:
+
+<details>
+<summary>UseCallbackExample.jsx</summary>
 
 ```
     return (
@@ -1388,6 +1536,7 @@ With your logic in place, all that remains is to outline the JSX for your UI.
         </>
     );
 ```
+</details>
 
 Start off by outputting the current count using the `counter` value from state. Next, do the same but for `message`, using the double pipe operator shortcut to display an instructional string, should message be empty.
 
@@ -1395,7 +1544,7 @@ Next, have three buttons you're attaching to your click handlers: one to increas
 
 The final piece of JSX is to output a simple message to the user, showing the number of items in the `functionStor`e Set. To do that, call `Set`’s `.size` property, which is equivalent to an array’s `.length` property.
 
-### Runn the eEample
+### Run the Example
 
 Ready to see it in action? Head on over to the terminal and fire up the `npm start` command, opening the project in the browser once it’s built.
 
@@ -1414,6 +1563,11 @@ This time, click on ‘`counter +`’ and see what happens.
 This time you'll see the size of `functionStore` jumps from 4 to 6. On this re-render, `generateRandomMessage` is kept the same because you haven’t changed its dependency, message. However, you altered the counter state variable, which both `increaseCounter` and `decreaseCounter` depend on. Therefore, both of these functions have been recreated on this particular rendering.
 
 That’s everything wrapped up in this bumper lesson on diving deep into React Hooks. In the next lesson you’ll be looking at navigation within React projects.
+
+#### Submission
+
+1. Zip project folder
+2. Upload folder
 
 
 
