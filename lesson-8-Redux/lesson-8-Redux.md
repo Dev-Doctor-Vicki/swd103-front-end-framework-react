@@ -195,7 +195,7 @@ Coming up next, you start looking at your first app using React Redux, before mo
 
 ## Event SignUp App
 
-You will build an Event SignUp App. You'll have a listing for an event with a few form fields where users can tell you they’re attending. 
+You will build an Event SignUp App. You'll have a listing for an event with a few form fields, where users can tell you they’re attending. 
 
 Let’s take a look at how this finished app will function:
 
@@ -217,16 +217,25 @@ First, though, get going with building the Event SignUp app and the vanilla Reac
 
 ## L08HandsOnAssignment SignUp App
 
+### Requirements
+
+1. Follow guided learning
+2. Create code for each hook
+
 ### Project Setup
 
 Use Create React App for the remaining sections and the setup process should be starting to feel familiar by now. 
 
 Open a terminal window to the parent folder you want to create the new project in and run the following command:
 
+:writing_hand:
+
 ```
 npm create react-app event-signup-project
 ```
 Once the command finishes and your app base is installed, run it to test it’s set up correctly with:
+
+:writing_hand:
 
 ```
 cd event-signup-demo
@@ -235,23 +244,23 @@ npm start
 
 View the running starter app in your browser at http://localhost:3000 
 
-### Cleaning Up the Starter Project
+### Clean Up the Starter Project
 
 Just like in previous lessons, clean up the starter app by doing the following:
 
-- Open `index.js` and remove the reference to `import ‘./index.css'`
+- :writing_hand: Open `index.js` and remove the reference to `import ‘./index.css'`
 
-- Delete the `/src/index.css` and `/src/App.css` files
+- :writing_hand: Delete the `/src/index.css` and `/src/App.css` files
 
-- Open the main `App.js` file and empty the file so you can add your project-specific code later on.
+- :writing_hand: Open the main `App.js` file and empty the file so you can add your project-specific code later on.
 
 ## Add Project Dependencies
 
-Before you create the files you need for your project, 
-
-### Bring Redux, React Redux, and Redux Thunk Onboard
+Before you create the files you need for your project, bring Redux, React Redux, and Redux Thunk Onboard.
 
 The first dependencies to add are `Redux`, `React Redux`, and `Redux Thunk` (we’ll explain this last one when we come to configure your redux store). Back in a terminal window, make sure you’re in the root project location and enter the following command:
+
+:writing_hand:
 
 ```
 npm add redux react-redux redux-thunk
@@ -265,12 +274,16 @@ Since you’ll be adding event attendees to your fake event, it’s good practic
 
 To do that, import the very helpful React UUID package with the following command:
 
+:writing_hand:
+
 ```
  npm add react-uuid
  ```
 ### Add Bulma
 
 Stick with the Node version of Bulma for this project,and  add it to your project using this command:
+
+:writing_hand:
 
 ```
 npm add bulma
@@ -280,6 +293,8 @@ npm add bulma
 
 Finally, add in Node Sass to compile your `.scss` files. Bring in the final package as a dev-only dependency as follows:
 
+:writing_hand:
+
 ```
 npm add --dev node-sass
 ```
@@ -288,33 +303,35 @@ npm add --dev node-sass
 
 With your dependencies added, create all the files you need for the project and build them out.
 
-- `index.js` - make a scant few changes here to wire up your redux store with the rest of the application.
+- :writing_hand: `index.js` - make a scant few changes here to wire up your redux store with the rest of the application.
 
-- `App.js`  - the main starting point of your app.
+- :writing_hand: `App.js`  - the main starting point of your app.
 
-- `/assets/style.scss` - add in some basic styling niceties in the scss version of Sass.
+- :writing_hand: `/assets/style.scss` - add in some basic styling niceties in the scss version of Sass.
 
-- `/components/EventDetails.jsx`  - a presentational component that will display details of an individual event.
+- :writing_hand: `/components/EventDetails.jsx`  - a presentational component that will display details of an individual event.
 
-- `/components/EventSignUpForm.jsx` - a Bulma-styled form component whose logic will enable you to add new attendees to the global store via redux methods.
+- :writing_hand: `/components/EventSignUpForm.jsx` - a Bulma-styled form component whose logic will enable you to add new attendees to the global store via redux methods.
 
-- `/components/EventSignUpList.jsx` - the other side of the event form coin. This component will allow administrators to edit attendees, remove them, and see their details at a glance in a list format.
+- :writing_hand: `/components/EventSignUpList.jsx` - the other side of the event form coin. This component will allow administrators to edit attendees, remove them, and see their details at a glance in a list format.
 
-- `/components/Header.jsx` - another presentational component with scant logic that will act as a `navbar` and display a message to the user if they’re logged in.
+- :writing_hand: `/components/Header.jsx` - another presentational component with scant logic that will act as a `navbar` and display a message to the user if they’re logged in.
 
-- `/config/configureStore.js` - a small but mighty JavaScript file that configures the redux store at the heart of the redux pattern.
+- :writing_hand: `/config/configureStore.js` - a small but mighty JavaScript file that configures the redux store at the heart of the redux pattern.
 
-- `/data/initialState.js` - a starting point for the global state in your app.
+- :writing_hand: `/data/initialState.js` - a starting point for the global state in your app.
 
-- `/reducers/eventReducer.js` - this will hold all the reducer functions, state-altering magic, and actions for dealing with the event portion of your app’s state.
+- :writing_hand: `/reducers/eventReducer.js` - this will hold all the reducer functions, state-altering magic, and actions for dealing with the event portion of your app’s state.
 
-- `/reducers/reducers.js` - this will be the main reducer file you associate with your store and app’s redux - effectively it acts as a container for the other, more specific reducers, such as the event reducer.
+- :writing_hand: `/reducers/reducers.js` - this will be the main reducer file you associate with your store and app’s redux - effectively it acts as a container for the other, more specific reducers, such as the event reducer.
 
 With the files created, work through them to add in the details needed.
 
 ### Style.scss
 
 Open up `/assets/style.scss` and copy in the following styles:
+
+:writing_hand:
 
 **src/assets/style.scss**
 
@@ -346,6 +363,8 @@ Your app’s state represents a central data storage facility you can use to hou
 
 The `/data/initialState.js` file is going to house such a starting point, so open it up and enter in the following:
 
+:writing_hand:
+
 **src/data/initialState.js**
 
 ```
@@ -371,6 +390,8 @@ Fortunately, the React Redux library provides a handy function, `combineReducers
 
 That’s what you’ll be doing with the `reducers.js` file. First, import the `combineReducers` function from the ‘`redux`` package:
 
+:writing_hand:
+
 **src/reducers/reducers.js**
 
 ```
@@ -383,6 +404,8 @@ import events from './eventReducer';
 Import the `eventReducer` from the `/reducers/eventReducer.js` file. In a bigger app you might have more reducers, but you’ve only got the one here.
 
 Finally, export the result of the `combineReducers` function which accepts an object of `key:value` pairs, each key being the reference name of that slice of state the reducer affects, and each value being the reducer that affects it. In your case here, they’re one and the same so you can use the shorthand JavaScript object property notation.
+
+:writing_hand:
 
 **src/reducers/reducers.js**
 
@@ -403,6 +426,8 @@ Now the main event, Eeen though you’re only a couple of files into the project
 
 Open the `/reducers/eventReducer.js` file and begin with the imports:
 
+:writing_hand:
+
 **src/reducers/eventReducer.js**
 
 ```
@@ -419,6 +444,8 @@ You’re pulling in the uuid library and your `initialState` file here. The uuid
 Action types are simple string constants that describe the type of action you want to perform against state. You do not have to do this, or use action types at all, they are just a well-adopted convention. If you choose not to use them then you’ll have to pass around string values here and there. This introduces lots of potential for mistakes such as spelling errors, and that’s without considering that you might want to change any of those strings — in this case, you only have to change them in one place.
 
 Define the action types for the `eventReducer` now:
+
+:writing_hand:
 
 **src/reducers/eventReducer.js**
 
@@ -443,6 +470,8 @@ Again, you don’t have to actually do this. However, ultimately you’re going 
 
 Without creating any action functions, you’d have to call each and every dispatch like this:
 
+**EXAMPLE ONLY**
+
 ```
 function handleNewUserClick(userData) {
 	dispatch({
@@ -457,6 +486,8 @@ function handleNewUserClick(userData) {
 As it stands, this might not look like much, but imagine you have a bunch of these updates in the same component and across multiple areas of the app. It’ll start to become cumbersome and bloated to keep doing this as time goes on. Plus, you’re back to the potential for errors and making it harder to make changes; if you wanted to change the payload here, you’d have to find every single instance of this and change it across multiple files.
 
 Compare this with having a single function call that is passed any data changes as parameters:
+
+**EXAMPLE ONLY** 
 
 ```
 function handleNewUserClick(userData) {
@@ -474,7 +505,11 @@ That’s what you’ll do now. You’re going to create three action functions h
 
 - `deleteEventAttendee` to remove anyone who is no longer needed from your event signup list
 
-**src/reducers/eventReducer.js**
+
+:writing_hand:
+
+<details>
+<summary>src/reducers/eventReducer.js</summary>
 
 ```
 // Actions
@@ -500,6 +535,7 @@ export const deleteEventAttendee = id => ({
     }
 });
 ```
+</details>
 
 You’re exporting each function so you can call it across your app in whichever component needs to use it. You can see they’re all pretty straightforward arrow functions. There’s nothing specific to Redux here, but you’ve formatted the return object with a type property (using one of the action types defined earlier) and a payload which contains any relevant data that needs to be used by the upcoming reducer to affect your state. 
 
@@ -511,7 +547,10 @@ It’s going to look a little unwieldy at first, but stick with it and you’ll 
 
 Define the reducer function with just a single action handler in it:
 
-**src/reducers/eventReducer.js**
+:writing_hand:
+
+<details>
+<summary>src/reducers/eventReducer.js</summary>
 
 ```
 // Reducer
@@ -535,6 +574,7 @@ const eventReducer = (state = initialState.events, action) => {
             };
         }
 ```
+</details>
 
 Again, the reducer is a standard arrow function that accepts a value for state and an action. These values will be passed to the reducer by the React Redux library when everything is wired up so the only thing you have to do at this stage is supply an initial value for state. In your case, this will be the events portion of the `initialState` object imported earlier.
 
@@ -548,7 +588,10 @@ Update the `eventAttendees` property (an array) so you use the spread syntax aga
 
 Next, you’ll sort out the code to handle the `TOGGLE_EVENT_ATTENDANCE and DELETE_EVENT_ATTENDEE` actions. 
 
-**src/reducers/eventReducer.js**
+:writing_hand:
+
+<details>
+<summary>src/reducers/eventReducer.js</summary>
 
 ```
 // Reducer
@@ -604,6 +647,7 @@ const eventReducer = (state = initialState.events, action) => {
 
 export default eventReducer;
 ```
+</details>
 
 OK, so things are starting to look a little messy and that’s a fair criticism levelled at redux from time to time. However, you can start to see a similar pattern between these different action matches. For the `TOGGLE_EVENT_ATTENDANCE` case:
 
@@ -621,7 +665,10 @@ Well done! You’ll be pleased to know that wyou’re done with the reducer file
 
 With all the code in, the finished and complete `eventReducer.js` file will look like this:
 
-**src/reducers/eventReducer.js**
+:writing_hand:
+
+<details>
+<summary>src/reducers/eventReducer.js</summary>
 
 ```
 import uuid from 'react-uuid';
@@ -712,12 +759,16 @@ const eventReducer = (state = initialState.events, action) => {
 
 export default eventReducer;
 ```
+</details>
 
 ## configureStore.js
 
 Open the `/config/configureStore.js` file and fill out the following code:
 
-**src/config/configureStore.js**
+:writing_hand:
+
+<details>
+<summary>src/config/configureStore.js</summary>
 
 ```
 import { createStore, applyMiddleware, compose } from 'redux';
@@ -736,6 +787,7 @@ const configureStore = () => {
 
 export default configureStore;
 ```
+</details>
 
 What you’re doing in this file is stitching together your root reducer, initial state values, and what you call enhancers. Enhancers are higher-order functions that enhance a redux store, adding in middleware, persistence capabilities or other additional capabilities that you may want uour store to have.
 
@@ -748,6 +800,8 @@ Next, define an arrow function that creates a middleware enhancer by calling the
 The `composedEnhancers` is a little redundant here as you only have the one, but you call the compose function from redux and pass it the result of the `middlewareEnhancer` variable. 
 
 All that remains is to call the `createStore` function and pass it your reducer, starting state, and the `composedEnhancers` variable, returning the store value to the caller.
+
+:writing_hand:
 
 **src/config/configureStore.js**
 
@@ -776,7 +830,10 @@ Your `Header` component will be a straightforward website header with some navig
 
 After this, let’s define the entire presentational component like this:
 
-**src/components/Header.jsx**
+:writing_hand:
+
+<details>
+<summary>src/components/Header.jsx</summary>
 
 ```
 import React from 'react';
@@ -821,8 +878,11 @@ const Header = ({ isSignedIn, handleSignInClick, handleSignOutClick }) => (
 
 export default Header;
 ```
+</details>
 
 You’re destructuring three properties from props here. `isSignedIn` will be a boolean value to determine if you’re logged in to the admin side of things. `handleSignInClick` and `handleSignOutClick` will be used to handle the button clicks for signing in and out respectively. 
+
+:writing_hand:
 
 **src/components/Header.jsx**
 
@@ -837,6 +897,8 @@ You’re destructuring three properties from props here. `isSignedIn` will be a 
 ```
 
 With the JSX, you have a nav element styled up with Bulma classes. In the `navbar-end` section, you toggle the display of a welcome message for a signed-in user depending on the value of `isSignedIn`. 
+
+:writing_hand:
 
 **src/components/Header.jsx**
 
@@ -861,7 +923,9 @@ Finally, display either a Sign In or Sign Out button, depending on `isSignedIn`�
 
 Over in the `/components/EventDetails.jsx` file, create another purely presentational component as follows:
 
-**src/components/EventDetails.jsx**
+:writing_hand:
+<details>
+<summary>src/components/EventDetails.jsx</summary>
 
 ```
 import React from 'react';
@@ -887,6 +951,7 @@ export default () => (
     </div>
 );
 ```
+</details>
 
 You bring in React, and then define a card element using Bulma’s HTML structure and CSS classes. In the JSX, you’re adding in a cute puppy placeholder image, and adding in some fabricated event details, such as a title, time, and description.
 
@@ -896,9 +961,11 @@ Save the file and let’s move on.
 
 Now things are getting a little interesting. Open the `/components/EventSignUpList.jsx` file. This component is the first one where you’ll be using all of our hard work in setting up the various redux elements. 
 
-### Imports sSction
+### Imports Section
 
 Start with the imports:
+
+:writing_hand:
 
 **src/components/EventSignUpList.jsx**
 
@@ -920,7 +987,10 @@ After this, you pull in your action functions from `eventReducer.js1 file. Use t
 
 Following tradition, define the `EventSignUpList` component body now:
 
-**src/components/EventSignUpList.jsx**
+:writing_hand:
+
+<details>
+<summary>src/components/EventSignUpList.jsx</summary>
 
 ```
 const EventSignUpList = ({ eventAttendees, deleteEventAttendee, toggleEventAttendance }) => (
@@ -964,19 +1034,22 @@ const EventSignUpList = ({ eventAttendees, deleteEventAttendee, toggleEventAtten
     </div>
 );
 ```
+</details>
 
 You’re extracting `eventAttendees`, `deleteEventAttendee` and `toggleEventAttendance` from props. These will be passed to the component later by the connect function. `eventAttendees` is the state array of currently-attending signups to the event, while the remaining two are self-explanatory events defined in the reducer.
 
 Next, you have a Bulma box element whose contents involve a short message highlighting the number of signups, followed by a regular old table element. Inside the table you map each event attendee to a table row, extracting various properties such as name, id, and phone number into table cells.
 
+:writing_hand:
+
 **src/components/EventSignUpList.jsx**
 
 ```
- <button className="button is-info is-small" onClick={() => toggleEventAttendance(item.id)}>change attendance</button>
+ <button className="button is-info is-small" onClick={() => toggleEventAttendance(item.id)}>change attendance</button> 
 <button className="button is-danger is-small" onClick={() => deleteEventAttendee(item.id)}>delete</button>
 ```
 
-The key point of note here is you have two buttons, one to toggle the attendance, and one to remove this attendee from state. See how you’re assigning the props functions to the buttons’ click handlers? Because of the action-creating functions you made earlier in your `eventReducer`, all you have to do here is pass in the correct parameter values — in this case each item’s id. Without the action creator function, you’d have to pass in the action type and a payload object into this function. 
+The key point of note here, is you have two buttons, one to toggle the attendance, and one to remove this attendee from state. See how you’re assigning the props functions to the buttons’ click handlers? Because of the action-creating functions you made earlier in your `eventReducer`, all you have to do here is pass in the correct parameter values — in this case each item’s id. Without the action creator function, you’d have to pass in the action type and a payload object into this function. 
 
 However, on their own, these functions won’t trigger anything in the redux pipeline. To do that, you need to wire them up to redux’s dispatch. To do that, you’re going to move on to our redux mappings.
 
@@ -984,7 +1057,10 @@ However, on their own, these functions won’t trigger anything in the redux pip
 
 To wire your Redux system into this component, you need to create two mapping items:
 
-**src/components/EventSignUpList.jsx**
+:writing_hand:
+
+<details>
+<summary>src/components/EventSignUpList.jsx</summary>
 
 ```
 const mapStateToProps = state => ({
@@ -996,6 +1072,7 @@ const mapDispatchToProps = {
     toggleEventAttendance
 };
 ```
+</details>
 
 You have two items here, a `mapStateToProps` function and a `mapDispatchToProp`s object. The point of both of these items is to wire up the redux state and dispatch mechanisms to your component. 
 
@@ -1006,6 +1083,8 @@ With `mapDispatchToProps` you create an object filled with properties that will 
 Without this approach, you’d have to pass dispatch into the component and then call it directly, passing in your action function. For example, instead of calling `toggleEventAttendance(item.id)`, you’d have to call `dispatch(() => toggleEventAttendance(item.id))`. Another bonus is this approach gives an at-a-glance look at what’s wired into the redux system and provided to props without having to scan the component and work things out.
 
 With your two mapping items present and correct, the last piece of the puzzle is to create your default export for the component:
+
+:writing_hand:
 
 **src/components/EventSignUpList.jsx**
 
@@ -1022,7 +1101,10 @@ You call the connect function which accepts a state mapping function, then a dis
 
 With everything in place, here’s what the entire component should look like:
 
-**src/components/EventSignUpList.jsx**
+:writing_hand:
+
+<details>
+<summary>src/components/EventSignUpList.jsx</summary>
 
 ```
 import React from 'react';
@@ -1086,6 +1168,7 @@ export default connect(
     mapDispatchToProps
 )(EventSignUpList);
 ```
+</details>
 
 ## EventSignUpForm.jsx
 
@@ -1094,6 +1177,8 @@ Over in your `EventSignUpForm` component, you’re going to have a few more movi
 ### Imports Section
 
 Let’s start with your imports:
+
+:writing_hand:
 
 **src/components/EventSignUpForm.jsx**
 
@@ -1108,13 +1193,15 @@ import { addEventAttendee } from '../reducers/eventReducer';
 import EventDetails from './EventDetails';
 ```
 
-We’re bringing in React and the connect function from react-redux. Next, just like in the EventSignUpList component, we’re bringing in one of our action functions, in this case addEventAttendee. We’ll be using this very shortly in order to dispatch an action to the redux system, telling it to add a new event signup.
+You’re bringing in React and the connect function from react-redux. Next, just like in the `EventSignUpList` component, you’re bringing in one of your action functions, in this case `addEventAttendee`. You’ll be using this very shortly to dispatch an action to the redux system, telling it to add a new event signup.
 
 After that you’re importing the simple presentational component,`EventDetails` defined earlier.
 
 ### Component Body
 
 Before you define the main body you first need to create a quick base form field object:
+
+:writing_hand:
 
 **src/components/EventSignUpForm.jsx**
 
@@ -1130,6 +1217,10 @@ This object will represent the default fields and values tyou want to capture in
 
 Now onto the `EventSignUpForm` component body:
 
+:writing_hand:
+
+**src/components/EventSignUpForm.jsx**
+
 ```
 const EventSignUpForm = ({ addEventAttendee }) => {
 
@@ -1144,7 +1235,10 @@ This is your skeleton component body. you’re destructuring props to grab the `
 
 Let’s add in the variables and component functions:
 
-**src/components/EventSignUpForm.jsx**
+:writing_hand:
+
+<details>
+<summary>src/components/EventSignUpForm.jsx</summary>
 
 ```
     const [signUpComplete, setSignUpComplete] = useState(false);
@@ -1169,6 +1263,7 @@ Let’s add in the variables and component functions:
         setSignUpComplete(false);
     };
 ```
+</details>
 
 You have two sets of variables and three functions. Starting with the variables, you have two uses of the `useState` Hook. The first, `signUpComplete`,  holds a simple boolean value that you’ll use to show or hide some part of the UI depending on the value set. With `formFields` this should look familiar from your forms in previous lessons. Use this to capture and edit any field values entered into the form by the user.
 
@@ -1184,7 +1279,10 @@ The function `resetForm` does exactly what it says on the tin: it updates the lo
 
 With the logic out of the way, define the component’s JSX:
 
-**src/components/EventSignUpForm.jsx**
+:writing_hand:
+
+<details>
+<summary>src/components/EventSignUpForm.jsx</summary>
 
 ```
             <EventDetails />            
@@ -1256,12 +1354,15 @@ With the logic out of the way, define the component’s JSX:
                 }                
             </div>
 ```
+</details>
 
 It looks like there’s a lot going on here, but that’s always the case with forms and form HTML. This is doubly true when using a CSS framework; they always add a little more markup to achieve their styling aims, and Bulma is no exception.
 
 You first have the `EventDetails` presentational component that will display the details of the event to the user. Next, you contain the entire form in a `div` element with a `.box` class that will just give it a little border and shadow styling.
 
 Check the `signUpComplete` value in state and if it’s false, then show the form. The form itself holds fields for the name, email address, and phone number of your event guest. Notice that the three inputs’ value and `onChange` attributes are wired up to their respective values in the component’s state and the `handleOnChange` event. 
+
+:writing_hand:
 
 **src/components/EventSignUpForm.jsx**
 
@@ -1274,6 +1375,8 @@ Check the `signUpComplete` value in state and if it’s false, then show the for
 ```
 Also take note that you’re not hooking up the form’s default button to anything. You can see it at the end of the form. By default, the generated HTML will trigger a form submission event just by clicking this button without having to wire it up to a click event. You do, however, connect the form’s `onSubmit` event to the `handleFormSubmit` we already defined.
 
+:writing_hand:
+
 **src/components/EventSignUpForm.jsx**
 
 ```
@@ -1283,6 +1386,8 @@ Also take note that you’re not hooking up the form’s default button to anyth
 ```
 
 The last thing to take a look at is the final logic brackets here where you check the `signUpComplete` value again, and if it’s true (i.e. the user has submitted a form), show a little "thanks for the submission" style message and a button that triggers the `resetForm` function to do exactly that.
+
+:writing_hand:
 
 **src/components/EventSignUpForm.jsx**
 
@@ -1299,9 +1404,11 @@ The last thing to take a look at is the final logic brackets here where you chec
                 }                
 ```
 
-### Redux Mapping fFnctions
+### Redux Mapping Functions
 
 With everything done, the last thing to take care of is wire up the redux store with the component via the mappings functions:
+
+:writing_hand:
 
 **src/components/EventSignUpForm.jsx**
 
@@ -1314,6 +1421,8 @@ const mapDispatchToProps = {
 The `mapDispatchToProps` function works exactly as it did in the `EventSignUpList` component. Pass it any functions you want connecting to the redux dispatch mechanism, and the connect function does the magic for you. In your case you want the imported `addEventAttendee` function wiring up, so add it here. 
 
 Since you don’t need access to any state values from the global store, you’re not going to define a `mapStateToProps` function like you did in the last component. Instead, simply pass `null` to the connect function which you’ll define now:
+
+:writing_hand:
 
 **src/components/EventSignUpForm.jsx**
 
@@ -1330,7 +1439,10 @@ Just like in the last component, you call `connect` passing it a `null` value fo
 
 Once you have done everything, the entire component should look like this:
 
-**src/components/EventSignUpForm.jsx**
+:writing_hand:
+
+<details>
+<summary>src/components/EventSignUpForm.jsx</summary>
 
 ```
 import React, { useState } from 'react';
@@ -1454,6 +1566,7 @@ export default connect(
     mapDispatchToProps
 )(EventSignUpForm);
 ```
+</details>
 
 ## App.js
 
@@ -1462,6 +1575,8 @@ You’re in the home stretch now as you define your final component, `App`. All 
 ### Imports
 
 Open the `App.js` file and let’s do your imports. 
+
+:writing_hand:
 
 **src/App.js**
 
@@ -1483,7 +1598,10 @@ First up is React and `useState`, shortly followed by our `app`’s styles. The 
 
 The `App` component’s body looks like this:
 
-**src/App.js**
+:writing_hand:
+
+<details>
+<summary>src/App.j</summery>
 
 ```
 const App = () => {
@@ -1515,6 +1633,7 @@ const App = () => {
 
 export default App;
 ```
+</details>
 
 Authentication is a complex business and outside the scope of this course, so you’re going to fake the signin process with a simple boolean value. In this case `userSignedIn` will be used to hold a value in the local component state to indicate if you’ve clicked the Sign In button created in the `Header` component. 
 
@@ -1526,7 +1645,10 @@ Next, show a welcome message and then use two logical operator shortcut statemen
 
 With everything in place, the complete App component looks like this:
 
-**src/App.js**
+:writing_hand:
+
+<details>
+<summary>src/App.js</summary>
 
 ```
 import React, { useState } from 'react';
@@ -1568,12 +1690,15 @@ const App = () => {
 
 export default App;
 ```
+</details>
 
 ### Index.js
 
 The very last thing to do to make any of this happen is wrap your app in the redux store. Everything you’ve done so far hinges on this very last step being complete. It is the magic that makes all of the redux system tick. 
 
 Open the `index.js` file and import two new things:
+
+:writing_lab:
 
 **src/index.js**
 
@@ -1588,13 +1713,17 @@ You bring in the redux provider from react-redux first. You need this to wrap ar
 
 Next call the `configureStore` function to provide a shiny new store that you can pass to the provider  imported a moment ago.
 
+:writing_lab:
+
 **src/index.js**
 
 ```
 const store = configureStore();
 ```
 
-cCall it like the function it is and stash the result in a store variable. Next up, you just need to amend the `ReactDOM.render()` method to add in your provider and store.
+Call it like the function it is and stash the result in a store variable. Next up, you just need to amend the `ReactDOM.render()` method to add in your provider and store.
+
+:writing_lab:
 
 **src/index.js**
 
@@ -1613,7 +1742,7 @@ The provider you imported works just like the `Context.Provider` component you s
 
 And that, believe it or not, is it!You’re all done, so now it’s time to test your hard work and sign up for some events.
 
-### Run the Demo
+### Run the Project
 
 Fire up the terminal and pop in the `npm start` command, waiting until it loads in your browser.
 
@@ -1634,3 +1763,8 @@ You’ve come a long way since your humble beginnings with a simple greeting app
 However, what you’ve achieved in this lesson is to create a new redux store, action functions that describe the changes to state, and an entire reducer that carries out those changes for you. Not only that, but you’ve used arguably the most challenging implementation of the redux pattern, using React Redux’s very unopinionated skeleton framework. 
 
 In the next lesson, we’ll be modifying what you have here to use the Redux Toolkit, a much more opinionated approach to Redux that removes a lot of the setup and state modification complexity. 
+
+#### Submission
+
+1. Zip project folder
+2. Upload folder
