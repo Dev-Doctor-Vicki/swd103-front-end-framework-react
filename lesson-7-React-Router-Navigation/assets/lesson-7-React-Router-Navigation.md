@@ -68,6 +68,8 @@ For less complex apps, or situations where you don’t need a navigation structu
 
 In practice, it could look like this:
 
+**EXAMPLE ONLY**
+
 ```
 export default function App() {
   const [route, setRoute] = useState("/");
@@ -149,7 +151,7 @@ You may never need to use many of the features React Router offers, but it reall
 
 ## Use React Router
 
-To use React Router, first install it into the project (which you’ll do as you build your demo), and then, for basic use, you’ll be concerned with three main elements:
+To use React Router, first install it into the project (which you’ll do as you build your project), and then, for basic use, you’ll be concerned with three main elements:
 
 1. `BrowserRouter`
 
@@ -211,7 +213,7 @@ Look at and use some of these as you build out your example routing app, but for
 
 With the basics under your belt, push on and take a look at what you’ll be building to cement your knowledge.
 
-## L07HandsOnAssignment Admin Console App
+## :pushpin: L07HandsOnAssignment Admin Console App
 
 Look at what you’ll be building:
 
@@ -233,8 +235,10 @@ Start to build your routing demo admin dashboard. You’re going to use `create-
 
 Open a terminal window and navigate to the parent folder you want to create the new project in. Next, type the `create-react-app` command as follows:
 
+:writing_hand:
+
 ```
-npm create-react-app routing-demo
+npm create-react-app lesson7-handson-project
 ```
 
 Let the command line finish installing the dependencies. Wait until you see the ‘success’ message and npm commands to start and build the app.
@@ -245,8 +249,10 @@ As you’ve done before, spin up the default app you just made to make sure you�
 
 Follow the advice in your terminal output and enter the following commands:
 
+:writing_hand:
+
 ```
-cd routing-demo
+cd lesson7-handson-project
 npm start
 ```
 
@@ -258,13 +264,15 @@ You need to make a few changes to get everything cleaned up and ready for your n
 
 First, open `index.js`, located in `/routing-demo/src/` and remove the following, which should be on line 3:
 
+:writing_hand:
+
 `import ‘./index.css'  `
 
 This just removes a link to the default styles from the project we won’t need. 
 
-After that, locate and delete `/src/index.css` and `/src/App.css` files.
+:writing_hand: After that, locate and delete `/src/index.css` and `/src/App.css` files.
 
-Finally, open the main `App.js` file located at `/src/App.js`. Highlight everything in this file and delete it, saving the empty file, ready to be populated with your new routing demo code.
+:writing_hand: Finally, open the main `App.js` file located at `/src/App.js`. Highlight everything in this file and delete it, saving the empty file, ready to be populated with your new routing demo code.
 
 Your project still contains a few default files, components, and assets, but don't worry about them for now as they’re not doing any harm just sitting there and they’re not currently being loaded anyway.
 
@@ -278,16 +286,20 @@ The first dependency to add is the React Router Dom NPM package. There is a Reac
 
 Back in a terminal window, make sure you’re in the root project location and enter the following command:
 
+:writing_hand:
+
 ```
 npm add react-router-dom
 ```
-With that done, now import the main package export, `BrowserRouter` and all the associated components such as `Link`. 
+With that done, now import the main package export, `BrowserRouter` and all the associated components such as `Link`below.
 
 ### Add Bulma
 
 For this project, change things up a little with Bulma. This time, instead of referencing the Bulma framework in the `index.html` file via a `<link />` element, add Bulma via its NPM package. 
 
 Still in the terminal window, add Bulma like this:
+
+:writing_hand:
 
 `npm add bulma`
 
@@ -297,11 +309,13 @@ In conjunction with your Bulma via Node approach, also add some project styles v
 
 Again, still in the terminal, add the Node Sass package:
 
+:writing_hand:
+
 ```
 npm add --dev node-sass
 ```
 
-Add the `-—dev`  flag this time because you don't want this dependency bundled into the final output of the project if you were to build and deploy it.## Creating our app’s files
+You add the `-—dev`  flag this time because you don't want this dependency bundled into the final output of the project if you were to build and deploy it.## Creating our app’s files
 
 ## Create your app’s Files
 
@@ -309,31 +323,31 @@ With all your dependencies added, create the files you need for the project and 
 
 Note that just about all of the components under the `/components` folder will be presentational, containing hard-coded JSX, apart from those explained in further detail, which are mainly concerned with navigational aspects.
 
-1. `App.js` — the familiar project starting point where all the magic happens. It will take care of setting up the main React Router routing function as well as handling the diverse URL paths you will be using.
+1. :writing_hand: `App.js` — the familiar project starting point where all the magic happens. It will take care of setting up the main React Router routing function as well as handling the diverse URL paths you will be using.
 
-2. `/assets/styles.scss` — the Sass version of your standard `styles.css` file where you’ll set some default styles and import the Bulma library.
+2. :writing_hand: `/assets/styles.scss` — the Sass version of your standard `styles.css` file where you’ll set some default styles and import the Bulma library.
 
-3. `/components/AccountManagement.jsx `
+3. :writing_hand: `/components/AccountManagement.jsx `
 
-4. `/components/CreateUser.jsx`
+4. :writing_hand: `/components/CreateUser.jsx`
 
-5. `/components/Dashboard.jsx` 
+5.:writing_hand: `/components/Dashboard.jsx` 
 
-6. `/components/Invoicing.jsx`
+6.:writing_hand: `/components/Invoicing.jsx`
 
-7. `/components/Nav.jsx` — the `Nav` component will be used and displayed as part of the header for your dashboard. It will work with your routes file (explained in a moment) to render out top level navigation items and their sub-navigation items as a drop down menu.
+7. :writing_hand: `/components/Nav.jsx` — the `Nav` component will be used and displayed as part of the header for your dashboard. It will work with your routes file (explained in a moment) to render out top level navigation items and their sub-navigation items as a drop down menu.
 
-8. `/components/Products.jsx`
+8. :writing_hand: `/components/Products.jsx`
 
-9. `/components/Sidebar.jsx` — with this component, you’ll dynamically render any sub-navigation items relevant to the particular area you’re currently viewing. It will use a few routing Hooks that React Router provides.
+9.:writing_hand: `/components/Sidebar.jsx` — with this component, you’ll dynamically render any sub-navigation items relevant to the particular area you’re currently viewing. It will use a few routing Hooks that React Router provides.
 
-10. `/components/SignOut.jsx` 
+10. :writing_hand: `/components/SignOut.jsx` 
 
-11. `/components/Support.jsx`
+11. :writing_hand: `/components/Support.jsx`
 
-12. `/components/Users.jsx`
+12.:writing_hand: `/components/Users.jsx`
 
-13. `routes.js` - you’re going to keep your app’s routes (and matching components) in this file so you can dynamically list them in your `App.js` file. 
+13. :writing_hand: `routes.js` - you’re going to keep your app’s routes (and matching components) in this file so you can dynamically list them in your `App.js` file. 
 
 With all the files created, work through them to flesh them out. 
 
@@ -341,7 +355,10 @@ With all the files created, work through them to flesh them out.
 
 Open the `/assets/styles.scss` and copy in the following styles:
 
-**src/assets/style.scss**
+:writing_hand:
+
+<details>
+<summary>src/assets/style.scss</summary>
 
 ```
 // IMPORTS
@@ -365,6 +382,7 @@ aside {
     }
 }
 ```
+</details>
 
 The import statement at the top of the file brings the Bulma CSS framework styles into the project. Next, set a couple of SCSS variables and a scant couple of styles to mildly color the sidebar and menu that we’ll be fleshing out later.
 
@@ -375,6 +393,8 @@ The vast majority of your components are purely presentational and have zero wor
 ### AccountManagement.jsx
 
 Open the `/components/AccountManagement.jsx` component and scaffold the basic default export as follows:
+
+:writing_hand:
 
 ```
 import React from 'react'
@@ -391,7 +411,12 @@ You’ll be making use of this exact same template for the remaining presentatio
 
 Speaking of which, here’s the JSX you need to complete the `AccountManagement` component.
 
-**src/components/AccountManagement.jsx**
+:writing_hand:
+
+<details>
+
+<summary>src/components/AccountManagement.jsx</summary>
+
 
 ```
 import React from 'react';
@@ -450,6 +475,8 @@ export default () => (
     </>
 );
 ```
+</details>
+
 
 You have a title and dummy intro paragraph, followed by a couple of form fields, including a select element. You’ve given each of the forms fields here a value so it looks like you’ve loaded in some account data to be able to edit, but again, it’s just smoke and mirrors for your purposes.
 
@@ -459,7 +486,10 @@ Finally, at the bottom, you have two dummy buttons that aren’t hooked up to an
 
 For the `CreateUser` component, start with the default export template just mentioned, then fill in the rest of the JSX as follows:
 
-**src/components/CreateUser.jsx**
+:writing_hand:
+
+<details>
+<summary>src/components/CreateUser.jsx</summary>
 
 ```
 import React from 'react';
@@ -514,6 +544,7 @@ export default () => (
     </>
 );
 ```
+</details>
 
 After the title `<h1>` you have some very similar fields to the `AccountManagement` component, but this time without the value attributes, just placeholders for us this time.
 
@@ -521,7 +552,10 @@ After the title `<h1>` you have some very similar fields to the `AccountManageme
 
 Open the `Dashboard.jsx` file in the `/components` folder and fill out the JSX as follows:
 
-**src/components/Dashboard.jsx**
+:writing_hand:
+
+<details>
+<summary>src/components/Dashboard.jsx</summary>
 
 ```
 import React from 'react';
@@ -580,6 +614,7 @@ export default () => (
     </>
 );
 ```
+</details>
 
 The dashboard is arguably the most complex-looking as far as JSX structure goes. Generally, dashboards contain well-structured information in bite-size chunks. To simulate that, you’ve used Bulma’s Tile system, which helps to create interesting, grid-like layout structures using a series of `<div>` elements with the tile CSS class applied to them. 
 
@@ -591,7 +626,10 @@ However, as before, everything in here is dummy text, placeholder images, and ha
 
 Open the `Invoicing.jsx` file and complete the JSX for the component:
 
-**src/components/Invoicing.jsx**
+:writing_hand:
+
+<details>
+<summary>src/components/Invoicing.jsx</summary>
 
 ```
 import React from 'react';
@@ -663,6 +701,7 @@ export default () => (
     </>
 );
 ```
+</details>
 
 You have a page title and a Bulma-styled table which contains a few action buttons to simulate possible invoicing actions your users may wish to take, such as resending an invoice or marking it as paid. 
 
@@ -672,7 +711,10 @@ Again, you’ve leaned on the Bulma framework to make your buttons small and col
 
 For the `Products` component, the JSX looks like this:
 
-**src/components/Products.jsx**
+:writing_hand:
+
+<details>
+<summary>src/components/Products.jsx</summary>
 
 ```
 import React from 'react';
@@ -731,6 +773,7 @@ export default () => (
     </>
 );
 ```
+</details>
 
 You have a page title followed by a regular HTML table that contains a mocked list of possible products. It’s all standard HTML (well, JSX, but it looks identical), barring the addition of the Bulma table CSS class that makes the magic happen.
 
@@ -754,7 +797,10 @@ export default () => (
 
 Open the `Support.jsx` file and complete the JSX like this:
 
-**src/components/Support.jsx**
+:writing_hand:
+
+<details>
+<summary>src/components/Support.jsx</summary>
 
 ```
 import React from 'react';
@@ -809,6 +855,7 @@ export default () => (
     </>
 );
 ```
+</details>
 
 The `Support` component will look quite similar to the `CreateUser` and `AccountManagement` components. You have the ubiquitous page title, and a number of form fields to enable users to send a message requesting support.
 
@@ -816,7 +863,10 @@ The `Support` component will look quite similar to the `CreateUser` and `Account
 
 For the `Users` component, flesh things out with the following JSX:
 
-**src/components/Users.jsx**
+:writing_hand:
+
+<details>
+<summary>src/components/Users.jsx</summary>
 
 ```
 import React from 'react';
@@ -875,6 +925,7 @@ export default () => (
     </>
 );
 ```
+</details>
 
 After a typical level 1 page heading, you have an HTML table filled with simulated user details. To make this table look fitting, all you have to add is the single CSS class, table, and Bulma does the heavy styles lifting for you. 
 
@@ -896,6 +947,8 @@ Open the `routes.js` file and start filling it out.
 
 Start with all of the presentational components you’ve just finished creating. This is a regular JavaScript file so you can import your components as you’ve always done with the familiar format `import [component name] from ‘../file-path’`.
 
+:writing_hand:
+
 **src/routes.js**
 
 ```
@@ -911,7 +964,10 @@ import Products from './components/Products';
 
 Next, define a `routes` variable which will be an array of routing objects.
 
-**src/routes.js**
+:writing_hand:
+
+<details>
+<summary>src/routes.js</summary>
 
 ```
 const routes = [
@@ -957,6 +1013,7 @@ const routes = [
 
 export default routes;
 ```
+</details>
 
 Each routing object is fairly straightforward; nothing but standard JS objects here. You have a set of object properties that will function as follows:
 
@@ -974,7 +1031,10 @@ Each routing object is fairly straightforward; nothing but standard JS objects h
 
 With that done, the complete `routes.js` looks like this:
 
-**src/routes.js**
+:writing_hand:
+
+<details>
+<summary>src/routes.js</summary>
 
 ```
 // Components
@@ -1029,6 +1089,7 @@ const routes = [
 
 export default routes;
 ```
+</details>
 
 ## Nav.jsx
 
@@ -1037,6 +1098,8 @@ The `Nav` component will be used and displayed as part of the header for your da
 ### Imports Section
 
 Get started with some imports:
+
+:writing_hand:
 
 **src/components/Nav.jsx**
 
@@ -1052,6 +1115,8 @@ Of course you need `React` in the mix, but you’re also pulling in your first R
 ### SubNav Helper
 
 Next, you’re going to define a helper function that will take care of the rendering of any sub-navigation that a particular route may have.
+
+:writing_hand:
 
 **src/components/Nav.jsx**
 
@@ -1083,7 +1148,10 @@ You could have just fleshed out the entire URLs in the `routes.js file`, of cour
 
 Now you’re ready to build out the default export, our `Nav` component. Start with the skeleton body and Bulma-styled JSX:
 
-**src/components/Nav.jsx**
+:writing_hand:
+
+<details>
+<summary>src/components/Nav.jsx</summary>
 
 ```
 const Nav = ({ routes }) => (
@@ -1109,11 +1177,16 @@ const Nav = ({ routes }) => (
 
 export default Nav;
 ```
+</details>
+
 Nothing fancy just yet. This is all standard JSX with the particular structure and styles applied that Bulma dictates for its nav bar element. This will give a tidy, clean, and well-styled header navigation bar at the top of your admin console app. 
 
 Now you need to process and render some navigation items:
 
-**src/components/Nav.jsx**
+:writing_hand:
+
+<details>
+<summary>src/components/Nav.jsx</summary>
 
 ```
             {
@@ -1139,6 +1212,7 @@ Now you need to process and render some navigation items:
                 })
             }
 ```
+</details>
 
 You take the `routes` array the component has been passed as part of its props and loop through it using the `.map()` function. For each route you check to see if there is a `subnav` property. 
 
@@ -1154,7 +1228,10 @@ You absolutely could have just scrapped the `SubNav` component and placed its co
 
 The complete `Nav` component looks like this:
 
-**src/components/Nav.jsx**
+:writing_hand:
+
+<details>
+<summary>src/components/Nav.jsx</summary>
 
 ```
 import React from 'react';
@@ -1217,6 +1294,7 @@ const Nav = ({ routes }) => (
 
 export default Nav;
 ```
+</details>
 
 ## Sidebar.jsx
 
@@ -1225,6 +1303,8 @@ The Sidebar component’s main function is to render out a title for the particu
 ### Imports
 
 Open the `Sidebar.jsx` file from your `/components` folder and start with the imports:
+
+:writing_hand:
 
 **src/components/Sidebar.jsx**
 
@@ -1254,6 +1334,8 @@ For the `Sidebar` you need to know more about the current location, specifically
 
 Now for the main body of the `Sidebar` component, define its skeleton and default export for this file:
 
+:writing_hand:
+
 **src/components/Sidebar.jsx**
 
 ```
@@ -1267,6 +1349,8 @@ export default Sidebar;
 ```
 
 First, you need to create two variables:
+
+:writing_hand:
 
 **src/components/Sidebar.jsx**
 
@@ -1289,7 +1373,10 @@ For example, for the `/users/create` path, you are provided a `pathname` that lo
 
 All that’s left is to drop in the JSX:
 
-**src/components/Sidebar.jsx**
+:writing_hand:
+
+<details>
+<summary>src/components/Sidebar.jsx</summary>
 
 ```
     return (
@@ -1313,6 +1400,7 @@ All that’s left is to drop in the JSX:
         </aside>
     );
 ```
+</details>
 
 You have an `<aside>` element, a paragraph, and an unordered list, each styled with Bulma classes. 
 
@@ -1328,7 +1416,10 @@ Fortunately, the `NavLink` component automatically does this. You just have to s
 
 Once all the code is in, the finished component should look like this:
 
-**src/components/Sidebar.jsx**
+:writing_hand:
+
+<details>
+<summary>src/components/Sidebar.jsx</summary>
 
 ```
 import React from 'react';
@@ -1369,10 +1460,11 @@ const Sidebar = () => {
 
 export default Sidebar;
 ```
+</details>
 
 ## App.js
 
-At this point in your demo build you have presentational components to display for given routes, some navigation to display in your app’s header, and a nice sidebar section to hold any sub-navigation. 
+At this point in your project build, you have presentational components to display for given routes, some navigation to display in your app’s header, and a nice sidebar section to hold any sub-navigation. 
 
 But all of that is for naught if you don’t build anything to handle the routes you visit. You can add all the `Link` or `NavLink` components you want and your app will render no problem. However, if you go clicking around on those links, you’ll be greeted with errors galore. 
 
@@ -1382,7 +1474,10 @@ That’s where your `App` component comes in. In the `App.js` file you’ll be c
 
 Open the `App.js` file in the root of your code folder and begin with those all-important imports:
 
-**src/App.js**
+:writing_hand:
+
+<details>
+<summary>src/App.js</summary>
 
 ```
 import React from 'react';
@@ -1402,6 +1497,7 @@ import Sidebar from './components/Sidebar';
 import Dashboard from './components/Dashboard';
 import SignOut from './components/SignOut';
 ```
+</details>
 
 Ignoring the imports from `react-router-dom` (you’ll address those shortly), you’ve got `React`, the `routes` data from your `routes.js` file, your `styles.scss` (which will be automatically compiled from Sass into CSS), and your `layout` and `navigation` components that aren’t handled within any of your routes objects.
 
@@ -1419,6 +1515,10 @@ Breaking them down:
 
 With your imports at the ready, define the skeleton component body and default export:
 
+:writing_hand:
+
+**src/App.js**
+
 ```
 const App = () => {
   return (
@@ -1434,7 +1534,10 @@ Nothing happening yet, but you’ve added your `Router` component in the `return
 
 #### Variables
 
-**src/App.js**
+:writing_hand:
+
+<details>
+<summary>src/App.js</summary>
 
 ```
 const App = () => {
@@ -1455,6 +1558,7 @@ const App = () => {
     return routeCollection;
   }, []);
 ```
+</details>
 
 The single variable you’re going to define here is `allRoutes`. You’re using the `Array.reduce()` method here to essentially flatten your currently-nested route data from the `routes.js` file imported earlier. There are other ways to achieve this, but I’ve chosen to use `reduce()` - it’s efficient and you can easily see what’s going on during each iteration.
 
@@ -1464,7 +1568,10 @@ The `reduce()` method scares some people, but it’s not that bad. In fact here 
 
 You’re almost ready to launch your app and feast your eyes on your marvelous routing handiwork. However, before you start popping the champagne, you need to add the last bit of JSX into the mix.
 
-**src/App.js**
+:writing_hand:
+
+<details>
+<summary>src/App.js</summary>
 
 ```
   return (
@@ -1510,8 +1617,11 @@ You’re almost ready to launch your app and feast your eyes on your marvelous r
     </Router>
   );
 ```
+</details>
 
 Inside of your `Router` component, you have a regular HTML `<header>` element where you’ve placed your `Nav` component. It’s supplied with the route data from the `routes.js` file and takes care of itself.
+
+:writing_hand:
 
 **src/App.js**
 
@@ -1526,7 +1636,10 @@ Next you have a common layout trope of a container with some columns, the first 
 
 This starts with React Router’s `Switch` component. It doesn’t need any additional attributes; just like `Router` it can be employed just so, as a wrapper, because it handles what it needs to on its own. 
 
-**src/App.js**
+:writing_hand:
+
+<details>
+<summary>src/App.js</summary>
 
 ```
                         <Switch>
@@ -1554,10 +1667,13 @@ This starts with React Router’s `Switch` component. It doesn’t need any addi
                             </Route>
                         </Switch>
 ```
+</details>
 
 What follows is a mixture of different ways you can use `Route` components to declaratively build out whatever routing and navigation handling structure you wish.
 
 You have a simple `Route` component up top that handles the `/signout` path. You’ve supplied it with the `Signout` component as a child. 
+
+**REVIEW ONLY**
 
 **src/App.js**
 
@@ -1569,7 +1685,9 @@ You have a simple `Route` component up top that handles the `/signout` path. You
 
 You’ve done a similar thing further down with the `Route` that handles the single forward slash. This one renders the `Dashboard` component. Notice the exact attribute here. Without this, you would likely catch some undesirable routes or unknown routes that would then display a dashboard, when you ideally want some different behavior, such as a 404 page. 
 
-Speaking of which, under here, you have a lonely `Route` component that has no attributes. If no other routes have been matched, this route will be triggered and its children rendered out to the user. For example, if you visited `‘/users/spoons’`, which you know definitely doesn’t exist, that route would be caught here and the simple `<h1>` element displayed. You’ll see this in action during your demo in a moment.
+Speaking of which, under here, you have a lonely `Route` component that has no attributes. If no other routes have been matched, this route will be triggered and its children rendered out to the user. For example, if you visited `‘/users/spoons’`, which you know definitely doesn’t exist, that route would be caught here and the simple `<h1>` element displayed. You’ll see this in action during your project in a moment.
+
+**REVIEW ONLY**
 
 **src/App.js**
 
@@ -1582,6 +1700,8 @@ Speaking of which, under here, you have a lonely `Route` component that has no a
 ```
 
 Hopping back up a little, take a look at the very interesting block in the middle of the JSX. This is another way you can handle routing, using dynamic or programmatic rendering. With your flattened `allRoutes` array, you call upon the trusty `map()` function to iterate through each route object. 
+
+**REVIEW ONLY**
 
 **src/App.js**
 
@@ -1614,7 +1734,10 @@ This approach won’t work for every project and every scenario, but you can see
 
 With everything done and dusted in the `App` component, it should look like this:
 
-**src/App.js**
+:writing_hand:
+
+<details>
+<summary>src/App.js</summary>
 
 ```
 import React from 'react';
@@ -1699,6 +1822,7 @@ const App = () => {
 
 export default App;
 ```
+</details>
 
 ### Run the Demo
 
@@ -1735,6 +1859,11 @@ Unsurprisingly, you’re going to populate this file with some JSON data, namely
 #### Complete Contents of users.json
 
 The entire JSON file for your users should look like this:
+
+:writing_hand:
+
+<details>
+<summary>users.json</summary>
 
 ```
 {
@@ -1777,6 +1906,7 @@ The entire JSON file for your users should look like this:
     ]
 }
 ```
+</details>
 
 ### Edit Users.jsx
 
@@ -1792,6 +1922,10 @@ Because you want to use a button that directs users to another URL, you’ll bri
 
 You also need to bring in the user data from the `users.json` file just created, so you do that here too. 
 
+:writing_hand:
+
+**Users.jsx**
+
 ```
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -1803,6 +1937,8 @@ import users from '../data/users.json';
 ### Helper functions
 
 Outline a single helper function here, `getEditTime()`. This is a really simple function that creates a new `Date()` object, and then crafts a return string from various Date functions. The returned string represents the current time.
+
+:writing_hand:
 
 **src/components/Users.jsx**
 
@@ -1825,7 +1961,10 @@ Make three edits here.
 
 3. The final edit involves adding new body contents for the table. It’ll look like this:
 
-**src/components/Users.jsx**
+:writing_hand:
+
+<details>
+<summary>src/components/Users.jsx</summary>
 
 ```
         <table className="table">
@@ -1859,6 +1998,7 @@ Make three edits here.
             </tbody>
         </table>
 ```
+</details>
 
 It looks the same as any single row from the hard-coded version, but this time you're outputting each row as a result of the `map()` function, iterating over your users that we brought in as part of the imports section.
 
@@ -1878,11 +2018,14 @@ You're building up a dynamic URL path to pass to the Link component which will e
 
 You haven’t defined any route to handle this type of URL path just yet. For now, it’s enough to know that you're generating a number of similar URL paths, each with a different user id value, appended with a query string parameter, edited - the value of which is set to the current time returned from our helper function. 
 
-### The cCmplete Updated Component
+### The Complete Updated Component
 
-If you’ve followed all the amendments as above, your complete component should now look like this:
+If you’ve followed all the edits above, your complete component should now look like this:
 
-**src/components/Users.jsx**
+:writing_hand:
+
+<details>
+<summary>src/components/Users.jsx</summary>
 
 ```
 import React from 'react';
@@ -1932,6 +2075,7 @@ export default () => (
     </>
 );
 ```
+</details>
 
 ## Create EditUser.jsx
 
@@ -1948,6 +2092,8 @@ Create a new file in the `/components` folder called `EditUser.jsx` and let’s 
 ### Imports
 
 Start with the imports at the top of the file which look like this:
+
+:writing_hand:
 
 **src/components/EditUser.jsx**
 
@@ -1968,6 +2114,8 @@ You also plug in your users JSON data from the `users.json`  file.
 Even though the `useLocation` Hook gives easy access to any query string value via its `.search` property, the query string is returned in its raw, rather ugly and unhelpful state - something like this: `?item1=xyz&item2=abc`.
 
 To get a specific value from this jumble of characters, create a helper function,  `getQSValue` which looks like this:
+
+:writing_hand:
 
 **src/components/EditUser.jsx**
 
@@ -1990,6 +2138,10 @@ The `getQSValue` function accepts two string parameters,  `queryStrin`g and `sea
 
 Define the default export for the component as follows:
 
+:writing_hand:
+
+**src/components/EditUser.jsx**
+
 ```
 export default () => {
     return (
@@ -2000,6 +2152,8 @@ export default () => {
 ```
 
 Add some variables to kick things off:
+
+:writing_hand:
 
 **src/components/EditUser.jsx**
 
@@ -2020,7 +2174,10 @@ If you don’t find one, we just pick the first user from the bunch.
 
 Finally, outline some JSX for the UI:
 
-**src/components/EditUser.jsx**
+:writing_hand:
+
+<details>
+<summary>src/components/EditUser.jsx</summary>
 
 ```
     return (
@@ -2068,6 +2225,7 @@ Finally, outline some JSX for the UI:
         </>
     );
 ```
+</details>
 
 You have a series of simple labels with HTML inputs whose values are set to the relevant properties of the selected user object.
 
@@ -2075,11 +2233,14 @@ The main point of note here is that the `<h2>` element contains information abou
 
 This value is still just mocked of course (as you saw in the Users component), but it illustrates how to easily grab query string values from route information using React Router and the Hooks it provides.
 
-#### The completed Component
+#### The Completed Component
 
 With all the code added to your new `EditUser` component, it should be looking like this:
 
-**src/components/EditUser.jsx**
+:writing_hand:
+
+<details>
+<summary>src/components/EditUser.jsx</summary>
 
 ```
 import React from 'react';
@@ -2150,6 +2311,7 @@ export default () => {
     );
 };
 ```
+</details>
 
 ## Edit routes.js
 
@@ -2159,11 +2321,17 @@ Open the `routes.js` file. Believe it or not, because of your hard work in the l
 
 Add a new import that brings your `EditUser` component in:
 
+:writing_hand:
+
+**routes.js**
+
 ```
 import EditUser from ‘./components/EditUser';
 ```
 
 The last thing to do is to create a new routing object under the `/users` section:
+
+:writing_hand:
 
 **src/routes.js**
 
@@ -2178,7 +2346,7 @@ The name for the menu item will be ‘`Edit User`’ and you need the sub-URL to
 
 That’s it. Really! You don’t need to update the `App.js` file with the new route, because that’s all handled programmatically thanks to the work you carried out in the last lesson. 
 
-### Run Your uUdated app
+### Run Your Updated app
 
 For the last time in this lesson, head back into the terminal and run the `npm start` command.
 
@@ -2190,7 +2358,10 @@ And that’s it for another lesson. You have learned a lot about how to add rout
 
 I’ll look forward to seeing you in the next lesson as you continue your React journey.
 
+#### Submission
 
+1. Zip project folder
+2. Upload folder
 
 
 
