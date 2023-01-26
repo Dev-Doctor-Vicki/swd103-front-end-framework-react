@@ -1534,7 +1534,18 @@ export default App;
 </details>
 
 
+## Vocabulary
 
+| TERM                 | DESCRIPTION                                                                                                                                                                                                                                                                                             |
+|----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| React                | A declarative, efficient, and flexible JavaScript library for building user interfaces. It lets you compose complex UIs from small and isolated pieces of code called “components”.                                                                                                                     |
+| Components           | Smaller, bite-sized pieces of functionality that operate on their own; managing their state, given some sort of input data referred to as props. These smaller components are brought together as building blocks for larger, more complex user interfaces that interact via passed in data and events. |
+| Declarative          | When React is described as 'declarative', it means you can tell React what you want it to do, or display, without having to worry about how this will be achieved.                                                                                                                                      |
+| Functional Component | A functional component is just that…a function! You’re using the arrow function syntax to write it, but you can see there’s nothing fancy or complex about it.                                                                                                                                          |
+| Parcel JS            | A simple code bundler much like Webpack, but without much of the complex configuration and setup. In its own words Parcel JS is a ‘blazing fast, zero-config web application bundler’.                                                                                                                  |
+| ReactDOM.render()    | Accepts two arguments: The component you want to render (APP). Where you want to render it, i.e. the 'root' div in your HTML element from the index.html file.                                                                                                                                          |
+| Immutable            | n important thing to know about state is that it is immutable. This means it can be updated by using React’s setState() method, but never edit state directly. The only time you ever set state directly is in a constructor.                                                                           |
+| Refactoring          | Refactor App to achieve a few things: Think about your apps in a component, modular fashion. Try your hand at breaking down a larger component into smaller ones. Introduce the common functional component approach to building your React components.                                                 |
 
 
 

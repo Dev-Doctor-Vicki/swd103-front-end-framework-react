@@ -32,7 +32,7 @@ Finally, you can simulate a sign-in process which will then allow a logged-in us
 
 ## :pushpin: L10FinalProject
 
-### Step 1: Plan out the Build
+### Plan out the Build
 
 With larger, more complex apps such as this, even as a minimum viable product, where the functionality might be bare bones to begin with, it can be helpful to start by mapping out two things:
 
@@ -66,7 +66,7 @@ This is quite a simple diagram, but then you’re only building a relatively sim
 
 Whatever their approach, the aim is to give you an at-a-glance idea of how a user will flow through various distinct parts or pages within your app. They can help immensely during the planning phase of any app you’re going to build. 
 
-### Step 2: Wireframes
+### Wireframes
 
 You’re not going to dwell on the wireframes too long, as I’m sure you’re keen to get building and put your React muscles to good use. Let’s move through the rough-and-ready wireframes for each of the pages you saw in the previous flow diagram. 
 
@@ -88,7 +88,7 @@ Just like the user journey diagrams, the idea with wireframes is to give a gener
 
 They help so much by providing a reference point that you can keep coming back to whilst building a component or part of an application. 
 
-## Step 3: Build the App
+## Build the App
 
 With this being a larger, more complex app than you’ve built thus far in the course, the remaining sections in this lesson will be broken down like this:
 
@@ -102,7 +102,7 @@ With this being a larger, more complex app than you’ve built thus far in the c
 
 Let’s dive into the next section and get cracking. 
 
-## Section 2: Project Setup and Scaffolding
+## Project Setup and Scaffolding
 
 You put the foundations of the Dinosaur Search App in place, such as creating a new React app and exploring the supporting API
 
@@ -169,9 +169,13 @@ Before you plough on with the front-facing client app, quickly spin up the API s
 
 In your terminal, navigate to the root of the `/server` folder. If this is the first time you’re running it, you’ll need to install the dependencies with the following command:
 
+:writing_hand:
+
 `npm install`
 
 Once that’s finished, run the start command:
+
+:writing_hand:
 
 `npm start`
 
@@ -406,7 +410,7 @@ body {
 
 // Dino card
 .dino-card {
-    .dino-card__favourite {
+    .dino-card__favorite {
         z-index: 2;
 
         &:hover {
@@ -414,14 +418,14 @@ body {
         }        
     }
     
-    &.is-favourite {
+    &.is-favorite {
         border: 1px solid #01ca592e;
     }
 }
 
 // Dino details
 .dino-info {
-    .dino-info__favourite {
+    .dino-info__favorite {
         &:hover {
             text-decoration: none;
         }        
@@ -445,7 +449,7 @@ Open the file and import the `StoreProvider` at the top of the file.
 
 ```
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
@@ -454,7 +458,7 @@ import reportWebVitals from './reportWebVitals';
 import { StoreProvider } from './redux/reducers';
 
 
-ReactDOM.render(
+ReactDOM.createRoot(document.getElementById('root')()
   <React.StrictMode>
     <StoreProvider>
       <App />
