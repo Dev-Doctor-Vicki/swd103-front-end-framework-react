@@ -217,6 +217,22 @@ This is a straightforward project, not too complex, but highlights a number of k
 
 Next, you break the Greeting App down into its `component` parts and take a sneak peak under the hood at how everything pins together.
 
+#### KNOWLEDGE CHECK
+
+| React is mainly used for building ___. |
+|----------------------------------------|
+| Database                               |
+| Connectivity                           |
+| User interface                         |
+| Design Platform                        |
+
+<details>
+<summary> Solution</summary>
+
+"User Interface"
+
+</details>
+
 ## :pushpin: L01 Hands On Guided Learning: Build the Greeting App
 
 Welcome to your very first React hands-on practice assignment, as part of this React Course.
