@@ -107,7 +107,7 @@ Let's cover these advantages with  examples.
 
 ### Reuse Stateful Logic
 
-‘stateful logic’ referrs to a component’s `state`, the data stored by the component, and any associated logic to alter that `state`.
+‘stateful logic’ refers to a component’s `state`, the data stored by the component, and any associated logic to alter that `state`.
 
 Before Hooks, `state` was quite rigidly bound to a particular component and common or repeated logic wasn’t easily removed into a separate space to be reused across other components.
 
@@ -2074,3 +2074,15 @@ If everything’s working as planned, you should have a great looking site that 
 
 1. Zip the Project Folder
 2. Upload the zipped folder
+
+## Vocabulary
+
+| TERM             | DESCRIPTION                                                                                                                                                                                                                                                                                                                |
+|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ParentComponent  | The component doing the referencing can be thought of as the parent component, and the component being referenced can be thought of as the child component.                                                                                                                                                                |
+| Hooks            | n React, Hooks allow developers to tap into some of the more powerful features of React, such as state and the component lifecycle, without writing some of the more cumbersome syntax required in more "traditional" class-based components.                                                                              |
+| stateful logic   | Refers to a component’s state, the data stored by the component, and any associated logic to alter that state.                                                                                                                                                                                                             |
+| useState         | A direct replacement for the class-based state you see used in this manner: // updating state<br>this.setState({<br>  someProperty: 'some value'<br>});<br><br>// using state<br><p>The value is {this.state.someProperty}</p>;                                                                                            |
+| useEffect        | gives you a combined method that runs on each render of a component. It can be used multiple times to separate any distinct logic, and it can also be passed an array of dependencies React will monitor for changes. Should any of those dependencies change, only then would that particular useEffect call be executed. |
+| key=             | This attribute is another React-specific attribute needed when rendering lists of things. It helps React keep track of changes within the list, such as if any have been added, removed, etc.                                                                                                                              |
+| Create React App | An official React starter project, developed and maintained by the Facebook Open Source team and it offers all of the above (and more) in one, convenient package with just one dependency.                                                                                                                                |
