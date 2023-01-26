@@ -27,9 +27,12 @@ You don't have to be a coding jedi or have years of experience as this course is
 - :pushpin: - Required Assignment or Project
 
 - :writing_hand: - Required coding or action
-## Course topics
 
 - :arrow_forward: - Click to open full code
+
+## Course topics
+
+
 
 You'll join us on a deep dive into core React concepts. As you progress through this course, you will learn more about how React works, how you can use it to build complex web applications, and how to combine it with third-party libraries and frameworks to 'join the dots'. You will gain a detailed understanding of how you might use React in a real world setting.
 
