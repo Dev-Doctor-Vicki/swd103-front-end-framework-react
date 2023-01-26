@@ -22,7 +22,14 @@ On completion of this course, you'll not only have a knowledge of modern React d
 
 You don't have to be a coding jedi or have years of experience as this course is designed for beginners. However, you should be familiar with the basics of frontend development, including `HTML`, `CSS` and `JavaScript`. It would be helpful to have an understanding of basic concepts around RESTful APIs and how to interact with them, but it's not essential.
 
+### Navigation Keys
+
+- :pushpin: - Required Assignment or Project
+
+- :writing_hand: - Required coding or action
 ## Course topics
+
+- :arrow_forward: - Click to open full code
 
 You'll join us on a deep dive into core React concepts. As you progress through this course, you will learn more about how React works, how you can use it to build complex web applications, and how to combine it with third-party libraries and frameworks to 'join the dots'. You will gain a detailed understanding of how you might use React in a real world setting.
 
