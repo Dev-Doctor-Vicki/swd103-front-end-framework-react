@@ -1335,6 +1335,36 @@ Before you do anything else, it’s a good idea to jump straight into the new pr
 
 So, follow the advice in your terminal output and enter the following commands:
 
+#### KNOWLEDGE CHECK
+
+| What is the correct command to create a new React project? |
+|------------------------------------------------------------|
+| npm create-react-app                                       |
+| npx create-react-app myReactApp                            |
+| npx create-react-app                                       |
+| npm create-react-app myReactApp                            |
+
+<details>
+<summary>Solution</summary>
+
+`npx create-react-app myReactApp`
+
+</details>
+
+| What does myReactApp refer to in the following command? npx create-react-app myReactApp |
+|-----------------------------------------------------------------------------------------|
+| The directory to create the new app in                                                  |
+| A reference to an existing app                                                          |
+| The type of app to create                                                               |
+| The name you want to use for the new app                                                |
+
+<details>
+<summary>Solution</summary>
+
+ The name you want to use for the new app   
+ 
+ <details>                                           |
+
 :writing_hand:
 
 1. `cd furry-friends-gallery`
@@ -1346,6 +1376,23 @@ After a few moments, you should see a webpage open up with a spinning React logo
 
 **Boom!!** Everything’s looking great and your new project is almost ready to go!
 
+#### KNOWLEDGE CHECK
+
+| What command is used to start the React local development server? |
+|-------------------------------------------------------------------|
+| npm build                                                         |
+| npm run dev                                                       |
+| npm serve                                                         |
+| npm start                                                         |
+
+<details>
+<summary>Solution</summary>
+
+`npm start`
+
+</details
+
+>
 ### Clean up the Default Files
 
 *Create React App* does load in a few bare-bones files and styles to give you a jumping-off point. However, you need to make a few changes to get everything cleaned up and ready for your new gallery app.
@@ -1996,6 +2043,27 @@ export default App;
 ### View Your Hard Work
 
 With everything coded up and set to go, that just leaves you to complete a final check to make sure everything’s working as it should.
+
+:writing_hand:
+
+`npm start`
+
+
+#### Knowledge Check
+
+| What is the default local host port that a React development server uses? |
+|---------------------------------------------------------------------------|
+| 5000                                                                      |
+| 8080                                                                      |
+| 3500                                                                      |
+| 3000                                                                      |
+
+<details>
+<summary>Solution</summary>
+
+3000
+
+</details>
 
 If everything’s working as planned, you should have a great looking site that shows us nothing but some well-behaved dogs doing what they do best.
 
