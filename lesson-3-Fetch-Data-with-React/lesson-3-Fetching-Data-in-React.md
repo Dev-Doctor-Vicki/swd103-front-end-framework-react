@@ -1251,3 +1251,14 @@ Take a look at the running app and play with it. You see a list of available bre
 Once you select a breed radio button, you see the right-hand panel update with a filtered list of dog pictures that match your chosen breed. Exciting stuff!
 
 **Congratulations**! You’ve just built a fully working, browsable, gallery app that pages a list of breeds from an API, and then responds to user input, retrieving a filtered list of images from the same API. All the while, you used axios under the hood to provide a great cross-browser data-fetching experience!
+
+## Vocabulary
+
+| TERM      | DESCRIPTION                                                                                                                                                                                   |
+|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| AJAX      | "Asynchronous JavaScript and XML", and is a combination of the built-in XMLHttpRequest object, which goes off to the server to retrieve the data, and JavaScript and the DOM to use the data. |
+| App.js    | The familiar project starting point where all the magic happens.                                                                                                                              |
+| .env      | A new type of file to hold key variables that might change between environments. Store your API key and other data here.                                                                      |
+| api.js    | Data handler-like library responsible for interacting with the API and returning it to the calling component                                                                                  |
+| Fetch API | The more recent approach to handle resource fetching, especially to external APIs.                                                                                                            |
+| axios     | A wrapper around the XMLHttpRequest object, providing much of the same familiar implementation of the Fetch API in the look and feel of how it’s used.                                        |
