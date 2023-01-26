@@ -1359,11 +1359,14 @@ So, follow the advice in your terminal output and enter the following commands:
 | The name you want to use for the new app                                                |
 
 <details>
+
 <summary>Solution</summary>
 
  The name you want to use for the new app   
  
- <details>                                           |
+                                          |
+
+</details>
 
 :writing_hand:
 
@@ -1390,9 +1393,9 @@ After a few moments, you should see a webpage open up with a spinning React logo
 
 `npm start`
 
-</details
+</details>
 
->
+
 ### Clean up the Default Files
 
 *Create React App* does load in a few bare-bones files and styles to give you a jumping-off point. However, you need to make a few changes to get everything cleaned up and ready for your new gallery app.
