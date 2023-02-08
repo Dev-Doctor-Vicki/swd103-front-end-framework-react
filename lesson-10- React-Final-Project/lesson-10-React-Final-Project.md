@@ -450,21 +450,24 @@ Open the file and import the `StoreProvider` at the top of the file.
 ```
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { createRoot } from 'react-dom/client'
 
+import App from './App';
 
 // Reducer store
 import { StoreProvider } from './redux/reducers';
 
+const rootElement = document.getElementById('root');
 
-ReactDOM.createRoot(document.getElementById('root')()
+const root = createroot(rootElement);
+
+root.render(
   <React.StrictMode>
     <StoreProvider>
       <App />
     </StoreProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -231,6 +231,11 @@ You’ll be quickly building out the JSX, which is relatively unimportant and ju
 
 Start to build your routing demo admin dashboard. You’re going to use `create-react-app` again to quickly provide a scaffolded starting point. 
 
+### Requirements
+
+1. Follow guided learning
+2. Create code for each hook
+
 ### Project Setup
 
 Open a terminal window and navigate to the parent folder you want to create the new project in. Next, type the `create-react-app` command as follows:
